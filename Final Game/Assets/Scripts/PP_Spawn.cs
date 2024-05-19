@@ -5,17 +5,9 @@ using UnityEngine;
 public class PP_Spawn : MonoBehaviour
 {
     public GameObject _PP;
-    private GameObject _Player;
     public GameObject _Arena;
 
     public float Timer = 10;
-
-    public bool isInArena;
-
-    public void Start()
-    {
-        _Player = GameObject.FindGameObjectWithTag("Player");
-    }
 
     private void Update()
     {
@@ -26,23 +18,6 @@ public class PP_Spawn : MonoBehaviour
             Timer = 10;
         }
     }
-
-    private void OnTriggerStay(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isInArena = true;
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            isInArena = false;
-        }
-    }
-
 
     private void SpawnPP()
     {
