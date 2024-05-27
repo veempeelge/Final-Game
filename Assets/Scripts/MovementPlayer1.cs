@@ -8,14 +8,18 @@ public class MovementPlayer1 : MonoBehaviour
     public float moveSpeed = 5f;
     public float rotationSpeed = 700f;
 
-    public string horizontalAxis = "Horizontal";
-    public string verticalAxis = "Vertical";
+    public string horizontalAxis ;
+    public string verticalAxis ;
 
     [SerializeField] private Rigidbody rb;
     private Vector3 movement;
 
+    int MaxHP = 4;
+    int currentHP;
+
     void Start()
     {
+        currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
     }
 
@@ -54,5 +58,17 @@ public class MovementPlayer1 : MonoBehaviour
             // Smoothly rotate towards the target direction
             rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
+    }
+
+   public  void TakeDamage(int damage)
+    {
+        currentHP -= damage;
+        Debug.Log(currentHP);
+        
+        if (currentHP <= 0)
+        {
+            //Destroy(this);
+        }
+
     }
 }
