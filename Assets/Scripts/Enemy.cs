@@ -6,27 +6,35 @@ using UnityEngine.SceneManagement;
 public class Enemy : MonoBehaviour
 {
     public float Speed;
-    Transform player;
+    Transform player1;
 
     public int health;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<MovementPlayer1>().transform;
+        player1 = FindObjectOfType<MovementPlayer1>().transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player.position, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(transform.position, player1.position, Speed * Time.deltaTime);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            SceneManager.LoadScene("Gameplay");
+           //SceneManager.LoadScene("Gameplay");
+        }
+    }
+    void TakeDamage(int damageAmount)
+    {
+        health -= damageAmount;
+        if (health <= 0)
+        {
+            Destroy(gameObject);
         }
     }
 }
