@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class MovementPlayer1 : MonoBehaviour
 {
+    private GameManager gameManager;
+
     public float moveSpeed = 5f;
     public float rotationSpeed = 700f;
 
@@ -23,9 +25,11 @@ public class MovementPlayer1 : MonoBehaviour
     public float playerAtk, playerAtkSpd, playerRange, weaponDurability, playerAtkWidth, playerKnockback;
     public GameObject attackIndicatorPrefab;
     private bool canAttack = true;
+    public bool player1, player2, player3;
 
     void Start()
     {
+        gameManager = GameManager.Instance;
         playerAtk = 1f;
         playerAtkSpd = 1f;
         playerRange = 1f;
@@ -66,7 +70,7 @@ public class MovementPlayer1 : MonoBehaviour
 
     void MovePlayer()
     {
-        // Normalize the movement vector to ensure consistent movement speed in all directions
+
         rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
     }
 
@@ -74,10 +78,10 @@ public class MovementPlayer1 : MonoBehaviour
     {
         if (movement != Vector3.zero)
         {
-            // Calculate the target rotation based on the movement direction
+
             Quaternion targetRotation = Quaternion.LookRotation(movement);
 
-            // Smoothly rotate towards the target direction
+
             rb.rotation = Quaternion.RotateTowards(rb.rotation, targetRotation, rotationSpeed * Time.fixedDeltaTime);
         }
     }
@@ -89,10 +93,32 @@ public class MovementPlayer1 : MonoBehaviour
         
         if (currentHP <= 0)
         {
-            //Destroy(this);
+            Die();
         }
 
    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+        if (player1)
+        {
+            gameManager.Player1Dead();
+            //UI player 1
+        }
+
+        if (player2)
+        {
+            gameManager.Player2Dead();
+            //UI player 2
+        }
+
+        if (player3)
+        {
+            gameManager.Player3Dead();
+            //UI player 3
+        }
+    }
 
     public void ChangeStats(float atk, float atkspd, float range, float durability, float knockback)
     {
@@ -162,8 +188,6 @@ public class MovementPlayer1 : MonoBehaviour
             }
            
         }
-
-        // Wait for the next attack based on attack speed
        
         canAttack = true;
 
