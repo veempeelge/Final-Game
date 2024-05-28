@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MovementPlayer1 : MonoBehaviour
 {
-    public float moveSpeed = 5f;
+    public float moveSpeed;
     public float rotationSpeed = 700f;
 
     public string horizontalAxis ;
