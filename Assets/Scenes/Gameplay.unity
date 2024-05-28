@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5118975, g: 0.5118975, b: 0.5118975, a: 1}
+  m_IndirectSpecularColor: {r: 0.5115958, g: 0.5115958, b: 0.5115958, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -335,7 +335,7 @@ GameObject:
   - component: {fileID: 419638852}
   - component: {fileID: 419638851}
   - component: {fileID: 419638850}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -667,7 +667,7 @@ GameObject:
   - component: {fileID: 1013057575}
   - component: {fileID: 1013057574}
   - component: {fileID: 1013057579}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -932,7 +932,7 @@ GameObject:
   - component: {fileID: 1186825245}
   - component: {fileID: 1186825244}
   - component: {fileID: 1186825243}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1322,7 +1322,7 @@ GameObject:
   - component: {fileID: 1553249973}
   - component: {fileID: 1553249975}
   - component: {fileID: 1553249974}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1496,7 +1496,7 @@ GameObject:
   - component: {fileID: 1652296795}
   - component: {fileID: 1652296794}
   - component: {fileID: 1652296799}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player 2
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1779,7 +1779,7 @@ GameObject:
   - component: {fileID: 1795590318}
   - component: {fileID: 1795590320}
   - component: {fileID: 1795590319}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}

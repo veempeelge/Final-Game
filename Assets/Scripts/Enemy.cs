@@ -44,8 +44,7 @@ public class Enemy : MonoBehaviour
         {
             Debug.LogWarning("No players found with the tag 'Player'.");
         }
-    
-}
+    }
 
     // Update is called once per frame
     void Update()
@@ -53,7 +52,13 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, player1.position, Speed * Time.deltaTime);
     }
 
-
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+        }
+    }
 
     void OnTriggerEnter (Collider collision) 
     {
