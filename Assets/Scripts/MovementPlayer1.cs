@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MovementPlayer1 : MonoBehaviour
 {
-    private GameManager gameManager;
+    public GameManager gameManager;
 
     public float moveSpeed = 5f;
     public float rotationSpeed = 700f;
@@ -29,11 +29,12 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Start()
     {
-        gameManager = GameManager.Instance;
+        //gameManager = GameManager.Instance;
         playerAtk = 1f;
         playerAtkSpd = 1f;
-        playerRange = 1f;
+        playerRange = 4f;
         playerAtkWidth = 1f;
+        playerKnockback = 8f;
         StartCoroutine(AutoAttack());
 
 
@@ -86,10 +87,10 @@ public class MovementPlayer1 : MonoBehaviour
         }
     }
 
-   public  void TakeDamage(float damage)
+   public void TakeDamage(float damage)
    {
         currentHP -= damage;
-        Debug.Log(currentHP);
+        Debug.Log("Got Hit, HP Remaining = " +currentHP);
         
         if (currentHP <= 0)
         {
@@ -120,10 +121,11 @@ public class MovementPlayer1 : MonoBehaviour
         }
     }
 
-    public void ChangeStats(float atk, float atkspd, float range, float durability, float knockback)
+    public void ChangeStats(float atk, float atkspd, float range, float atkwidth, float durability, float knockback)
     {
         playerAtk = atk;
         playerAtkSpd = atkspd;
+        playerAtkWidth = atkwidth;
         playerRange = range;
         weaponDurability = durability;
         playerKnockback = knockback;

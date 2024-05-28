@@ -11,6 +11,7 @@ public class Enemy : MonoBehaviour
     Transform player1;
     public float health;
     float enemyAttack = 2;
+    public float knockbackDuration = 0.2f;
     int index;
     public  Rigidbody body;
     
@@ -27,7 +28,7 @@ public class Enemy : MonoBehaviour
         foreach (GameObject player in foundPlayers)
         {
             Players.Add(player);
-            Debug.Log("Player added: " + player.name);
+           // Debug.Log("Player added: " + player.name);
         }
 
         // Ensure there are players in the list before accessing it
@@ -38,25 +39,38 @@ public class Enemy : MonoBehaviour
             player = Players[index];
             player1 = player.transform;
 
-            Debug.Log("I am following player " + index);
+           // Debug.Log("I am following player " + index);
         }
         else
         {
-            Debug.LogWarning("No players found with the tag 'Player'.");
+          //  Debug.LogWarning("No players found with the tag 'Player'.");
         }
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, player1.position, Speed * Time.deltaTime);
+        if (player != null)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, player1.position, Speed * Time.deltaTime);
+        }
     }
 
     void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+            // Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
+            MovementPlayer1 player = collision.gameObject.GetComponent<MovementPlayer1>();
+            if (player != null)
+            {
+                // Call the PerformAction function on the PlayerScript
+                player.TakeDamage(enemyAttack);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
+            }
         }
     }
 
@@ -79,8 +93,8 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmount,Vector3 knockbackDirection, float knockbackForce)
     {
         health -= damageAmount;
-        Debug.Log("Hit, HP = " + health);
-        body.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
+        //  Debug.Log("Hit, HP = " + health);
+        StartCoroutine(Knockback(knockbackDirection, knockbackForce));
 
         if (health <= 0)
         {
@@ -88,5 +102,21 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private IEnumerator Knockback(Vector3 direction, float knockbackForce)
+    {
+
+        float elapsedTime = 0f;
+        Vector3 startPosition = transform.position;
+        Vector3 targetPosition = startPosition + direction * knockbackForce;
+
+        while (elapsedTime < knockbackDuration)
+        {
+            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / knockbackDuration);
+            elapsedTime += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPosition; // Ensure the final position is set
+    }
 
 }

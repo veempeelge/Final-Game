@@ -13,16 +13,17 @@ public class GameManager : MonoBehaviour
 
     [SerializeField]  Button twoPlayers, threePlayers;
 
-    [SerializeField] GameObject UIPlayerSelect;
-    [SerializeField] GameObject UIPlayerHP;
+    [SerializeField] GameObject UIPlayerSelect, UIPlayerHP, UIGameOver;
 
     [SerializeField] GameObject player1obj, player2obj, player3obj;
+    [SerializeField] GameObject player1Won, player2Won, player3Won;
 
     // Start is called before the first frame update
     void Start()
     {
         UIPlayerHP.SetActive(false);
         UIPlayerSelect.SetActive(true);
+        UIGameOver.SetActive(false);
         Time.timeScale = 0;
         twoPlayers.onClick.AddListener(_2Players);
         threePlayers.onClick.AddListener(_3Players);
@@ -36,6 +37,10 @@ public class GameManager : MonoBehaviour
 
     void _2Players()
     {
+        player1alive = true;
+        player2alive = true;
+        player3alive = false;
+
         playersLeft = 2;
         StartGame();
         player3obj.SetActive(false);
@@ -43,6 +48,9 @@ public class GameManager : MonoBehaviour
 
     void _3Players()
     {
+        player1alive = true;
+        player2alive = true;
+        player3alive = true;
         playersLeft = 3;
         StartGame();
 
@@ -52,7 +60,9 @@ public class GameManager : MonoBehaviour
     {
         playersLeft--;
         player1alive = false;
-        if (playersLeft < 0)
+        Debug.Log("Player1Dead");
+        if (playersLeft == 1)
+
         {
             GameOver();
         }
@@ -62,7 +72,10 @@ public class GameManager : MonoBehaviour
     {
         playersLeft--;
         player2alive = false;
-        if (playersLeft < 0)
+        Debug.Log("Player1Dead");
+
+        if (playersLeft == 1)
+
         {
             GameOver();
         }
@@ -73,7 +86,9 @@ public class GameManager : MonoBehaviour
     {
         playersLeft--;
         player3alive = false;
-        if (playersLeft < 0)
+        Debug.Log("Player1Dead");
+
+        if (playersLeft == 1)
         {
             GameOver();
         }
@@ -87,19 +102,27 @@ public class GameManager : MonoBehaviour
     }
     void GameOver()
     {
-       if (player1alive)
+        Debug.Log("GameOver");
+        UIGameOver.SetActive(true);
+        Time.timeScale = 0;
+        if (player1alive)
         {
             //Player 1 Won
+            player1Won.SetActive(true);
         }
 
         if (player2alive)
         {
             //Player 2 Won
+            player2Won.SetActive(true);
+
         }
 
-        if (player2alive)
+        if (player3alive)
         {
-            //Player 2 Won
+            //Player 3 Won
+            player3Won.SetActive(true);
+
         }
     }
 }
