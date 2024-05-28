@@ -30,6 +30,8 @@ public class MovementPlayer1 : MonoBehaviour
         playerAtkSpd = 1f;
         playerRange = 1f;
         playerAtkWidth = 1f;
+        StartCoroutine(AutoAttack());
+
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
@@ -44,11 +46,11 @@ public class MovementPlayer1 : MonoBehaviour
         // Create a vector based on input
         movement = new Vector3(moveX, 0, moveZ);
 
-        if (Input.GetKeyDown("e"))
+        if (Input.GetKeyDown(attackButton))
         {
             if (canAttack)
             {
-                StartCoroutine(Attack());
+                StartCoroutine(AutoAttack());
             }
         }
     }
@@ -92,15 +94,34 @@ public class MovementPlayer1 : MonoBehaviour
 
    }
 
-    public void ChangeStats(float atk, float atkspd, float range, float durability)
+    public void ChangeStats(float atk, float atkspd, float range, float durability, float knockback)
     {
         playerAtk = atk;
         playerAtkSpd = atkspd;
         playerRange = range;
         weaponDurability = durability;
+        playerKnockback = knockback;
     }
 
-    IEnumerator Attack()
+    IEnumerator AutoAttack()
+    {
+        while (weaponDurability > 0)
+        {
+            if (canAttack)
+            {
+                Attack();
+                yield return new WaitForSeconds(1f / playerAtkSpd);
+            }
+            else
+            {
+                yield return null;
+            }
+        }
+
+        Debug.Log("Weapon is broken!");
+    }
+
+    private void Attack()
     {
         canAttack = false;
         Vector3 attackCenter = transform.position + transform.forward * playerRange / 2;
@@ -119,11 +140,13 @@ public class MovementPlayer1 : MonoBehaviour
         {
             if (enemy.CompareTag("Enemy"))
             {
+
+                Vector3 knockbackDirection = (enemy.transform.position - transform.position).normalized;
                 // Attack the enemy
                 Enemy enemyScript = enemy.GetComponent<Enemy>();
                 if (enemyScript != null)
                 {
-                    enemyScript.TakeDamage(playerAtk);
+                    enemyScript.TakeDamage(playerAtk, knockbackDirection, playerKnockback);
                 }
 
                 // Reduce weapon durability
@@ -134,14 +157,14 @@ public class MovementPlayer1 : MonoBehaviour
                 {
                     Debug.Log("Weapon is broken!");
                     canAttack = false;
-                    yield break;
+                    return;
                 }
             }
            
         }
 
         // Wait for the next attack based on attack speed
-        yield return new WaitForSeconds(1f / playerAtkSpd);
+       
         canAttack = true;
 
     }

@@ -806,13 +806,14 @@ MonoBehaviour:
   rotationSpeed: 700
   horizontalAxis: Horizontal
   verticalAxis: Vertical
-  attackButton: '"e"'
+  attackButton: e
   rb: {fileID: 1013057574}
   playerAtk: 1
   playerAtkSpd: 1
   playerRange: 3
   weaponDurability: 100
   playerAtkWidth: 0.91
+  playerKnockback: 10
   attackIndicatorPrefab: {fileID: 3323762594601163282, guid: 7d9aceaaa69682b49889b7c5d472c50c, type: 3}
 --- !u!1 &1167925149
 GameObject:
@@ -1463,14 +1464,15 @@ MonoBehaviour:
   rotationSpeed: 700
   horizontalAxis: Horizontal2
   verticalAxis: Vertical2
-  attackButton: 
+  attackButton: o
   rb: {fileID: 1652296794}
-  playerAtk: 0
-  playerAtkSpd: 0
-  playerRange: 0
-  weaponDurability: 0
-  playerAtkWidth: 0
-  attackIndicatorPrefab: {fileID: 0}
+  playerAtk: 1
+  playerAtkSpd: 1
+  playerRange: 3
+  weaponDurability: 100
+  playerAtkWidth: 0.91
+  playerKnockback: 10
+  attackIndicatorPrefab: {fileID: 3323762594601163282, guid: 7d9aceaaa69682b49889b7c5d472c50c, type: 3}
 --- !u!1 &1728263499
 GameObject:
   m_ObjectHideFlags: 0

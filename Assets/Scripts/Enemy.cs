@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     public float health;
     float enemyAttack = 2;
     int index;
+    public  Rigidbody body;
     
 
     public List<GameObject> Players = new List<GameObject>();
@@ -70,10 +71,11 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    public void TakeDamage(float damageAmount)
+    public void TakeDamage(float damageAmount,Vector3 knockbackDirection, float knockbackForce)
     {
         health -= damageAmount;
         Debug.Log("Hit, HP = " + health);
+        body.AddForce(knockbackDirection * knockbackForce, ForceMode.Impulse);
 
         if (health <= 0)
         {

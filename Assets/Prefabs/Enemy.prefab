@@ -101,7 +101,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -119,9 +119,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349f5d78249f79c468622bc7465a7c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Speed: 5
-  health: 10
-  enemyAttack: 0
+  Speed: 2
+  health: 2
+  body: {fileID: -8216902296907575128}
+  Players: []
 --- !u!54 &-8216902296907575128
 Rigidbody:
   m_ObjectHideFlags: 0
