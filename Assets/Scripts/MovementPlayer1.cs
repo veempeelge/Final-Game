@@ -20,7 +20,8 @@ public class MovementPlayer1 : MonoBehaviour
     float currentHP;
 
     [Header("PlayerStats")]
-    public float playerAtk, playerAtkSpd, playerRange, weaponDurability;
+    public float playerAtk, playerAtkSpd, playerRange, weaponDurability, playerAtkWidth, playerKnockback;
+    public GameObject attackIndicatorPrefab;
     private bool canAttack = true;
 
     void Start()
@@ -28,7 +29,7 @@ public class MovementPlayer1 : MonoBehaviour
         playerAtk = 1f;
         playerAtkSpd = 1f;
         playerRange = 1f;
-
+        playerAtkWidth = 1f;
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
@@ -102,6 +103,15 @@ public class MovementPlayer1 : MonoBehaviour
     IEnumerator Attack()
     {
         canAttack = false;
+        Vector3 attackCenter = transform.position + transform.forward * playerRange / 2;
+        Vector3 attackHalfExtents = new Vector3(playerAtkWidth / 2, 1f, playerRange / 2);
+
+        GameObject attackIndicator = Instantiate(attackIndicatorPrefab, attackCenter, transform.rotation);
+        attackIndicator.transform.SetParent(transform); 
+        attackIndicator.transform.localPosition = transform.InverseTransformPoint(attackCenter); 
+        attackIndicator.transform.localRotation = Quaternion.identity; 
+        attackIndicator.transform.localScale = new Vector3(playerAtkWidth, 2f, playerRange);
+        Destroy(attackIndicator, 0.5f); 
 
         // Find enemies within range
         Collider[] hitEnemies = Physics.OverlapSphere(transform.position, playerRange);
@@ -139,6 +149,9 @@ public class MovementPlayer1 : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, playerRange);
+        Vector3 attackCenter = transform.position + transform.forward * playerRange / 2;
+        Vector3 attackHalfExtents = new Vector3(playerAtkWidth / 2, 1f, playerRange / 2);
+        Gizmos.matrix = Matrix4x4.TRS(attackCenter, transform.rotation, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, attackHalfExtents * 2);
     }
 }

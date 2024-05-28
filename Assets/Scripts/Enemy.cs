@@ -73,10 +73,11 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
+        Debug.Log("Hit, HP = " + health);
 
         if (health <= 0)
         {
-            Destroy(gameObject);
+            Destroy(this.gameObject);
         }
     }
 
