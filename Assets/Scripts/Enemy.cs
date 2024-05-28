@@ -9,8 +9,8 @@ public class Enemy : MonoBehaviour
     public float Speed;
     GameObject player;
     Transform player1;
-    public int health;
-    int enemyAttack = 2;
+    public float health;
+    float enemyAttack = 2;
     int index;
     
 
@@ -70,9 +70,10 @@ public class Enemy : MonoBehaviour
             }
         }
     }
-    void TakeDamage(int damageAmount)
+    public void TakeDamage(float damageAmount)
     {
         health -= damageAmount;
+
         if (health <= 0)
         {
             Destroy(gameObject);

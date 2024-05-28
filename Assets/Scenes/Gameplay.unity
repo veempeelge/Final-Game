@@ -806,7 +806,12 @@ MonoBehaviour:
   rotationSpeed: 700
   horizontalAxis: Horizontal
   verticalAxis: Vertical
+  attackButton: '"e"'
   rb: {fileID: 1013057574}
+  playerAtk: 1
+  playerAtkSpd: 1
+  playerRange: 3
+  weaponDurability: 10
 --- !u!1 &1167925149
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,7 +1461,12 @@ MonoBehaviour:
   rotationSpeed: 700
   horizontalAxis: Horizontal2
   verticalAxis: Vertical2
+  attackButton: 
   rb: {fileID: 1652296794}
+  playerAtk: 0
+  playerAtkSpd: 0
+  playerRange: 0
+  weaponDurability: 0
 --- !u!1 &1728263499
 GameObject:
   m_ObjectHideFlags: 0
