@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5118975, g: 0.5118975, b: 0.5118975, a: 1}
+  m_IndirectSpecularColor: {r: 0.5114495, g: 0.5114495, b: 0.5114495, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -3003,6 +3003,11 @@ MonoBehaviour:
   _PP: {fileID: 605196136701530160, guid: 121edc9fe2e886045b53b9b94f55862c, type: 3}
   _Arena: {fileID: 0}
   Timer: 10
+  weaponList:
+  - {fileID: 605196136701530160, guid: 121edc9fe2e886045b53b9b94f55862c, type: 3}
+  - {fileID: 605196136701530160, guid: c0eefe0a6c068d240b508816e61ee608, type: 3}
+  - {fileID: 605196136701530160, guid: 8c2cb4fb6dfaf2842b0b6e881a60fbe7, type: 3}
+  - {fileID: 605196136701530160, guid: 4223ab933c25a3b4c82c7862ee89a197, type: 3}
 --- !u!4 &1489667578
 Transform:
   m_ObjectHideFlags: 0
