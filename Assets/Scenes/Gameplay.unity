@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.5118975, g: 0.5118975, b: 0.5118975, a: 1}
+  m_IndirectSpecularColor: {r: 0.5121353, g: 0.5121353, b: 0.5121353, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -645,7 +645,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &465206894
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -675,12 +675,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: -197.3
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 1
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -855,28 +855,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4739414835688545390, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
   m_PrefabInstance: {fileID: 7407764248084537996}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1013057574
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013057573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b974291ec8fec6447924cabdfa8687e2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  VisionConeMaterial: {fileID: 2100000, guid: 8841b4221242671408d2a5ee7ea6888f, type: 2}
-  VisionRange: 0
-  VisionAngle: 0
-  VisionObstructingLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  EnemyLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  VisionConeResolution: 120
 --- !u!1 &1014814953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5335831115062087817, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
@@ -1729,29 +1707,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6667659303969544634, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: attack
-      value: 
-      objectReference: {fileID: 1013057574}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 59785022}
-    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: playerAtkSpd
-      value: 3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4739414835688545390, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1013057574}
     - targetCorrespondingSourceObject: {fileID: 7779464323739215612, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
