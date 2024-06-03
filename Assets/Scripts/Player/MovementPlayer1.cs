@@ -7,7 +7,7 @@ using UnityEngine;
 public class MovementPlayer1 : MonoBehaviour
 {
     public GameManager gameManager;
-
+    public Attack attack;
     public float moveSpeed = 5f;
     public float rotationSpeed = 700f;
 
@@ -130,11 +130,11 @@ public class MovementPlayer1 : MonoBehaviour
         }
     }
 
-    public void ChangeStats(float atk, float atkspd, float range, float atkwidth, float durability, float knockback)
+    public void ChangeStats(float atk, float atkspd, float range, float atkradius, float durability, float knockback)
     {
         playerAtk = atk;
         playerAtkSpd = atkspd;
-        playerAtkWidth = atkwidth;
+        playerAtkWidth = atkradius;
         playerRange = range;
         weaponDurability = durability;
         playerKnockback = knockback;
@@ -146,7 +146,7 @@ public class MovementPlayer1 : MonoBehaviour
         {
             if (canAttack)
             {
-                Attack();
+                AttackEnemy();
                 yield return new WaitForSeconds(1f / playerAtkSpd);
             }
             else
@@ -158,56 +158,12 @@ public class MovementPlayer1 : MonoBehaviour
         Debug.Log("Weapon is broken!");
     }
 
-    private void Attack()
+    private void AttackEnemy()
     {
         canAttack = false;
-        Vector3 attackCenter = transform.position + transform.forward * playerRange / 3f;
-        Vector3 attackHalfExtents = new Vector3(playerAtkWidth / 2, 1f, playerRange / 3f);
 
-        GameObject attackIndicator = Instantiate(attackIndicatorPrefab, attackCenter, transform.rotation);
-        attackIndicator.transform.SetParent(transform); 
-        attackIndicator.transform.localPosition = transform.InverseTransformPoint(attackCenter); 
-        attackIndicator.transform.localRotation = Quaternion.identity; 
-        attackIndicator.transform.localScale = new Vector3(playerAtkWidth, 2f, playerRange);
-        Destroy(attackIndicator, 0.5f);
+        attack.DrawVisionCone(playerAtk, playerKnockback, playerAtkWidth, playerRange);
 
-        // Find enemies within range
-        Collider[] hitEnemies = Physics.OverlapSphere(attackCenter, playerRange);
-
-        foreach (Collider enemy in hitEnemies)
-        {
-            {
-                Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
-                float angleToEnemy = Vector3.Angle(transform.forward, directionToEnemy);
-
-                if (angleToEnemy < attackAngle / 2)
-                {
-                    // Calculate the knockback direction
-                    Vector3 knockbackDirection = directionToEnemy;
-
-                    // Attack the enemy
-                    Enemy enemyScript = enemy.GetComponent<Enemy>();
-                    if (enemyScript != null)
-                    {
-                        enemyScript.TakeDamage(playerAtk, knockbackDirection, playerKnockback);
-                    }
-
-                    // Reduce weapon durability
-                    weaponDurability--;
-
-                    // Check weapon durability
-                    if (weaponDurability <= 0)
-                    {
-                        Debug.Log("Weapon is broken!");
-                        // Handle weapon break (e.g., disable further attacks, change weapon, etc.)
-                        canAttack = false;
-                        return;
-                    }
-                }
-            }
-
-        }
-       
         canAttack = true;
 
     }
