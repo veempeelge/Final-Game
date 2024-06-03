@@ -855,6 +855,28 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4739414835688545390, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
   m_PrefabInstance: {fileID: 7407764248084537996}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1013057574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1013057573}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b974291ec8fec6447924cabdfa8687e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VisionConeMaterial: {fileID: 2100000, guid: 8841b4221242671408d2a5ee7ea6888f, type: 2}
+  VisionRange: 0
+  VisionAngle: 0
+  VisionObstructingLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  VisionConeResolution: 120
 --- !u!1 &1014814953 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5335831115062087817, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
@@ -1712,6 +1734,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: attack
+      value: 
+      objectReference: {fileID: 1013057574}
+    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 59785022}
@@ -1723,6 +1749,9 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4739414835688545390, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1013057574}
     - targetCorrespondingSourceObject: {fileID: 7779464323739215612, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
