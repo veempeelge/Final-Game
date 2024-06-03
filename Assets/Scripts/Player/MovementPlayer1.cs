@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class MovementPlayer1 : MonoBehaviour
 {
-    public GameManager gameManager;
+    public static MovementPlayer1 instance;
     public Attack attack;
+
+    public GameManager gameManager;
     public float moveSpeed = 5f;
     public float rotationSpeed = 700f;
 
@@ -35,6 +37,9 @@ public class MovementPlayer1 : MonoBehaviour
     public float playerAtkWidth;
     public float playerKnockback;
     public float attackAngle;
+
+    public Vector3 knockbackDirection;
+    public GameObject hitIndicator;
 
     void Start()
     {
@@ -147,6 +152,10 @@ public class MovementPlayer1 : MonoBehaviour
             if (canAttack)
             {
                 AttackEnemy();
+                yield return new WaitForSeconds(.5f);
+                hitIndicator.SetActive(false);
+                attack.isAttacking = false;
+
                 yield return new WaitForSeconds(1f / playerAtkSpd);
             }
             else
@@ -158,42 +167,9 @@ public class MovementPlayer1 : MonoBehaviour
         Debug.Log("Weapon is broken!");
     }
 
-    private void AttackEnemy()
+    void AttackEnemy()
     {
-        canAttack = false;
-
-        attack.DrawVisionCone(playerAtk, playerKnockback, playerAtkWidth, playerRange);
-
-        canAttack = true;
-
-    }
-
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-            Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-        }
-    }
-
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            
-        }
-    }
-
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Vector3 attackCenter = transform.position + transform.forward * playerRange / 2;
-        Gizmos.DrawWireSphere(attackCenter, playerRange);
-
-        // Draw the cone angle
-        Vector3 rightBoundary = Quaternion.Euler(0, attackAngle / 2, 0) * transform.forward * playerRange ;
-        Vector3 leftBoundary = Quaternion.Euler(0, -attackAngle / 2, 0) * transform.forward * playerRange;
-        Gizmos.DrawLine(transform.position, transform.position + rightBoundary);
-        Gizmos.DrawLine(transform.position, transform.position + leftBoundary);
+        attack.isAttacking = true;
+        hitIndicator.SetActive(true);
     }
 }

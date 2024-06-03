@@ -141,6 +141,7 @@ Transform:
   m_Children:
   - {fileID: 1943996628913988212}
   - {fileID: 3790993283981148952}
+  - {fileID: 2503107028479568396}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &89363774519098392
@@ -255,6 +256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5130deb593af8ee4c98598cdf489fe60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 3702519029050940567}
   gameManager: {fileID: 0}
   moveSpeed: 5
   rotationSpeed: 700
@@ -266,12 +268,16 @@ MonoBehaviour:
   player1: 0
   player2: 1
   player3: 0
+  attackAreaMultiplier: 1.5
   playerAtk: 1
   playerAtkSpd: 1
   playerRange: 3
   weaponDurability: 100
   playerAtkWidth: 0.91
   playerKnockback: 3
+  attackAngle: 0
+  knockbackDirection: {x: 0, y: 0, z: 0}
+  hitIndicator: {fileID: 8870809921074437542}
 --- !u!1 &8243866465096240354
 GameObject:
   m_ObjectHideFlags: 0
@@ -443,3 +449,62 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 6272038279386194314}
   m_maskType: 0
+--- !u!1 &8870809921074437542
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2503107028479568396}
+  - component: {fileID: 3702519029050940567}
+  m_Layer: 6
+  m_Name: Hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2503107028479568396
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870809921074437542}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1813156598611903373}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3702519029050940567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8870809921074437542}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b974291ec8fec6447924cabdfa8687e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 2434555902838392969}
+  VisionConeMaterial: {fileID: 2100000, guid: 8841b4221242671408d2a5ee7ea6888f, type: 2}
+  AttackRange: 0
+  AttackAngle: 0
+  KnockbackDirection: {x: 0, y: 0, z: 0}
+  knockbackForce: 0
+  playerAttack: 0
+  VisionObstructingLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  VisionConeResolution: 120
+  isAttacking: 0

@@ -1,5 +1,64 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &652954558116755525
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6061382779364625822}
+  - component: {fileID: 351205096366292130}
+  m_Layer: 6
+  m_Name: Hit
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6061382779364625822
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652954558116755525}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4033561378793552965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &351205096366292130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 652954558116755525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b974291ec8fec6447924cabdfa8687e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerStats: {fileID: 7460112241736159949}
+  VisionConeMaterial: {fileID: 2100000, guid: 8841b4221242671408d2a5ee7ea6888f, type: 2}
+  AttackRange: 0
+  AttackAngle: 0
+  KnockbackDirection: {x: 0, y: 0, z: 0}
+  knockbackForce: 0
+  playerAttack: 0
+  VisionObstructingLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  VisionConeResolution: 120
+  isAttacking: 0
 --- !u!1 &3093976667359442554
 GameObject:
   m_ObjectHideFlags: 0
@@ -141,6 +200,7 @@ Transform:
   m_Children:
   - {fileID: 3690449245081619672}
   - {fileID: 7972188372759665071}
+  - {fileID: 6061382779364625822}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7338128527093610556
@@ -255,6 +315,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5130deb593af8ee4c98598cdf489fe60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attack: {fileID: 351205096366292130}
   gameManager: {fileID: 0}
   moveSpeed: 5
   rotationSpeed: 700
@@ -266,12 +327,16 @@ MonoBehaviour:
   player1: 1
   player2: 0
   player3: 0
+  attackAreaMultiplier: 1.5
   playerAtk: 1
-  playerAtkSpd: 1
+  playerAtkSpd: 3
   playerRange: 3
   weaponDurability: 100
   playerAtkWidth: 0.91
   playerKnockback: 3
+  attackAngle: 0
+  knockbackDirection: {x: 0, y: 0, z: 0}
+  hitIndicator: {fileID: 652954558116755525}
 --- !u!1 &7779464323739215612
 GameObject:
   m_ObjectHideFlags: 0
