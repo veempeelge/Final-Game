@@ -21,11 +21,20 @@ public class MovementPlayer1 : MonoBehaviour
     float MaxHP = 4;
     float currentHP;
 
-    [Header("PlayerStats")]
-    public float playerAtk, playerAtkSpd, playerRange, weaponDurability, playerAtkWidth, playerKnockback;
     public GameObject attackIndicatorPrefab;
     private bool canAttack = true;
     public bool player1, player2, player3;
+    public float attackAreaMultiplier = 1.5f;
+
+    [Header("PlayerStats")]
+
+    public float playerAtk;
+    public float playerAtkSpd;
+    public float playerRange;
+    public float weaponDurability;
+    public float playerAtkWidth;
+    public float playerKnockback;
+    public float attackAngle;
 
     void Start()
     {
@@ -152,43 +161,51 @@ public class MovementPlayer1 : MonoBehaviour
     private void Attack()
     {
         canAttack = false;
-        Vector3 attackCenter = transform.position + transform.forward * playerRange / 2;
-        Vector3 attackHalfExtents = new Vector3(playerAtkWidth / 2, 1f, playerRange / 2);
+        Vector3 attackCenter = transform.position + transform.forward * playerRange / 3f;
+        Vector3 attackHalfExtents = new Vector3(playerAtkWidth / 2, 1f, playerRange / 3f);
 
         GameObject attackIndicator = Instantiate(attackIndicatorPrefab, attackCenter, transform.rotation);
         attackIndicator.transform.SetParent(transform); 
         attackIndicator.transform.localPosition = transform.InverseTransformPoint(attackCenter); 
         attackIndicator.transform.localRotation = Quaternion.identity; 
         attackIndicator.transform.localScale = new Vector3(playerAtkWidth, 2f, playerRange);
-        Destroy(attackIndicator, 0.5f); 
+        Destroy(attackIndicator, 0.5f);
 
         // Find enemies within range
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, playerRange);
+        Collider[] hitEnemies = Physics.OverlapSphere(attackCenter, playerRange);
+
         foreach (Collider enemy in hitEnemies)
         {
-            if (enemy.CompareTag("Enemy"))
             {
+                Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+                float angleToEnemy = Vector3.Angle(transform.forward, directionToEnemy);
 
-                Vector3 knockbackDirection = (enemy.transform.position - transform.position).normalized;
-                // Attack the enemy
-                Enemy enemyScript = enemy.GetComponent<Enemy>();
-                if (enemyScript != null)
+                if (angleToEnemy < attackAngle / 2)
                 {
-                    enemyScript.TakeDamage(playerAtk, knockbackDirection, playerKnockback);
-                }
+                    // Calculate the knockback direction
+                    Vector3 knockbackDirection = directionToEnemy;
 
-                // Reduce weapon durability
-                weaponDurability--;
+                    // Attack the enemy
+                    Enemy enemyScript = enemy.GetComponent<Enemy>();
+                    if (enemyScript != null)
+                    {
+                        enemyScript.TakeDamage(playerAtk, knockbackDirection, playerKnockback);
+                    }
 
-                // Check weapon durability
-                if (weaponDurability <= 0)
-                {
-                    Debug.Log("Weapon is broken!");
-                    canAttack = false;
-                    return;
+                    // Reduce weapon durability
+                    weaponDurability--;
+
+                    // Check weapon durability
+                    if (weaponDurability <= 0)
+                    {
+                        Debug.Log("Weapon is broken!");
+                        // Handle weapon break (e.g., disable further attacks, change weapon, etc.)
+                        canAttack = false;
+                        return;
+                    }
                 }
             }
-           
+
         }
        
         canAttack = true;
@@ -215,8 +232,12 @@ public class MovementPlayer1 : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Vector3 attackCenter = transform.position + transform.forward * playerRange / 2;
-        Vector3 attackHalfExtents = new Vector3(playerAtkWidth / 2, 1f, playerRange / 2);
-        Gizmos.matrix = Matrix4x4.TRS(attackCenter, transform.rotation, Vector3.one);
-        Gizmos.DrawWireCube(Vector3.zero, attackHalfExtents * 2);
+        Gizmos.DrawWireSphere(attackCenter, playerRange);
+
+        // Draw the cone angle
+        Vector3 rightBoundary = Quaternion.Euler(0, attackAngle / 2, 0) * transform.forward * playerRange ;
+        Vector3 leftBoundary = Quaternion.Euler(0, -attackAngle / 2, 0) * transform.forward * playerRange;
+        Gizmos.DrawLine(transform.position, transform.position + rightBoundary);
+        Gizmos.DrawLine(transform.position, transform.position + leftBoundary);
     }
 }
