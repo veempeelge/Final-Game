@@ -37,7 +37,7 @@ public class Attack : MonoBehaviour
         Vector3[] Vertices = new Vector3[VisionConeResolution + 1];
         Vertices[0] = Vector3.zero;
         float Currentangle = -AttackAngle / 2;
-        float angleIcrement = AttackAngle / (VisionConeResolution - 1);
+        float angleIncrement = AttackAngle / (VisionConeResolution - 1);
         float Sine;
         float Cosine;
 
@@ -47,56 +47,43 @@ public class Attack : MonoBehaviour
             Cosine = Mathf.Cos(Currentangle);
             Vector3 RaycastDirection = (transform.forward * Cosine) + (transform.right * Sine);
             Vector3 VertForward = (Vector3.forward * Cosine) + (Vector3.right * Sine);
-            Vector3 offset = new Vector3(0, 0, 0);
+            Vector3 offset = Vector3.zero;
 
-            RaycastHit[] hits;
-            hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
-            
-//            Debug.Log("numberofenemy =" + hits.Length);
+            RaycastHit[] hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
 
-                for (int x = 0; x < hits.Length - 1; x++)
-                {
-                    
-                        if (hits[x].collider.gameObject.tag == "Enemy")
-                        {
-                            hits[x].collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
-                            Debug.Log("HIT" + hits[x].collider.transform.name);
-                            //isAttacking = false;
-                        }
-                        else
-                        {
-                            return;
-                        }
-
-
-                    
-                }
-                    
-               
-            
-
-            if (Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit hit, AttackRange, VisionObstructingLayer))
+        
+            bool enemyDetected = false;
+            foreach (RaycastHit hit in hits)
             {
-                if (isAttacking)
+                if (hit.collider.gameObject.CompareTag("Enemy"))
                 {
-                    Vertices[i + 1] = VertForward * hit.distance;
+                    playerStats.DecreaseDurability();
+                    hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
+                    Debug.Log("HIT" + hit.collider.transform.name);
+                    enemyDetected = true;
+                    break; // Exit loop after first enemy is detected
                 }
-                
+            }
+
+            if (Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit visionHit, AttackRange, VisionObstructingLayer))
+            {
+                Vertices[i + 1] = VertForward * visionHit.distance;
             }
             else
             {
                 Vertices[i + 1] = VertForward * AttackRange;
             }
 
-
-            Currentangle += angleIcrement;
+            Currentangle += angleIncrement;
         }
+
         for (int i = 0, j = 0; i < triangles.Length; i += 3, j++)
         {
             triangles[i] = 0;
             triangles[i + 1] = j + 1;
             triangles[i + 2] = j + 2;
         }
+
         VisionConeMesh.Clear();
         VisionConeMesh.vertices = Vertices;
         VisionConeMesh.triangles = triangles;

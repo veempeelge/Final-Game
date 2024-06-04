@@ -7,6 +7,7 @@ using UnityEngine;
 public class MovementPlayer1 : MonoBehaviour
 {
     public static MovementPlayer1 instance;
+
     public Attack attack;
     public HPBar hpBar;
 
@@ -35,23 +36,31 @@ public class MovementPlayer1 : MonoBehaviour
     public float playerAtkSpd;
     public float playerRange;
     public float weaponDurability;
+    public float weaponCurrentDurability;
     public float playerAtkWidth;
     public float playerKnockback;
-    public float attackAngle;
 
     public Vector3 knockbackDirection;
     public GameObject hitIndicator;
+    private bool IsDecreased;
+    private bool usingWeapon = false;
+
+    [SerializeField] GameObject wpDurabilityBar;
+    private float defaultSpeed;
+    private bool isImmune;
 
     void Start()
     {
+       // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
         playerAtk = 1f;
         playerAtkSpd = 1f;
         playerRange = 4f;
         playerAtkWidth = 1f;
-        playerKnockback = 8f;
+        playerKnockback = 3f;
         StartCoroutine(AutoAttack());
-
+        wpDurabilityBar.SetActive(false);
+        defaultSpeed = moveSpeed;
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
@@ -86,8 +95,11 @@ public class MovementPlayer1 : MonoBehaviour
 
     void MovePlayer()
     {
+        float maxSpeed = 5f;
 
-        rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        rb.AddForce(movement * moveSpeed * 5, ForceMode.Acceleration);
+
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
     void RotatePlayer()
@@ -106,7 +118,7 @@ public class MovementPlayer1 : MonoBehaviour
    {
         currentHP -= damage;
         hpBar.UpdateBar(currentHP);
-        Debug.Log("Got Hit, HP Remaining = " +currentHP);
+        Debug.Log("Got Hit, HP Remaining = " + currentHP);
         
         if (currentHP <= 0)
         {
@@ -139,58 +151,113 @@ public class MovementPlayer1 : MonoBehaviour
 
     public void ChangeStats(float atk, float atkspd, float range, float atkradius, float durability, float knockback)
     {
+        usingWeapon = true;
         playerAtk = atk;
         playerAtkSpd = atkspd;
         playerAtkWidth = atkradius;
         playerRange = range;
         weaponDurability = durability;
         playerKnockback = knockback;
+
+        weaponDurability = durability;
+        weaponCurrentDurability = durability;
+        hpBar.UpdateDurabilityBar(weaponDurability, weaponCurrentDurability);
+        wpDurabilityBar.SetActive(true);
+
     }
 
     IEnumerator AutoAttack()
     {
         while (weaponDurability > 0)
         {
-            if (canAttack)
+            if (canAttack && !isImmune)
             {
+                DurabilityCheck();
                 AttackEnemy();
                 yield return new WaitForSeconds(.5f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
 
                 yield return new WaitForSeconds(1f / playerAtkSpd);
+           
             }
-                else
+            else
             {
                 yield return null;
             }
         }
-
         Debug.Log("Weapon is broken!");
+        wpDurabilityBar.SetActive(false);
+
     }
 
+    void ResetStats()
+    {
+        weaponDurability = 10f;
+        playerAtk = 1f;
+        playerAtkSpd = 1f;
+        playerRange = 4f;
+        playerAtkWidth = 1f;
+        playerKnockback = 3f;
+    }
+
+    void DurabilityCheck()
+    {
+        if (weaponDurability < 0)
+        {
+            ResetStats();
+        }
+    }
     void AttackEnemy()
     {
         attack.isAttacking = true;
         hitIndicator.SetActive(true);
     }
 
-     void OnCollisionEnter(Collision collision)
+    public void DecreaseDurability()
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (!IsDecreased && usingWeapon)
         {
-           Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            Debug.Log( this + "Hit by" + enemy);
-            if (enemy != null)
-            {
-                TakeDamage(enemy.enemyAttack);
-            }
-            else
-           {
-               Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
-           }
+            
+            IsDecreased = true;
+            weaponCurrentDurability -= 1f;
+            Debug.Log(weaponDurability);
+            Invoke(nameof(DecreaseOnce), .2f);
+            hpBar.UpdateDurabilityBar(weaponDurability, weaponCurrentDurability);
         }
+
     }
 
-    
+    void DecreaseOnce()
+    {
+        IsDecreased = false;
+    }
+
+   void PowerUpHP(float amount)
+    {
+        currentHP += amount;
+    }
+
+    void PowerUpSpeed(float amount, float duration)
+    {
+        moveSpeed += amount;
+        Invoke(nameof(SpeedReset), duration);
+    }
+
+    void Immune(float duration)
+    {
+        isImmune = true;
+        Invoke(nameof(ImmuneReset), duration);
+    }
+
+    void SpeedReset()
+    {
+        moveSpeed = defaultSpeed;
+    }
+
+    void ImmuneReset()
+    {
+        isImmune = false;
+    }
+
 }
