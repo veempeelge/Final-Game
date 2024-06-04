@@ -68,38 +68,21 @@ public class Enemy : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-
-            // Physics.IgnoreCollision(collision.collider, GetComponent<Collider>());
-            MovementPlayer1 player = collision.gameObject.GetComponent<MovementPlayer1>();
+           MovementPlayer1 player = collision.gameObject.GetComponent<MovementPlayer1>();
             Debug.Log( "Hit " + player);
             if (player != null)
             {
-                // Call the PerformAction function on the PlayerScript
+               // Call the PerformAction function on the PlayerScript
                 player.TakeDamage(enemyAttack);
             }
             else
-            {
-                Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
-            }
+           {
+               Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
+           }
         }
     }
 
-    //void OnTriggerEnter (Collider collision) 
-    //{
-    //    if (collision.tag == "Player")
-    //    {
-    //        MovementPlayer1 player = collision.GetComponent<MovementPlayer1>();
-    //        if (player != null)
-    //        {
-    //            // Call the PerformAction function on the PlayerScript
-    //            player.TakeDamage(enemyAttack);
-    //        }
-    //        else
-    //        {
-    //            Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
-    //        }
-    //    }
-    //}
+
     public void TakeDamage(float damageAmount,Vector3 knockbackDirection, float knockbackForce)
     {
         health -= damageAmount;
