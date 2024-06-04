@@ -4,9 +4,8 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using static UnityEditor.Experimental.GraphView.GraphView;
 
-public class Enemy : MonoBehaviour
+public class Enemy2 : MonoBehaviour
 {
-    public static Enemy instance;
     public float rotationSpeed = 1f;
     public float Speed;
     GameObject player;
@@ -14,10 +13,9 @@ public class Enemy : MonoBehaviour
     public float health;
     public float enemyAttack = 2;
     public float knockbackDuration = 0.2f;
-    Vector3 parameter = new Vector3 (1,0,1);
+    Vector3 parameter = new Vector3(1, 0, 1);
     int index;
-    public  Rigidbody body;
-    
+
 
     public List<GameObject> Players = new List<GameObject>();
 
@@ -31,7 +29,7 @@ public class Enemy : MonoBehaviour
         foreach (GameObject player in foundPlayers)
         {
             Players.Add(player);
-           // Debug.Log("Player added: " + player.name);
+            // Debug.Log("Player added: " + player.name);
         }
 
         // Ensure there are players in the list before accessing it
@@ -42,11 +40,11 @@ public class Enemy : MonoBehaviour
             player = Players[index];
             player1 = player.transform;
 
-           // Debug.Log("I am following player " + index);
+            // Debug.Log("I am following player " + index);
         }
         else
         {
-          //  Debug.LogWarning("No players found with the tag 'Player'.");
+            //  Debug.LogWarning("No players found with the tag 'Player'.");
         }
     }
 
@@ -63,57 +61,30 @@ public class Enemy : MonoBehaviour
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, player1.position + parameter, Speed * Time.deltaTime);
         }
-        else
-        {
-            return;
-        }
     }
 
-    public void TakeDamage(float damageAmount,Vector3 knockbackDirection, float knockbackForce)
-    {
-        health -= damageAmount;
-        Rigidbody rb = GetComponent<Rigidbody>();
-       
-        if (rb != null)
-        {
-            StartCoroutine(Knockback(-knockbackDirection, knockbackForce));
-        }
-        if (health <= 0)
-        {
-           Die();
-        }
-    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //       MovementPlayer1 player = collision.gameObject.GetComponent<MovementPlayer1>();
+    //        Debug.Log( "Hit " + player);
+    //        if (player != null)
+    //        {
+    //           // Call the PerformAction function on the PlayerScript
+    //            player.TakeDamage(enemyAttack);
+    //        }
+    //        else
+    //       {
+    //           Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
+    //       }
+    //    }
+    //}
 
-    public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats, bool isAttacking)
-    {
-        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-        if (isAttacking)
-        {
-            TakeDamage(playerStats.playerAtk, directionToPlayer, playerStats.playerKnockback);
-         //   Debug.Log("Hit");
-        }
-    }
     private void Die()
     {
         // Handle enemy death
         Destroy(gameObject);
-    }
-
-    private IEnumerator Knockback(Vector3 direction, float knockbackForce)
-    {
-
-        float elapsedTime = 0f;
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = startPosition + direction * knockbackForce;
-
-        while (elapsedTime < knockbackDuration)
-        {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / knockbackDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-
-        transform.position = targetPosition; // Ensure the final position is set
     }
 
 }

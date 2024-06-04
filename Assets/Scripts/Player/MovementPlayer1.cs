@@ -173,24 +173,5 @@ public class MovementPlayer1 : MonoBehaviour
     {
         attack.isAttacking = true;
         hitIndicator.SetActive(true);
-    }
-
-     void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-           Enemy enemy = collision.gameObject.GetComponent<Enemy>();
-            Debug.Log( this + "Hit by" + enemy);
-            if (enemy != null)
-            {
-                TakeDamage(enemy.enemyAttack);
-            }
-            else
-           {
-               Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
-           }
-        }
-    }
-
-    
+    }   
 }

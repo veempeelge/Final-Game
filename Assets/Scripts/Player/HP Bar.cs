@@ -25,6 +25,6 @@ public class HPBar : MonoBehaviour
     public void UpdateBar(float updatedHealth)
     {
         HPCurrent = updatedHealth;
-        HPCurrentBar.fillAmount = HPFull / HPCurrent;
+        HPCurrentBar.fillAmount = HPCurrent / HPFull;
     }
 }
