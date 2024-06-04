@@ -50,7 +50,7 @@ public class EnemyRaycast : MonoBehaviour
 
             if (Physics.Raycast(transform.position, RaycastDirection, out RaycastHit hit, VisionRange, VisionObstructingLayer))
             {
-                if (canAttack)
+                if (canAttack && hit.collider.gameObject.tag == "Player")
                 {
                     Vertices[i + 1] = VertForward * hit.distance;
                     hit.collider.gameObject.GetComponent<MovementPlayer1>().TakeDamage(enemyStats.enemyAttack);

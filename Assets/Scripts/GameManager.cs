@@ -18,6 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player1obj, player2obj, player3obj;
     [SerializeField] GameObject player1Won, player2Won, player3Won;
 
+    [SerializeField] GameObject player3HPBar;
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         playersLeft = 2;
         StartGame();
         player3obj.SetActive(false);
+        player3HPBar.SetActive(false);
     }
 
     void _3Players()

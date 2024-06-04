@@ -53,10 +53,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(this.transform.position, player1.position + parameter, Speed * Time.deltaTime);
 
         if (player != null)
         {
+            transform.position = Vector3.MoveTowards(this.transform.position, player1.position + parameter, Speed * Time.deltaTime);
+
             Vector3 direction = (player1.position - transform.position).normalized;
             transform.position += direction * Speed * Time.deltaTime;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
@@ -73,10 +74,11 @@ public class Enemy : MonoBehaviour
     {
         health -= damageAmount;
         Rigidbody rb = GetComponent<Rigidbody>();
-       
+        Vector3 multiplier = new Vector3(0, -knockbackDirection.y, 0);
+
         if (rb != null)
         {
-            StartCoroutine(Knockback(-knockbackDirection, knockbackForce));
+            StartCoroutine(Knockback(-knockbackDirection + multiplier, knockbackForce));
         }
         if (health <= 0)
         {

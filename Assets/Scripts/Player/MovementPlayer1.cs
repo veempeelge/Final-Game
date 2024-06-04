@@ -21,7 +21,7 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private Vector3 movement;
 
-    public float MaxHP = 4;
+    public float MaxHP = 15;
     public float currentHP;
 
     public GameObject attackIndicatorPrefab;
