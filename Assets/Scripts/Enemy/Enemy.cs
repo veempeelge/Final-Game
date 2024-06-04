@@ -11,7 +11,7 @@ public class Enemy : MonoBehaviour
     GameObject player;
     Transform player1;
     public float health;
-    float enemyAttack = 2;
+    public float enemyAttack = 2;
     public float knockbackDuration = 0.2f;
     Vector3 parameter = new Vector3 (1,0,1);
     int index;
@@ -52,7 +52,7 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(this.transform.position, player1.position, Speed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(this.transform.position, player1.position + parameter, Speed * Time.deltaTime);
 
         if (player != null)
         {
@@ -64,35 +64,53 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Player"))
-        {
-           MovementPlayer1 player = collision.gameObject.GetComponent<MovementPlayer1>();
-            Debug.Log( "Hit " + player);
-            if (player != null)
-            {
-               // Call the PerformAction function on the PlayerScript
-                player.TakeDamage(enemyAttack);
-            }
-            else
-           {
-               Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
-           }
-        }
-    }
+    //void OnCollisionEnter(Collision collision)
+    //{
+    //    if (collision.gameObject.CompareTag("Player"))
+    //    {
+    //       MovementPlayer1 player = collision.gameObject.GetComponent<MovementPlayer1>();
+    //        Debug.Log( "Hit " + player);
+    //        if (player != null)
+    //        {
+    //           // Call the PerformAction function on the PlayerScript
+    //            player.TakeDamage(enemyAttack);
+    //        }
+    //        else
+    //       {
+    //           Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
+    //       }
+    //    }
+    //}
 
 
     public void TakeDamage(float damageAmount,Vector3 knockbackDirection, float knockbackForce)
     {
         health -= damageAmount;
-        //  Debug.Log("Hit, HP = " + health);
-        StartCoroutine(Knockback(knockbackDirection, knockbackForce));
-
+        Rigidbody rb = GetComponent<Rigidbody>();
+       
+        if (rb != null)
+        {
+            StartCoroutine(Knockback(-knockbackDirection, knockbackForce));
+        }
         if (health <= 0)
         {
-            Destroy(this.gameObject);
+           Die();
         }
+    }
+
+    public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats, bool isAttacking)
+    {
+        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+        if (isAttacking)
+        {
+            TakeDamage(playerStats.playerAtk, directionToPlayer, playerStats.playerKnockback);
+            Debug.Log("Hit");
+        }
+    }
+    private void Die()
+    {
+        // Handle enemy death
+        Destroy(gameObject);
     }
 
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)

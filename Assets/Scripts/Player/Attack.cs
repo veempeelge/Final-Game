@@ -1,18 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
 {
-   [SerializeField] MovementPlayer1 playerStats;
+    [SerializeField] MovementPlayer1 playerStats;
     public Material VisionConeMaterial;
     public float AttackRange;
     public float AttackAngle;
-    public Vector3 KnockbackDirection;
-    public float knockbackForce;
-    public float playerAttack;
-
     public LayerMask VisionObstructingLayer; // Layer with objects that obstruct the enemy view, like walls, for example
     public LayerMask EnemyLayer; // Layer for enemies
     public int VisionConeResolution = 120; // The vision cone will be made up of triangles, the higher this value is the prettier the vision cone will be
@@ -22,7 +17,6 @@ public class Attack : MonoBehaviour
 
     void Start()
     {
-        
         var meshRenderer = gameObject.AddComponent<MeshRenderer>();
         meshRenderer.material = VisionConeMaterial;
         MeshFilter_ = gameObject.AddComponent<MeshFilter>();
@@ -34,12 +28,8 @@ public class Attack : MonoBehaviour
     {
         AttackRange = playerStats.playerRange;
         AttackAngle = playerStats.playerAtkWidth;
-        playerAttack = playerStats.playerAtk;
-        knockbackForce = playerStats.playerKnockback;
-
-        DrawVisionCone(); // Calling the vision cone function every frame just so the cone is updated every frame
+        DrawVisionCone();
     }
-
 
     void DrawVisionCone() // This method creates the vision cone mesh
     {
@@ -48,6 +38,7 @@ public class Attack : MonoBehaviour
         vertices[0] = Vector3.zero;
         float currentAngle = -AttackAngle / 2;
         float angleIncrement = AttackAngle / (VisionConeResolution - 1);
+        HashSet<Enemy> detectedEnemies = new HashSet<Enemy>();
 
         for (int i = 0; i < VisionConeResolution; i++)
         {
@@ -55,24 +46,23 @@ public class Attack : MonoBehaviour
             float cosine = Mathf.Cos(currentAngle);
             Vector3 raycastDirection = (transform.forward * cosine) + (transform.right * sine);
             Vector3 vertForward = (Vector3.forward * cosine) + (Vector3.right * sine);
+            Vector3 offset = new Vector3(-1, 0, 0);
+           
 
-
-            if (Physics.Raycast(transform.position, raycastDirection, out RaycastHit hit, AttackRange, VisionObstructingLayer | EnemyLayer))
+            if (Physics.Raycast(transform.position + offset, raycastDirection, out RaycastHit hit, AttackRange, VisionObstructingLayer | EnemyLayer))
             {
-                vertices[i + 1] = vertForward * hit.distance;
+               // vertices[i + 1] = vertForward * hit.distance;
                 if (((1 << hit.collider.gameObject.layer) & EnemyLayer) != 0)
                 {
-                    Vector3 directionToEnemy = (hit.transform.position - transform.position).normalized;
-                    float angleToEnemy = Vector3.Angle(transform.forward, directionToEnemy);
+                    Enemy enemy = hit.collider.GetComponent<Enemy>();
 
-                    if (isAttacking)
+                    if (enemy != null)
+
                     {
-                        hit.collider.GetComponent<Enemy>().TakeDamage(playerAttack, directionToEnemy, knockbackForce);
+                        detectedEnemies.Add(enemy);
+                        enemy.OnPlayerDetected(transform, playerStats, isAttacking);
                         isAttacking = false;
                     }
-                        
-                    // Enemy detected
-                   
                 }
             }
             else
@@ -81,6 +71,16 @@ public class Attack : MonoBehaviour
             }
 
             currentAngle += angleIncrement;
+        }
+
+        if (isAttacking)
+        {
+            foreach (Enemy enemy in detectedEnemies)
+            {
+                Vector3 directionToEnemy = (enemy.transform.position - transform.position).normalized;
+                enemy.TakeDamage(playerStats.playerAtk, directionToEnemy, playerStats.playerKnockback);
+            }
+            isAttacking = false;
         }
 
         for (int i = 0, j = 0; i < triangles.Length; i += 3, j++)
