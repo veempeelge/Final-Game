@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32107157, g: 0.21133226, b: 0.4043804, a: 1}
+  m_IndirectSpecularColor: {r: 0.32107174, g: 0.21133253, b: 0.40438062, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1379,6 +1379,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
+    - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 4784987261601797855, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
+    - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2442472988939480371, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1466,6 +1478,26 @@ PrefabInstance:
     - target: {fileID: 3244394592824583841, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3516450579614791621, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
+    - target: {fileID: 3516450579614791621, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5335831115062087817, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457690502946196066, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
+    - target: {fileID: 6457690502946196066, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1653,6 +1685,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+      propertyPath: enemiesPerSpawn
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2682525535951671366, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: m_Name
       value: Spawner
