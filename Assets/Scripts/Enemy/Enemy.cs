@@ -6,6 +6,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Enemy : MonoBehaviour
 {
+    public float rotationSpeed = 1f;
     public float Speed;
     GameObject player;
     Transform player1;
@@ -51,8 +52,14 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.position = Vector3.MoveTowards(this.transform.position, player1.position, Speed * Time.deltaTime);
+
         if (player != null)
         {
+            Vector3 direction = (player1.position - transform.position).normalized;
+            transform.position += direction * Speed * Time.deltaTime;
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
             transform.position = Vector3.MoveTowards(transform.position, player1.position + parameter, Speed * Time.deltaTime);
         }
     }
