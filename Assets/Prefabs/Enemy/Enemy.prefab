@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa0f7a34b1ead4ed28e02d8e8ab7ae5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 5
   Speed: 2
   health: 2
   enemyAttack: 2
@@ -192,7 +192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349f5d78249f79c468622bc7465a7c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotationSpeed: 1
+  rotationSpeed: 15
   Speed: 2
   health: 2
   enemyAttack: 0
