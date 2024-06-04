@@ -1565,6 +1565,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1233214407}
     - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+      propertyPath: playerAtk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 59785022}
@@ -1653,6 +1657,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+      propertyPath: timeBetweenSpawns
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2682525535951671366, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -1839,6 +1847,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1296775007}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: playerAtk
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 59785022}
@@ -1848,7 +1860,7 @@ PrefabInstance:
       objectReference: {fileID: 4784987261601797855, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
     - target: {fileID: 8963834101573834059, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: m_IsKinematic
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8963834101573834059, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: m_CollisionDetection
@@ -1922,6 +1934,10 @@ PrefabInstance:
       propertyPath: hpBar
       value: 
       objectReference: {fileID: 246513857}
+    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+      propertyPath: playerAtk
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: gameManager
       value: 

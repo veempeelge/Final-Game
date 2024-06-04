@@ -21,6 +21,8 @@ public class Enemy : MonoBehaviour
 
     public List<GameObject> Players = new List<GameObject>();
 
+    bool wasAttacked;
+
 
     // Start is called before the first frame update
     void Start()
@@ -80,21 +82,26 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(Knockback(-knockbackDirection + multiplier, knockbackForce));
         }
-        if (health <= 0)
-        {
-           Die();
-        }
+        
     }
 
-    public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats, bool isAttacking)
+    public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
     {
         Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-        if (isAttacking)
+        if (!wasAttacked)
         {
+            wasAttacked = true;
             TakeDamage(playerStats.playerAtk, directionToPlayer, playerStats.playerKnockback);
+            Invoke(nameof(CanTakeDamage), .2f);
          //   Debug.Log("Hit");
         }
     }
+
+   void CanTakeDamage()
+    {
+        wasAttacked = false;
+    }
+
     private void Die()
     {
         // Handle enemy death
@@ -113,6 +120,12 @@ public class Enemy : MonoBehaviour
             transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / knockbackDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
+        }
+
+        if (health <= 0)
+        {
+            yield return new WaitForSeconds(.1f);
+            Die();
         }
 
         transform.position = targetPosition; // Ensure the final position is set

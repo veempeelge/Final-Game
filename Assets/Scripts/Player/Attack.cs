@@ -47,15 +47,39 @@ public class Attack : MonoBehaviour
             Cosine = Mathf.Cos(Currentangle);
             Vector3 RaycastDirection = (transform.forward * Cosine) + (transform.right * Sine);
             Vector3 VertForward = (Vector3.forward * Cosine) + (Vector3.right * Sine);
+            Vector3 offset = new Vector3(0, 0, 0);
 
-            if (Physics.Raycast(transform.position, RaycastDirection, out RaycastHit hit, AttackAngle, VisionObstructingLayer))
+            RaycastHit[] hits;
+            hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
+            
+//            Debug.Log("numberofenemy =" + hits.Length);
+
+                for (int x = 0; x < hits.Length - 1; x++)
+                {
+                    
+                        if (hits[x].collider.gameObject.tag == "Enemy")
+                        {
+                            hits[x].collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
+                            Debug.Log("HIT" + hits[x].collider.transform.name);
+                            //isAttacking = false;
+                        }
+                        else
+                        {
+                            return;
+                        }
+
+
+                    
+                }
+                    
+               
+            
+
+            if (Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit hit, AttackRange, VisionObstructingLayer))
             {
                 if (isAttacking)
                 {
                     Vertices[i + 1] = VertForward * hit.distance;
-                    hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats, isAttacking);
-                    Debug.Log("HIT" + hit.collider.transform.name);
-                    isAttacking = false;
                 }
                 
             }

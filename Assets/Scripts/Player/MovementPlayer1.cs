@@ -21,7 +21,7 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private Vector3 movement;
 
-    public float MaxHP = 15;
+    public float MaxHP = 4;
     public float currentHP;
 
     public GameObject attackIndicatorPrefab;
@@ -160,7 +160,7 @@ public class MovementPlayer1 : MonoBehaviour
 
                 yield return new WaitForSeconds(1f / playerAtkSpd);
             }
-            else
+                else
             {
                 yield return null;
             }
@@ -173,5 +173,24 @@ public class MovementPlayer1 : MonoBehaviour
     {
         attack.isAttacking = true;
         hitIndicator.SetActive(true);
-    }   
+    }
+
+     void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+           Enemy enemy = collision.gameObject.GetComponent<Enemy>();
+            Debug.Log( this + "Hit by" + enemy);
+            if (enemy != null)
+            {
+                TakeDamage(enemy.enemyAttack);
+            }
+            else
+           {
+               Debug.LogWarning("PlayerScript component not found on the collided GameObject.");
+           }
+        }
+    }
+
+    
 }

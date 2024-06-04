@@ -54,7 +54,7 @@ public class EnemyRaycast : MonoBehaviour
                 {
                     Vertices[i + 1] = VertForward * hit.distance;
                     hit.collider.gameObject.GetComponent<MovementPlayer1>().TakeDamage(enemyStats.enemyAttack);
-                    Debug.Log("HIT");
+//                    Debug.Log("HIT");
                    
                     canAttack = false;
                     Invoke("AttackPlayer", 1f);
