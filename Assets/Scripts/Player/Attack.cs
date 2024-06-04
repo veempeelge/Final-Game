@@ -72,7 +72,7 @@ public class Attack : MonoBehaviour
                     }
                         
                     // Enemy detected
-                    Debug.Log("Enemy detected: " + hit.collider.gameObject.name);
+                   
                 }
             }
             else

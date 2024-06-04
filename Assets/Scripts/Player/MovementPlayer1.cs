@@ -8,6 +8,7 @@ public class MovementPlayer1 : MonoBehaviour
 {
     public static MovementPlayer1 instance;
     public Attack attack;
+    public HPBar hpBar;
 
     public GameManager gameManager;
     public float moveSpeed = 5f;
@@ -20,8 +21,8 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     private Vector3 movement;
 
-    float MaxHP = 4;
-    float currentHP;
+    public float MaxHP = 4;
+    public float currentHP;
 
     public GameObject attackIndicatorPrefab;
     private bool canAttack = true;
@@ -104,6 +105,7 @@ public class MovementPlayer1 : MonoBehaviour
    public void TakeDamage(float damage)
    {
         currentHP -= damage;
+        hpBar.UpdateBar(currentHP);
         Debug.Log("Got Hit, HP Remaining = " +currentHP);
         
         if (currentHP <= 0)
@@ -172,4 +174,6 @@ public class MovementPlayer1 : MonoBehaviour
         attack.isAttacking = true;
         hitIndicator.SetActive(true);
     }
+
+    
 }
