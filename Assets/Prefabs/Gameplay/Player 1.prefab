@@ -118,7 +118,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 8841b4221242671408d2a5ee7ea6888f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,7 +228,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 301e2ba54c6a1d946afa6be70af6959a, type: 2}
+  - {fileID: 2100000, guid: 1d431561e5f567648bc05f194f551470, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -319,7 +319,7 @@ MonoBehaviour:
   verticalAxis: Vertical
   attackButton: e
   rb: {fileID: 8963834101573834059}
-  MaxHP: 4
+  MaxHP: 15
   currentHP: 0
   attackIndicatorPrefab: {fileID: 3323762594601163282, guid: 7d9aceaaa69682b49889b7c5d472c50c, type: 3}
   player1: 1
@@ -329,7 +329,7 @@ MonoBehaviour:
   playerAtk: 1
   playerAtkSpd: 3
   playerRange: 3
-  weaponDurability: 100
+  weaponDurability: 10
   weaponCurrentDurability: 0
   playerAtkWidth: 0.91
   playerKnockback: 3
@@ -393,7 +393,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: 4784987261601797855, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -437,8 +437,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: P1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
+  m_sharedMaterial: {fileID: 4784987261601797855, guid: 141b72a6bd0146d47b002fce2be6fd17, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
