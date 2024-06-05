@@ -2646,6 +2646,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5385113887360271050, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1d431561e5f567648bc05f194f551470, type: 2}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: MaxHP
       value: 15
