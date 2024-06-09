@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class PP_Behave : MonoBehaviour
 {
+    private Inventory inv;
+    public GameObject itemButton;
+
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -11,31 +15,60 @@ public class PP_Behave : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             MovementPlayer1 mvP1 = other.GetComponent<MovementPlayer1>();
+            inv = mvP1.GetComponent<Inventory>();
 
-            if (mvP1 != null)
+            for (int i = 0; i < inv.slots.Length; i++)
             {
-                if (gameObject.tag == "RollPin")
+                if (inv.isFull[i] == false)
                 {
-                    mvP1.ChangeStats(3, 2, 5, 2, 6, 5);
-                }
-                else if (gameObject.tag == "MeatHam")
-                {
-                    mvP1.ChangeStats(5, 1, 6, 2, 10, 3);
-                }
-                else if (gameObject.tag == "BSpoon")
-                {
-                    mvP1.ChangeStats(2, 3, 5, 3, 7, 9);
-                }
-                else if (gameObject.tag == "Book")
-                {
-                    mvP1.ChangeStats(4, 4, 5, 5, 5, 9);
-                }
+                    inv.isFull[i] = true;
+                    Instantiate(itemButton, inv.slots[i].transform, false);
+                    if (gameObject.tag == "RollPin")
+                    {
+                        mvP1.ChangeStats(3, 2, 5, 2, 6, 5);
+                    }
+                    else if (gameObject.tag == "MeatHam")
+                    {
+                        mvP1.ChangeStats(5, 1, 6, 2, 10, 3);
+                    }
+                    else if (gameObject.tag == "BSpoon")
+                    {
+                        mvP1.ChangeStats(2, 3, 5, 3, 7, 9);
+                    }
+                    else if (gameObject.tag == "Book")
+                    {
+                        mvP1.ChangeStats(4, 4, 5, 5, 5, 9);
+                    }
 
-                Destroy(gameObject);
-            }
-            else
-            {
-                Debug.LogError("No MovementPlayer1 component found on the player object.");
+                    Destroy(gameObject);
+                    break;
+                }
+                if (inv.isFull[i] == true)
+                {
+                    inv.DiscardItem(i);
+
+                    // Add the new item
+                    inv.isFull[i] = true;
+                    Instantiate(itemButton, inv.slots[i].transform, false);
+                    if (gameObject.tag == "RollPin")
+                    {
+                        mvP1.ChangeStats(3, 2, 5, 2, 6, 5);
+                    }
+                    else if (gameObject.tag == "MeatHam")
+                    {
+                        mvP1.ChangeStats(5, 1, 6, 2, 10, 3);
+                    }
+                    else if (gameObject.tag == "BSpoon")
+                    {
+                        mvP1.ChangeStats(2, 3, 5, 3, 7, 9);
+                    }
+                    else if (gameObject.tag == "Book")
+                    {
+                        mvP1.ChangeStats(4, 4, 5, 5, 5, 9);
+                    }
+                    Destroy(gameObject);
+                    break;
+                }
             }
         }
     }
