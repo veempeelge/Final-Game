@@ -175,6 +175,7 @@ GameObject:
   - component: {fileID: 2167934911299871957}
   - component: {fileID: 8963834101573834059}
   - component: {fileID: 7460112241736159949}
+  - component: {fileID: 8765643986522246321}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -336,6 +337,21 @@ MonoBehaviour:
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 652954558116755525}
   wpDurabilityBar: {fileID: 0}
+--- !u!114 &8765643986522246321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739414835688545390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91848d26e90931e48ab1532fda1d8cb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFull: 00
+  slots:
+  - {fileID: 0}
 --- !u!1 &7779464323739215612
 GameObject:
   m_ObjectHideFlags: 0
