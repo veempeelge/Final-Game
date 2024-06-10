@@ -174,7 +174,7 @@ public class MovementPlayer1 : MonoBehaviour
             {
                 DurabilityCheck();
                 AttackEnemy();
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.3f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
 
