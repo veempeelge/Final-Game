@@ -13,6 +13,7 @@ public class MovementPlayer1 : MonoBehaviour
 
     public GameManager gameManager;
     public float moveSpeed = 5f;
+    public float maxAcceleration;
     public float rotationSpeed = 700f;
 
     public string horizontalAxis;
@@ -51,7 +52,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Start()
     {
-       // weaponDurability = weaponCurrentDurability;
+
+        // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
         playerAtk = 1f;
         playerAtkSpd = 1f;
@@ -89,17 +91,17 @@ public class MovementPlayer1 : MonoBehaviour
         // Apply movement to the rigidbody
         MovePlayer();
 
+       
         // Apply rotation to the player
         RotatePlayer();
     }
 
     void MovePlayer()
     {
-        float maxSpeed = 5f;
 
         rb.AddForce(movement * moveSpeed * 5, ForceMode.Acceleration);
 
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
     }
 
     void RotatePlayer()
