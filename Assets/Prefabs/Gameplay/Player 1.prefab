@@ -281,7 +281,7 @@ Rigidbody:
   m_GameObject: {fileID: 4739414835688545390}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -314,7 +314,8 @@ MonoBehaviour:
   attack: {fileID: 351205096366292130}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
-  moveSpeed: 5
+  moveSpeed: 6
+  maxAcceleration: 11
   rotationSpeed: 700
   horizontalAxis: Horizontal
   verticalAxis: Vertical
@@ -332,7 +333,7 @@ MonoBehaviour:
   playerRange: 3
   weaponDurability: 10
   weaponCurrentDurability: 0
-  playerAtkWidth: 0.91
+  playerAtkWidth: 1
   playerKnockback: 3
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 652954558116755525}

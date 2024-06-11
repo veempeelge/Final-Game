@@ -12,7 +12,8 @@ public class MovementPlayer1 : MonoBehaviour
     public HPBar hpBar;
 
     public GameManager gameManager;
-    public float moveSpeed = 5f;
+    public float moveSpeed;
+    public float maxAcceleration;
     public float rotationSpeed = 700f;
 
     public string horizontalAxis;
@@ -51,13 +52,16 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Start()
     {
-       // weaponDurability = weaponCurrentDurability;
+
+        // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
-        playerAtk = 1f;
-        playerAtkSpd = 1f;
-        playerRange = 4f;
-        playerAtkWidth = 1f;
-        playerKnockback = 3f;
+        moveSpeed = gameManager.defSpeed;
+        maxAcceleration = gameManager.defAcc;
+        playerAtk = gameManager.defPlayerAtk;
+        playerAtkSpd = gameManager.defPlayerAtkSpd;
+        playerRange = gameManager.defPlayerRange;
+        playerAtkWidth = gameManager.defPlayerAtkWidth;
+        playerKnockback = gameManager.defPlayerKnockback;
         StartCoroutine(AutoAttack());
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
@@ -89,17 +93,18 @@ public class MovementPlayer1 : MonoBehaviour
         // Apply movement to the rigidbody
         MovePlayer();
 
+       
         // Apply rotation to the player
         RotatePlayer();
     }
 
     void MovePlayer()
     {
-        float maxSpeed = 5f;
+        Vector3 normalizedMovement = movement.normalized;
 
-        rb.AddForce(movement * moveSpeed * 5, ForceMode.Acceleration);
+        rb.AddForce(normalizedMovement * moveSpeed * 5, ForceMode.Acceleration);
 
-        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxSpeed);
+        rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
     }
 
     void RotatePlayer()
@@ -174,7 +179,7 @@ public class MovementPlayer1 : MonoBehaviour
             {
                 DurabilityCheck();
                 AttackEnemy();
-                yield return new WaitForSeconds(.5f);
+                yield return new WaitForSeconds(.3f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
 
@@ -249,6 +254,8 @@ public class MovementPlayer1 : MonoBehaviour
         isImmune = true;
         Invoke(nameof(ImmuneReset), duration);
     }
+
+
 
     void SpeedReset()
     {
