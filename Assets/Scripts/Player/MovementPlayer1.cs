@@ -12,7 +12,7 @@ public class MovementPlayer1 : MonoBehaviour
     public HPBar hpBar;
 
     public GameManager gameManager;
-    public float moveSpeed = 5f;
+    public float moveSpeed;
     public float maxAcceleration;
     public float rotationSpeed = 700f;
 
@@ -55,11 +55,13 @@ public class MovementPlayer1 : MonoBehaviour
 
         // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
-        playerAtk = 1f;
-        playerAtkSpd = 1f;
-        playerRange = 4f;
-        playerAtkWidth = 1f;
-        playerKnockback = 3f;
+        moveSpeed = gameManager.defSpeed;
+        maxAcceleration = gameManager.defAcc;
+        playerAtk = gameManager.defPlayerAtk;
+        playerAtkSpd = gameManager.defPlayerAtkSpd;
+        playerRange = gameManager.defPlayerRange;
+        playerAtkWidth = gameManager.defPlayerAtkWidth;
+        playerKnockback = gameManager.defPlayerKnockback;
         StartCoroutine(AutoAttack());
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
@@ -98,8 +100,9 @@ public class MovementPlayer1 : MonoBehaviour
 
     void MovePlayer()
     {
+        Vector3 normalizedMovement = movement.normalized;
 
-        rb.AddForce(movement * moveSpeed * 5, ForceMode.Acceleration);
+        rb.AddForce(normalizedMovement * moveSpeed * 5, ForceMode.Acceleration);
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
     }
@@ -251,6 +254,8 @@ public class MovementPlayer1 : MonoBehaviour
         isImmune = true;
         Invoke(nameof(ImmuneReset), duration);
     }
+
+
 
     void SpeedReset()
     {

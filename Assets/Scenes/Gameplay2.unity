@@ -240,6 +240,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5335831115062087817, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
   m_PrefabInstance: {fileID: 69900089}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &118237769 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 414907394030144502, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+  m_PrefabInstance: {fileID: 1481089624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &118237770 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5058290345865768453, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+  m_PrefabInstance: {fileID: 1481089624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &242860257
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -350,6 +360,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defAcc
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defSpeed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
       propertyPath: UIGameOver
       value: 
       objectReference: {fileID: 69900090}
@@ -386,6 +404,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1071740382}
     - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defPlayerAtk
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
       propertyPath: player3HPBar
       value: 
       objectReference: {fileID: 1481089625}
@@ -397,6 +419,22 @@ PrefabInstance:
       propertyPath: UIPlayerSelect
       value: 
       objectReference: {fileID: 1071740383}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defPlayerRange
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defPlayerAtkSpd
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defPlayerAtkWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: defPlayerKnockback
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -477,6 +515,10 @@ PrefabInstance:
       propertyPath: wpDurabilityBar
       value: 
       objectReference: {fileID: 1715147916}
+    - target: {fileID: 8765643986522246321, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: slots.Array.data[0]
+      value: 
+      objectReference: {fileID: 118237770}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -638,6 +680,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1128937144701662158, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1197664981355331433, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -682,6 +728,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1851131007691174268, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+      propertyPath: slots.Array.data[0]
+      value: 
+      objectReference: {fileID: 118237769}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: hpBar
       value: 
@@ -779,6 +829,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+--- !u!1 &1373091594 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6827597302239463805, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+  m_PrefabInstance: {fileID: 1481089624}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1481089624
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -787,6 +842,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1148643117936095839, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 973213162}
     - target: {fileID: 1959209422768146382, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
       propertyPath: player1
       value: 
@@ -891,6 +950,14 @@ PrefabInstance:
       propertyPath: DurabilityCurrentBar
       value: 
       objectReference: {fileID: 1481089627}
+    - target: {fileID: 7824892950371767092, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1769468911}
+    - target: {fileID: 7950295396056169613, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1090048495}
     - target: {fileID: 9045118267201356705, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
       propertyPath: m_Name
       value: HP UI
@@ -1226,6 +1293,14 @@ PrefabInstance:
       propertyPath: wpDurabilityBar
       value: 
       objectReference: {fileID: 1023784968}
+    - target: {fileID: 6991444242466588367, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+      propertyPath: m_Drag
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8924431310741677704, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+      propertyPath: slots.Array.data[0]
+      value: 
+      objectReference: {fileID: 1373091594}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

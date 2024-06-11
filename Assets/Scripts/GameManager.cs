@@ -19,6 +19,16 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player1Won, player2Won, player3Won;
 
     [SerializeField] GameObject player3HPBar;
+
+    public float
+        defPlayerAtk,
+        defPlayerAtkSpd,
+        defPlayerRange,
+        defPlayerAtkWidth,
+        defPlayerKnockback,
+        defSpeed,
+        defAcc;
+
     // Start is called before the first frame update
     void Start()
     {

@@ -83,7 +83,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 60.5, y: 17, z: 41.32}
-  m_LocalScale: {x: 6, y: 17.7252, z: 6}
+  m_LocalScale: {x: 1, y: 2.9542003, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8963088495515362683}
@@ -174,7 +174,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rotationSpeed: 15
-  Speed: 6
+  Speed: 1
   health: 1
   enemyAttack: 2
   knockbackDuration: 0.2

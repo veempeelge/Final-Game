@@ -333,7 +333,7 @@ MonoBehaviour:
   playerRange: 3
   weaponDurability: 10
   weaponCurrentDurability: 0
-  playerAtkWidth: 0.91
+  playerAtkWidth: 1
   playerKnockback: 3
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 652954558116755525}
