@@ -55,3 +55,11 @@ MonoBehaviour:
   player1Won: {fileID: 0}
   player2Won: {fileID: 0}
   player3Won: {fileID: 0}
+  player3HPBar: {fileID: 0}
+  defPlayerAtk: 1
+  defPlayerAtkSpd: 2
+  defPlayerRange: 3
+  defPlayerAtkWidth: 1
+  defPlayerKnockback: 3
+  defSpeed: 6
+  defAcc: 11
