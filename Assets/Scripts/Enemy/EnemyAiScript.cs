@@ -1,11 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour
+public class EnemyAiScript : MonoBehaviour
 {
     public static Enemy instance;
     public float rotationSpeed = 1f;
@@ -13,40 +12,37 @@ public class Enemy : MonoBehaviour
     public float health;
     public float enemyAttack = 2;
     public float knockbackDuration = 0.2f;
-    Vector3 parameter = new Vector3 (1,0,1);
+    public Vector3 parameter = new Vector3(1, 0, 1);
     public float UpdateSpeed = 0.1f;
-    GameObject player;
-    Transform player1;
-    int index;
-    public Rigidbody body;
-    public Transform Player1;
 
     private NavMeshAgent Agent;
-    public List<GameObject> Players = new List<GameObject>();
+    private List<GameObject> Players = new List<GameObject>();
     private Transform closestPlayer;
     private bool wasAttacked;
 
-
-   
     void Start()
     {
+        // Get the NavMeshAgent component
         Agent = GetComponent<NavMeshAgent>();
 
+        // Find all GameObjects with the tag "Player"
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
 
+        // Add each found player to the list
         foreach (GameObject player in foundPlayers)
         {
             Players.Add(player);
         }
 
+        // Start the coroutine to follow the closest player
         StartCoroutine(FollowClosestPlayer());
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (closestPlayer != null)
         {
+            // Smooth rotation towards the player
             Vector3 direction = (closestPlayer.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
@@ -73,7 +69,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator FollowClosestPlayer()
     {
-        WaitForSeconds Wait = new WaitForSeconds(UpdateSpeed);
+        WaitForSeconds wait = new WaitForSeconds(UpdateSpeed);
 
         while (true)
         {
@@ -84,11 +80,11 @@ public class Enemy : MonoBehaviour
                 Agent.SetDestination(closestPlayer.position);
             }
 
-            yield return Wait;
+            yield return wait;
         }
     }
 
-    public void TakeDamage(float damageAmount,Vector3 knockbackDirection, float knockbackForce)
+    public void TakeDamage(float damageAmount, Vector3 knockbackDirection, float knockbackForce)
     {
         health -= damageAmount;
         Rigidbody rb = GetComponent<Rigidbody>();
@@ -98,7 +94,6 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(Knockback(-knockbackDirection + multiplier, knockbackForce));
         }
-        
     }
 
     public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
@@ -109,11 +104,10 @@ public class Enemy : MonoBehaviour
             wasAttacked = true;
             TakeDamage(playerStats.playerAtk, directionToPlayer, playerStats.playerKnockback);
             Invoke(nameof(CanTakeDamage), 0.2f);
-         //   Debug.Log("Hit");
         }
     }
 
-   void CanTakeDamage()
+    void CanTakeDamage()
     {
         wasAttacked = false;
     }
@@ -139,7 +133,7 @@ public class Enemy : MonoBehaviour
 
         if (health <= 0)
         {
-            yield return new WaitForSeconds(.1f);
+            yield return new WaitForSeconds(0.1f);
             Die();
         }
 
