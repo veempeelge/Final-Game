@@ -192,25 +192,31 @@ public class MovementPlayer1 : MonoBehaviour
             }
         }
         Debug.Log("Weapon is broken!");
-        wpDurabilityBar.SetActive(false);
+        //wpDurabilityBar.SetActive(false);
 
     }
 
     void ResetStats()
     {
         weaponDurability = 10f;
-        playerAtk = 1f;
-        playerAtkSpd = 1f;
-        playerRange = 4f;
-        playerAtkWidth = 1f;
-        playerKnockback = 3f;
+        playerAtk = gameManager.defPlayerAtk;
+        playerAtkSpd = gameManager.defPlayerAtkSpd;
+        playerRange = gameManager.defPlayerRange;
+        playerAtkWidth = gameManager.defPlayerAtkWidth;
+        playerKnockback = gameManager.defPlayerKnockback;
     }
 
     void DurabilityCheck()
     {
-        if (weaponDurability < 0)
+    
+        if (weaponCurrentDurability <= 0)
         {
             ResetStats();
+            wpDurabilityBar.SetActive(false);
+        }
+        else
+        {
+            return;
         }
     }
     void AttackEnemy()
@@ -223,7 +229,6 @@ public class MovementPlayer1 : MonoBehaviour
     {
         if (!IsDecreased && usingWeapon)
         {
-            
             IsDecreased = true;
             weaponCurrentDurability -= 1f;
             Debug.Log(weaponDurability);

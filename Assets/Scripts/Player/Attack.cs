@@ -49,29 +49,35 @@ public class Attack : MonoBehaviour
             Vector3 VertForward = (Vector3.forward * Cosine) + (Vector3.right * Sine);
             Vector3 offset = Vector3.zero;
 
-            RaycastHit[] hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
+            RaycastHit visionHit;
+            bool obstructed = Physics.Raycast(transform.position + offset, RaycastDirection, out visionHit, AttackRange, VisionObstructingLayer);
 
-        
-            bool enemyDetected = false;
-            foreach (RaycastHit hit in hits)
-            {
-                if (hit.collider.gameObject.CompareTag("Enemy"))
-                {
-                    playerStats.DecreaseDurability();
-                    hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
-                    Debug.Log("HIT" + hit.collider.transform.name);
-                    enemyDetected = true;
-                    break; // Exit loop after first enemy is detected
-                }
-            }
-
-            if (Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit visionHit, AttackRange, VisionObstructingLayer))
+            if (obstructed)
             {
                 Vertices[i + 1] = VertForward * visionHit.distance;
             }
             else
             {
                 Vertices[i + 1] = VertForward * AttackRange;
+
+                
+                RaycastHit[] hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
+
+                bool enemyDetected = false;
+                foreach (RaycastHit hit in hits)
+                {
+                    if (hit.collider.gameObject.CompareTag("Enemy"))
+                    {
+                        if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
+                        {
+                            playerStats.DecreaseDurability();
+                            hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
+                          //  Debug.Log("HIT" + hit.collider.transform.name);
+                            enemyDetected = true;
+                            break;  
+                        }
+                    }
+                }
             }
 
             Currentangle += angleIncrement;

@@ -518,7 +518,7 @@ MonoBehaviour:
   AttackAngle: 0
   VisionObstructingLayer:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 128
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 8
