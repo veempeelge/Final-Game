@@ -176,7 +176,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationSpeed: 20
   Speed: 0.71
-  health: 1
+  health: 2
   enemyAttack: 2
   knockbackDuration: 0.2
   UpdateSpeed: 0.1
