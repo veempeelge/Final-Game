@@ -7,7 +7,16 @@ public class PP_Behave : MonoBehaviour
     private Inventory inv;
     public GameObject itemButton;
 
+    private void Start()
+    {
+        StartCoroutine(Delete());
+    }
 
+    private IEnumerator Delete()
+    {
+        yield return new WaitForSeconds(15f);
+        Destroy(gameObject);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
