@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Inv_Item : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Inv_Item : MonoBehaviour
 
     private MovementPlayer1 mvP1;
     private Transform PTransform;
+
+    private bool isMovementRestricted = false;
 
     private void Start()
     {
@@ -65,6 +68,25 @@ public class Inv_Item : MonoBehaviour
                 Debug.Log("Player " + playerNumber + " does not have item");
             }
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Trap"))
+        {
+            StartCoroutine(RestrictMovement(other.gameObject));
+        }
+    }
+
+    private IEnumerator RestrictMovement(GameObject trap)
+    {
+        isMovementRestricted = true;
+        mvP1.enabled = false; // Disable the movement script
+
+        yield return new WaitForSeconds(3f); // Wait for 3 seconds
+            mvP1.enabled = true; // Re-enable the movement script
+            isMovementRestricted = false;
+            Destroy(trap);
     }
 
 }
