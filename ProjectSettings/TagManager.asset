@@ -9,6 +9,7 @@ TagManager:
   - MeatHam
   - BSpoon
   - Book
+  - Trap
   layers:
   - Default
   - TransparentFX
