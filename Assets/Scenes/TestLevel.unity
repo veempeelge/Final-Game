@@ -980,6 +980,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 121823894823476163, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1769468911}
     - target: {fileID: 1148643117936095839, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
       propertyPath: player1
       value: 
@@ -1000,6 +1004,10 @@ PrefabInstance:
       propertyPath: DurabilityCurrentBar
       value: 
       objectReference: {fileID: 1481089629}
+    - target: {fileID: 4234046755498875781, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 973213162}
     - target: {fileID: 4406395294376133293, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -1088,6 +1096,10 @@ PrefabInstance:
       propertyPath: DurabilityCurrentBar
       value: 
       objectReference: {fileID: 1481089627}
+    - target: {fileID: 6238764107391018282, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
+      propertyPath: player1
+      value: 
+      objectReference: {fileID: 1090048495}
     - target: {fileID: 7824892950371767092, guid: f7496e011b3987f4a8aef9ea41ee7a84, type: 3}
       propertyPath: player1
       value: 
