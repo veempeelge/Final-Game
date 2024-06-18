@@ -18,7 +18,7 @@ public class PP_Behave : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collider other)
     {
 
         if (other.CompareTag("Player"))
