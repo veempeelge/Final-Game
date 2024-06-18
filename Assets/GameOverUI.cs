@@ -19,7 +19,7 @@ public class GameOverUI : MonoBehaviour
 
     public void Restart()
     {
-        SceneManager.SetActiveScene(SceneManager.GetActiveScene());
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void MainMenu()
