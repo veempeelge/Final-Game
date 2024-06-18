@@ -176,6 +176,7 @@ GameObject:
   - component: {fileID: 8963834101573834059}
   - component: {fileID: 7460112241736159949}
   - component: {fileID: 8765643986522246321}
+  - component: {fileID: 6913502428722615162}
   m_Layer: 6
   m_Name: Player 1
   m_TagString: Player
@@ -193,8 +194,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -1.6, y: -6.71, z: 30.87}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3690449245081619672}
   - {fileID: 4229934183752655876}
@@ -314,7 +315,7 @@ MonoBehaviour:
   attack: {fileID: 351205096366292130}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
-  moveSpeed: 6
+  moveSpeed: 370
   maxAcceleration: 11
   rotationSpeed: 700
   horizontalAxis: Horizontal
@@ -353,6 +354,25 @@ MonoBehaviour:
   isFull: 00
   slots:
   - {fileID: 0}
+--- !u!114 &6913502428722615162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739414835688545390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20881d970f0b43d44b6fc7124cf7e822, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isFull: 00
+  slots:
+  - {fileID: 0}
+  hasTrap: 0
+  playerNumber: 1
+  TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
+  spawnDistance: 15
 --- !u!1 &6344934486988642904
 GameObject:
   m_ObjectHideFlags: 0

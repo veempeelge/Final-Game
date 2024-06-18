@@ -6,6 +6,8 @@ public class PP_Spawn : MonoBehaviour
 {
     public GameObject _PP;
     public GameObject _Arena;
+    public GameObject bottomLeftCorner;
+    public GameObject topRightCorner;
 
 
     public float Timer = 10;
@@ -29,7 +31,7 @@ public class PP_Spawn : MonoBehaviour
     private void SpawnPP()
     {
         int weaponIndex = UnityEngine.Random.Range(0, weaponList.Count -1);
-        Vector3 _SpawnPos = new Vector3(Random.Range(-121,118),8,Random.Range(-90,90));
+        Vector3 _SpawnPos = new Vector3(Random.Range(bottomLeftCorner.transform.position.x, topRightCorner.transform.position.x), 8, Random.Range(bottomLeftCorner.transform.position.z, topRightCorner.transform.position.z));
         Instantiate(weaponList[weaponIndex],_SpawnPos, Quaternion.identity);
 
     }
