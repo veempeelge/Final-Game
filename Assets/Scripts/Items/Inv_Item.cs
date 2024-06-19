@@ -9,6 +9,7 @@ public class Inv_Item : MonoBehaviour
     public bool[] isFull;
     public GameObject[] slots;
     public bool hasTrap;
+    public bool hasWater;
 
     public int playerNumber;
     private string fireButton;
@@ -17,6 +18,10 @@ public class Inv_Item : MonoBehaviour
 
     private MovementPlayer1 mvP1;
     private Transform PTransform;
+
+    public GameObject WaterPrefab;
+    public Transform shootPoint;
+    public float ShootSpeed = 10f;
 
     private bool isMovementRestricted = false;
 
@@ -42,6 +47,7 @@ public class Inv_Item : MonoBehaviour
             foreach (Transform child in slots[slotIndex].transform)
             {
                 hasTrap = false;
+                hasWater = false;
                 Destroy(child.gameObject);
             }
 
@@ -57,10 +63,18 @@ public class Inv_Item : MonoBehaviour
             {
                 Vector3 spawnPosition = PTransform.position + (PTransform.forward * spawnDistance);
                 Debug.Log("Spawn Position: " + spawnPosition);
-                // Instantiate the prefab at the calculated position and rotation
                 Instantiate(TrapPrefab, spawnPosition, PTransform.rotation);
 
-                Debug.Log("Player " + playerNumber + " used an item!");
+                Debug.Log("Player " + playerNumber + " used a trap!");
+                DiscardItem(i);
+            }
+            if (hasWater)
+            {
+                GameObject water = Instantiate(WaterPrefab, shootPoint.position, shootPoint.rotation);
+                Rigidbody rb = water.GetComponent<Rigidbody>();
+                rb.velocity = shootPoint.forward * ShootSpeed;
+
+                Debug.Log("Player " + playerNumber + " sprayed water!");
                 DiscardItem(i);
             }
             else
@@ -81,10 +95,10 @@ public class Inv_Item : MonoBehaviour
     private IEnumerator RestrictMovement(GameObject trap)
     {
         isMovementRestricted = true;
-        mvP1.enabled = false; // Disable the movement script
+        mvP1.enabled = false;
 
-        yield return new WaitForSeconds(3f); // Wait for 3 seconds
-            mvP1.enabled = true; // Re-enable the movement script
+        yield return new WaitForSeconds(3f);
+            mvP1.enabled = true;
             isMovementRestricted = false;
             Destroy(trap);
     }
