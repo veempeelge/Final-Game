@@ -18,12 +18,12 @@ public class PP_Behave : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void OnCollisionEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
 
-        if (other.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player"))
         {
-            MovementPlayer1 mvP1 = other.GetComponent<MovementPlayer1>();
+            MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inventory>();
 
             for (int i = 0; i < inv.slots.Length; i++)
