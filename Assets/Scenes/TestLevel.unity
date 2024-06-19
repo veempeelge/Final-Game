@@ -813,6 +813,18 @@ PrefabInstance:
       propertyPath: spawnPoints.Array.data[3]
       value: 
       objectReference: {fileID: 19033413}
+    - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+      propertyPath: spawnableEnemies.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+      propertyPath: spawnableEnemies.Array.data[0]
+      value: 
+      objectReference: {fileID: 3050570760651643630, guid: 1e49e0a30e9e3e94eb492b45319bdfae, type: 3}
+    - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+      propertyPath: spawnableEnemies.Array.data[1]
+      value: 
+      objectReference: {fileID: 3050570760651643630, guid: 1abe2abcd2f28734badf2ac0218fc9d0, type: 3}
     - target: {fileID: 2682525535951671366, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: m_Name
       value: Spawner
@@ -970,7 +982,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1967812807789049179, guid: 79800a54a7fddf349b3ee8201c88aeb8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1583337011}
   m_SourcePrefab: {fileID: 100100000, guid: 79800a54a7fddf349b3ee8201c88aeb8, type: 3}
 --- !u!1001 &1481089624
 PrefabInstance:
@@ -1303,6 +1318,42 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7752296813457882772, guid: d8eb541450b48b24996a3a9123719c1a, type: 3}
   m_PrefabInstance: {fileID: 1580623620}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1583337010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1967812807789049179, guid: 79800a54a7fddf349b3ee8201c88aeb8, type: 3}
+  m_PrefabInstance: {fileID: 1387057367}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1583337011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1583337010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_AgentTypeID: -1923039037
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 63
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.4
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: e1f0e3cae12ba424bbff75b57c9cef01, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &1597501369
 PrefabInstance:
   m_ObjectHideFlags: 0
