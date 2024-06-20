@@ -60,29 +60,19 @@ public class Enemy : MonoBehaviour
 
     private Transform FindClosestPlayer()
     {
+        Players.RemoveAll(player => player == null); 
+
         Transform nearestPlayer = null;
         float shortestDistance = Mathf.Infinity;
 
         foreach (GameObject player in Players)
         {
-            if (player == null)
+            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+            if (distanceToPlayer < shortestDistance)
             {
-                Players.Remove(player);
+                shortestDistance = distanceToPlayer;
+                nearestPlayer = player.transform;
             }
-            else
-            {
-                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-                if (distanceToPlayer < shortestDistance)
-                {
-                    shortestDistance = distanceToPlayer;
-                    nearestPlayer = player.transform;
-
-
-                    //^^ tuh playernya di cache ke nearestPlayer
-                }
-            }
-
-           
         }
 
         return nearestPlayer;
