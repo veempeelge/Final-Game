@@ -50,6 +50,10 @@ public class Enemy : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
+        else
+        {
+            Debug.Log("Need to randomize enemy uyyy");
+        }
     }
 
     private Transform FindClosestPlayer()
@@ -94,12 +98,14 @@ public class Enemy : MonoBehaviour
        
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        Destroy(collision.gameObject);
-        if (collision.gameObject.tag == "Water")
+       
+        if (collision.tag == "Water")
         {
-            ChangeTarget();
+            Debug.Log("Got hit by holy water");
+            Destroy(collision.gameObject);
+            //ChangeTarget();
         }
     }
 

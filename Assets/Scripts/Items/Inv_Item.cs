@@ -61,7 +61,7 @@ public class Inv_Item : MonoBehaviour
         {
             if (hasTrap)
             {
-                Vector3 spawnPosition = PTransform.position + (PTransform.forward * spawnDistance);
+                Vector3 spawnPosition = PTransform.position + (-PTransform.forward * spawnDistance);
                 Debug.Log("Spawn Position: " + spawnPosition);
                 Instantiate(TrapPrefab, spawnPosition, PTransform.rotation);
 
