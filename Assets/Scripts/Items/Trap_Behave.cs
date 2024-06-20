@@ -7,9 +7,9 @@ public class Trap_Behave : MonoBehaviour
     private Inv_Item inv;
     public GameObject itemButton;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        MovementPlayer1 mvP1 = other.GetComponent<MovementPlayer1>();
+        MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
 
         if (gameObject.tag == "Trap")
         {
