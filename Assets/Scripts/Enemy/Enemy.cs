@@ -52,8 +52,10 @@ public class Enemy : MonoBehaviour
         }
         else
         {
-            Debug.Log("Need to randomize enemy uyyy");
+            FindClosestPlayer();
         }
+
+        
     }
 
     private Transform FindClosestPlayer()
@@ -63,15 +65,24 @@ public class Enemy : MonoBehaviour
 
         foreach (GameObject player in Players)
         {
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer < shortestDistance)
+            if (player == null)
             {
-                shortestDistance = distanceToPlayer;
-                nearestPlayer = player.transform;
-             
-
-                //^^ tuh playernya di cache ke nearestPlayer
+                Players.Remove(player);
             }
+            else
+            {
+                float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
+                if (distanceToPlayer < shortestDistance)
+                {
+                    shortestDistance = distanceToPlayer;
+                    nearestPlayer = player.transform;
+
+
+                    //^^ tuh playernya di cache ke nearestPlayer
+                }
+            }
+
+           
         }
 
         return nearestPlayer;
