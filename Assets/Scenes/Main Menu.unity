@@ -927,6 +927,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
+      propertyPath: m_Volume
+      value: 0.467
+      objectReference: {fileID: 0}
     - target: {fileID: 6542339495809465830, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -1337,6 +1341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36560c4aa0ed38045858a23110ba2f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainMenuMusic: {fileID: 8300000, guid: 1633622ec183cc346bdbec634cec8f95, type: 3}
 --- !u!4 &2035879393
 Transform:
   m_ObjectHideFlags: 0

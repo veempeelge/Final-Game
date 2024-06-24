@@ -50,6 +50,10 @@ public class MovementPlayer1 : MonoBehaviour
     private float defaultSpeed;
     private bool isImmune;
 
+    [Header("Audio")]
+    [SerializeField] AudioClip attackAir;
+    [SerializeField] AudioClip gotItem;
+    
     void Start()
     {
 
@@ -160,6 +164,7 @@ public class MovementPlayer1 : MonoBehaviour
         weaponCurrentDurability = durability;
         hpBar.UpdateDurabilityBar(weaponDurability, weaponCurrentDurability);
         wpDurabilityBar.SetActive(true);
+        SoundManager.Instance.Play(gotItem);
 
     }
 
@@ -171,7 +176,7 @@ public class MovementPlayer1 : MonoBehaviour
             {
                 DurabilityCheck();
                 AttackEnemy();
-                yield return new WaitForSeconds(.3f);
+                yield return new WaitForSeconds(.1f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
 
@@ -215,6 +220,7 @@ public class MovementPlayer1 : MonoBehaviour
     {
         attack.isAttacking = true;
         hitIndicator.SetActive(true);
+        SoundManager.Instance.Play(attackAir);
     }
 
     public void DecreaseDurability()

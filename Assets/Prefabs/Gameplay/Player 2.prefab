@@ -138,7 +138,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0.65999997, y: -6.71, z: 30.87}
-  m_LocalScale: {x: 8, y: 8, z: 8}
+  m_LocalScale: {x: 1, y: 0.9998, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1943996628913988212}
@@ -204,7 +204,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1197664981355331433}
   serializedVersion: 4
-  m_Mass: 1
+  m_Mass: 0.1
   m_Drag: 2
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -220,8 +220,8 @@ Rigidbody:
   m_ImplicitTensor: 1
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 80
+  m_Interpolate: 1
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!114 &2434555902838392969
 MonoBehaviour:
@@ -262,6 +262,8 @@ MonoBehaviour:
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 8870809921074437542}
   wpDurabilityBar: {fileID: 0}
+  attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
+  gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -314,9 +316,13 @@ MonoBehaviour:
   slots:
   - {fileID: 0}
   hasTrap: 0
+  hasWater: 0
   playerNumber: 2
   TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
   spawnDistance: 2
+  WaterPrefab: {fileID: 605196136701530160, guid: 6c2b5e054581892479d73d03f4dac37c, type: 3}
+  shootPoint: {fileID: 1813156598611903373}
+  ShootSpeed: 10
 --- !u!1 &8243866465096240354
 GameObject:
   m_ObjectHideFlags: 0
@@ -514,7 +520,7 @@ Transform:
   m_GameObject: {fileID: 8870809921074437542}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.19, y: 0, z: 0}
+  m_LocalPosition: {x: -0.19, y: -0.56, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -544,3 +550,7 @@ MonoBehaviour:
     m_Bits: 8
   VisionConeResolution: 120
   isAttacking: 0
+  attackHit:
+  - {fileID: 8300000, guid: 5d256eb8dda60644baed2ab0c5e0ce6e, type: 3}
+  - {fileID: 8300000, guid: 22dbd8e67e6081143ac847959906de49, type: 3}
+  - {fileID: 8300000, guid: 61c740bfaf1a206499a56664396c65d2, type: 3}

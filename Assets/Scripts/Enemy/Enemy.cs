@@ -6,7 +6,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
-    public static Enemy instance;
     public float rotationSpeed = 1f;
     public float speed;
     public float health;
@@ -20,23 +19,13 @@ public class Enemy : MonoBehaviour
     private Transform closestPlayer;
     private bool wasAttacked;
     private bool isKnockedBack;
-
-    void Awake()
-    {
-        if (instance == null)
-        {
-            instance = this;
-        }
-        else if (instance != this)
-        {
-            Destroy(gameObject);
-        }
-    }
+    private Rigidbody rb;
 
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance; // Set the stopping distance
+        rb = GetComponent<Rigidbody>();
 
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(foundPlayers);
@@ -46,7 +35,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (closestPlayer != null)
+        if (!isKnockedBack && closestPlayer != null)
         {
             float distanceToPlayer = Vector3.Distance(transform.position, closestPlayer.position);
 
@@ -94,7 +83,7 @@ public class Enemy : MonoBehaviour
         {
             closestPlayer = FindClosestPlayer();
 
-            if (closestPlayer != null)
+            if (closestPlayer != null && !isKnockedBack)
             {
                 agent.SetDestination(closestPlayer.position);
             }
@@ -116,14 +105,12 @@ public class Enemy : MonoBehaviour
     public void TakeDamage(float damageAmount, Vector3 knockbackDirection, float knockbackForce)
     {
         health -= damageAmount;
-        Rigidbody rb = GetComponent<Rigidbody>();
         isKnockedBack = true;
+
         if (rb != null)
         {
             StartCoroutine(Knockback(knockbackDirection, knockbackForce));
         }
-
-       
     }
 
     public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
@@ -132,7 +119,7 @@ public class Enemy : MonoBehaviour
         if (!wasAttacked)
         {
             wasAttacked = true;
-            TakeDamage(playerStats.playerAtk, directionToPlayer, playerStats.playerKnockback);
+            TakeDamage(playerStats.playerAtk, -directionToPlayer, playerStats.playerKnockback);
             Invoke(nameof(CanTakeDamage), 0.2f);
         }
     }
@@ -150,29 +137,25 @@ public class Enemy : MonoBehaviour
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)
     {
         float elapsedTime = 0f;
-        Vector3 startPosition = transform.position;
-        Vector3 targetPosition = startPosition + direction * - knockbackForce;
+        agent.enabled = false; // Disable NavMeshAgent during knockback
 
-        if(isKnockedBack)
+        rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+
+        while (elapsedTime < knockbackDuration)
         {
-            while (elapsedTime < knockbackDuration)
-            {
-                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / knockbackDuration);
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
-
-            yield return new WaitForSeconds(knockbackDuration / 2f);
-
-            if (health <= 0)
-            {
-                Die();
-            }
-
-            transform.position = targetPosition; // Ensure the final position is set
-            isKnockedBack= false;
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
-        
+
+        rb.velocity = Vector3.zero; // Stop any remaining velocity
+        agent.enabled = true; // Re-enable NavMeshAgent
+
+        if (health <= 0)
+        {
+            Die();
+        }
+
+        isKnockedBack = false;
     }
 
     public void ChangeTarget()

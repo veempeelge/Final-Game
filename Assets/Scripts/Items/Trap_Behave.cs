@@ -6,6 +6,7 @@ public class Trap_Behave : MonoBehaviour
 {
     private Inv_Item inv;
     public GameObject itemButton;
+    [SerializeField] AudioClip trapped;
 
     private void OnCollisionEnter(Collision other)
     {
