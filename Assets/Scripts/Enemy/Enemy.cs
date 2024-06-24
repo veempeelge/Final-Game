@@ -25,9 +25,8 @@ public class Enemy : MonoBehaviour
     public List<GameObject> Players = new List<GameObject>();
     private Transform closestPlayer;
     private bool wasAttacked;
+    private Transform currentEnemy;
 
-
-   
     void Start()
     {
         Agent = GetComponent<NavMeshAgent>();
@@ -51,10 +50,18 @@ public class Enemy : MonoBehaviour
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
+        else
+        {
+            FindClosestPlayer();
+        }
+
+        
     }
 
     private Transform FindClosestPlayer()
     {
+        Players.RemoveAll(player => player == null); 
+
         Transform nearestPlayer = null;
         float shortestDistance = Mathf.Infinity;
 
@@ -78,13 +85,28 @@ public class Enemy : MonoBehaviour
         while (true)
         {
             closestPlayer = FindClosestPlayer();
+            currentEnemy = closestPlayer;
 
-            if (closestPlayer != null)
+            if (currentEnemy != null)
             {
                 Agent.SetDestination(closestPlayer.position);
+               // ChangeTarget();
             }
 
             yield return Wait;
+        }
+
+       
+    }
+
+    private void OnTriggerEnter(Collider collision)
+    {
+       
+        if (collision.tag == "Water")
+        {
+            Debug.Log("Got hit by holy water");
+            Destroy(collision.gameObject);
+            //ChangeTarget();
         }
     }
 
@@ -144,5 +166,21 @@ public class Enemy : MonoBehaviour
         }
 
         transform.position = targetPosition; // Ensure the final position is set
+    }
+
+    public void ChangeTarget()
+    {
+       // List playernya di randomize
+
+       // if result = currentEnemy
+       ChangeTarget();
+       // else 
+       // currentEnemy = hasilRandomizenya
+
+       //^^ Biar ga dpt enemy yg sama
+
+       // diatas lu cache playernya atau (udh gw lakuin, atau kalau mau ganti2 lagi)
+       // call ini method waktu kena collisionnya water (ud gw lakuin)
+       
     }
 }

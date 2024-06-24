@@ -78,14 +78,6 @@ public class MovementPlayer1 : MonoBehaviour
 
         // Create a vector based on input
         movement = new Vector3(moveX, 0, moveZ);
-
-        if (Input.GetKeyDown(attackButton))
-        {
-            if (canAttack)
-            {
-                StartCoroutine(AutoAttack());
-            }
-        }
     }
 
     void FixedUpdate()
@@ -123,7 +115,7 @@ public class MovementPlayer1 : MonoBehaviour
    {
         currentHP -= damage;
         hpBar.UpdateBar(currentHP);
-        Debug.Log("Got Hit, HP Remaining = " + currentHP);
+        //Debug.Log("Got Hit, HP Remaining = " + currentHP);
         
         if (currentHP <= 0)
         {

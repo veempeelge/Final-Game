@@ -7,40 +7,48 @@ public class Trap_Behave : MonoBehaviour
     private Inv_Item inv;
     public GameObject itemButton;
 
-    private void OnTriggerEnter(Collider other)
+    private void OnCollisionEnter(Collision other)
     {
-        MovementPlayer1 mvP1 = other.GetComponent<MovementPlayer1>();
-
-        if (gameObject.tag == "Trap")
+        if (other.gameObject.tag == "Player")
         {
-            Debug.Log("Player Trapped!");
-        }
-        else
-        {
-            inv = mvP1.GetComponent<Inv_Item>();
+            MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
 
-            for (int i = 0; i < inv.slots.Length; i++)
+            if (gameObject.tag == "Trap")
             {
-                if (inv.isFull[i] == false)
-                {
-                    inv.hasTrap = true;
-                    inv.isFull[i] = true;
-                    Instantiate(itemButton, inv.slots[i].transform, false);
-                    Destroy(gameObject);
-                    break;
-                }
-                if (inv.isFull[i] == true)
-                {
-                    inv.DiscardItem(i);
+                Debug.Log("Player Trapped!");
+            }
+            else
+            {
+                inv = mvP1.GetComponent<Inv_Item>();
 
-                    inv.hasTrap = true;
-                    inv.isFull[i] = true;
-                    Instantiate(itemButton, inv.slots[i].transform, false);
-                    Destroy(gameObject);
-                    break;
+                for (int i = 0; i < inv.slots.Length; i++)
+                {
+                    if (inv.isFull[i] == false)
+                    {
+                        inv.hasTrap = true;
+                        inv.hasWater = false;
+                        inv.isFull[i] = true;
+                        Instantiate(itemButton, inv.slots[i].transform, false);
+                        Destroy(gameObject);
+                        break;
+                    }
+                    if (inv.isFull[i] == true)
+                    {
+                        inv.DiscardItem(i);
+
+                        inv.hasTrap = true;
+                        inv.hasWater = false;
+                        inv.isFull[i] = true;
+                        Instantiate(itemButton, inv.slots[i].transform, false);
+                        Destroy(gameObject);
+                        break;
+                    }
                 }
             }
         }
+       
+
+       
 
     }
 
