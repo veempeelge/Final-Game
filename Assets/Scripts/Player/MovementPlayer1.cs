@@ -170,17 +170,19 @@ public class MovementPlayer1 : MonoBehaviour
 
     IEnumerator AutoAttack()
     {
+
         while (weaponDurability > 0)
         {
             if (canAttack && !isImmune)
             {
+                yield return new WaitForSeconds(1f / playerAtkSpd);
                 DurabilityCheck();
                 AttackEnemy();
                 yield return new WaitForSeconds(.1f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
 
-                yield return new WaitForSeconds(1f / playerAtkSpd);
+                
            
             }
             else
@@ -189,7 +191,7 @@ public class MovementPlayer1 : MonoBehaviour
             }
         }
         Debug.Log("Weapon is broken!");
-        //wpDurabilityBar.SetActive(false);
+        wpDurabilityBar.SetActive(false);
 
     }
 
