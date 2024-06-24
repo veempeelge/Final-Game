@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class SoundManager : MonoBehaviour
@@ -8,11 +9,13 @@ public class SoundManager : MonoBehaviour
     public AudioSource EffectsSource;
     public AudioSource MusicSource;
 
-
     public float LowPitchRange = .95f;
     public float HighPitchRange = 1.05f;
 
     public static SoundManager Instance = null;
+
+    public int simultaneousPlayCount = 0;
+    public int maxSimultaneousSounds = 7;
 
     private void Awake()
     {
@@ -31,7 +34,34 @@ public class SoundManager : MonoBehaviour
     public void Play(AudioClip clip)
     {
         EffectsSource.clip = clip;
-        EffectsSource.Play();
+        StartCoroutine(PlaySound(clip));
+    }
+
+    IEnumerator PlaySound(AudioClip clip, bool autoScaleVolume = true, float maxVolumeScale = 1f)
+    {
+        if (simultaneousPlayCount >= maxSimultaneousSounds)
+        {
+            yield break;
+        }
+
+        simultaneousPlayCount++;
+
+        float vol = maxVolumeScale;
+
+        // Scale down volume of same sound played subsequently
+        if (autoScaleVolume && simultaneousPlayCount > 0)
+        {
+            vol = vol / (float)(simultaneousPlayCount);
+        }
+
+        MusicSource.PlayOneShot(clip, vol);
+
+        // Wait til the sound almost finishes playing then reduce play count
+        float delay = clip.length * 0.7f;
+
+        yield return new WaitForSeconds(delay);
+
+        simultaneousPlayCount--;
     }
 
     public void PlayMusic(AudioClip clip)

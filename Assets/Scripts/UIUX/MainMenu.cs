@@ -5,8 +5,21 @@ using UnityEngine.SceneManagement;
    
 public class MainMenu : MonoBehaviour
 {
+
+    [SerializeField] AudioClip mainMenuMusic;
+
+    private void Start()
+    {
+         SoundManager.Instance.PlayMusic(mainMenuMusic);
+    }
+
     public void Level1()
     {
-        SceneManager.LoadScene("Gameplay");
+        SceneManager.LoadScene(1);
+    }
+
+    public void Quit()
+    {
+        Application.Quit();
     }
 }

@@ -15,6 +15,8 @@ public class Attack : MonoBehaviour
     MeshFilter MeshFilter_;
     public bool isAttacking;
 
+    [SerializeField] AudioClip[] attackHit;
+
     void Start()
     {
         var meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -70,6 +72,7 @@ public class Attack : MonoBehaviour
                     {
                         if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
                         {
+                            SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
                             playerStats.DecreaseDurability();
                             hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
                           //  Debug.Log("HIT" + hit.collider.transform.name);

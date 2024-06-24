@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject player3HPBar;
 
+    [SerializeField] AudioClip gameplayMusic;
+
     public float
         defPlayerAtk,
         defPlayerAtkSpd,
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SoundManager.Instance.PlayMusic(gameplayMusic); 
         UIPlayerHP.SetActive(false);
         UIPlayerSelect.SetActive(true);
         UIGameOver.SetActive(false);
