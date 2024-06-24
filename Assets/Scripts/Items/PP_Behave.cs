@@ -34,7 +34,7 @@ public class PP_Behave : MonoBehaviour
                     Instantiate(itemButton, inv.slots[i].transform, false);
                     if (gameObject.tag == "RollPin")
                     {
-                        mvP1.ChangeStats(3, 2, 5, 2, 6, 5);
+                        mvP1.ChangeStats(3, 2, 5, 2, 6, 3);
                     }
                     else if (gameObject.tag == "MeatHam")
                     {
@@ -42,11 +42,11 @@ public class PP_Behave : MonoBehaviour
                     }
                     else if (gameObject.tag == "BSpoon")
                     {
-                        mvP1.ChangeStats(2, 3, 5, 3, 7, 9);
+                        mvP1.ChangeStats(2, 3, 5, 3, 7, 5);
                     }
                     else if (gameObject.tag == "Book")
                     {
-                        mvP1.ChangeStats(4, 4, 5, 5, 5, 9);
+                        mvP1.ChangeStats(4, 4, 5, 3, 5, 6);
                     }
 
                     Destroy(gameObject);
