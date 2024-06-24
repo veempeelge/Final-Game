@@ -123,10 +123,7 @@ public class Enemy : MonoBehaviour
             StartCoroutine(Knockback(knockbackDirection, knockbackForce));
         }
 
-        if (health <= 0)
-        {
-            Die();
-        }
+       
     }
 
     public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
@@ -156,14 +153,26 @@ public class Enemy : MonoBehaviour
         Vector3 startPosition = transform.position;
         Vector3 targetPosition = startPosition + direction * - knockbackForce;
 
-        while (elapsedTime < knockbackDuration)
+        if(isKnockedBack)
         {
-            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / knockbackDuration);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
+            while (elapsedTime < knockbackDuration)
+            {
+                transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime / knockbackDuration);
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
 
-        transform.position = targetPosition; // Ensure the final position is set
+            yield return new WaitForSeconds(knockbackDuration / 2f);
+
+            if (health <= 0)
+            {
+                Die();
+            }
+
+            transform.position = targetPosition; // Ensure the final position is set
+            isKnockedBack= false;
+        }
+        
     }
 
     public void ChangeTarget()
