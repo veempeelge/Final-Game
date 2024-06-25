@@ -11,6 +11,7 @@ public class Inv_Item : MonoBehaviour
     public GameObject[] slots;
     public bool hasTrap;
     public bool hasWater;
+    public GameObject itemButton;
 
     public int playerNumber;
     private string fireButton;
@@ -31,6 +32,16 @@ public class Inv_Item : MonoBehaviour
         mvP1 = GetComponent<MovementPlayer1>();
         PTransform = GetComponent<Transform>();
         fireButton = "Fire" + playerNumber;
+
+        for (int i = 0; i < slots.Length; i++)
+        {
+            Item_Slot slot = slots[i].GetComponent<Item_Slot>();
+
+            Instantiate(itemButton, slots[i].transform, false);
+            slot.count = 3;
+            hasWater = true;
+            slot.RefreshCount();
+        }
     }
 
     private void Update()
