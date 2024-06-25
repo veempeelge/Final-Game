@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject player1obj, player2obj, player3obj;
     [SerializeField] GameObject player1Won, player2Won, player3Won;
 
-    [SerializeField] GameObject player3HPBar;
+    [SerializeField] GameObject[] player3UIs;
 
     [SerializeField] AudioClip gameplayMusic;
 
@@ -58,7 +58,10 @@ public class GameManager : MonoBehaviour
         playersLeft = 2;
         StartGame();
         player3obj.SetActive(false);
-        player3HPBar.SetActive(false);
+        for (int i = 0; i < player3UIs.Length; i++)
+        {
+            player3UIs[i].SetActive(false);
+        }
     }
 
     void _3Players()

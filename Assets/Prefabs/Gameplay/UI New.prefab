@@ -75,7 +75,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1307104645615373826}
   m_Layer: 5
-  m_Name: PP and Item
+  m_Name: PP and Item 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -114,7 +114,7 @@ GameObject:
   - component: {fileID: 8548138956566895282}
   - component: {fileID: 5098777752735437156}
   m_Layer: 5
-  m_Name: weapon1full
+  m_Name: weapon2full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -189,7 +189,7 @@ GameObject:
   - component: {fileID: 5815561498773210501}
   - component: {fileID: 3128657044877298704}
   m_Layer: 5
-  m_Name: player1 fullbar
+  m_Name: player3 fullbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -265,7 +265,7 @@ GameObject:
   - component: {fileID: 5683898625066166928}
   - component: {fileID: 2687179874924001095}
   m_Layer: 5
-  m_Name: PPInv_1
+  m_Name: PPInv_3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -426,8 +426,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3377210215402909344}
+  - component: {fileID: 6111777173113087655}
   m_Layer: 5
-  m_Name: Player1 HP Bar
+  m_Name: Player3 HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -455,6 +456,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 461.69995, y: 64.979996}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6111777173113087655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 722664636652159827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cedf5049d5a8004bba2fe62ea17c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPCurrentBar: {fileID: 111000762441610086}
+  DurabilityCurrentBar: {fileID: 2774205816938113233}
+  HPFull: 0
+  HPCurrent: 0
+  player1: {fileID: 0}
 --- !u!1 &1240095254687081656
 GameObject:
   m_ObjectHideFlags: 0
@@ -816,7 +834,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3843378986966194316}
   m_Layer: 5
-  m_Name: weapondurability1
+  m_Name: weapondurability2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1021,7 +1039,7 @@ GameObject:
   - component: {fileID: 7132447959413763412}
   - component: {fileID: 4944822852436575995}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: Weapon 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1074,7 +1092,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Weapon
+  m_text: Weapon 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1379,7 +1397,7 @@ GameObject:
   - component: {fileID: 1405379616653940090}
   - component: {fileID: 3576088917024756759}
   m_Layer: 5
-  m_Name: player1 fullbar
+  m_Name: player2 fullbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1452,7 +1470,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4148960458190414329}
   m_Layer: 5
-  m_Name: PP and Item
+  m_Name: PP and Item 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1595,7 +1613,7 @@ GameObject:
   - component: {fileID: 3289891879488784768}
   - component: {fileID: 3538467886446023603}
   m_Layer: 5
-  m_Name: weapon1full
+  m_Name: weapon3full
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1667,8 +1685,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2718033209602752112}
+  - component: {fileID: 1132400237336738027}
   m_Layer: 5
-  m_Name: Player1 HP Bar
+  m_Name: Player2 HP Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1696,6 +1715,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 461.69998, y: 64.979996}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1132400237336738027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4360726261202223955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cedf5049d5a8004bba2fe62ea17c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPCurrentBar: {fileID: 325904949488573304}
+  DurabilityCurrentBar: {fileID: 5870356637107693661}
+  HPFull: 0
+  HPCurrent: 0
+  player1: {fileID: 0}
 --- !u!1 &4363082083276416570
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3794163651102283309}
+  - component: {fileID: 1201548127124987823}
   m_Layer: 5
   m_Name: Player1 HP Bar
   m_TagString: Untagged
@@ -1734,6 +1771,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 461.69998, y: 64.979996}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1201548127124987823
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4363082083276416570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2cedf5049d5a8004bba2fe62ea17c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HPCurrentBar: {fileID: 1622290971915100488}
+  DurabilityCurrentBar: {fileID: 6016074465924941889}
+  HPFull: 0
+  HPCurrent: 0
+  player1: {fileID: 0}
 --- !u!1 &4805178416077357763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1798,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4961965731313514357}
   m_Layer: 5
-  m_Name: weapondurability1
+  m_Name: weapondurability3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1784,7 +1838,7 @@ GameObject:
   - component: {fileID: 8628235099417481110}
   - component: {fileID: 325904949488573304}
   m_Layer: 5
-  m_Name: Player1 currentbar
+  m_Name: player2 currentbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2107,7 +2161,7 @@ GameObject:
   - component: {fileID: 804096685846217678}
   - component: {fileID: 2243533581328909596}
   m_Layer: 5
-  m_Name: ItemInv_3
+  m_Name: ItemInv_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2330,7 +2384,7 @@ GameObject:
   - component: {fileID: 2856787972800369597}
   - component: {fileID: 2774205816938113233}
   m_Layer: 5
-  m_Name: weapon1current
+  m_Name: weapon3current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2610,7 +2664,7 @@ GameObject:
   - component: {fileID: 500202892896714203}
   - component: {fileID: 3598983369357145083}
   m_Layer: 5
-  m_Name: Weapon
+  m_Name: Weapon 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2744,7 +2798,7 @@ GameObject:
   - component: {fileID: 7557642106905357166}
   - component: {fileID: 5870356637107693661}
   m_Layer: 5
-  m_Name: weapon1current
+  m_Name: weapon2current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2832,7 +2886,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9030791907311899105}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -2895,7 +2949,7 @@ GameObject:
   - component: {fileID: 9203812955913602173}
   - component: {fileID: 111000762441610086}
   m_Layer: 5
-  m_Name: Player1 currentbar
+  m_Name: Player3 currentbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
