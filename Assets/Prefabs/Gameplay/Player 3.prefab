@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5019004439554845855}
   - component: {fileID: 8924431310741677704}
   - component: {fileID: 5967956825654241390}
+  - component: {fileID: 4485936031857900198}
   m_Layer: 6
   m_Name: Player 3
   m_TagString: Player
@@ -40,6 +41,8 @@ Transform:
   - {fileID: 8969699065347533507}
   - {fileID: 4424935693329330133}
   - {fileID: 8484360810191301230}
+  - {fileID: 4359699441397647479}
+  - {fileID: 8323220765837480263}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &6992673857730331926
@@ -159,7 +162,7 @@ MonoBehaviour:
   playerKnockback: 3
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 8239782162720791589}
-  waterHitIndicatorPrefab: {fileID: 0}
+  waterHitIndicatorPrefab: {fileID: 6099775096710475535}
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
@@ -224,6 +227,21 @@ MonoBehaviour:
   WaterPrefab: {fileID: 605196136701530160, guid: 6c2b5e054581892479d73d03f4dac37c, type: 3}
   shootPoint: {fileID: 3967379743690294942}
   ShootSpeed: 10
+--- !u!114 &4485936031857900198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997400810003062948}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c4e8af5e9346b4797a74ae5f6f107f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {fileID: 4359699441397647479}
+  - {fileID: 8323220765837480263}
 --- !u!1 &1471388543891973835
 GameObject:
   m_ObjectHideFlags: 0
@@ -500,6 +518,68 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &3725966104261298964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8323220765837480263}
+  m_Layer: 6
+  m_Name: PointB3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8323220765837480263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3725966104261298964}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1.49}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3967379743690294942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4687187328166149296
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4359699441397647479}
+  m_Layer: 6
+  m_Name: PointA3
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4359699441397647479
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4687187328166149296}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: -1.47}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 3967379743690294942}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6099775096710475535
 GameObject:
   m_ObjectHideFlags: 0

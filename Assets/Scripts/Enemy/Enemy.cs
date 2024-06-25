@@ -30,87 +30,71 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = stoppingDistance; 
+        agent.stoppingDistance = stoppingDistance;
         rb = GetComponent<Rigidbody>();
 
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(foundPlayers);
 
-        TargetPlayer();
-
-        
-
-
+        ChangeTarget();
     }
 
     void TargetPlayer()
     {
-        int index;
+        if (players.Count == 0) return;
 
         targetPlayer = players[Random.Range(0, players.Count)];
 
         if (targetPlayer != null)
         {
             waypoints = targetPlayer.GetComponent<Waypoints>();
-            points = waypoints.points;
-            Debug.Log(targetPlayer);
-        }
-        else
-        {
-            Debug.Log("TargetNotFound");
-        }
-            
+            points = waypoints?.points;
 
-         if (waypoints != null)
-        {
-            index = Random.Range(0, points.Length);
-            targetLocation = points[index];
-            Debug.Log(index);
+            if (points != null && points.Length > 0)
+            {
+                int index = Random.Range(0, points.Length);
+                targetLocation = points[index];
+                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
+            }
+            else
+            {
+                Debug.Log("No waypoints found for the target player.");
+            }
         }
         else
         {
-            Debug.Log("pointnoTFound");
+            Debug.Log("Target player not found.");
         }
-       
     }
-
 
     void Update()
     {
-        if (!isKnockedBack && closestPlayer != null)
+        if (!isKnockedBack && targetLocation != null)
         {
-            if(transform.position == targetLocation.position)
-            {
-                targetLocation = targetPlayer.gameObject.transform;
-            }
-            float distanceToPlayer = Vector3.Distance(transform.position, closestPlayer.position);
+            float distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
 
-            if (distanceToPlayer > stoppingDistance)
+            if (distanceToWaypoint > stoppingDistance)
             {
                 agent.isStopped = false;
                 if (agent.isOnNavMesh)
                 {
                     agent.SetDestination(targetLocation.position);
-                }    
+                }
             }
             else
             {
-                agent.isStopped = true;
+                targetLocation = targetPlayer.transform; // Move towards player after reaching waypoint
             }
 
-            Vector3 direction = (closestPlayer.position - transform.position).normalized;
+            Vector3 direction = (targetLocation.position - transform.position).normalized;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
-    
-
-    
-
     private void OnTriggerEnter(Collider collision)
     {
-        if (collision.tag == "Water")
+        if (collision.CompareTag("Water"))
         {
             Debug.Log("Got hit by holy water");
             Destroy(collision.gameObject);
@@ -143,6 +127,7 @@ public class Enemy : MonoBehaviour
     public void OnPlayerHitWater()
     {
         Debug.Log("Target another player");
+        ChangeTarget();
     }
 
     void CanTakeDamage()
@@ -181,25 +166,7 @@ public class Enemy : MonoBehaviour
 
     public void ChangeTarget()
     {
-        // Randomize the list of players
-        if (players.Count > 0)
-        {
-            GameObject randomPlayer;
-            do
-            {
-                randomPlayer = players[Random.Range(0, players.Count)];
-            } while (randomPlayer.transform == closestPlayer);
-
-            closestPlayer = randomPlayer.transform;
-        }
+        // Randomize the target player and waypoints
+        TargetPlayer();
     }
-
-
-    //randomize player
-    //add children to list
-    //randomize children
-    //get children posititon
-    //enemy go to children position
-    // enemy got to posititon -> go to player position
-
 }
