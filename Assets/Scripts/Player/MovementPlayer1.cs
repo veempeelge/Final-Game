@@ -58,12 +58,12 @@ public class MovementPlayer1 : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip attackAir;
     [SerializeField] AudioClip gotItem;
-    private int waterCharge;
+    public int waterCharge;
     private bool waterDecreased;
 
     void Start()
     {
-        
+        waterCharge = 3; 
         item = GetComponent<Inv_Item>();
         attackWater = GetComponentInChildren<AttackWater>();
         waterCharge = item.waterCount;

@@ -30,6 +30,7 @@ public class Inv_Item : MonoBehaviour
 
     private void Start()
     {
+        waterCount = 3;
         mvP1 = GetComponent<MovementPlayer1>();
         PTransform = GetComponent<Transform>();
         fireButton = "Fire" + playerNumber;

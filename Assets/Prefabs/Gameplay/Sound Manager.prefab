@@ -50,6 +50,8 @@ MonoBehaviour:
   MusicSource: {fileID: 6075077845078106971}
   LowPitchRange: 0.95
   HighPitchRange: 1.05
+  simultaneousPlayCount: 0
+  maxSimultaneousSounds: 7
 --- !u!82 &5660663323300364048
 AudioSource:
   m_ObjectHideFlags: 0
@@ -157,10 +159,10 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
-  m_Volume: 1
+  m_PlayOnAwake: 0
+  m_Volume: 0.357
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

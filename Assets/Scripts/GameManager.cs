@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AudioClip gameplayMusic;
 
-    [SerializeField] HorizontalLayoutGroup hpBarGroup, weaponDurabilityGroup, itemSlots;
+    [SerializeField] Transform hpBar2, weaponDurability2, item2;
 
 
     public float
@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
 
     void _2Players()
     {
+        
+
         player1alive = true;
         player2alive = true;
         player3alive = false;
@@ -66,9 +68,10 @@ public class GameManager : MonoBehaviour
             player3UIs[i].SetActive(false);
         }
 
-        weaponDurabilityGroup.spacing = 1005f;
-        hpBarGroup.spacing = 847f;
-        itemSlots.spacing = 1475.6f;
+        weaponDurability2.position = new Vector3(1684.65f, weaponDurability2.position.y, weaponDurability2.position.z);
+        hpBar2.position = new Vector3(1648.833f, hpBar2.position.y, hpBar2.position.z);
+        item2.position = new Vector3(1591.637f,item2.position.y, item2.position.z);
+
     }
 
     void _3Players()
@@ -78,11 +81,6 @@ public class GameManager : MonoBehaviour
         player3alive = true;
         playersLeft = 3;
         StartGame();
-
-        weaponDurabilityGroup.spacing = 277f;
-        hpBarGroup.spacing = 159f;
-        itemSlots.spacing = 697f;
-
     }
         
     public void Player1Dead()

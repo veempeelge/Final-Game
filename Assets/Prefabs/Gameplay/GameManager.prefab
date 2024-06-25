@@ -55,11 +55,14 @@ MonoBehaviour:
   player1Won: {fileID: 0}
   player2Won: {fileID: 0}
   player3Won: {fileID: 0}
-  player3UIs: []
+  player3UIs:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   gameplayMusic: {fileID: 8300000, guid: 124a059999d4c30448c336d5514a848f, type: 3}
-  hpBarGroup: {fileID: 0}
-  weaponDurabilityGroup: {fileID: 0}
-  itemSlots: {fileID: 0}
+  hpBar2: {fileID: 0}
+  weaponDurability2: {fileID: 0}
+  item2: {fileID: 0}
   defPlayerAtk: 1
   defPlayerAtkSpd: 1
   defPlayerRange: 3
