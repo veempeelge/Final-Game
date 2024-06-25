@@ -63,8 +63,10 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Start()
     {
+        
         item = GetComponent<Inv_Item>();
         attackWater = GetComponentInChildren<AttackWater>();
+        waterCharge = item.waterCount;
         // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
         moveSpeed = gameManager.defSpeed;
@@ -81,7 +83,7 @@ public class MovementPlayer1 : MonoBehaviour
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
-        waterCharge = item.waterCount;
+    
 
     }
 
@@ -205,18 +207,15 @@ public class MovementPlayer1 : MonoBehaviour
 
     private IEnumerator WaterAttack()
     {
-        while (waterCharge > 0)
-        {
-            
-                Debug.Log("WaterSpray");
-
-                yield return new WaitForSeconds(1f / playerAtkSpd);
-               // DurabilityCheck();
-                SprayWater();
-                yield return new WaitForSeconds(.1f);
-                waterHitIndicatorPrefab.SetActive(false);
-                attackWater.isAttacking = false;
-           
+        while(waterCharge > 0)
+        { 
+            Debug.Log("WaterSpray");
+            yield return new WaitForSeconds(1f / playerAtkSpd);
+            // DurabilityCheck();
+            SprayWater();
+            yield return new WaitForSeconds(.1f);
+            waterHitIndicatorPrefab.SetActive(false);
+            attackWater.isAttacking = false;
         }
     }
 
