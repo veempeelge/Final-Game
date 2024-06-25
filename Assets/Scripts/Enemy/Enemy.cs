@@ -139,7 +139,7 @@ public class Enemy : MonoBehaviour
         float elapsedTime = 0f;
         agent.enabled = false; // Disable NavMeshAgent during knockback
 
-        rb.AddForce(direction * knockbackForce, ForceMode.Impulse);
+        rb.AddForce(direction * knockbackForce * .6f, ForceMode.Impulse);
 
         while (elapsedTime < knockbackDuration)
         {
