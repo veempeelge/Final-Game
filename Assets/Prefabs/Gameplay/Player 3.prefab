@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFull: 01
-  slot: {fileID: 0}
+  waterCount: 0
   slots:
   - {fileID: 0}
   hasTrap: 0
@@ -526,7 +526,7 @@ Transform:
   m_GameObject: {fileID: 6099775096710475535}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.298927, y: 0.21005778, z: 7.082958}
+  m_LocalPosition: {x: -0.32, y: -0.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
