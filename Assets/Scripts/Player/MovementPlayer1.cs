@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -9,6 +10,8 @@ public class MovementPlayer1 : MonoBehaviour
     public static MovementPlayer1 instance;
 
     public Attack attack;
+    public AttackWater attackWater;
+
     public HPBar hpBar;
 
     public GameManager gameManager;
@@ -43,6 +46,7 @@ public class MovementPlayer1 : MonoBehaviour
 
     public Vector3 knockbackDirection;
     public GameObject hitIndicator;
+    public GameObject waterHitIndicatorPrefab;
     private bool IsDecreased;
     private bool usingWeapon = false;
 
@@ -53,7 +57,9 @@ public class MovementPlayer1 : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip attackAir;
     [SerializeField] AudioClip gotItem;
-    
+    private int waterCharge = 2;
+    private bool waterDecreased;
+
     void Start()
     {
 
@@ -67,12 +73,15 @@ public class MovementPlayer1 : MonoBehaviour
         playerAtkWidth = gameManager.defPlayerAtkWidth;
         playerKnockback = gameManager.defPlayerKnockback;
         StartCoroutine(AutoAttack());
+        StartCoroutine(WaterAttack());
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
     }
+
+   
 
     void Update()
     {
@@ -170,7 +179,6 @@ public class MovementPlayer1 : MonoBehaviour
 
     IEnumerator AutoAttack()
     {
-
         while (weaponDurability > 0)
         {
             if (canAttack && !isImmune)
@@ -181,9 +189,6 @@ public class MovementPlayer1 : MonoBehaviour
                 yield return new WaitForSeconds(.1f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
-
-                
-           
             }
             else
             {
@@ -192,7 +197,26 @@ public class MovementPlayer1 : MonoBehaviour
         }
         Debug.Log("Weapon is broken!");
         wpDurabilityBar.SetActive(false);
+    }
 
+    private IEnumerator WaterAttack()
+    {
+        while (waterCharge > 0)
+        {
+            if (canAttack && !isImmune)
+            {
+                yield return new WaitForSeconds(1f / playerAtkSpd);
+               // DurabilityCheck();
+                SprayWater();
+                yield return new WaitForSeconds(.1f);
+                waterHitIndicatorPrefab.SetActive(false);
+                attackWater.isAttacking = false;
+            }
+            else
+            {
+                yield return null;
+            }
+        }
     }
 
     void ResetStats()
@@ -207,7 +231,6 @@ public class MovementPlayer1 : MonoBehaviour
 
     void DurabilityCheck()
     {
-    
         if (weaponCurrentDurability <= 0)
         {
             ResetStats();
@@ -225,6 +248,13 @@ public class MovementPlayer1 : MonoBehaviour
         SoundManager.Instance.Play(attackAir);
     }
 
+    void SprayWater()
+    {
+        attackWater.isAttacking = true;
+        waterHitIndicatorPrefab.SetActive(true);
+        //SoundManager Spraying Water
+    }
+
     public void DecreaseDurability()
     {
         if (!IsDecreased && usingWeapon)
@@ -238,6 +268,27 @@ public class MovementPlayer1 : MonoBehaviour
 
     }
 
+    public void DecreaseWaterCharge()
+    {
+        if (!waterDecreased)
+        {
+            if (waterCharge >= 0)
+            {
+                waterDecreased = true;
+                waterCharge--;
+                Invoke(nameof(WaterDecreasedOnce), .2f);
+                Debug.Log("Decreased Water " + waterCharge);
+
+            }
+           
+
+        }
+    }
+
+    void WaterDecreasedOnce()
+    {
+        waterDecreased = false;
+    }
     void DecreaseOnce()
     {
         IsDecreased = false;

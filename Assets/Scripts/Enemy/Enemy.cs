@@ -130,6 +130,11 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void OnPlayerHitWater()
+    {
+        Debug.Log("Target another player");
+    }
+
     void CanTakeDamage()
     {
         wasAttacked = false;

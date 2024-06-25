@@ -204,6 +204,7 @@ Transform:
   - {fileID: 3690449245081619672}
   - {fileID: 4229934183752655876}
   - {fileID: 6061382779364625822}
+  - {fileID: 3986249990140741691}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &7338128527093610556
@@ -317,6 +318,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 351205096366292130}
+  attackWater: {fileID: 2203126585065645011}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
   moveSpeed: 370
@@ -342,6 +344,7 @@ MonoBehaviour:
   playerKnockback: 3
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 652954558116755525}
+  waterHitIndicatorPrefab: {fileID: 7742170750748787343}
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
@@ -377,6 +380,7 @@ MonoBehaviour:
   - {fileID: 0}
   hasTrap: 0
   hasWater: 0
+  itemButton: {fileID: 0}
   playerNumber: 1
   TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
   spawnDistance: 15
@@ -554,3 +558,59 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 2882800945033415917}
   m_maskType: 0
+--- !u!1 &7742170750748787343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3986249990140741691}
+  - component: {fileID: 2203126585065645011}
+  m_Layer: 6
+  m_Name: Hit Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3986249990140741691
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742170750748787343}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.56, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4033561378793552965}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2203126585065645011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7742170750748787343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5515adfcaa007064ab98c91bdecbe0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VisionConeMaterial: {fileID: 2100000, guid: f50b126a065313e4288b841a88d672cc, type: 2}
+  AttackRange: 7
+  AttackAngle: 70
+  VisionObstructingLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  VisionConeResolution: 120
+  isAttacking: 0
+  attackHit: []

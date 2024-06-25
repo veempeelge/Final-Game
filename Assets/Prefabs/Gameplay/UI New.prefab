@@ -688,6 +688,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a70d3c10e13aba45942c78e7d134af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countText: {fileID: 0}
+  count: 3
   i: 0
   player1: {fileID: 0}
 --- !u!1 &2876796151004416366
@@ -1383,6 +1385,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a70d3c10e13aba45942c78e7d134af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countText: {fileID: 0}
+  count: 3
   i: 0
   player1: {fileID: 0}
 --- !u!1 &3875063006155556661
@@ -2236,6 +2240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a70d3c10e13aba45942c78e7d134af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  countText: {fileID: 0}
+  count: 3
   i: 0
   player1: {fileID: 0}
 --- !u!1 &6676864554070128299
