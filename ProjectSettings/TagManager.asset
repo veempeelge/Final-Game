@@ -10,6 +10,8 @@ TagManager:
   - BSpoon
   - Book
   - Trap
+  - Water
+  - EnemyBarrierFat
   layers:
   - Default
   - TransparentFX
@@ -19,7 +21,7 @@ TagManager:
   - UI
   - Player
   - Walls
-  - 
+  - EnemyBarrierFat
   - 
   - 
   - 

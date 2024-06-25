@@ -24,7 +24,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = stoppingDistance; // Set the stopping distance
+        agent.stoppingDistance = stoppingDistance; 
         rb = GetComponent<Rigidbody>();
 
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
@@ -42,7 +42,10 @@ public class Enemy : MonoBehaviour
             if (distanceToPlayer > stoppingDistance)
             {
                 agent.isStopped = false;
-                agent.SetDestination(closestPlayer.position);
+                if (agent.isOnNavMesh)
+                {
+                    agent.SetDestination(closestPlayer.position);
+                }    
             }
             else
             {
@@ -85,7 +88,10 @@ public class Enemy : MonoBehaviour
 
             if (closestPlayer != null && !isKnockedBack)
             {
-                agent.SetDestination(closestPlayer.position);
+                if (agent.isOnNavMesh)
+                {
+                    agent.SetDestination(closestPlayer.position);
+                } 
             }
 
             yield return wait;
@@ -139,7 +145,7 @@ public class Enemy : MonoBehaviour
         float elapsedTime = 0f;
         agent.enabled = false; // Disable NavMeshAgent during knockback
 
-        rb.AddForce(direction * knockbackForce * .6f, ForceMode.Impulse);
+        rb.AddForce(direction * knockbackForce * 0.6f, ForceMode.Impulse);
 
         while (elapsedTime < knockbackDuration)
         {
