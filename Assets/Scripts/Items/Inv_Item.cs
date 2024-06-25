@@ -7,6 +7,7 @@ using UnityEngine.UIElements;
 public class Inv_Item : MonoBehaviour
 {
     public bool[] isFull;
+    private Item_Slot slot;
     public GameObject[] slots;
     public bool hasTrap;
     public bool hasWater;
@@ -57,8 +58,14 @@ public class Inv_Item : MonoBehaviour
 
     private void UseItem()
     {
+
         for (int i = 0; i < slots.Length; i++)
         {
+            Item_Slot slot = slots[i].GetComponent<Item_Slot>();
+            if (slot == null)
+            {
+                Debug.LogWarning("Slot not found!");
+            }
             if (hasTrap)
             {
                 Vector3 spawnPosition = PTransform.position + (-PTransform.forward * spawnDistance);
@@ -67,15 +74,21 @@ public class Inv_Item : MonoBehaviour
 
                 Debug.Log("Player " + playerNumber + " used a trap!");
                 DiscardItem(i);
+
             }
             if (hasWater)
             {
+                slot.count -= 1;
                 GameObject water = Instantiate(WaterPrefab, shootPoint.position, shootPoint.rotation);
                 Rigidbody rb = water.GetComponent<Rigidbody>();
                 rb.velocity = shootPoint.forward * ShootSpeed;
 
                 Debug.Log("Player " + playerNumber + " sprayed water!");
-                DiscardItem(i);
+
+                if (slot.count < 1)
+                {
+                    DiscardItem(i);
+                }
             }
             else
             {

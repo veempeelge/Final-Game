@@ -11,7 +11,6 @@ TagManager:
   - Book
   - Trap
   - Water
-  - FatEnemyBarriers
   layers:
   - Default
   - TransparentFX
@@ -21,7 +20,7 @@ TagManager:
   - UI
   - Player
   - Walls
-  - FatEnemyWalls
+  - 
   - 
   - 
   - 
