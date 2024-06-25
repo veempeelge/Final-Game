@@ -207,8 +207,7 @@ public class MovementPlayer1 : MonoBehaviour
     {
         while (waterCharge > 0)
         {
-            if (canAttack && !isImmune)
-            {
+            
                 Debug.Log("WaterSpray");
 
                 yield return new WaitForSeconds(1f / playerAtkSpd);
@@ -217,11 +216,7 @@ public class MovementPlayer1 : MonoBehaviour
                 yield return new WaitForSeconds(.1f);
                 waterHitIndicatorPrefab.SetActive(false);
                 attackWater.isAttacking = false;
-            }
-            else
-            {
-                yield return null;
-            }
+           
         }
     }
 

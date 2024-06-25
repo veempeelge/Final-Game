@@ -27,6 +27,7 @@ public class Inv_Item : MonoBehaviour
 
     private bool isMovementRestricted = false;
 
+
     private void Start()
     {
         mvP1 = GetComponent<MovementPlayer1>();
@@ -43,6 +44,8 @@ public class Inv_Item : MonoBehaviour
             hasWater = true;
             slot.RefreshCount();
         }
+
+
     }
 
     private void Update()
