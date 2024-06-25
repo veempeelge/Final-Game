@@ -10,6 +10,7 @@ public class Item_Slot : MonoBehaviour
 
     private Inv_Item inv;
     public int i;
+
     [SerializeField] MovementPlayer1 player1;
 
     // Start is called before the first frame update

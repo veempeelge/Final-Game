@@ -7,6 +7,7 @@ using UnityEngine.AI;
 public class Enemy : MonoBehaviour
 {
     Waypoints waypoints;
+
     public float rotationSpeed = 1f;
     public float speed;
     public float health;
@@ -24,6 +25,8 @@ public class Enemy : MonoBehaviour
 
     private Transform[] points;
     private GameObject targetPlayer;
+    private Transform targetLocation;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -33,20 +36,53 @@ public class Enemy : MonoBehaviour
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(foundPlayers);
 
-        StartCoroutine(FollowClosestPlayer());
+        TargetPlayer();
 
-        targetPlayer = players[Random.Rangge(0,players.Count)]
-        if (targetPlayer != null)
-        {
-            waypoints = 
-        }
+        
+
 
     }
+
+    void TargetPlayer()
+    {
+        int index;
+
+        targetPlayer = players[Random.Range(0, players.Count)];
+
+        if (targetPlayer != null)
+        {
+            waypoints = targetPlayer.GetComponent<Waypoints>();
+            points = waypoints.points;
+            Debug.Log(targetPlayer);
+        }
+        else
+        {
+            Debug.Log("TargetNotFound");
+        }
+            
+
+         if (waypoints != null)
+        {
+            index = Random.Range(0, points.Length);
+            targetLocation = points[index];
+            Debug.Log(index);
+        }
+        else
+        {
+            Debug.Log("pointnoTFound");
+        }
+       
+    }
+
 
     void Update()
     {
         if (!isKnockedBack && closestPlayer != null)
         {
+            if(transform.position == targetLocation.position)
+            {
+                targetLocation = targetPlayer.gameObject.transform;
+            }
             float distanceToPlayer = Vector3.Distance(transform.position, closestPlayer.position);
 
             if (distanceToPlayer > stoppingDistance)
@@ -54,7 +90,7 @@ public class Enemy : MonoBehaviour
                 agent.isStopped = false;
                 if (agent.isOnNavMesh)
                 {
-                    agent.SetDestination(closestPlayer.position);
+                    agent.SetDestination(targetLocation.position);
                 }    
             }
             else
@@ -68,45 +104,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private Transform FindClosestPlayer()
-    {
-        Transform nearestPlayer = null;
-        float shortestDistance = Mathf.Infinity;
+    
 
-        foreach (GameObject player in players)
-        {
-            if (player == null) continue;
-
-            float distanceToPlayer = Vector3.Distance(transform.position, player.transform.position);
-            if (distanceToPlayer < shortestDistance)
-            {
-                shortestDistance = distanceToPlayer;
-                nearestPlayer = player.transform;
-            }
-        }
-
-        return nearestPlayer;
-    }
-
-    private IEnumerator FollowClosestPlayer()
-    {
-        WaitForSeconds wait = new WaitForSeconds(updateSpeed);
-
-        while (true)
-        {
-            closestPlayer = FindClosestPlayer();
-
-            if (closestPlayer != null && !isKnockedBack)
-            {
-                if (agent.isOnNavMesh)
-                {
-                    agent.SetDestination(closestPlayer.position);
-                } 
-            }
-
-            yield return wait;
-        }
-    }
+    
 
     private void OnTriggerEnter(Collider collision)
     {

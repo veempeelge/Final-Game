@@ -208,7 +208,9 @@ public class MovementPlayer1 : MonoBehaviour
     private IEnumerator WaterAttack()
     {
         while(waterCharge > 0)
-        { 
+        {
+            waterCharge = item.waterCount;
+
             Debug.Log("WaterSpray");
             yield return new WaitForSeconds(1f / playerAtkSpd);
             // DurabilityCheck();
