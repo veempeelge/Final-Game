@@ -5,6 +5,7 @@ using UnityEngine;
 public class WatGen_Behave : MonoBehaviour
 {
     private Inv_Item inv;
+    private Item_Slot slot;
     public GameObject itemButton;
 
     private void Start()
@@ -25,6 +26,7 @@ public class WatGen_Behave : MonoBehaviour
         {
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
+            slot = inv.GetComponent<Item_Slot>();
 
             for (int i = 0; i < inv.slots.Length; i++)
             {
@@ -34,16 +36,19 @@ public class WatGen_Behave : MonoBehaviour
                     inv.hasTrap = false;
                     inv.isFull[i] = true;
                     Instantiate(itemButton, inv.slots[i].transform, false);
+                    slot.count = 3;
+                    slot.RefreshCount();
                     break;
                 }
                 if (inv.isFull[i] == true)
                 {
                     inv.DiscardItem(i);
-
                     inv.hasWater = true;
                     inv.hasTrap = false;
                     inv.isFull[i] = true;
                     Instantiate(itemButton, inv.slots[i].transform, false);
+                    slot.count = 3;
+                    slot.RefreshCount();
                     break;
                 }
             }

@@ -10,6 +10,7 @@ TagManager:
   - BSpoon
   - Book
   - Trap
+  - Water
   layers:
   - Default
   - TransparentFX
