@@ -6,6 +6,7 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class Enemy : MonoBehaviour
 {
+    Waypoints waypoints;
     public float rotationSpeed = 1f;
     public float speed;
     public float health;
@@ -21,6 +22,8 @@ public class Enemy : MonoBehaviour
     private bool isKnockedBack;
     private Rigidbody rb;
 
+    private Transform[] points;
+    private GameObject targetPlayer;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -31,6 +34,13 @@ public class Enemy : MonoBehaviour
         players.AddRange(foundPlayers);
 
         StartCoroutine(FollowClosestPlayer());
+
+        targetPlayer = players[Random.Rangge(0,players.Count)]
+        if (targetPlayer != null)
+        {
+            waypoints = 
+        }
+
     }
 
     void Update()
@@ -183,4 +193,13 @@ public class Enemy : MonoBehaviour
             closestPlayer = randomPlayer.transform;
         }
     }
+
+
+    //randomize player
+    //add children to list
+    //randomize children
+    //get children posititon
+    //enemy go to children position
+    // enemy got to posititon -> go to player position
+
 }
