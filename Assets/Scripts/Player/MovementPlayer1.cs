@@ -11,6 +11,7 @@ public class MovementPlayer1 : MonoBehaviour
 
     public Attack attack;
     public AttackWater attackWater;
+    public Inv_Item item;
 
     public HPBar hpBar;
 
@@ -57,12 +58,13 @@ public class MovementPlayer1 : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip attackAir;
     [SerializeField] AudioClip gotItem;
-    private int waterCharge = 2;
+    private int waterCharge;
     private bool waterDecreased;
 
     void Start()
     {
-
+        item = GetComponent<Inv_Item>();
+        attackWater = GetComponentInChildren<AttackWater>();
         // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
         moveSpeed = gameManager.defSpeed;
@@ -79,9 +81,11 @@ public class MovementPlayer1 : MonoBehaviour
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
+        waterCharge = item.waterCount;
+
     }
 
-   
+
 
     void Update()
     {
@@ -205,6 +209,8 @@ public class MovementPlayer1 : MonoBehaviour
         {
             if (canAttack && !isImmune)
             {
+                Debug.Log("WaterSpray");
+
                 yield return new WaitForSeconds(1f / playerAtkSpd);
                // DurabilityCheck();
                 SprayWater();
@@ -276,11 +282,12 @@ public class MovementPlayer1 : MonoBehaviour
             {
                 waterDecreased = true;
                 waterCharge--;
+                item.UseWater();
                 Invoke(nameof(WaterDecreasedOnce), .2f);
                 Debug.Log("Decreased Water " + waterCharge);
-
+                waterCharge = item.waterCount;
             }
-           
+
 
         }
     }

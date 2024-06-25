@@ -22,6 +22,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] AudioClip gameplayMusic;
 
+    [SerializeField] HorizontalLayoutGroup hpBarGroup, weaponDurabilityGroup, itemSlots;
+
+
     public float
         defPlayerAtk,
         defPlayerAtkSpd,
@@ -62,6 +65,10 @@ public class GameManager : MonoBehaviour
         {
             player3UIs[i].SetActive(false);
         }
+
+        weaponDurabilityGroup.spacing = 1005f;
+        hpBarGroup.spacing = 847f;
+        itemSlots.spacing = 1475.6f;
     }
 
     void _3Players()
@@ -71,6 +78,10 @@ public class GameManager : MonoBehaviour
         player3alive = true;
         playersLeft = 3;
         StartGame();
+
+        weaponDurabilityGroup.spacing = 277f;
+        hpBarGroup.spacing = 159f;
+        itemSlots.spacing = 697f;
 
     }
         

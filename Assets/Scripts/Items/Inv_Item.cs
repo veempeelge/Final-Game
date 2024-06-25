@@ -7,7 +7,7 @@ using UnityEngine.UIElements;
 public class Inv_Item : MonoBehaviour
 {
     public bool[] isFull;
-    private Item_Slot slot;
+    public int waterCount;
     public GameObject[] slots;
     public bool hasTrap;
     public bool hasWater;
@@ -39,6 +39,7 @@ public class Inv_Item : MonoBehaviour
 
             Instantiate(itemButton, slots[i].transform, false);
             slot.count = 3;
+            waterCount = slot.count;
             hasWater = true;
             slot.RefreshCount();
         }
@@ -90,6 +91,7 @@ public class Inv_Item : MonoBehaviour
             if (hasWater)
             {
                 slot.count -= 1;
+                waterCount = slot.count;
                 GameObject water = Instantiate(WaterPrefab, shootPoint.position, shootPoint.rotation);
                 Rigidbody rb = water.GetComponent<Rigidbody>();
                 rb.velocity = shootPoint.forward * ShootSpeed;
@@ -106,6 +108,11 @@ public class Inv_Item : MonoBehaviour
                 Debug.Log("Player " + playerNumber + " does not have item");
             }
         }
+    }
+
+    public void UseWater()
+    {
+        waterCount--;
     }
 
     private void OnTriggerEnter(Collider other)

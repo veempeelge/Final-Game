@@ -144,6 +144,7 @@ Transform:
   - {fileID: 1943996628913988212}
   - {fileID: 3790993283981148952}
   - {fileID: 2503107028479568396}
+  - {fileID: 1207077836735609570}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &89363774519098392
@@ -236,6 +237,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attack: {fileID: 3702519029050940567}
+  attackWater: {fileID: 3465002074852084157}
+  item: {fileID: 7907916631004245537}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
   moveSpeed: 370
@@ -261,6 +264,7 @@ MonoBehaviour:
   playerKnockback: 3
   knockbackDirection: {x: 0, y: 0, z: 0}
   hitIndicator: {fileID: 8870809921074437542}
+  waterHitIndicatorPrefab: {fileID: 0}
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
@@ -312,17 +316,75 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20881d970f0b43d44b6fc7124cf7e822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFull: 00
+  isFull: 01
+  slot: {fileID: 0}
   slots:
   - {fileID: 0}
   hasTrap: 0
   hasWater: 0
+  itemButton: {fileID: 2748315866558779717, guid: 12f3b6321d6c3884483e7b9dabf212f1, type: 3}
   playerNumber: 2
   TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
   spawnDistance: 2
   WaterPrefab: {fileID: 605196136701530160, guid: 6c2b5e054581892479d73d03f4dac37c, type: 3}
   shootPoint: {fileID: 1813156598611903373}
   ShootSpeed: 10
+--- !u!1 &5528957078092803389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1207077836735609570}
+  - component: {fileID: 3465002074852084157}
+  m_Layer: 6
+  m_Name: Hit Water
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1207077836735609570
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528957078092803389}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.3275498, y: -0.5800003, z: 1.2189038}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1813156598611903373}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3465002074852084157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5528957078092803389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5515adfcaa007064ab98c91bdecbe0da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VisionConeMaterial: {fileID: 2100000, guid: f50b126a065313e4288b841a88d672cc, type: 2}
+  AttackRange: 7
+  AttackAngle: 70
+  VisionObstructingLayer:
+    serializedVersion: 2
+    m_Bits: 128
+  EnemyLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  VisionConeResolution: 120
+  isAttacking: 0
+  attackHit: []
 --- !u!1 &8243866465096240354
 GameObject:
   m_ObjectHideFlags: 0

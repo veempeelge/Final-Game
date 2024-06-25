@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 652954558116755525}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.56, z: 0}
+  m_LocalPosition: {x: 0, y: -0.42, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -319,6 +319,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 351205096366292130}
   attackWater: {fileID: 2203126585065645011}
+  item: {fileID: 0}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
   moveSpeed: 370
@@ -375,12 +376,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20881d970f0b43d44b6fc7124cf7e822, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isFull: 00
+  isFull: 01
+  slot: {fileID: 0}
   slots:
   - {fileID: 0}
   hasTrap: 0
   hasWater: 0
-  itemButton: {fileID: 0}
+  itemButton: {fileID: 2748315866558779717, guid: 12f3b6321d6c3884483e7b9dabf212f1, type: 3}
   playerNumber: 1
   TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
   spawnDistance: 15
@@ -584,7 +586,7 @@ Transform:
   m_GameObject: {fileID: 7742170750748787343}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.56, z: 0}
+  m_LocalPosition: {x: 0, y: -0.58, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

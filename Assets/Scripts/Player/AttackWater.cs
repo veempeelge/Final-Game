@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class AttackWater : MonoBehaviour
 {
-   [SerializeField] MovementPlayer1 playerStats;
+    MovementPlayer1 playerStats;
+    Inv_Item items;
     public Material VisionConeMaterial;
     public float AttackRange;
     public float AttackAngle;
@@ -19,6 +20,8 @@ public class AttackWater : MonoBehaviour
 
     void Start()
     {
+        playerStats = GetComponentInParent<MovementPlayer1>();
+        items = GetComponentInParent<Inv_Item>();
         var meshRenderer = gameObject.AddComponent<MeshRenderer>();
         meshRenderer.material = VisionConeMaterial;
         MeshFilter_ = gameObject.AddComponent<MeshFilter>();
