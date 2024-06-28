@@ -5,6 +5,7 @@ using UnityEngine;
 public class AttackWater : MonoBehaviour
 {
     MovementPlayer1 playerStats;
+    Enemy enemy;
     Inv_Item items;
     public Material VisionConeMaterial;
     public float AttackRange;
@@ -65,7 +66,6 @@ public class AttackWater : MonoBehaviour
             {
                 Vertices[i + 1] = VertForward * AttackRange;
 
-                
                 RaycastHit[] hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
 
                 bool enemyDetected = false;
@@ -75,15 +75,17 @@ public class AttackWater : MonoBehaviour
                     {
                         if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
                         {
-                            //SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
-                            playerStats.DecreaseWaterCharge();
-                            //Water effect to enemy
-                            hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater();
-
-                            enemyDetected = true;
-                            Debug.Log("Water hit enemy");
-                            break;  
-
+                            enemy = hit.collider.gameObject.GetComponent<Enemy>();
+                            if (enemy != null && enemy.targetPlayer == transform.parent.gameObject)
+                            {
+                                //SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
+                                playerStats.DecreaseWaterCharge();
+                                //Water effect to enemy
+                                hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater();
+                                enemyDetected = true;
+                                Debug.Log("Water hit enemy");
+                                break;
+                            }
                         }
                     }
                 }

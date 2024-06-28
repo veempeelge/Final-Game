@@ -271,6 +271,7 @@ MonoBehaviour:
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
+  waterCharge: 0
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -372,7 +373,7 @@ Transform:
   m_GameObject: {fileID: 2055866159180732287}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.38}
+  m_LocalPosition: {x: 0, y: 0, z: 1.87}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

@@ -58,15 +58,16 @@ public class MovementPlayer1 : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip attackAir;
     [SerializeField] AudioClip gotItem;
-    public int waterCharge;
+    private int waterCharge;
     private bool waterDecreased;
 
+    [SerializeField] Item_Slot slot;
+
     void Start()
-    {
-        waterCharge = 3; 
+    { 
         item = GetComponent<Inv_Item>();
         attackWater = GetComponentInChildren<AttackWater>();
-        waterCharge = item.waterCount;
+        waterCharge = slot.count;
         // weaponDurability = weaponCurrentDurability;
         //gameManager = GameManager.Instance;
         moveSpeed = gameManager.defSpeed;
@@ -83,8 +84,6 @@ public class MovementPlayer1 : MonoBehaviour
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
-    
-
     }
 
 
@@ -107,6 +106,11 @@ public class MovementPlayer1 : MonoBehaviour
        
         // Apply rotation to the player
         RotatePlayer();
+    }
+
+    public void StartCoroutine()
+    {
+        StartCoroutine(WaterAttack());
     }
 
     void MovePlayer()
@@ -207,11 +211,9 @@ public class MovementPlayer1 : MonoBehaviour
 
     private IEnumerator WaterAttack()
     {
-        while(waterCharge > 0)
+        while(slot.count > 0)
         {
-            waterCharge = item.waterCount;
-
-            Debug.Log("WaterSpray");
+            //Debug.Log("WaterSpray");
             yield return new WaitForSeconds(1f / playerAtkSpd);
             // DurabilityCheck();
             SprayWater();
@@ -219,6 +221,8 @@ public class MovementPlayer1 : MonoBehaviour
             waterHitIndicatorPrefab.SetActive(false);
             attackWater.isAttacking = false;
         }
+
+
     }
 
     void ResetStats()
@@ -276,12 +280,12 @@ public class MovementPlayer1 : MonoBehaviour
         {
             if (waterCharge >= 0)
             {
+                slot.count--;
+                slot.RefreshCount();
                 waterDecreased = true;
                 waterCharge--;
-                item.UseWater();
                 Invoke(nameof(WaterDecreasedOnce), .2f);
                 Debug.Log("Decreased Water " + waterCharge);
-                waterCharge = item.waterCount;
             }
 
 

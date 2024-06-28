@@ -26,7 +26,8 @@ public class WatGen_Behave : MonoBehaviour
         {
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
-            slot = inv.GetComponent<Item_Slot>();
+            mvP1.StartCoroutine();
+            slot = inv.slot;
 
             for (int i = 0; i < inv.slots.Length; i++)
             {

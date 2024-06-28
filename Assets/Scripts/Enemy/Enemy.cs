@@ -24,8 +24,11 @@ public class Enemy : MonoBehaviour
     private Rigidbody rb;
 
     private Transform[] points;
-    private GameObject targetPlayer;
+    public GameObject targetPlayer;
     private Transform targetLocation;
+    private Vector3 lastTargetPosition;
+
+    public bool CanHitWater = true;
 
     void Start()
     {
@@ -54,6 +57,7 @@ public class Enemy : MonoBehaviour
             {
                 int index = Random.Range(0, points.Length);
                 targetLocation = points[index];
+                lastTargetPosition = targetLocation.position;
                 Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
             }
             else
@@ -76,19 +80,27 @@ public class Enemy : MonoBehaviour
             if (distanceToWaypoint > stoppingDistance)
             {
                 agent.isStopped = false;
-                if (agent.isOnNavMesh)
+                if (agent.isOnNavMesh && (agent.destination != targetLocation.position))
                 {
                     agent.SetDestination(targetLocation.position);
+                }
+
+                // Make the enemy face the direction it is moving
+                Vector3 velocity = agent.velocity;
+                if (velocity.sqrMagnitude > 0.01f) // Check if the velocity is significant
+                {
+                    Quaternion lookRotation = Quaternion.LookRotation(velocity.normalized);
+                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
                 }
             }
             else
             {
                 targetLocation = targetPlayer.transform; // Move towards player after reaching waypoint
+                if (agent.destination != targetLocation.position)
+                {
+                    agent.SetDestination(targetLocation.position);
+                }
             }
-
-            Vector3 direction = (targetLocation.position - transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
         }
     }
 
@@ -127,7 +139,19 @@ public class Enemy : MonoBehaviour
     public void OnPlayerHitWater()
     {
         Debug.Log("Target another player");
-        ChangeTarget();
+        if (CanHitWater)
+        {
+            ChangeTarget();
+            CanHitWater = false;
+            Invoke(nameof(CanHitWaterCooldown), 1f);
+
+        }
+
+    }
+
+    void CanHitWaterCooldown()
+    {
+        CanHitWater = true;
     }
 
     void CanTakeDamage()
@@ -166,7 +190,6 @@ public class Enemy : MonoBehaviour
 
     public void ChangeTarget()
     {
-        // Randomize the target player and waypoints
         TargetPlayer();
     }
 }

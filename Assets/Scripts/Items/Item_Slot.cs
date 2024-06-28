@@ -22,7 +22,6 @@ public class Item_Slot : MonoBehaviour
     public void RefreshCount()
     {
         countText.text = count.ToString();
-        count = player1.waterCharge;
     }
 
     // Update is called once per frame

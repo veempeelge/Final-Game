@@ -92,7 +92,6 @@ Transform:
   - {fileID: 3690449245081619672}
   - {fileID: 4229934183752655876}
   - {fileID: 6061382779364625822}
-  - {fileID: 3986249990140741691}
   m_Father: {fileID: 4033561378793552965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3093976667359442554
@@ -237,6 +236,7 @@ Transform:
   m_LocalScale: {x: 1, y: 0.9998, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
+  - {fileID: 3986249990140741691}
   - {fileID: 8845034228155940700}
   - {fileID: 3081034578272363153}
   - {fileID: 4325464279085123043}
@@ -384,6 +384,7 @@ MonoBehaviour:
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
+  slot: {fileID: 0}
 --- !u!114 &8765643986522246321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -412,7 +413,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFull: 01
-  waterCount: 0
   slots:
   - {fileID: 0}
   hasTrap: 0
@@ -424,6 +424,7 @@ MonoBehaviour:
   WaterPrefab: {fileID: 605196136701530160, guid: 6c2b5e054581892479d73d03f4dac37c, type: 3}
   shootPoint: {fileID: 4033561378793552965}
   ShootSpeed: 10
+  slot: {fileID: 0}
 --- !u!114 &8472402042287266789
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -702,7 +703,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 8845034228155940700}
+  m_Father: {fileID: 4033561378793552965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2203126585065645011
 MonoBehaviour:

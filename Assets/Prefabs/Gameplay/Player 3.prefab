@@ -166,6 +166,7 @@ MonoBehaviour:
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
+  waterCharge: 0
 --- !u!65 &5019004439554845855
 BoxCollider:
   m_ObjectHideFlags: 0
