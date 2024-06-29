@@ -220,8 +220,12 @@ public class MovementPlayer1 : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             waterHitIndicatorPrefab.SetActive(false);
             attackWater.isAttacking = false;
+           
         }
-
+        for (int i = 0; i < item.slots.Length; i++)
+        {
+            item.DiscardItem(i);
+        }
 
     }
 
@@ -283,7 +287,7 @@ public class MovementPlayer1 : MonoBehaviour
                 slot.count--;
                 slot.RefreshCount();
                 waterDecreased = true;
-                waterCharge--;
+               // waterCharge--;
                 Invoke(nameof(WaterDecreasedOnce), .2f);
                 Debug.Log("Decreased Water " + waterCharge);
             }
