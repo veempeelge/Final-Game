@@ -26,7 +26,7 @@ public class WatGen_Behave : MonoBehaviour
         {
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
-            mvP1.StartWaterCoroutine();
+           
           
             slot = inv.slot;
 
@@ -40,6 +40,7 @@ public class WatGen_Behave : MonoBehaviour
                     Instantiate(itemButton, inv.slots[i].transform, false);
                     slot.count = 3;
                     slot.RefreshCount();
+                    mvP1.StartWaterCoroutine();
                     break;
                 }
                 if (inv.isFull[i] == true)
@@ -51,6 +52,7 @@ public class WatGen_Behave : MonoBehaviour
                     Instantiate(itemButton, inv.slots[i].transform, false);
                     slot.count = 3;
                     slot.RefreshCount();
+                    mvP1.StartWaterCoroutine();
                     break;
                 }
             }
