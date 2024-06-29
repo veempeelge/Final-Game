@@ -22,6 +22,8 @@ public class Item_Slot : MonoBehaviour
     public void RefreshCount()
     {
         countText.text = count.ToString();
+        bool textActive = count > 1;
+        countText.gameObject.SetActive(textActive);
     }
 
     // Update is called once per frame
