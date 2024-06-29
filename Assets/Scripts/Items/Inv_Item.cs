@@ -91,6 +91,7 @@ public class Inv_Item : MonoBehaviour
             if (hasWater)
             {
                 slot.count -= 1;
+                slot.RefreshCount();
                 GameObject water = Instantiate(WaterPrefab, shootPoint.position, shootPoint.rotation);
                 Rigidbody rb = water.GetComponent<Rigidbody>();
                 rb.velocity = shootPoint.forward * ShootSpeed;

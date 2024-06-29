@@ -26,7 +26,8 @@ public class WatGen_Behave : MonoBehaviour
         {
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
-            mvP1.StartCoroutine();
+            mvP1.StartWaterCoroutine();
+          
             slot = inv.slot;
 
             for (int i = 0; i < inv.slots.Length; i++)

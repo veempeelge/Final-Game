@@ -108,8 +108,10 @@ public class MovementPlayer1 : MonoBehaviour
         RotatePlayer();
     }
 
-    public void StartCoroutine()
+    public void StartWaterCoroutine()
     {
+        Debug.Log("StartWaterCoroutine called");
+        SprayWater();
         StartCoroutine(WaterAttack());
     }
 
@@ -214,7 +216,7 @@ public class MovementPlayer1 : MonoBehaviour
         while(slot.count > 0)
         {
             //Debug.Log("WaterSpray");
-            yield return new WaitForSeconds(1f / playerAtkSpd);
+            yield return new WaitForSeconds(1);
             // DurabilityCheck();
             SprayWater();
             yield return new WaitForSeconds(.1f);
@@ -226,6 +228,8 @@ public class MovementPlayer1 : MonoBehaviour
         {
             item.DiscardItem(i);
         }
+        waterHitIndicatorPrefab.SetActive(false);
+        yield break;
 
     }
 
