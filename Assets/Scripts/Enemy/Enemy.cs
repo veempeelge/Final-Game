@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -14,7 +15,7 @@ public class Enemy : MonoBehaviour
     public float enemyAttack = 2;
     public float knockbackDuration = 0.2f;
     public float updateSpeed = 0.1f;
-    public float stoppingDistance = 2.0f; // Set an appropriate stopping distance
+    public float stoppingDistance = 1.0f;
 
     private NavMeshAgent agent;
     private List<GameObject> players = new List<GameObject>();
@@ -30,6 +31,7 @@ public class Enemy : MonoBehaviour
 
     public bool CanHitWater = true;
 
+    [SerializeField] TMP_Text chasingWho;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -59,6 +61,21 @@ public class Enemy : MonoBehaviour
                 targetLocation = points[index];
                 lastTargetPosition = targetLocation.position;
                 Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
+                chasingWho.text = $"{targetPlayer.name}, {index}";
+                if (targetPlayer.name == "Player 1")
+                {
+                    chasingWho.color = Color.blue;
+                }
+
+                if (targetPlayer.name == "Player 2")
+                {
+                    chasingWho.color = Color.red;
+                }
+
+                if (targetPlayer.name == "Player 3")
+                {
+                    chasingWho.color = Color.green;
+                }
             }
             else
             {
