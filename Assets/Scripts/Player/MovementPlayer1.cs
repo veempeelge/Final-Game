@@ -90,21 +90,24 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Update()
     {
-        // Get input from the user
+       
         float moveX = Input.GetAxis(horizontalAxis);
         float moveZ = Input.GetAxis(verticalAxis);
 
-        // Create a vector based on input
+
         movement = new Vector3(moveX, 0, moveZ);
     }
 
     void FixedUpdate()
     {
-        // Apply movement to the rigidbody
         MovePlayer();
 
+        if (rb.velocity.y < 0)
+        {
+            rb.velocity += Physics.gravity * Time.fixedDeltaTime;
+        }
        
-        // Apply rotation to the player
+
         RotatePlayer();
     }
 
