@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.32107174, g: 0.21133253, b: 0.40438062, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -205,14 +204,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 329495508}
     m_Modifications:
-    - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-    - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2442472988939480371, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -2248,22 +2239,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5629809397856195324, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
-      propertyPath: mainMenuMusic
-      value: 
-      objectReference: {fileID: 8300000, guid: 124a059999d4c30448c336d5514a848f, type: 3}
-    - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
-      propertyPath: m_Volume
-      value: 0.357
-      objectReference: {fileID: 0}
-    - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
-      propertyPath: m_PlayOnAwake
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6542339495809465830, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
       propertyPath: m_Name
       value: Sound Manager
@@ -2396,10 +2371,6 @@ PrefabInstance:
     - target: {fileID: 7370643732235933415, guid: d89f569484b340248b6d58b40a304142, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8688221298200617673, guid: d89f569484b340248b6d58b40a304142, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 51.367188
       objectReference: {fileID: 0}
     - target: {fileID: 9030791907311899105, guid: d89f569484b340248b6d58b40a304142, type: 3}
       propertyPath: m_Name
@@ -2880,17 +2851,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 305303987}
     - target: {fileID: 6913502428722615162, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: spawnDistance
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6913502428722615162, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: slots.Array.data[0]
       value: 
       objectReference: {fileID: 305303986}
-    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 973213166}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: slot
       value: 
@@ -2940,17 +2903,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4033561378793552965, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
   m_PrefabInstance: {fileID: 973213160}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &973213166 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6913502428722615162, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-  m_PrefabInstance: {fileID: 973213160}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 973213161}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20881d970f0b43d44b6fc7124cf7e822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &978141063 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 584595460911349068, guid: 0d81ab9923ea80e4f8d65bf717a889e3, type: 3}
@@ -3475,10 +3427,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 51716192}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: item
-      value: 
-      objectReference: {fileID: 1090048499}
-    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: slot
       value: 
       objectReference: {fileID: 708724061}
@@ -3494,18 +3442,10 @@ PrefabInstance:
       propertyPath: wpDurabilityBar
       value: 
       objectReference: {fileID: 1694208199}
-    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: waterHitIndicatorPrefab
-      value: 
-      objectReference: {fileID: 1361380167}
     - target: {fileID: 7907916631004245537, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: slot
       value: 
       objectReference: {fileID: 708724061}
-    - target: {fileID: 7907916631004245537, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: spawnDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 7907916631004245537, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: slots.Array.data[0]
       value: 
@@ -3539,17 +3479,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1813156598611903373, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
   m_PrefabInstance: {fileID: 1090048493}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1090048499 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7907916631004245537, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-  m_PrefabInstance: {fileID: 1090048493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1090048494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20881d970f0b43d44b6fc7124cf7e822, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1130957899
 GameObject:
   m_ObjectHideFlags: 0
@@ -4121,11 +4050,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
---- !u!1 &1361380167 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5528957078092803389, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-  m_PrefabInstance: {fileID: 1090048493}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1380685187 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4805178416077357763, guid: d89f569484b340248b6d58b40a304142, type: 3}
@@ -5626,10 +5550,6 @@ PrefabInstance:
       propertyPath: slot
       value: 
       objectReference: {fileID: 1724423746}
-    - target: {fileID: 5967956825654241390, guid: b7b39965c622a03499abc0c754b32068, type: 3}
-      propertyPath: spawnDistance
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5967956825654241390, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: slots.Array.data[0]
       value: 
