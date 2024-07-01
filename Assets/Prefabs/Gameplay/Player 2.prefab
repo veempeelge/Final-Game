@@ -241,7 +241,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 3702519029050940567}
   attackWater: {fileID: 3465002074852084157}
-  item: {fileID: 0}
+  item: {fileID: 7907916631004245537}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
   moveSpeed: 370
@@ -271,7 +271,7 @@ MonoBehaviour:
   wpDurabilityBar: {fileID: 0}
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
-  waterCharge: 0
+  slot: {fileID: 0}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -321,7 +321,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFull: 01
-  waterCount: 0
   slots:
   - {fileID: 0}
   hasTrap: 0
@@ -329,10 +328,11 @@ MonoBehaviour:
   itemButton: {fileID: 2748315866558779717, guid: 12f3b6321d6c3884483e7b9dabf212f1, type: 3}
   playerNumber: 2
   TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
-  spawnDistance: 2
+  spawnDistance: 1
   WaterPrefab: {fileID: 605196136701530160, guid: 6c2b5e054581892479d73d03f4dac37c, type: 3}
   shootPoint: {fileID: 1813156598611903373}
   ShootSpeed: 10
+  slot: {fileID: 0}
 --- !u!114 &4974225077081144546
 MonoBehaviour:
   m_ObjectHideFlags: 0

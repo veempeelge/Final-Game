@@ -354,7 +354,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attack: {fileID: 351205096366292130}
   attackWater: {fileID: 2203126585065645011}
-  item: {fileID: 0}
+  item: {fileID: 6913502428722615162}
   hpBar: {fileID: 0}
   gameManager: {fileID: 0}
   moveSpeed: 370
@@ -420,7 +420,7 @@ MonoBehaviour:
   itemButton: {fileID: 2748315866558779717, guid: 12f3b6321d6c3884483e7b9dabf212f1, type: 3}
   playerNumber: 1
   TrapPrefab: {fileID: 8768839664058390504, guid: 5db2256f329928e4eaf5786c9651cc1f, type: 3}
-  spawnDistance: 15
+  spawnDistance: 1
   WaterPrefab: {fileID: 605196136701530160, guid: 6c2b5e054581892479d73d03f4dac37c, type: 3}
   shootPoint: {fileID: 4033561378793552965}
   ShootSpeed: 10
