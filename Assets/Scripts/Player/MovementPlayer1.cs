@@ -102,11 +102,11 @@ public class MovementPlayer1 : MonoBehaviour
     {
         MovePlayer();
 
-        if (rb.velocity.y < 0)
+        if (rb.velocity.y < -.1f)
         {
             rb.velocity += Physics.gravity * Time.fixedDeltaTime;
         }
-       
+
 
         RotatePlayer();
     }
@@ -125,6 +125,8 @@ public class MovementPlayer1 : MonoBehaviour
         rb.AddForce(normalizedMovement * moveSpeed * 5, ForceMode.Acceleration);
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
+
+       
     }
 
     void RotatePlayer()
