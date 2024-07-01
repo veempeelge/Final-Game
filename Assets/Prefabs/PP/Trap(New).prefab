@@ -120,6 +120,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemButton: {fileID: 2748315866558779717, guid: a6d719c3a415529438ac18a07607bbef, type: 3}
+  trapped: {fileID: 0}
+  isOn: 0
 --- !u!54 &3868585023879346206
 Rigidbody:
   m_ObjectHideFlags: 0

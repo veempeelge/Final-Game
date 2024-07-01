@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Trap_Behave : MonoBehaviour
 {
@@ -8,13 +9,53 @@ public class Trap_Behave : MonoBehaviour
     public GameObject itemButton;
     [SerializeField] AudioClip trapped;
 
+
+    public bool isOn;
+    private MovementPlayer1 mvP1;
+
+    MeshFilter mesh;
+
+    public void Start()
+    {
+        mesh = GetComponent<MeshFilter>();
+        isOn = false;
+    }
+
+    private IEnumerator SetTrap()
+    {
+        GameObject tempCapsule = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+        Mesh capsuleMesh = tempCapsule.GetComponent<MeshFilter>().sharedMesh;
+
+        Destroy(tempCapsule);
+
+        if (capsuleMesh != null)
+        {
+            mesh.sharedMesh = capsuleMesh;
+            yield return new WaitForSeconds(1);
+            isOn = true;
+        }
+        else
+        {
+            Debug.LogError("Failed to create or find the Capsule mesh.");
+        }
+    }
+
     private void OnCollisionEnter(Collision other)
     {
         if (other.gameObject.tag == "Player")
         {
-            MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
+            mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
 
-            if (gameObject.tag == "Trap")
+            if (isOn == false)
+            {
+                StartCoroutine(SetTrap());
+            }
+            else
+            {
+                StartCoroutine(RestrictMovement());
+            }
+
+ /*           if (gameObject.tag == "Trap")
             {
                 Debug.Log("Player Trapped!");
             }
@@ -45,12 +86,16 @@ public class Trap_Behave : MonoBehaviour
                         break;
                     }
                 }
-            }
+            }*/
         }
-       
-
-       
-
     }
 
+    private IEnumerator RestrictMovement()
+    {
+        mvP1.enabled = false;
+
+        yield return new WaitForSeconds(3f);
+        mvP1.enabled = true;
+        Destroy(gameObject);
+    }
 }
