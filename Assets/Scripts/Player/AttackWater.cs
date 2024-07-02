@@ -83,7 +83,7 @@ public class AttackWater : MonoBehaviour
                                 //Water effect to enemy
                                 hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater();
                                 enemyDetected = true;
-                                Debug.Log("Water hit enemy");
+                              //  Debug.Log("Water hit enemy");
                                 break;
                             }
                         }

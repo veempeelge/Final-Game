@@ -155,12 +155,12 @@ public class Enemy : MonoBehaviour
 
     public void OnPlayerHitWater()
     {
-        Debug.Log("Target another player");
+        //Debug.Log("Target another player");
         if (CanHitWater)
         {
             ChangeTarget();
             CanHitWater = false;
-            Invoke(nameof(CanHitWaterCooldown), 1f);
+            Invoke(nameof(CanHitWaterCooldown), .2f);
 
         }
 

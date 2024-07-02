@@ -31,7 +31,7 @@ public class Water_Behave : MonoBehaviour
         }
         else
         {
-            Debug.Log("Collided with: " + other.gameObject.name);
+           //Debug.Log("Collided with: " + other.gameObject.name);
            // Destroy(gameObject);
         }
     }
