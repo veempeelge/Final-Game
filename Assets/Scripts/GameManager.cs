@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -33,10 +34,13 @@ public class GameManager : MonoBehaviour
         defPlayerKnockback,
         defSpeed,
         defAcc;
+    private bool gameStart;
+    private bool gameOver;
 
     // Start is called before the first frame update
     void Start()
     {
+        gameStart = true;
         SoundManager.Instance.PlayMusic(gameplayMusic); 
         UIPlayerHP.SetActive(false);
         UIPlayerSelect.SetActive(true);
@@ -49,13 +53,35 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+       if (gameStart)
+       {
+          if (Input.GetKeyDown(KeyCode.Alpha2))
+          {
+                _2Players();
+          }
+
+          if (Input.GetKeyDown(KeyCode.Alpha3))
+          {
+                _3Players();
+          }
+        }
+
+       if (gameOver)
+        {
+            if (Input.GetKeyDown(KeyCode.R))
+            {
+                SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+            }
+
+            if (Input.GetKeyDown(KeyCode.E))
+            {
+                SceneManager.LoadScene("Main Menu");
+            }
+        }
     }
 
     void _2Players()
     {
-        
-
         player1alive = true;
         player2alive = true;
         player3alive = false;
@@ -70,8 +96,8 @@ public class GameManager : MonoBehaviour
 
         weaponDurability2.position = new Vector3(1684.65f, weaponDurability2.position.y, weaponDurability2.position.z);
         hpBar2.position = new Vector3(1648.833f, hpBar2.position.y, hpBar2.position.z);
-        item2.position = new Vector3(1591.637f,item2.position.y, item2.position.z);
-
+        item2.position = new Vector3(1591.637f, item2.position.y, item2.position.z);
+        gameStart = false;
     }
 
     void _3Players()
@@ -81,8 +107,11 @@ public class GameManager : MonoBehaviour
         player3alive = true;
         playersLeft = 3;
         StartGame();
+
+        gameStart = false;
+
     }
-        
+
     public void Player1Dead()
     {
         playersLeft--;
@@ -129,6 +158,7 @@ public class GameManager : MonoBehaviour
     }
     void GameOver()
     {
+        gameOver = true;
         Debug.Log("GameOver");
         UIGameOver.SetActive(true);
         Time.timeScale = 0;

@@ -63,6 +63,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     public Item_Slot slot;
 
+     private bool isWaterAttacking = false;
+
     void Start()
     { 
         item = GetComponent<Inv_Item>();
@@ -78,12 +80,21 @@ public class MovementPlayer1 : MonoBehaviour
         playerAtkWidth = gameManager.defPlayerAtkWidth;
         playerKnockback = gameManager.defPlayerKnockback;
         StartCoroutine(AutoAttack());
-        StartCoroutine(WaterAttack());
+      
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
 
         currentHP = MaxHP;
         rb = GetComponent<Rigidbody>();
+
+        if (waterCharge == 0)
+        {
+            waterHitIndicatorPrefab.SetActive(false);
+        }
+        else
+        {
+                StartCoroutine(WaterAttack());
+        }
     }
 
 
@@ -113,9 +124,12 @@ public class MovementPlayer1 : MonoBehaviour
 
     public void StartWaterCoroutine()
     {
-        Debug.Log("StartWaterCoroutine called");
         SprayWater();
-        StartCoroutine(WaterAttack());
+        Debug.Log("StartWaterCoroutine called");
+        if (!isWaterAttacking)
+        {
+            StartCoroutine(WaterAttack());
+        }
     }
 
     void MovePlayer()
@@ -125,8 +139,6 @@ public class MovementPlayer1 : MonoBehaviour
         rb.AddForce(normalizedMovement * moveSpeed * 5, ForceMode.Acceleration);
 
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
-
-       
     }
 
     void RotatePlayer()
@@ -220,6 +232,7 @@ public class MovementPlayer1 : MonoBehaviour
     {
         while(slot.count > 0)
         {
+            isWaterAttacking = true;
             //Debug.Log("WaterSpray");
             yield return new WaitForSeconds(1);
             // DurabilityCheck();
@@ -227,13 +240,13 @@ public class MovementPlayer1 : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             waterHitIndicatorPrefab.SetActive(false);
             attackWater.isAttacking = false;
-           
         }
         for (int i = 0; i < item.slots.Length; i++)
         {
             item.DiscardItem(i);
         }
         waterHitIndicatorPrefab.SetActive(false);
+        isWaterAttacking = false;
         yield break;
 
     }

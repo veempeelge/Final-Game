@@ -228,6 +228,7 @@ MonoBehaviour:
   shootPoint: {fileID: 3967379743690294942}
   ShootSpeed: 10
   slot: {fileID: 0}
+  initialWaterCount: 0
 --- !u!114 &4485936031857900198
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +545,7 @@ Transform:
   m_GameObject: {fileID: 3725966104261298964}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.49}
+  m_LocalPosition: {x: 0, y: 0, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -575,7 +576,7 @@ Transform:
   m_GameObject: {fileID: 4687187328166149296}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: 0, z: -1.47}
+  m_LocalPosition: {x: -0, y: 0, z: -5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -607,7 +608,7 @@ Transform:
   m_GameObject: {fileID: 6099775096710475535}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32, y: -0.78, z: 0}
+  m_LocalPosition: {x: -0.26, y: 0.16, z: -0.06}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

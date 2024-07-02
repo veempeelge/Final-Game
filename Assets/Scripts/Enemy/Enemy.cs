@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
     public bool CanHitWater = true;
 
     [SerializeField] TMP_Text chasingWho;
+
+    public GameObject previousTarget;
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -48,7 +50,15 @@ public class Enemy : MonoBehaviour
     {
         if (players.Count == 0) return;
 
-        targetPlayer = players[Random.Range(0, players.Count)];
+        GameObject newTarget = players[Random.Range(0, players.Count)];
+
+        // Ensure the new target is different from the current targetPlayer
+        while (newTarget == targetPlayer)
+        {
+            newTarget = players[Random.Range(0, players.Count)];
+        }
+
+        targetPlayer = newTarget;
 
         if (targetPlayer != null)
         {
@@ -66,13 +76,11 @@ public class Enemy : MonoBehaviour
                 {
                     chasingWho.color = Color.blue;
                 }
-
-                if (targetPlayer.name == "Player 2")
+                else if (targetPlayer.name == "Player 2")
                 {
                     chasingWho.color = Color.red;
                 }
-
-                if (targetPlayer.name == "Player 3")
+                else if (targetPlayer.name == "Player 3")
                 {
                     chasingWho.color = Color.green;
                 }
@@ -87,6 +95,7 @@ public class Enemy : MonoBehaviour
             Debug.Log("Target player not found.");
         }
     }
+
 
     void Update()
     {

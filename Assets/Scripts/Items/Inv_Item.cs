@@ -26,7 +26,7 @@ public class Inv_Item : MonoBehaviour
 
     private bool isMovementRestricted = false;
     public Item_Slot slot;
-
+    public int initialWaterCount;
 
     private void Start()
     {
@@ -38,10 +38,20 @@ public class Inv_Item : MonoBehaviour
         {
             Item_Slot slot = slots[i].GetComponent<Item_Slot>();
 
-            Instantiate(itemButton, slots[i].transform, false);
-            slot.count = 3;
-            hasWater = true;
-            slot.RefreshCount();
+            
+            slot.count = initialWaterCount;
+            if (slot.count > 0)
+            {
+                Instantiate(itemButton, slots[i].transform, false);
+                hasWater = true;
+                slot.RefreshCount();
+            }
+            else
+            {
+                hasWater = false;
+                slot.RefreshCount();
+            }
+           
         }
     }
 

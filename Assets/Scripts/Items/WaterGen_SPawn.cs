@@ -9,6 +9,12 @@ public class WaterGen_SPawn : MonoBehaviour
     public float Timer = 15f;
 
     // Start is called before the first frame update
+
+    private void Start()
+    {
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+    }
     private void Update()
     {
         Timer -= Time.deltaTime;

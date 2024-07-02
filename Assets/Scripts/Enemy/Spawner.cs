@@ -37,7 +37,7 @@ public class Spawner : MonoBehaviour
                 //spawnedEnemy.transform.parent = enemiesParent;
              }
               
-                Debug.Log($"{enemiesToSpawn} enemies spawned at: " + randomSpawnPoint.position);
+            //Debug.Log($"{enemiesToSpawn} enemies spawned at: " + randomSpawnPoint.position);
        
             //Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             //Instantiate(enemy, randomSpawnPoint.position, Quaternion.identity);

@@ -6,7 +6,7 @@ using TMPro;
 public class Item_Slot : MonoBehaviour
 {
     public TMP_Text countText;
-    public int count = 3;
+    public int count;
 
     private Inv_Item inv;
     public int i;
