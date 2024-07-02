@@ -5,7 +5,7 @@ using UnityEngine;
 public class WatGen_Behave : MonoBehaviour
 {
     private Inv_Item inv;
-    private Item_Slot slot;
+    [SerializeField] Item_Slot slot;
     public GameObject itemButton;
 
     private void Start()
@@ -26,8 +26,6 @@ public class WatGen_Behave : MonoBehaviour
         {
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
-           
-          
             slot = inv.slot;
 
             for (int i = 0; i < inv.slots.Length; i++)

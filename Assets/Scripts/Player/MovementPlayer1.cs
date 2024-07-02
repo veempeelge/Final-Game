@@ -61,7 +61,7 @@ public class MovementPlayer1 : MonoBehaviour
     private int waterCharge;
     private bool waterDecreased;
 
-    [SerializeField] Item_Slot slot;
+    public Item_Slot slot;
 
     void Start()
     { 
