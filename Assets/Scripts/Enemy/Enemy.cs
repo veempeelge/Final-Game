@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
+[RequireComponent(typeof(NavMeshAgent), typeof(LineRenderer))]
 public class Enemy : MonoBehaviour
 {
     Waypoints waypoints;
@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     private bool wasAttacked;
     private bool isKnockedBack;
     private Rigidbody rb;
+    private LineRenderer lineRenderer;
 
     private Transform[] points;
     public GameObject targetPlayer;
@@ -34,16 +35,34 @@ public class Enemy : MonoBehaviour
     [SerializeField] TMP_Text chasingWho;
 
     public GameObject previousTarget;
+    float distanceToWaypoint;
+
+    public bool TargettedSamePlayer { get; private set; }
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
         rb = GetComponent<Rigidbody>();
+        lineRenderer = GetComponent<LineRenderer>();
+        ConfigureLineRenderer();
 
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(foundPlayers);
 
         ChangeTarget();
+        StartCoroutine(ChangePointRegularly());
+
+    }
+
+    void ConfigureLineRenderer()
+    {
+        lineRenderer.positionCount = 0;
+        lineRenderer.startWidth = 0.1f;
+        lineRenderer.endWidth = 0.1f;
+        lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+        lineRenderer.startColor = Color.red;
+        lineRenderer.endColor = Color.red;
     }
 
     void TargetPlayer()
@@ -97,11 +116,50 @@ public class Enemy : MonoBehaviour
     }
 
 
+    void TargetSamePlayer()
+    {
+        if (players.Count == 0) return;
+
+        if (targetPlayer != null)
+        {
+            waypoints = targetPlayer.GetComponent<Waypoints>();
+            points = waypoints?.points;
+
+            if (points != null && points.Length > 0)
+            {
+                int index = Random.Range(0, points.Length);
+                targetLocation = points[index];
+                lastTargetPosition = targetLocation.position;
+                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
+                chasingWho.text = $"{targetPlayer.name}, {index}";
+                if (targetPlayer.name == "Player 1")
+                {
+                    chasingWho.color = Color.blue;
+                }
+                else if (targetPlayer.name == "Player 2")
+                {
+                    chasingWho.color = Color.red;
+                }
+                else if (targetPlayer.name == "Player 3")
+                {
+                    chasingWho.color = Color.green;
+                }
+            }
+            else
+            {
+                Debug.Log("No waypoints found for the target player.");
+            }
+        }
+        else
+        {
+            Debug.Log("Target player not found.");
+        }
+    }
     void Update()
     {
         if (!isKnockedBack && targetLocation != null)
         {
-            float distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
+            distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
 
             if (distanceToWaypoint > stoppingDistance)
             {
@@ -111,22 +169,67 @@ public class Enemy : MonoBehaviour
                     agent.SetDestination(targetLocation.position);
                 }
 
-                // Make the enemy face the direction it is moving
+            
                 Vector3 velocity = agent.velocity;
-                if (velocity.sqrMagnitude > 0.01f) // Check if the velocity is significant
+                if (velocity.sqrMagnitude > 0.01f) 
                 {
                     Quaternion lookRotation = Quaternion.LookRotation(velocity.normalized);
                     transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
                 }
+
+                UpdateLineRenderer();
+
             }
             else
             {
-                targetLocation = targetPlayer.transform; // Move towards player after reaching waypoint
+                targetLocation = targetPlayer.transform;
                 if (agent.destination != targetLocation.position)
                 {
                     agent.SetDestination(targetLocation.position);
                 }
+
+                UpdateLineRenderer();
             }
+
+            if (targetLocation == targetPlayer.transform)
+            {
+                if (distanceToWaypoint > .4f)
+                {
+                    Invoke(nameof(CheckIfStillFar), 3f);
+                    TargettedSamePlayer = false;
+                }
+            }
+        }
+    }
+
+    void CheckIfStillFar()
+    {
+        if (distanceToWaypoint > .4f && !TargettedSamePlayer)
+        {
+            TargetSamePlayer();
+            TargettedSamePlayer = true;
+        }
+    }
+    
+    IEnumerator ChangePointRegularly()
+    {
+        while (targetLocation != targetPlayer.transform)
+        {
+            TargetSamePlayer();
+            yield return new WaitForSeconds(4);
+        }
+    }
+
+    void UpdateLineRenderer()
+    {
+        if (agent.path.corners.Length > 1)
+        {
+            lineRenderer.positionCount = agent.path.corners.Length;
+            lineRenderer.SetPositions(agent.path.corners);
+        }
+        else
+        {
+            lineRenderer.positionCount = 0;
         }
     }
 

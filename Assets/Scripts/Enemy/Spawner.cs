@@ -5,6 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     public float timeBetweenSpawns;
+    public float initialSpawn;
     float nextSpawnTime;
 
     public GameObject[] spawnableEnemies;
@@ -19,6 +20,8 @@ public class Spawner : MonoBehaviour
     void Start()
     {
         nextSpawnTime = Time.time + timeBetweenSpawns;
+        Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        SpawnEnemiesAt(randomSpawnPoint);
     }
 
     // Update is called once per frame
