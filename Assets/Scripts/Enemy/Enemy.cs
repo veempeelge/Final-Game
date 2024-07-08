@@ -34,6 +34,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] TMP_Text chasingWho;
 
     public GameObject previousTarget;
+
     void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -67,11 +68,20 @@ public class Enemy : MonoBehaviour
 
             if (points != null && points.Length > 0)
             {
-                int index = Random.Range(0, points.Length);
-                targetLocation = points[index];
+                // Determine if the enemy should take the nearest or farthest path
+                if (ShouldTakeFarthestPath())
+                {
+                    targetLocation = GetFarthestPoint(targetPlayer.transform.position);
+                }
+                else
+                {
+                    int index = Random.Range(0, points.Length);
+                    targetLocation = points[index];
+                }
+
                 lastTargetPosition = targetLocation.position;
-                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
-                chasingWho.text = $"{targetPlayer.name}, {index}";
+                Debug.Log($"Target player: {targetPlayer.name}, Target position: {targetLocation.position}");
+                chasingWho.text = $"{targetPlayer.name}, {targetLocation.position}";
                 if (targetPlayer.name == "Player 1")
                 {
                     chasingWho.color = Color.blue;
@@ -96,6 +106,38 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private bool ShouldTakeFarthestPath()
+    {
+        // Implement your logic here to decide if the enemy should take the farthest path
+        return Random.value > 0.5f;
+    }
+
+    private Transform GetFarthestPoint(Vector3 destination)
+    {
+        Vector3 farthestPoint = Vector3.zero;
+        float maxDistance = 0f;
+
+        // Generate random points and choose the farthest valid one
+        for (int i = 0; i < 10; i++)
+        {
+            Vector3 randomDirection = Random.insideUnitSphere * 20f; // Adjust the multiplier based on your needs
+            randomDirection += destination;
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(randomDirection, out hit, 20f, NavMesh.AllAreas))
+            {
+                float distance = Vector3.Distance(hit.position, destination);
+                if (distance > maxDistance)
+                {
+                    maxDistance = distance;
+                    farthestPoint = hit.position;
+                }
+            }
+        }
+
+        GameObject farthestWaypoint = new GameObject("FarthestWaypoint");
+        farthestWaypoint.transform.position = farthestPoint;
+        return farthestWaypoint.transform;
+    }
 
     void Update()
     {
@@ -164,15 +206,12 @@ public class Enemy : MonoBehaviour
 
     public void OnPlayerHitWater()
     {
-        //Debug.Log("Target another player");
         if (CanHitWater)
         {
             ChangeTarget();
             CanHitWater = false;
             Invoke(nameof(CanHitWaterCooldown), .2f);
-
         }
-
     }
 
     void CanHitWaterCooldown()
