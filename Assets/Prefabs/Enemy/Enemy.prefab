@@ -185,6 +185,7 @@ MonoBehaviour:
   targetPlayer: {fileID: 0}
   CanHitWater: 1
   chasingWho: {fileID: 2001055034089014074}
+  previousTarget: {fileID: 0}
 --- !u!54 &795731848101562649
 Rigidbody:
   m_ObjectHideFlags: 0

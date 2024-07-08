@@ -2,22 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.AI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour
+public class EnemyScriptBaru : MonoBehaviour
 {
-    Waypoints waypoints;
-
     public float rotationSpeed = 1f;
-    public float speed;
+    public float speed = 3.5f;
     public float health;
     public float enemyAttack = 2;
     public float knockbackDuration = 0.2f;
     public float updateSpeed = 0.1f;
     public float stoppingDistance = 1.0f;
 
-    private NavMeshAgent agent;
     private List<GameObject> players = new List<GameObject>();
     private Transform closestPlayer;
     private bool wasAttacked;
@@ -26,18 +21,14 @@ public class Enemy : MonoBehaviour
 
     private Transform[] points;
     public GameObject targetPlayer;
-    private Transform targetLocation;
-    private Vector3 lastTargetPosition;
+    private int currentWaypointIndex = 0;
 
     public bool CanHitWater = true;
 
     [SerializeField] TMP_Text chasingWho;
 
-    public GameObject previousTarget;
     void Start()
     {
-        agent = GetComponent<NavMeshAgent>();
-        agent.stoppingDistance = stoppingDistance;
         rb = GetComponent<Rigidbody>();
 
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
@@ -62,16 +53,14 @@ public class Enemy : MonoBehaviour
 
         if (targetPlayer != null)
         {
-            waypoints = targetPlayer.GetComponent<Waypoints>();
+            Enemy_Waypoints waypoints = targetPlayer.GetComponent<Enemy_Waypoints>();
             points = waypoints?.points;
 
             if (points != null && points.Length > 0)
             {
-                int index = Random.Range(0, points.Length);
-                targetLocation = points[index];
-                lastTargetPosition = targetLocation.position;
-                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
-                chasingWho.text = $"{targetPlayer.name}, {index}";
+                currentWaypointIndex = 0; // Start at the first waypoint
+                Debug.Log($"Target player: {targetPlayer.name}, Waypoint count: {points.Length}");
+                chasingWho.text = $"{targetPlayer.name}";
                 if (targetPlayer.name == "Player 1")
                 {
                     chasingWho.color = Color.blue;
@@ -96,36 +85,35 @@ public class Enemy : MonoBehaviour
         }
     }
 
-
     void Update()
     {
-        if (!isKnockedBack && targetLocation != null)
+        if (isKnockedBack || points == null || points.Length == 0)
+            return;
+
+        MoveTowardsWaypoint();
+    }
+
+    private void MoveTowardsWaypoint()
+    {
+        Transform targetWaypoint = points[currentWaypointIndex];
+        Vector3 direction = (targetWaypoint.position - transform.position).normalized;
+        Vector3 move = direction * speed * Time.deltaTime;
+        rb.MovePosition(transform.position + move);
+
+        // Rotate towards the waypoint
+        if (direction.sqrMagnitude > 0.01f)
         {
-            float distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+        }
 
-            if (distanceToWaypoint > stoppingDistance)
+        // Check if the enemy is close enough to the waypoint
+        if (Vector3.Distance(transform.position, targetWaypoint.position) < stoppingDistance)
+        {
+            currentWaypointIndex++;
+            if (currentWaypointIndex >= points.Length)
             {
-                agent.isStopped = false;
-                if (agent.isOnNavMesh && (agent.destination != targetLocation.position))
-                {
-                    agent.SetDestination(targetLocation.position);
-                }
-
-                // Make the enemy face the direction it is moving
-                Vector3 velocity = agent.velocity;
-                if (velocity.sqrMagnitude > 0.01f) // Check if the velocity is significant
-                {
-                    Quaternion lookRotation = Quaternion.LookRotation(velocity.normalized);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-                }
-            }
-            else
-            {
-                targetLocation = targetPlayer.transform; // Move towards player after reaching waypoint
-                if (agent.destination != targetLocation.position)
-                {
-                    agent.SetDestination(targetLocation.position);
-                }
+                currentWaypointIndex = 0; // Loop back to the first waypoint or you can handle differently
             }
         }
     }
@@ -164,15 +152,12 @@ public class Enemy : MonoBehaviour
 
     public void OnPlayerHitWater()
     {
-        //Debug.Log("Target another player");
         if (CanHitWater)
         {
             ChangeTarget();
             CanHitWater = false;
             Invoke(nameof(CanHitWaterCooldown), .2f);
-
         }
-
     }
 
     void CanHitWaterCooldown()
@@ -193,7 +178,6 @@ public class Enemy : MonoBehaviour
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)
     {
         float elapsedTime = 0f;
-        agent.enabled = false; // Disable NavMeshAgent during knockback
 
         rb.AddForce(direction * knockbackForce * 0.6f, ForceMode.Impulse);
 
@@ -204,7 +188,6 @@ public class Enemy : MonoBehaviour
         }
 
         rb.velocity = Vector3.zero; // Stop any remaining velocity
-        agent.enabled = true; // Re-enable NavMeshAgent
 
         if (health <= 0)
         {
