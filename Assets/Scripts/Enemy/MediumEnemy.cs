@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(LineRenderer))]
-public class Enemy : MonoBehaviour
+public class MediumEnemy : MonoBehaviour
 {
     Waypoints waypoints;
 
@@ -38,9 +38,6 @@ public class Enemy : MonoBehaviour
     float distanceToWaypoint;
 
     public bool TargettedSamePlayer { get; private set; }
-    public bool hardEnemy;
-    public bool mediumEnemy;
-    public bool easyEnemy;
 
     void Start()
     {
@@ -84,21 +81,8 @@ public class Enemy : MonoBehaviour
 
         if (targetPlayer != null)
         {
-            if (easyEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.points;
-            }
-            if (mediumEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsMedium;
-            }
-            if (hardEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsHard;
-            }
+            waypoints = targetPlayer.GetComponent<Waypoints>();
+            points = waypoints?.pointsMedium;
 
             if (points != null && points.Length > 0)
             {
@@ -138,21 +122,8 @@ public class Enemy : MonoBehaviour
 
         if (targetPlayer != null)
         {
-            if (easyEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.points;
-            }
-            if (mediumEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsMedium;
-            }
-            if (hardEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsHard;
-            }
+            waypoints = targetPlayer.GetComponent<Waypoints>();
+            points = waypoints?.pointsMedium;
 
             if (points != null && points.Length > 0)
             {
@@ -302,7 +273,7 @@ public class Enemy : MonoBehaviour
 
     public void OnPlayerHitWater()
     {
-        //Debug.Log("Target another player");
+        Debug.Log("Target another player Medium ");
         if (CanHitWater)
         {
             ChangeTarget();

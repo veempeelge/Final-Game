@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4697399040361872342}
   - component: {fileID: 2474756121709877028}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: enemy hard
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,7 +84,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 60.5, y: 17, z: 41.32}
-  m_LocalScale: {x: 0.8, y: 2.3633602, z: 0.8}
+  m_LocalScale: {x: 1, y: 2.9542003, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 3366364148391680563}
@@ -120,7 +120,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14b65c7543808594980c00f00aada2a5, type: 2}
+  - {fileID: -6478536213147159724, guid: a1a9696a17b962349a988fb03ab82308, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -186,9 +186,9 @@ MonoBehaviour:
   CanHitWater: 1
   chasingWho: {fileID: 2001055034089014074}
   previousTarget: {fileID: 0}
-  hardEnemy: 0
+  hardEnemy: 1
   mediumEnemy: 0
-  easyEnemy: 1
+  easyEnemy: 0
 --- !u!54 &795731848101562649
 Rigidbody:
   m_ObjectHideFlags: 0

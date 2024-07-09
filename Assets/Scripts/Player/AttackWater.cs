@@ -86,6 +86,7 @@ public class AttackWater : MonoBehaviour
                               //  Debug.Log("Water hit enemy");
                                 break;
                             }
+                            
                         }
                     }
                 }

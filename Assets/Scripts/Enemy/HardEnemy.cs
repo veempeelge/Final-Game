@@ -5,9 +5,9 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(LineRenderer))]
-public class Enemy : MonoBehaviour
+public class HardEnemy : MonoBehaviour
 {
-    Waypoints waypoints;
+ 
 
     public float rotationSpeed = 1f;
     public float speed;
@@ -25,7 +25,6 @@ public class Enemy : MonoBehaviour
     private Rigidbody rb;
     private LineRenderer lineRenderer;
 
-    private Transform[] points;
     public GameObject targetPlayer;
     private Transform targetLocation;
     private Vector3 lastTargetPosition;
@@ -38,9 +37,6 @@ public class Enemy : MonoBehaviour
     float distanceToWaypoint;
 
     public bool TargettedSamePlayer { get; private set; }
-    public bool hardEnemy;
-    public bool mediumEnemy;
-    public bool easyEnemy;
 
     void Start()
     {
@@ -54,7 +50,6 @@ public class Enemy : MonoBehaviour
         players.AddRange(foundPlayers);
 
         ChangeTarget();
-        StartCoroutine(ChangePointRegularly());
 
     }
 
@@ -84,41 +79,21 @@ public class Enemy : MonoBehaviour
 
         if (targetPlayer != null)
         {
-            if (easyEnemy)
+            targetLocation = targetPlayer.transform;
+            lastTargetPosition = targetLocation.position;
+            Debug.Log($"Target player: {targetPlayer.name}");
+            chasingWho.text = $"{targetPlayer.name}";
+            if (targetPlayer.name == "Player 1")
             {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.points;
+                chasingWho.color = Color.blue;
             }
-            if (mediumEnemy)
+            else if (targetPlayer.name == "Player 2")
             {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsMedium;
+                chasingWho.color = Color.red;
             }
-            if (hardEnemy)
+            else if (targetPlayer.name == "Player 3")
             {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsHard;
-            }
-
-            if (points != null && points.Length > 0)
-            {
-                int index = Random.Range(0, points.Length);
-                targetLocation = points[index];
-                lastTargetPosition = targetLocation.position;
-                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
-                chasingWho.text = $"{targetPlayer.name}, {index}";
-                if (targetPlayer.name == "Player 1")
-                {
-                    chasingWho.color = Color.blue;
-                }
-                else if (targetPlayer.name == "Player 2")
-                {
-                    chasingWho.color = Color.red;
-                }
-                else if (targetPlayer.name == "Player 3")
-                {
-                    chasingWho.color = Color.green;
-                }
+                chasingWho.color = Color.green;
             }
             else
             {
@@ -132,58 +107,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    void TargetSamePlayer()
-    {
-        if (players.Count == 0) return;
-
-        if (targetPlayer != null)
-        {
-            if (easyEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.points;
-            }
-            if (mediumEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsMedium;
-            }
-            if (hardEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsHard;
-            }
-
-            if (points != null && points.Length > 0)
-            {
-                int index = Random.Range(0, points.Length);
-                targetLocation = points[index];
-                lastTargetPosition = targetLocation.position;
-                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
-                chasingWho.text = $"{targetPlayer.name}, {index}";
-                if (targetPlayer.name == "Player 1")
-                {
-                    chasingWho.color = Color.blue;
-                }
-                else if (targetPlayer.name == "Player 2")
-                {
-                    chasingWho.color = Color.red;
-                }
-                else if (targetPlayer.name == "Player 3")
-                {
-                    chasingWho.color = Color.green;
-                }
-            }
-            else
-            {
-                Debug.Log("No waypoints found for the target player.");
-            }
-        }
-        else
-        {
-            Debug.Log("Target player not found.");
-        }
-    }
+   
     void Update()
     {
         if (!isKnockedBack && targetLocation != null)
@@ -219,41 +143,12 @@ public class Enemy : MonoBehaviour
 
                 UpdateLineRenderer();
             }
-
-
-
-            if (targetLocation == targetPlayer.transform)
-            {
-                if (distanceToWaypoint > .4f)
-                {
-                    Invoke(nameof(CheckIfStillFar), 3f);
-                    TargettedSamePlayer = false;
-                }
-            }
         }
     }
 
-    void CheckIfStillFar()
-    {
-        if (targetLocation == targetPlayer.transform)
-        {
-            if (distanceToWaypoint > .4f && !TargettedSamePlayer)
-            {
-                TargetSamePlayer();
-                TargettedSamePlayer = true;
-            }
-        }
-        
-    }
     
-    IEnumerator ChangePointRegularly()
-    {
-        while (targetLocation != targetPlayer.transform)
-        {
-            TargetSamePlayer();
-            yield return new WaitForSeconds(4);
-        }
-    }
+    
+    
 
     void UpdateLineRenderer()
     {

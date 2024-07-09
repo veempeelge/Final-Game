@@ -68,7 +68,7 @@ GameObject:
   - component: {fileID: 4697399040361872342}
   - component: {fileID: 2474756121709877028}
   m_Layer: 3
-  m_Name: Enemy
+  m_Name: enemy medium 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,7 +120,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 14b65c7543808594980c00f00aada2a5, type: 2}
+  - {fileID: -3846018093981099296, guid: 1300380e79eb82f448beafb0deab5a6c, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,8 +187,8 @@ MonoBehaviour:
   chasingWho: {fileID: 2001055034089014074}
   previousTarget: {fileID: 0}
   hardEnemy: 0
-  mediumEnemy: 0
-  easyEnemy: 1
+  mediumEnemy: 1
+  easyEnemy: 0
 --- !u!54 &795731848101562649
 Rigidbody:
   m_ObjectHideFlags: 0
