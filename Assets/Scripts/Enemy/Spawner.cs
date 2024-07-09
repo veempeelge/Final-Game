@@ -21,9 +21,14 @@ public class Spawner : MonoBehaviour
     {
         nextSpawnTime = Time.time + timeBetweenSpawns;
         Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        SpawnEnemiesAt(randomSpawnPoint);
+        Invoke(nameof(apalah), initialSpawn);
     }
 
+    void apalah()
+    {
+        Transform randomSpawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        SpawnEnemiesAt(randomSpawnPoint);
+    }
     // Update is called once per frame
     void Update()
     {
