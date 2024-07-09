@@ -79,7 +79,7 @@ public class MovementPlayer1 : MonoBehaviour
         playerRange = gameManager.defPlayerRange;
         playerAtkWidth = gameManager.defPlayerAtkWidth;
         playerKnockback = gameManager.defPlayerKnockback;
-        StartCoroutine(AutoAttack());
+      // StartCoroutine(AutoAttack());
       
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
@@ -214,7 +214,7 @@ public class MovementPlayer1 : MonoBehaviour
             {
                 yield return new WaitForSeconds(1f / playerAtkSpd);
                 DurabilityCheck();
-                AttackEnemy();
+               // AttackEnemy();
                 yield return new WaitForSeconds(.1f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;

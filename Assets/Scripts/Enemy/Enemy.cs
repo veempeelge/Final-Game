@@ -191,6 +191,8 @@ public class Enemy : MonoBehaviour
                 UpdateLineRenderer();
             }
 
+
+
             if (targetLocation == targetPlayer.transform)
             {
                 if (distanceToWaypoint > .4f)
@@ -204,11 +206,15 @@ public class Enemy : MonoBehaviour
 
     void CheckIfStillFar()
     {
-        if (distanceToWaypoint > .4f && !TargettedSamePlayer)
+        if (targetLocation == targetPlayer.transform)
         {
-            TargetSamePlayer();
-            TargettedSamePlayer = true;
+            if (distanceToWaypoint > .4f && !TargettedSamePlayer)
+            {
+                TargetSamePlayer();
+                TargettedSamePlayer = true;
+            }
         }
+        
     }
     
     IEnumerator ChangePointRegularly()

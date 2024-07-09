@@ -30,10 +30,14 @@ public class PP_Spawn : MonoBehaviour
 
     private void SpawnPP()
     {
-        Debug.Log("Spawned");
-        int weaponIndex = UnityEngine.Random.Range(0, weaponList.Count -1);
-        Vector3 _SpawnPos = new Vector3(Random.Range(bottomLeftCorner.transform.position.x, topRightCorner.transform.position.x), 8, Random.Range(bottomLeftCorner.transform.position.z, topRightCorner.transform.position.z));
-        Instantiate(weaponList[weaponIndex],_SpawnPos, Quaternion.identity);
+        if (weaponList.Count > 0)
+        {
+            Debug.Log("Spawned");
+            int weaponIndex = UnityEngine.Random.Range(0, weaponList.Count - 1);
+            Vector3 _SpawnPos = new Vector3(Random.Range(bottomLeftCorner.transform.position.x, topRightCorner.transform.position.x), 8, Random.Range(bottomLeftCorner.transform.position.z, topRightCorner.transform.position.z));
+            Instantiate(weaponList[weaponIndex], _SpawnPos, Quaternion.identity);
+
+        }
 
     }
 }
