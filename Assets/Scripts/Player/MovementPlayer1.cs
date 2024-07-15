@@ -79,7 +79,7 @@ public class MovementPlayer1 : MonoBehaviour
         playerRange = gameManager.defPlayerRange;
         playerAtkWidth = gameManager.defPlayerAtkWidth;
         playerKnockback = gameManager.defPlayerKnockback;
-      // StartCoroutine(AutoAttack());
+       // StartCoroutine(AutoAttack());
       
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
@@ -158,6 +158,7 @@ public class MovementPlayer1 : MonoBehaviour
         currentHP -= damage;
         hpBar.UpdateBar(currentHP);
         //Debug.Log("Got Hit, HP Remaining = " + currentHP);
+        StartCoroutine(KnockEnemy());
         
         if (currentHP <= 0)
         {
@@ -214,7 +215,7 @@ public class MovementPlayer1 : MonoBehaviour
             {
                 yield return new WaitForSeconds(1f / playerAtkSpd);
                 DurabilityCheck();
-               // AttackEnemy();
+              //  AttackEnemy();
                 yield return new WaitForSeconds(.1f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
@@ -228,6 +229,18 @@ public class MovementPlayer1 : MonoBehaviour
         wpDurabilityBar.SetActive(false);
     }
 
+    IEnumerator KnockEnemy()
+    {
+            this.enabled = false;
+            yield return new WaitForSeconds(.5f);
+            this.enabled = true;
+            attack.isAttacking = true;
+            hitIndicator.SetActive(true);
+            yield return new WaitForSeconds(.1f);
+            hitIndicator.SetActive(false);
+            attack.isAttacking = false;
+            //yield return null;
+    }
     private IEnumerator WaterAttack()
     {
         while(slot.count > 0)
@@ -309,9 +322,11 @@ public class MovementPlayer1 : MonoBehaviour
                 slot.count--;
                 slot.RefreshCount();
                 waterDecreased = true;
-               // waterCharge--;
+              // waterCharge--;
                 Invoke(nameof(WaterDecreasedOnce), .2f);
                 Debug.Log("Decreased Water " + waterCharge);
+
+                hpBar.UpdateWater(3, slot.count);
             }
 
 

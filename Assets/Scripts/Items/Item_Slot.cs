@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class Item_Slot : MonoBehaviour
 {
@@ -10,8 +11,13 @@ public class Item_Slot : MonoBehaviour
 
     private Inv_Item inv;
     public int i;
+    public int maxCount = 3;
 
     [SerializeField] MovementPlayer1 player1;
+
+  //  [SerializeField] Image WaterCurrentBar;
+
+
 
     // Start is called before the first frame update
     private void Start()
@@ -21,9 +27,10 @@ public class Item_Slot : MonoBehaviour
 
     public void RefreshCount()
     {
-        countText.text = count.ToString();
-        bool textActive = count > 1;
-        countText.gameObject.SetActive(textActive);
+       countText.text = count.ToString();
+       bool textActive = count > 1;
+       countText.gameObject.SetActive(textActive);
+     //  WaterCurrentBar.fillAmount = count / maxCount;
     }
 
     // Update is called once per frame

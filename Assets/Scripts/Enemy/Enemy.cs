@@ -198,9 +198,9 @@ public class Enemy : MonoBehaviour
         if (!isKnockedBack && targetLocation != null)
         {
             NavMeshHit hit;
-            if (!NavMesh.SamplePosition(targetLocation.position, out hit, 1.0f, NavMesh.AllAreas))
+            if (!NavMesh.SamplePosition(targetLocation.position, out hit, 10f, NavMesh.AllAreas))
             {
-                ChangeTarget(); // Target location is out of bounds, change target
+                TargetSamePlayer();
                 return;
             }
             distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
