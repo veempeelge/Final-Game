@@ -52,6 +52,6 @@ public class HPBar : MonoBehaviour
     {
         currentWater = updatedCurrentWater;
         maxWater = updatedFullWater;
-       // waterCurrent.fillAmount = updatedCurrentWater / updatedFullWater;   
+        waterCurrent.fillAmount = updatedCurrentWater / updatedFullWater;   
     }
 }

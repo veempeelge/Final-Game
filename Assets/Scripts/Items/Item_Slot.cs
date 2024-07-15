@@ -14,6 +14,7 @@ public class Item_Slot : MonoBehaviour
     public int maxCount = 3;
 
     [SerializeField] MovementPlayer1 player1;
+    [SerializeField] Image waterCurrentBar;
 
   //  [SerializeField] Image WaterCurrentBar;
 
@@ -30,7 +31,8 @@ public class Item_Slot : MonoBehaviour
        countText.text = count.ToString();
        bool textActive = count > 1;
        countText.gameObject.SetActive(textActive);
-     //  WaterCurrentBar.fillAmount = count / maxCount;
+      // Debug.Log(count + "/" + maxCount + count/maxCount);
+       waterCurrentBar.fillAmount = (float)count / (float)maxCount;
     }
 
     // Update is called once per frame

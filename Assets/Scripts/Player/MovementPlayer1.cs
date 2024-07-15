@@ -326,7 +326,7 @@ public class MovementPlayer1 : MonoBehaviour
                 Invoke(nameof(WaterDecreasedOnce), .2f);
                 Debug.Log("Decreased Water " + waterCharge);
 
-                hpBar.UpdateWater(3, slot.count);
+              //  hpBar.UpdateWater(3, slot.count);
             }
 
 
