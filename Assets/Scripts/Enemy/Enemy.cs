@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,8 +43,11 @@ public class Enemy : MonoBehaviour
     public bool mediumEnemy;
     public bool easyEnemy;
 
+    NavMeshSurface navmesh;
+
     void Start()
     {
+       // navmesh = GameManager.Instance.nav;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
         rb = GetComponent<Rigidbody>();
@@ -54,7 +58,7 @@ public class Enemy : MonoBehaviour
         players.AddRange(foundPlayers);
 
         ChangeTarget();
-       // StartCoroutine(ChangePointRegularly());
+       //    StartCoroutine(ChangePointRegularly());
 
     }
 
@@ -186,8 +190,19 @@ public class Enemy : MonoBehaviour
     }
     void Update()
     {
+        if (targetPlayer == null)
+        {
+            ChangeTarget();
+        }
+
         if (!isKnockedBack && targetLocation != null)
         {
+            NavMeshHit hit;
+            if (!NavMesh.SamplePosition(targetLocation.position, out hit, 1.0f, NavMesh.AllAreas))
+            {
+                ChangeTarget(); // Target location is out of bounds, change target
+                return;
+            }
             distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
 
             if (distanceToWaypoint > stoppingDistance)
@@ -220,8 +235,6 @@ public class Enemy : MonoBehaviour
                 UpdateLineRenderer();
             }
 
-
-
             if (targetLocation == targetPlayer.transform)
             {
                 if (distanceToWaypoint > .4f)
@@ -230,20 +243,29 @@ public class Enemy : MonoBehaviour
                     TargettedSamePlayer = false;
                 }
             }
+
+            
         }
     }
 
     void CheckIfStillFar()
     {
-        if (targetLocation == targetPlayer.transform)
+        if (targetPlayer == null)
         {
-            if (distanceToWaypoint > .4f && !TargettedSamePlayer)
+            ChangeTarget();
+        }
+
+        if (targetPlayer!= null && targetLocation == targetPlayer.transform)
+        {
+            if (distanceToWaypoint > 2f && !TargettedSamePlayer)
             {
                 TargetSamePlayer();
                 TargettedSamePlayer = true;
             }
         }
+
         
+
     }
     
     IEnumerator ChangePointRegularly()

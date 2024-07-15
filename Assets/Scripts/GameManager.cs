@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.AI;
+using Unity.AI.Navigation;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
+    public NavMeshSurface nav;
 
     int playersLeft;
     bool player1alive, player2alive, player3alive;
