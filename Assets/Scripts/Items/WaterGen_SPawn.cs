@@ -12,8 +12,12 @@ public class WaterGen_SPawn : MonoBehaviour
 
     private void Start()
     {
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            Transform spawnPoint = spawnPoints[i];
+            Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+
+        }
     }
     private void Update()
     {
@@ -27,7 +31,11 @@ public class WaterGen_SPawn : MonoBehaviour
 
     private void SpawnWaterGen()
     {
-        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+        for (int i = 0; i < spawnPoints.Length; i++)
+        {
+            Transform spawnPoint = spawnPoints[i];
+            Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
+
+        }
     }
 }

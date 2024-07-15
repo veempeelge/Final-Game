@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         players.AddRange(foundPlayers);
 
         ChangeTarget();
-        StartCoroutine(ChangePointRegularly());
+       // StartCoroutine(ChangePointRegularly());
 
     }
 

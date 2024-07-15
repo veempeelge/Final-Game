@@ -10,7 +10,7 @@ public class WatGen_Behave : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(Delete());
+        //StartCoroutine(Delete());
     }
 
     private IEnumerator Delete()
@@ -39,7 +39,10 @@ public class WatGen_Behave : MonoBehaviour
                     slot.count = 3;
                     slot.RefreshCount();
                     mvP1.StartWaterCoroutine();
+                    Destroy(gameObject);
+
                     break;
+                    
                 }
                 if (inv.isFull[i] == true)
                 {
@@ -51,6 +54,8 @@ public class WatGen_Behave : MonoBehaviour
                     slot.count = 3;
                     slot.RefreshCount();
                     mvP1.StartWaterCoroutine();
+                    Destroy(gameObject);
+
                     break;
                 }
             }
