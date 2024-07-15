@@ -238,7 +238,7 @@ public class MovementPlayer1 : MonoBehaviour
             // DurabilityCheck();
             SprayWater();
             yield return new WaitForSeconds(.1f);
-            waterHitIndicatorPrefab.SetActive(false);
+           // waterHitIndicatorPrefab.SetActive(false);
             attackWater.isAttacking = false;
         }
         for (int i = 0; i < item.slots.Length; i++)

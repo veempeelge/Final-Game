@@ -12,9 +12,9 @@ public class WaterGen_SPawn : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < spawnPoints.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            Transform spawnPoint = spawnPoints[i];
+            Transform spawnPoint = spawnPoints[Random.Range(0,spawnPoints.Length)];
             Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
 
         }
@@ -25,15 +25,15 @@ public class WaterGen_SPawn : MonoBehaviour
         if (Timer <= 0f)
         {
             SpawnWaterGen();
-            Timer = 15;
+            Timer = 30;
         }
     }
 
     private void SpawnWaterGen()
     {
-        for (int i = 0; i < spawnPoints.Length; i++)
+        for (int i = 0; i < 3; i++)
         {
-            Transform spawnPoint = spawnPoints[i];
+            Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
             Instantiate(prefabToSpawn, spawnPoint.position, spawnPoint.rotation);
 
         }
