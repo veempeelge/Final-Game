@@ -512,37 +512,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6007842975535074719, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
   m_PrefabInstance: {fileID: 1353658663}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &21605721
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 21605722}
-  m_Layer: 0
-  m_Name: spawn1 (6)
-  m_TagString: Untagged
-  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &21605722
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 21605721}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -11.84, y: 0, z: -24.94}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 921380750}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &36444717
 GameObject:
   m_ObjectHideFlags: 0
@@ -18005,7 +17974,7 @@ PrefabInstance:
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.data[7]
       value: 
-      objectReference: {fileID: 21605722}
+      objectReference: {fileID: 0}
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.data[8]
       value: 
@@ -18013,7 +17982,7 @@ PrefabInstance:
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.data[9]
       value: 
-      objectReference: {fileID: 21605722}
+      objectReference: {fileID: 0}
     - target: {fileID: 7479157258093615025, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.29
@@ -18052,9 +18021,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2115324860386119418, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       insertIndex: -1
       addedObject: {fileID: 327132558}
-    - targetCorrespondingSourceObject: {fileID: 2115324860386119418, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 21605722}
     - targetCorrespondingSourceObject: {fileID: 2115324860386119418, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       insertIndex: -1
       addedObject: {fileID: 247748698}

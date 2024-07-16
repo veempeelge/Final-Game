@@ -322,15 +322,17 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void OnPlayerHitWater()
+    public void OnPlayerHitWater(Transform Player)
     {
+        Vector3 Direction = Player.position - transform.position;
         //Debug.Log("Target another player");
         if (CanHitWater)
         {
-            ChangeTarget();
             CanHitWater = false;
-            Invoke(nameof(CanHitWaterCooldown), .2f);
+            Invoke(nameof(CanHitWaterCooldown), 2f);
+            ChangeTarget();
 
+           
         }
 
     }

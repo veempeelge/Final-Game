@@ -25,6 +25,7 @@ public class AttackWater : MonoBehaviour
     [SerializeField] Image HitPlayerCooldown;
     float _hitPlayerCooldown = 5f;
     private float timer;
+    private MovementPlayer1 playerStatsOtherEnemy;
 
     void Start()
     {
@@ -99,10 +100,19 @@ public class AttackWater : MonoBehaviour
                             enemy = hit.collider.gameObject.GetComponent<Enemy>();
                             if (enemy != null && enemy.targetPlayer == transform.parent.gameObject)
                             {
+
+                                playerStats.enabled = false;
+                                //playthrow animation
+                                //play throw sfx
+                                Invoke(nameof(WalkCooldown), .5f);
+
                                 //SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
                                 playerStats.DecreaseWaterCharge();
                                 //Water effect to enemy
-                                hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater();
+
+                                hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater(playerStats.transform);
+                                hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
+
                                 enemyDetected = true;
                               //  Debug.Log("Water hit enemy");
                                 break;
@@ -115,11 +125,12 @@ public class AttackWater : MonoBehaviour
                     {
                         if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
                         {
-                            playerStats = hit.collider.gameObject.GetComponent<MovementPlayer1>();
+                            playerStatsOtherEnemy = hit.collider.gameObject.GetComponent<MovementPlayer1>();
                             player = GetComponentInParent<MovementPlayer1>();
                             if (playerStats != null)
                             {
-                                playerStats.HitByOtherPlayer(this.gameObject);
+
+                                playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject);
                                 if (canDecrease)
                                 {
                                     player.DecreaseWaterCharge();
@@ -161,6 +172,11 @@ public class AttackWater : MonoBehaviour
     void CoolDownIndicator()
     {
         timer = 0;
+    }
+
+    void WalkCooldown()
+    {
+        playerStats.enabled = true;
     }
 
     private void OnDisable()
