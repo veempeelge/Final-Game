@@ -17949,7 +17949,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.size
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.data[2]
@@ -17974,7 +17974,7 @@ PrefabInstance:
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.data[7]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 247748698}
     - target: {fileID: 6725157270093705602, guid: 77bb3accb32e43649996d8aa90afc981, type: 3}
       propertyPath: spawnPoints.Array.data[8]
       value: 
