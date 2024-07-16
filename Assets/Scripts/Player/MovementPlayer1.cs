@@ -2,8 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
-
+using UnityEngine.UI;
 
 public class MovementPlayer1 : MonoBehaviour
 {
@@ -64,6 +65,7 @@ public class MovementPlayer1 : MonoBehaviour
     public Item_Slot slot;
 
      private bool isWaterAttacking = false;
+    private bool canhitbyotherplayer = true;
 
     void Start()
     { 
@@ -95,6 +97,8 @@ public class MovementPlayer1 : MonoBehaviour
         {
                 StartCoroutine(WaterAttack());
         }
+
+
     }
 
 
@@ -141,6 +145,28 @@ public class MovementPlayer1 : MonoBehaviour
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
     }
 
+    public void HitByOtherPlayer(GameObject otherPlayer)
+    {
+        Vector3 direction = (otherPlayer.transform.position - transform.position).normalized;
+
+        if (canhitbyotherplayer)
+        {
+            rb.AddForce( -direction * 10, ForceMode.Impulse);
+
+            canhitbyotherplayer = false;
+            this.enabled = false;
+            StartCoroutine(EnableMovement());
+        }
+        
+    }
+
+    IEnumerator EnableMovement()
+    {
+        yield return new WaitForSeconds(1);
+        this.enabled = true;
+        yield return new WaitForSeconds(4f);
+        canhitbyotherplayer = true;
+    }
     void RotatePlayer()
     {
         if (movement != Vector3.zero)

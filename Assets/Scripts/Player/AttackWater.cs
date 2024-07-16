@@ -1,6 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AttackWater : MonoBehaviour
 {
@@ -18,9 +21,16 @@ public class AttackWater : MonoBehaviour
     public bool isAttacking;
 
     [SerializeField] AudioClip[] attackHit;
+    private bool canDecrease = true;
+    [SerializeField] Image HitPlayerCooldown;
+    float _hitPlayerCooldown = 5f;
+    private float timer;
 
     void Start()
     {
+        timer = 0;
+       // HitPlayerCooldown.gameObject.SetActive(true);
+
         playerStats = GetComponentInParent<MovementPlayer1>();
         items = GetComponentInParent<Inv_Item>();
         var meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -35,6 +45,16 @@ public class AttackWater : MonoBehaviour
         AttackRange = 7f;
         AttackAngle = 1f;
         DrawVisionCone();
+
+        if (timer < _hitPlayerCooldown)
+        {
+            timer += Time.deltaTime;
+            HitPlayerCooldown.fillAmount = timer / _hitPlayerCooldown;
+        }
+        else
+        {
+            return;
+        }
     }
 
     void DrawVisionCone() // This method creates the vision cone mesh
@@ -56,6 +76,7 @@ public class AttackWater : MonoBehaviour
             Vector3 offset = Vector3.zero;
 
             RaycastHit visionHit;
+            MovementPlayer1 player;
             bool obstructed = Physics.Raycast(transform.position + offset, RaycastDirection, out visionHit, AttackRange, VisionObstructingLayer);
 
             if (obstructed)
@@ -89,6 +110,30 @@ public class AttackWater : MonoBehaviour
                             
                         }
                     }
+
+                    if (hit.collider.gameObject.CompareTag("Player"))
+                    {
+                        if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
+                        {
+                            playerStats = hit.collider.gameObject.GetComponent<MovementPlayer1>();
+                            player = GetComponentInParent<MovementPlayer1>();
+                            if (playerStats != null)
+                            {
+                                playerStats.HitByOtherPlayer(this.gameObject);
+                                if (canDecrease)
+                                {
+                                    player.DecreaseWaterCharge();
+                                    canDecrease = false;
+                                    Invoke(nameof(canDecreaseCooldown), _hitPlayerCooldown);
+                                    CoolDownIndicator();
+
+                                }
+
+                                break;
+                            }
+
+                        }
+                    }
                 }
             }
 
@@ -106,5 +151,27 @@ public class AttackWater : MonoBehaviour
         VisionConeMesh.vertices = Vertices;
         VisionConeMesh.triangles = triangles;
         MeshFilter_.mesh = VisionConeMesh;
+    }
+
+    private void canDecreaseCooldown()
+    {
+        canDecrease = true;
+    }
+
+    void CoolDownIndicator()
+    {
+        timer = 0;
+    }
+
+    private void OnDisable()
+    {
+        timer = 0;
+        HitPlayerCooldown.gameObject.SetActive(false);
+    }
+
+    private void OnEnable()
+    {
+        HitPlayerCooldown.gameObject.SetActive(true);
+
     }
 }
