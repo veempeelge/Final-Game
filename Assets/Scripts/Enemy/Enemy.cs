@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour
 
     NavMeshSurface navmesh;
 
+    [SerializeField] Animator animator;
+
     void Start()
     {
        // navmesh = GameManager.Instance.nav;
@@ -304,6 +306,7 @@ public class Enemy : MonoBehaviour
     {
         health -= damageAmount;
         isKnockedBack = true;
+        animator.SetTrigger("Knockback");
 
         if (rb != null)
         {
@@ -331,7 +334,7 @@ public class Enemy : MonoBehaviour
             CanHitWater = false;
             Invoke(nameof(CanHitWaterCooldown), 2f);
             ChangeTarget();
-
+            animator.SetTrigger("Knockback");
            
         }
 
@@ -350,6 +353,11 @@ public class Enemy : MonoBehaviour
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    public void Grab()
+    {
+        animator.SetTrigger("Grab");
     }
 
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)

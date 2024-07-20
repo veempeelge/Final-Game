@@ -15817,12 +15817,12 @@ PrefabInstance:
       objectReference: {fileID: 19033413}
     - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: spawnableEnemies.Array.size
-      value: 7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: spawnableEnemies.Array.data[0]
       value: 
-      objectReference: {fileID: 3050570760651643630, guid: 1e49e0a30e9e3e94eb492b45319bdfae, type: 3}
+      objectReference: {fileID: 5527134780152296899, guid: 5ed706726fee10841b11ca20951f07ce, type: 3}
     - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: spawnableEnemies.Array.data[1]
       value: 
