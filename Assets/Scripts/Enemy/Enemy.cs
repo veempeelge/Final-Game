@@ -302,8 +302,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public void TakeDamage(float damageAmount, Vector3 knockbackDirection, float knockbackForce)
+    public IEnumerator TakeDamage(float damageAmount, Vector3 knockbackDirection, float knockbackForce)
     {
+        yield return new WaitForSeconds(.23f);
         health -= damageAmount;
         isKnockedBack = true;
         animator.SetTrigger("Knockback");
@@ -312,6 +313,7 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(Knockback(knockbackDirection, knockbackForce));
         }
+        yield break;
     }
 
     public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
@@ -320,10 +322,12 @@ public class Enemy : MonoBehaviour
         if (!wasAttacked)
         {
             wasAttacked = true;
-            TakeDamage(playerStats.playerAtk, -directionToPlayer, playerStats.playerKnockback);
+            StartCoroutine(TakeDamage(playerStats.playerAtk, -directionToPlayer, playerStats.playerKnockback));
             Invoke(nameof(CanTakeDamage), 0.2f);
         }
     }
+
+
 
     public void OnPlayerHitWater(Transform Player)
     {

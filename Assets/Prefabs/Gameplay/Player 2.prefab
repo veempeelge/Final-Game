@@ -485,6 +485,7 @@ MonoBehaviour:
   attackAir: {fileID: 8300000, guid: 3e5455dfcd5def7468e59c91fafcd005, type: 3}
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
   slot: {fileID: 0}
+  anim: {fileID: 7026628281666897061}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1082,7 +1083,7 @@ MonoBehaviour:
   HPCurrent: 0
   player1: {fileID: 2434555902838392969}
   cam: {fileID: 0}
-  waterCurrent: {fileID: 0}
+  waterCurrent: {fileID: 3500490095846608044}
 --- !u!1 &5528957078092803389
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1133,7 @@ MonoBehaviour:
   AttackAngle: 70
   VisionObstructingLayer:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   EnemyLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -1626,13 +1627,42 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7036213049465896255, guid: 5c3b87b12bc29ae42ba90504d5060436, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7026628281666897061}
   m_SourcePrefab: {fileID: 100100000, guid: 5c3b87b12bc29ae42ba90504d5060436, type: 3}
 --- !u!4 &172398949296987259 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5c3b87b12bc29ae42ba90504d5060436, type: 3}
   m_PrefabInstance: {fileID: 427492951980129168}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7226981000874804911 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7036213049465896255, guid: 5c3b87b12bc29ae42ba90504d5060436, type: 3}
+  m_PrefabInstance: {fileID: 427492951980129168}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &7026628281666897061
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7226981000874804911}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 890287a8b2bc49945804353f8b2194d8, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &8073590281622033166
 PrefabInstance:
   m_ObjectHideFlags: 0

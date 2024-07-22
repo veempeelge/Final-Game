@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Burst.CompilerServices;
 using UnityEngine;
 
 public class Attack : MonoBehaviour
@@ -74,8 +75,11 @@ public class Attack : MonoBehaviour
                         {
                             SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
                             playerStats.DecreaseDurability();
+
+
                             hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
-                          //  Debug.Log("HIT" + hit.collider.transform.name);
+
+                            //  Debug.Log("HIT" + hit.collider.transform.name);
                             enemyDetected = true;
                             break;  
                         }
@@ -98,4 +102,5 @@ public class Attack : MonoBehaviour
         VisionConeMesh.triangles = triangles;
         MeshFilter_.mesh = VisionConeMesh;
     }
+
 }

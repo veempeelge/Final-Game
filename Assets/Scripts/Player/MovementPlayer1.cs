@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 public class MovementPlayer1 : MonoBehaviour
 {
@@ -64,8 +65,10 @@ public class MovementPlayer1 : MonoBehaviour
 
     public Item_Slot slot;
 
-     private bool isWaterAttacking = false;
+    private bool isWaterAttacking = false;
     private bool canhitbyotherplayer = true;
+
+    [SerializeField] Animator anim;
 
     void Start()
     { 
@@ -122,6 +125,8 @@ public class MovementPlayer1 : MonoBehaviour
             rb.velocity += Physics.gravity * Time.fixedDeltaTime;
         }
 
+        
+        anim.SetFloat("IsRunning", rb.velocity.magnitude);
 
         RotatePlayer();
     }
@@ -145,8 +150,9 @@ public class MovementPlayer1 : MonoBehaviour
         rb.velocity = Vector3.ClampMagnitude(rb.velocity, maxAcceleration);
     }
 
-    public void HitByOtherPlayer(GameObject otherPlayer)
+    public IEnumerator HitByOtherPlayer(GameObject otherPlayer)
     {
+        yield return new WaitForSeconds(.23f);
         Vector3 direction = (otherPlayer.transform.position - transform.position).normalized;
 
         if (canhitbyotherplayer)
@@ -157,6 +163,7 @@ public class MovementPlayer1 : MonoBehaviour
             this.enabled = false;
             StartCoroutine(EnableMovement());
         }
+        yield break;
         
     }
 
@@ -164,8 +171,10 @@ public class MovementPlayer1 : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         this.enabled = true;
+        anim.SetTrigger("StopChoke");
         yield return new WaitForSeconds(4f);
         canhitbyotherplayer = true;
+
     }
     void RotatePlayer()
     {
@@ -185,7 +194,7 @@ public class MovementPlayer1 : MonoBehaviour
         hpBar.UpdateBar(currentHP);
         //Debug.Log("Got Hit, HP Remaining = " + currentHP);
         StartCoroutine(KnockEnemy());
-        
+        anim.SetTrigger("Choke");
         if (currentHP <= 0)
         {
             Die();
@@ -259,7 +268,9 @@ public class MovementPlayer1 : MonoBehaviour
     {
             this.enabled = false;
             yield return new WaitForSeconds(.5f);
+            anim.SetTrigger("StopChoke");
             this.enabled = true;
+            //anim.SetTrigger("Attack");
             attack.isAttacking = true;
             hitIndicator.SetActive(true);
             yield return new WaitForSeconds(.1f);
@@ -345,6 +356,7 @@ public class MovementPlayer1 : MonoBehaviour
         {
             if (waterCharge >= 0)
             {
+               
                 slot.count--;
                 slot.RefreshCount();
                 waterDecreased = true;
@@ -357,6 +369,11 @@ public class MovementPlayer1 : MonoBehaviour
 
 
         }
+    }
+
+    public void AttackAnim()
+    {
+        anim.SetTrigger("Attack");
     }
 
     void WaterDecreasedOnce()

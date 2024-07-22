@@ -102,7 +102,7 @@ public class AttackWater : MonoBehaviour
                             {
 
                                 playerStats.enabled = false;
-                                //playthrow animation
+                                playerStats.AttackAnim();
                                 //play throw sfx
                                 Invoke(nameof(WalkCooldown), .5f);
 
@@ -130,9 +130,10 @@ public class AttackWater : MonoBehaviour
                             if (playerStats != null)
                             {
 
-                                playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject);
+                               StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
                                 if (canDecrease)
                                 {
+                                    playerStats.AttackAnim();
                                     player.DecreaseWaterCharge();
                                     canDecrease = false;
                                     Invoke(nameof(canDecreaseCooldown), _hitPlayerCooldown);

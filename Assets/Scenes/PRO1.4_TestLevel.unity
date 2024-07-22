@@ -1295,17 +1295,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1275883996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &116860540 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 1145887566346972929, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-  m_PrefabInstance: {fileID: 1090048493}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cedf5049d5a8004bba2fe62ea17c399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &122348004
 GameObject:
   m_ObjectHideFlags: 0
@@ -9699,14 +9688,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 528453027}
     m_Modifications:
-    - target: {fileID: 916157059450989555, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: waterCurrent
-      value: 
-      objectReference: {fileID: 1459447565}
-    - target: {fileID: 2203126585065645011, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: VisionObstructingLayer.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4033561378793552965, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.61
@@ -9763,10 +9744,6 @@ PrefabInstance:
       propertyPath: slot
       value: 
       objectReference: {fileID: 1614452644}
-    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 1489109907}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: gameManager
       value: 
@@ -11016,10 +10993,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 528453027}
     m_Modifications:
-    - target: {fileID: 1145887566346972929, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: waterCurrent
-      value: 
-      objectReference: {fileID: 1039935909}
     - target: {fileID: 1197664981355331433, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: m_Name
       value: Player 2
@@ -11073,10 +11046,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 982323446}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 116860540}
-    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
@@ -11084,10 +11053,6 @@ PrefabInstance:
       propertyPath: wpDurabilityBar
       value: 
       objectReference: {fileID: 1156106481}
-    - target: {fileID: 3465002074852084157, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: VisionObstructingLayer.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 7690573519229574966, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: points.Array.data[0]
       value: 
@@ -17607,17 +17572,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1435414959}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1489109907 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 916157059450989555, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-  m_PrefabInstance: {fileID: 973213160}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cedf5049d5a8004bba2fe62ea17c399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1495306825 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 211142454551012305, guid: d89f569484b340248b6d58b40a304142, type: 3}
@@ -18796,17 +18750,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!114 &1640233768 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4617627871439816956, guid: b7b39965c622a03499abc0c754b32068, type: 3}
-  m_PrefabInstance: {fileID: 1769468909}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2cedf5049d5a8004bba2fe62ea17c399, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!43 &1649147769
 Mesh:
   m_ObjectHideFlags: 0
@@ -19402,10 +19345,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1152852445756410903, guid: b7b39965c622a03499abc0c754b32068, type: 3}
-      propertyPath: VisionObstructingLayer.m_Bits
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3785953631699384967, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: points.Array.data[0]
       value: 
@@ -19682,18 +19621,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4617627871439816956, guid: b7b39965c622a03499abc0c754b32068, type: 3}
-      propertyPath: waterCurrent
-      value: 
-      objectReference: {fileID: 1218127277}
     - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: slot
       value: 
       objectReference: {fileID: 1871437427}
-    - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
-      propertyPath: hpBar
-      value: 
-      objectReference: {fileID: 1640233768}
     - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: gameManager
       value: 
