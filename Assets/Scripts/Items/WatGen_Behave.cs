@@ -61,4 +61,46 @@ public class WatGen_Behave : MonoBehaviour
             }
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
+            inv = mvP1.GetComponent<Inv_Item>();
+            slot = inv.slot;
+
+            for (int i = 0; i < inv.slots.Length; i++)
+            {
+                if (inv.isFull[i] == false)
+                {
+                    inv.hasWater = true;
+                    inv.hasTrap = false;
+                    inv.isFull[i] = true;
+                    Instantiate(itemButton, inv.slots[i].transform, false);
+                    slot.count = 3;
+                    slot.RefreshCount();
+                    mvP1.StartWaterCoroutine();
+                    Destroy(gameObject);
+
+                    break;
+
+                }
+                if (inv.isFull[i] == true)
+                {
+                    inv.DiscardItem(i);
+                    inv.hasWater = true;
+                    inv.hasTrap = false;
+                    inv.isFull[i] = true;
+                    Instantiate(itemButton, inv.slots[i].transform, false);
+                    slot.count = 3;
+                    slot.RefreshCount();
+                    mvP1.StartWaterCoroutine();
+                    Destroy(gameObject);
+
+                    break;
+                }
+            }
+        }
+    }
 }
