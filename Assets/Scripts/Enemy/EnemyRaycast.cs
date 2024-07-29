@@ -56,7 +56,7 @@ public class EnemyRaycast : MonoBehaviour
 //                  Debug.Log("HIT");
                    
                     canAttack = false;
-                    Invoke("AttackPlayer", 1f);
+                    Invoke("AttackPlayer", 2f);
                     gameObject.GetComponentInParent<Enemy>().Grab();
                 }
                 

@@ -12,6 +12,7 @@ TagManager:
   - Trap
   - Water
   - EnemyBarrierFat
+  - Watergencollider
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Player
   - Walls
   - EnemyBarrierFat
-  - 
+  - Watergen
   - 
   - 
   - 

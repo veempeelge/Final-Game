@@ -62,7 +62,7 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] AudioClip gotItem;
     private int waterCharge;
     private bool waterDecreased;
-
+    private Inv_Item inv;
     public Item_Slot slot;
 
     private bool isWaterAttacking = false;
@@ -171,7 +171,7 @@ public class MovementPlayer1 : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         this.enabled = true;
-        anim.SetTrigger("StopChoke");
+        //anim.SetTrigger("StopChoke");
         yield return new WaitForSeconds(4f);
         canhitbyotherplayer = true;
 
@@ -371,6 +371,7 @@ public class MovementPlayer1 : MonoBehaviour
         }
     }
 
+   
     public void AttackAnim()
     {
         anim.SetTrigger("Attack");

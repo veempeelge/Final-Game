@@ -32,7 +32,8 @@ Transform:
   m_LocalPosition: {x: -1.7681689, y: -45.350708, z: -43.75171}
   m_LocalScale: {x: 2, y: 4, z: 2}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 2824956821572970722}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &3645397680525421901
@@ -50,7 +51,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8768839664058390504}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -120,3 +121,70 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: {fileID: 0}
   itemButton: {fileID: 2748315866558779717, guid: 12f3b6321d6c3884483e7b9dabf212f1, type: 3}
+--- !u!1001 &2826768090019759998
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3207333055656056853}
+    m_Modifications:
+    - target: {fileID: 1956261677404790, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_Name
+      value: WATER FOUNTAIN PARTICLE
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 198047563471084468, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: CollisionModule.collidesWith.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5165246592449037459, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+--- !u!4 &2824956821572970722 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4206571829981084, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+  m_PrefabInstance: {fileID: 2826768090019759998}
+  m_PrefabAsset: {fileID: 0}

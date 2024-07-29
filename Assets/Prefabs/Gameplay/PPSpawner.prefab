@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 3096083249537848995}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -159.8, y: 9.5, z: -152.4}
+  m_LocalPosition: {x: -11.9, y: 0, z: -36.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 8243928761742379495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 140, y: 13.1, z: 57.3}
+  m_LocalPosition: {x: -20.6, y: 0, z: 2.3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -113,9 +113,4 @@ MonoBehaviour:
   bottomLeftCorner: {fileID: 8243928761742379495}
   topRightCorner: {fileID: 3096083249537848995}
   Timer: 10
-  weaponList:
-  - {fileID: 605196136701530160, guid: 121edc9fe2e886045b53b9b94f55862c, type: 3}
-  - {fileID: 605196136701530160, guid: c0eefe0a6c068d240b508816e61ee608, type: 3}
-  - {fileID: 605196136701530160, guid: 8c2cb4fb6dfaf2842b0b6e881a60fbe7, type: 3}
-  - {fileID: 605196136701530160, guid: 4223ab933c25a3b4c82c7862ee89a197, type: 3}
-  - {fileID: 8768839664058390504, guid: 1aef6460bacbd414581a710ae4cf6155, type: 3}
+  weaponList: []

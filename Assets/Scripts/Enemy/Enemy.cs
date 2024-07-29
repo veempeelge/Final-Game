@@ -38,7 +38,7 @@ public class Enemy : MonoBehaviour
     public GameObject previousTarget;
     float distanceToWaypoint;
 
-    public bool TargettedSamePlayer { get; private set; }
+    public bool TargettedSamePlayer = true;
     public bool hardEnemy;
     public bool mediumEnemy;
     public bool easyEnemy;
@@ -239,10 +239,15 @@ public class Enemy : MonoBehaviour
 
             if (targetLocation == targetPlayer.transform)
             {
-                if (distanceToWaypoint > .4f)
+                if (distanceToWaypoint > 1f)
                 {
-                    Invoke(nameof(CheckIfStillFar), 3f);
-                    TargettedSamePlayer = false;
+                    if (TargettedSamePlayer)
+                    {
+                        Invoke(nameof(CheckIfStillFar), 3f);
+                        TargettedSamePlayer = false;
+                        Debug.Log(gameObject + "Too far, targetting waypoint");
+                    }
+                    
                 }
             }
 
