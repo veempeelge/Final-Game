@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviour
 
     private void Start()
     {
-         SoundManager.Instance.PlayMusic(mainMenuMusic);
+         //SoundManager.Instance.PlayMusic(mainMenuMusic);
     }
 
     public void Level1()
@@ -26,6 +26,16 @@ public class MainMenu : MonoBehaviour
     public void Credits()
     {
         SceneManager.LoadScene("Credits");
+    }
+
+    public void Lvl1()
+    {
+        SceneManager.LoadScene("PRO1.4_TestLevel");
+    }
+
+    public void LvlPicker()
+    {
+        SceneManager.LoadScene("LevelPicker");
     }
 
     public void Quit()

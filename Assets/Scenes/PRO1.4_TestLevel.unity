@@ -878,8 +878,12 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
     - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+    - target: {fileID: 985625700466170716, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_hasFontAssetChanged
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2442472988939480371, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_Pivot.x
@@ -964,6 +968,22 @@ PrefabInstance:
     - target: {fileID: 3244394592824583841, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_Name
       value: GameOverUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 3244394592824583841, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383154758329843035, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 936124815}
+    - target: {fileID: 7383154758329843035, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Lvl1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7383154758329843035, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: MainMenu, Assembly-CSharp
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3171,8 +3191,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -844.3591, y: -449.61426}
-  m_SizeDelta: {x: 74.047, y: 52.9644}
+  m_AnchoredPosition: {x: -858.78723, y: -449.61426}
+  m_SizeDelta: {x: 57.8154, y: 52.9644}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &252589812
 MonoBehaviour:
@@ -3250,8 +3270,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 702460d3e041a494b831f202480b84ce, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -8914,6 +8934,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1293427334539908554, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
       insertIndex: -1
       addedObject: {fileID: 936124814}
+    - targetCorrespondingSourceObject: {fileID: 1293427334539908554, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 936124815}
   m_SourcePrefab: {fileID: 100100000, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
 --- !u!114 &936124813 stripped
 MonoBehaviour:
@@ -8939,6 +8962,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 607428705}
+--- !u!114 &936124815
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 531459388}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36560c4aa0ed38045858a23110ba2f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainMenuMusic: {fileID: 0}
 --- !u!1 &937870605
 GameObject:
   m_ObjectHideFlags: 0
@@ -11237,6 +11273,10 @@ PrefabInstance:
     - target: {fileID: 2027648320567347223, guid: 501664b69784a2941a7e090bbde0aa2e, type: 3}
       propertyPath: m_Name
       value: Player Selection
+      objectReference: {fileID: 0}
+    - target: {fileID: 2027648320567347223, guid: 501664b69784a2941a7e090bbde0aa2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2759695025276330617, guid: 501664b69784a2941a7e090bbde0aa2e, type: 3}
       propertyPath: m_Pivot.x
@@ -15772,7 +15812,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Pause
+  m_text: II
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -15781,8 +15821,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15805,7 +15845,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
