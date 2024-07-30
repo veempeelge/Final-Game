@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
 
     private int[] playerScores;
+    private List<int[]> roundScores;
     private int gameCounter;
     private const int totalGames = 3;
 
@@ -28,6 +30,7 @@ public class ScoreManager : MonoBehaviour
     private void InitializeScores()
     {
         playerScores = new int[3];
+        roundScores = new List<int[]>();
         for (int i = 0; i < playerScores.Length; i++)
         {
             playerScores[i] = 0;
@@ -38,10 +41,11 @@ public class ScoreManager : MonoBehaviour
     public void UpdateScores(int winnerIndex, int runnerUpIndex)
     {
       
-        playerScores[winnerIndex] += 3;
         playerScores[runnerUpIndex] += 1;
 
        
+        roundScores.Add((int[])playerScores.Clone());
+
         gameCounter++;
         if (gameCounter < totalGames)
         {
@@ -55,17 +59,17 @@ public class ScoreManager : MonoBehaviour
 
     private void LoadNextLevel()
     {
-        
+     
         bool isTie = (playerScores[0] == playerScores[1] && playerScores[1] == playerScores[2]);
         string nextLevel = isTie ? GetRandomLevel() : GetNextLevel();
 
-      
+     
         SceneManager.LoadScene(nextLevel);
     }
 
     private string GetNextLevel()
     {
-       
+     
         int nextLevelIndex = gameCounter + 1;
         return "Level" + nextLevelIndex;
     }
@@ -92,14 +96,24 @@ public class ScoreManager : MonoBehaviour
         return 0;
     }
 
+    public int[] GetRoundScores(int roundIndex)
+    {
+        if (roundIndex >= 0 && roundIndex < roundScores.Count)
+        {
+            return roundScores[roundIndex];
+        }
+        return null;
+    }
+
+    public int GetRoundCount()
+    {
+        return roundScores.Count;
+    }
+
     public void ResetScores()
     {
         InitializeScores();
     }
-
-    public int[] GetAllScores()
-    {
-        return playerScores;
-    }
 }
+
 }
