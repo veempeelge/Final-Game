@@ -2680,10 +2680,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 484680703231237053, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 484680703231237053, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -2727,33 +2723,35 @@ PrefabInstance:
       propertyPath: m_Name
       value: Main Camera (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 9172884616356053607, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: field of view
-      value: 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 9172884616356053607, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: near clip plane
-      value: 0.3
-      objectReference: {fileID: 0}
+    - target: {fileID: 6872598388124623766, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
+      propertyPath: cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 1267441269}
+    - target: {fileID: 6872598388124623766, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
+      propertyPath: cameras.Array.data[1]
+      value: 
+      objectReference: {fileID: 993866315}
+    - target: {fileID: 6872598388124623766, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
+      propertyPath: cameras.Array.data[2]
+      value: 
+      objectReference: {fileID: 1076514839}
+    - target: {fileID: 6872598388124623766, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
+      propertyPath: PlayerUIs.Array.data[0]
+      value: 
+      objectReference: {fileID: 1246593532}
+    - target: {fileID: 6872598388124623766, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
+      propertyPath: PlayerUIs.Array.data[1]
+      value: 
+      objectReference: {fileID: 616645390}
+    - target: {fileID: 6872598388124623766, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
+      propertyPath: PlayerUIs.Array.data[2]
+      value: 
+      objectReference: {fileID: 672078845}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2704524812773910603, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1435728161}
-    - targetCorrespondingSourceObject: {fileID: 2704524812773910603, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1435728163}
-    - targetCorrespondingSourceObject: {fileID: 2704524812773910603, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1435728162}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
---- !u!4 &242860258 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 484680703231237053, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-  m_PrefabInstance: {fileID: 242860257}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &243228235
 GameObject:
   m_ObjectHideFlags: 0
@@ -17168,112 +17166,6 @@ Transform:
   - {fileID: 1484872452}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1435728156 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2704524812773910603, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-  m_PrefabInstance: {fileID: 242860257}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1435728161
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435728156}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ab8353b5ebd32545867da143199a814, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _shakeTechnique: 0
-  _makeDefaultOnEnable: 1
-  _limitMagnitude: 0
-  _positionalMagnitudeLimit: 10
-  _rotationalMagnitudeLimit: 3
---- !u!114 &1435728162
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435728156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b5d9f5ebaa54d34a99d877dd306e100, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cameras:
-  - {fileID: 1267441269}
-  - {fileID: 993866315}
-  - {fileID: 1076514839}
-  zoomSpeed: 5
-  slowMoFactor: 0.1
-  zoomAmount: 10
-  duration: 0.5
-  PlayerUIs:
-  - {fileID: 1246593532}
-  - {fileID: 616645390}
-  - {fileID: 672078845}
---- !u!114 &1435728163
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1435728156}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  volumeTrigger: {fileID: 242860258}
-  volumeLayer:
-    serializedVersion: 2
-    m_Bits: 1024
-  stopNaNPropagation: 1
-  finalBlitToCameraTarget: 0
-  antialiasingMode: 0
-  temporalAntialiasing:
-    jitterSpread: 0.75
-    sharpness: 0.25
-    stationaryBlending: 0.95
-    motionBlending: 0.85
-  subpixelMorphologicalAntialiasing:
-    quality: 2
-  fastApproximateAntialiasing:
-    fastMode: 0
-    keepAlpha: 0
-  fog:
-    enabled: 1
-    excludeSkybox: 1
-  debugLayer:
-    lightMeter:
-      width: 512
-      height: 256
-      showCurves: 1
-    histogram:
-      width: 512
-      height: 256
-      channel: 3
-    waveform:
-      exposure: 0.12
-      height: 256
-    vectorscope:
-      size: 256
-      exposure: 0.12
-    overlaySettings:
-      linearDepth: 0
-      motionColorIntensity: 4
-      motionGridSize: 64
-      colorBlindnessType: 0
-      colorBlindnessStrength: 1
-  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
-  m_ShowToolkit: 0
-  m_ShowCustomSorter: 0
-  breakBeforeColorGrading: 0
-  m_BeforeTransparentBundles: []
-  m_BeforeStackBundles: []
-  m_AfterStackBundles: []
 --- !u!114 &1459447565 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1979289805142360757, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
