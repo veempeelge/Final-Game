@@ -6419,6 +6419,11 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &616645390 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5247667390222494788, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+  m_PrefabInstance: {fileID: 1090048493}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &630433136
 GameObject:
   m_ObjectHideFlags: 0
@@ -6490,6 +6495,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4805178416077357763, guid: d89f569484b340248b6d58b40a304142, type: 3}
   m_PrefabInstance: {fileID: 914147081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &672078845 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4075123388239003189, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+  m_PrefabInstance: {fileID: 1769468909}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &679813703
 GameObject:
@@ -9982,6 +9992,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1614452644}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: cameras
+      value: 
+      objectReference: {fileID: 1267441269}
+    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
@@ -9989,6 +10003,14 @@ PrefabInstance:
       propertyPath: wpDurabilityBar
       value: 
       objectReference: {fileID: 1888839661}
+    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: cameras.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: cameras.Array.data[0]
+      value: 
+      objectReference: {fileID: 1267441269}
     - target: {fileID: 8765643986522246321, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: slots.Array.data[0]
       value: 
@@ -9999,6 +10021,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4033561378793552965, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       insertIndex: 0
       addedObject: {fileID: 259322179}
+    - targetCorrespondingSourceObject: {fileID: 4033561378793552965, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1267441270}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
 --- !u!1 &973213161 stripped
@@ -10062,6 +10087,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a70d3c10e13aba45942c78e7d134af6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &993866315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 993866316}
+  m_Layer: 6
+  m_Name: DeathCamPositio (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &993866316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 993866315}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.10504541, y: 3.095, z: 0.08388776}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1090048496}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995452315
 GameObject:
   m_ObjectHideFlags: 0
@@ -11119,6 +11175,37 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2027648320567347223, guid: 501664b69784a2941a7e090bbde0aa2e, type: 3}
   m_PrefabInstance: {fileID: 1071740380}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1076514839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1076514840}
+  m_Layer: 6
+  m_Name: DeathCamPositio (2)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1076514840
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1076514839}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.23859586, y: 3.474, z: -0.2696298}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1769468912}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1082838269
 GameObject:
   m_ObjectHideFlags: 0
@@ -11286,6 +11373,10 @@ PrefabInstance:
       propertyPath: slot
       value: 
       objectReference: {fileID: 982323446}
+    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+      propertyPath: cameras
+      value: 
+      objectReference: {fileID: 993866315}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: gameManager
       value: 
@@ -11540,7 +11631,10 @@ PrefabInstance:
       objectReference: {fileID: 982323445}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1813156598611903373, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 993866316}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
 --- !u!1 &1090048494 stripped
@@ -14978,6 +15072,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1275883996}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1246593532 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1625255510926402870, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+  m_PrefabInstance: {fileID: 973213160}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1250281040
 GameObject:
   m_ObjectHideFlags: 0
@@ -15143,6 +15242,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1255129727}
   m_CullTransparentMesh: 1
+--- !u!1 &1267441269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1267441270}
+  m_Layer: 6
+  m_Name: DeathCamPositio
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1267441270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1267441269}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 3.212, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 973213163}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1270564862
 GameObject:
   m_ObjectHideFlags: 0
@@ -17313,14 +17443,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b5d9f5ebaa54d34a99d877dd306e100, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 973213161}
-  - {fileID: 1090048494}
-  - {fileID: 1769468910}
+  cameras:
+  - {fileID: 1267441269}
+  - {fileID: 993866315}
+  - {fileID: 1076514839}
   zoomSpeed: 5
   slowMoFactor: 0.1
   zoomAmount: 10
   duration: 0.5
+  PlayerUIs:
+  - {fileID: 1246593532}
+  - {fileID: 616645390}
+  - {fileID: 672078845}
 --- !u!114 &1435728163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19966,6 +20100,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1871437427}
     - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+      propertyPath: cameras
+      value: 
+      objectReference: {fileID: 1076514839}
+    - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
@@ -19987,7 +20125,10 @@ PrefabInstance:
       objectReference: {fileID: 841329129}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 3967379743690294942, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1076514840}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b7b39965c622a03499abc0c754b32068, type: 3}
 --- !u!1 &1769468910 stripped

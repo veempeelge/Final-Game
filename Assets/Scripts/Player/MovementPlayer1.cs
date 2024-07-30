@@ -73,6 +73,7 @@ public class MovementPlayer1 : MonoBehaviour
     private bool canhitbyotherplayer = true;
 
     [SerializeField] Animator anim;
+    [SerializeField] GameObject cameras;
 
     void Start()
     {
@@ -213,13 +214,13 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Die()
     {
-        gameObject.SetActive(false) ;
-        Invoke(nameof(DestroyObject), .3f);
+        anim.SetTrigger("Ded");
+        StartCoroutine(DestroyObject());
         if (player1)
         {
             gameManager.Player1Dead();
             //UI player 1
-            cameraZoom.PlayerDied(transform.position);
+            cameraZoom.PlayerDied(cameras.transform.position);
             //UIPlayerIsDead.SetActive(true);
         }
 
@@ -227,7 +228,7 @@ public class MovementPlayer1 : MonoBehaviour
         {
             gameManager.Player2Dead();
             //UI player 2
-            cameraZoom.PlayerDied(transform.position);
+            cameraZoom.PlayerDied(cameras.transform.position);
             //UIPlayerIsDead.SetActive(true);
         }
 
@@ -235,14 +236,18 @@ public class MovementPlayer1 : MonoBehaviour
         {
             gameManager.Player3Dead();
             //UI player 3
-            cameraZoom.PlayerDied(transform.position);
+            cameraZoom.PlayerDied(cameras.transform.position);
             //UIPlayerIsDead.SetActive(true);
         }
     }
 
-    void DestroyObject()
+    IEnumerator DestroyObject()
     {
+        yield return new WaitForSeconds(.3f);
+        gameObject.SetActive(false);
+        yield return new WaitForSeconds(.3f);
         Destroy(gameObject);
+       
     }
 
     public void ChangeStats(float atk, float atkspd, float range, float atkradius, float durability, float knockback)
