@@ -9856,6 +9856,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 936124813}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: deadBodyObject
+      value: 
+      objectReference: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
+    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: wpDurabilityBar
       value: 
       objectReference: {fileID: 1888839661}
@@ -11167,6 +11171,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
+    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
+      propertyPath: deadBodyObject
+      value: 
+      objectReference: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: wpDurabilityBar
       value: 
@@ -19754,6 +19762,10 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
+    - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
+      propertyPath: deadBodyObject
+      value: 
+      objectReference: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
     - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: wpDurabilityBar
       value: 

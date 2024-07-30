@@ -58,6 +58,7 @@ public class EnemyRaycast : MonoBehaviour
                     canAttack = false;
                     Invoke("AttackPlayer", 2f);
                     gameObject.GetComponentInParent<Enemy>().Grab();
+                    gameObject.GetComponentInParent<Enemy>().enabled = false;
                 }
                 
             }
@@ -83,6 +84,8 @@ public class EnemyRaycast : MonoBehaviour
 
     void AttackPlayer()
     {
+        gameObject.GetComponentInParent<Enemy>().enabled = true;
+
         canAttack = true;
     }
 }

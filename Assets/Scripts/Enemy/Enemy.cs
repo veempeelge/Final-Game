@@ -346,7 +346,7 @@ public class Enemy : MonoBehaviour
             Invoke(nameof(CanHitWaterCooldown), 2f);
             ChangeTarget();
             animator.SetTrigger("Knockback");
-           
+            enabled = false;
         }
 
     }
@@ -354,6 +354,7 @@ public class Enemy : MonoBehaviour
     void CanHitWaterCooldown()
     {
         CanHitWater = true;
+        enabled = true;
     }
 
     void CanTakeDamage()
@@ -392,7 +393,7 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
-
+        animator.SetTrigger("Pain");
         isKnockedBack = false;
     }
 

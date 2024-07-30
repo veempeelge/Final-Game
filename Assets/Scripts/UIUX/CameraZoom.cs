@@ -25,28 +25,32 @@ public class CameraZoom : MonoBehaviour
     {
         if (isDead)
         {
-            timer += Time.deltaTime;
-            if (timer <= duration)
+            if(gameObject != null)
             {
-                Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, originalFOV - zoomAmount, Time.deltaTime * zoomSpeed);
-                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, deadPlayer, Time.deltaTime * zoomSpeed);
-                for (int i = 0; i < PlayerUIs.Length; i++)
+                timer += Time.deltaTime;
+                if (timer <= duration)
                 {
-                    PlayerUIs[i].SetActive(false);
+                    Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, originalFOV - zoomAmount, Time.deltaTime * zoomSpeed);
+                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, deadPlayer, Time.deltaTime * zoomSpeed);
+                    for (int i = 0; i < PlayerUIs.Length; i++)
+                    {
+                        PlayerUIs[i].SetActive(false);
+                    }
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                    isDead = false;
+                    Camera.main.fieldOfView = originalFOV;
+                    Camera.main.transform.position = originalPosition;
+                    timer = 0f;
+                    for (int i = 0; i < PlayerUIs.Length; i++)
+                    {
+                        PlayerUIs[i].SetActive(true);
+                    }
                 }
             }
-            else
-            {
-                Time.timeScale = 1f;  
-                isDead = false;  
-                Camera.main.fieldOfView = originalFOV;
-                Camera.main.transform.position = originalPosition;
-                timer = 0f;
-                for (int i = 0; i < PlayerUIs.Length; i++)
-                {
-                    PlayerUIs[i].SetActive(true);
-                }
-            }
+           
         }
     }
 
@@ -57,4 +61,5 @@ public class CameraZoom : MonoBehaviour
         timer = 0f;
         Time.timeScale = slowMoFactor; 
     }
+
 }

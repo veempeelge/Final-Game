@@ -75,6 +75,8 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] GameObject cameras;
 
+    [SerializeField] GameObject deadBodyObject;
+
     void Start()
     {
         cameraZoom = Camera.main.GetComponent<CameraZoom>();
@@ -167,7 +169,9 @@ public class MovementPlayer1 : MonoBehaviour
 
         if (canhitbyotherplayer)
         {
-            rb.AddForce( -direction * 10, ForceMode.Impulse);
+            anim.SetTrigger("Choke");
+
+            rb.AddForce( -direction * 10, ForceMode.Impulse);        anim.SetTrigger("Choke");
 
             canhitbyotherplayer = false;
             this.enabled = false;
@@ -181,7 +185,7 @@ public class MovementPlayer1 : MonoBehaviour
     {
         yield return new WaitForSeconds(1);
         this.enabled = true;
-        //anim.SetTrigger("StopChoke");
+        anim.SetTrigger("StopChoke");
         yield return new WaitForSeconds(4f);
         canhitbyotherplayer = true;
 
@@ -214,8 +218,12 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Die()
     {
-        anim.SetTrigger("Ded");
-        StartCoroutine(DestroyObject());
+        //anim.SetTrigger("Ded");
+        //StartCoroutine(DestroyObject());
+
+        Destroy(gameObject);
+        Instantiate(deadBodyObject, transform.position, Quaternion.identity);
+
         if (player1)
         {
             gameManager.Player1Dead();
@@ -395,6 +403,11 @@ public class MovementPlayer1 : MonoBehaviour
 
 
         }
+    }
+
+    public void Victory()
+    {
+        anim.SetTrigger("Victory");
     }
 
    

@@ -6,6 +6,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
+using UnityEditor.Rendering;
 
 public class GameManager : MonoBehaviour
 {
@@ -161,20 +162,33 @@ public class GameManager : MonoBehaviour
     }
     void GameOver()
     {
+        MovementPlayer1 mov;
+        CameraZoom cam;
         gameOver = true;
         Debug.Log("GameOver");
         UIGameOver.SetActive(true);
         Time.timeScale = 0;
+
         if (player1alive)
         {
             //Player 1 Won
             player1Won.SetActive(true);
+            mov = player1obj.gameObject.GetComponent<MovementPlayer1>();
+            mov.Victory();
+            cam = mov.gameObject.GetComponent<CameraZoom>();
+            StartCoroutine(CamToWinner(cam, mov));
+
         }
 
         if (player2alive)
         {
             //Player 2 Won
             player2Won.SetActive(true);
+            mov = player2obj.gameObject.GetComponent<MovementPlayer1>();
+            mov.Victory();
+            cam = mov.gameObject.GetComponent<CameraZoom>();
+            StartCoroutine(CamToWinner(cam, mov));
+
 
         }
 
@@ -182,7 +196,16 @@ public class GameManager : MonoBehaviour
         {
             //Player 3 Won
             player3Won.SetActive(true);
-
+            mov = player3obj.gameObject.GetComponent<MovementPlayer1>();
+            mov.Victory();
+            cam = mov.gameObject.GetComponent<CameraZoom>();
+            StartCoroutine(CamToWinner(cam, mov));
         }
+    }
+
+    IEnumerator CamToWinner(CameraZoom cam, MovementPlayer1 mov)
+    {
+        yield return new WaitForSeconds(.3f);
+        cam.PlayerDied(mov.gameObject.transform.position);
     }
 }
