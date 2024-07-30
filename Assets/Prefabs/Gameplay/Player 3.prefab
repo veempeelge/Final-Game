@@ -2086,6 +2086,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: -174.1028
       objectReference: {fileID: 0}
+    - target: {fileID: -4315995529376955302, guid: 337efe095a15ed24db7f245966f5300d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: a631bf50fdacb2b4488dbaceab5173f5, type: 2}
     - target: {fileID: -4192491875905271157, guid: 337efe095a15ed24db7f245966f5300d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.001268457
@@ -2222,6 +2226,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DwarfGuy_untextured
       objectReference: {fileID: 0}
+    - target: {fileID: 2405086128411186396, guid: 337efe095a15ed24db7f245966f5300d, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6fdf17177dc72ce4c84826497c9caba7, type: 2}
     - target: {fileID: 2408001348110326286, guid: 337efe095a15ed24db7f245966f5300d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0.0000003599811
