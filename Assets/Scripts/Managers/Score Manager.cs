@@ -60,7 +60,7 @@ public class ScoreManager : MonoBehaviour
     private void LoadNextLevel()
     {
      
-        bool isTie = (playerScores[0] == playerScores[1] && playerScores[1] == playerScores[2]);
+        bool isTie = (playerScores[0] == playerScores[1] || playerScores[1] == playerScores[2] || playerScores[0] == playerScores[2]);
         string nextLevel = isTie ? GetRandomLevel() : GetNextLevel();
 
      
