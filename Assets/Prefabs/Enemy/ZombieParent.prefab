@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 349f5d78249f79c468622bc7465a7c6b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  EnemyShake: {fileID: 11400000, guid: d3c286d4a7e5dcf4d961a57870af52d1, type: 2}
   rotationSpeed: 1
   speed: 0
   health: 0
@@ -186,9 +187,11 @@ MonoBehaviour:
   CanHitWater: 1
   chasingWho: {fileID: 3354897269004795875}
   previousTarget: {fileID: 0}
+  TargettedSamePlayer: 1
   hardEnemy: 0
   mediumEnemy: 0
   easyEnemy: 0
+  animator: {fileID: 0}
 --- !u!65 &2247401140401221724
 BoxCollider:
   m_ObjectHideFlags: 0

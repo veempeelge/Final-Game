@@ -4,10 +4,12 @@ using TMPro;
 using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
+using FirstGearGames.SmoothCameraShaker;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(LineRenderer))]
 public class Enemy : MonoBehaviour
 {
+    public ShakeData EnemyShake;
     Waypoints waypoints;
 
     public float rotationSpeed = 1f;
@@ -367,6 +369,7 @@ public class Enemy : MonoBehaviour
     public void Grab()
     {
         animator.SetTrigger("Grab");
+        CameraShakerHandler.Shake(EnemyShake);
     }
 
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)

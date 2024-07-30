@@ -11,6 +11,8 @@ public class MovementPlayer1 : MonoBehaviour
 {
     public static MovementPlayer1 instance;
 
+    private CameraZoom cameraZoom;
+
     public Attack attack;
     public AttackWater attackWater;
     public Inv_Item item;
@@ -71,7 +73,9 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] Animator anim;
 
     void Start()
-    { 
+    {
+        cameraZoom = Camera.main.GetComponent<CameraZoom>();
+
         item = GetComponent<Inv_Item>();
         attackWater = GetComponentInChildren<AttackWater>();
         waterCharge = slot.count;
@@ -209,18 +213,21 @@ public class MovementPlayer1 : MonoBehaviour
         {
             gameManager.Player1Dead();
             //UI player 1
+            cameraZoom.PlayerDied();
         }
 
         if (player2)
         {
             gameManager.Player2Dead();
             //UI player 2
+            cameraZoom.PlayerDied();
         }
 
         if (player3)
         {
             gameManager.Player3Dead();
             //UI player 3
+            cameraZoom.PlayerDied();
         }
     }
 

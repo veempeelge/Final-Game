@@ -14,6 +14,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Credits.unity
     guid: a0a97c50eb4c8f94792ec6b6a5e525c2
+  - enabled: 1
+    path: Assets/Scenes/LevelPicker.unity
+    guid: 1130ad1a772d3644bb801a9432ea792f
+  - enabled: 1
+    path: Assets/Scenes/PRO1.5_TestLevelPopulate.unity
+    guid: 62da9b4088a459e478431b7569d1ce04
   - enabled: 0
     path: Assets/Scenes/TestLevel.unity
     guid: 7e2da58216c5a8e4d93779328187bf54

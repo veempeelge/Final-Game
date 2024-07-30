@@ -33,6 +33,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("PRO1.4_TestLevel");
     }
 
+    public void Lvl2()
+    {
+        SceneManager.LoadScene("PRO1.5_TestLevelPopulate");
+    }
+
     public void LvlPicker()
     {
         SceneManager.LoadScene("LevelPicker");
