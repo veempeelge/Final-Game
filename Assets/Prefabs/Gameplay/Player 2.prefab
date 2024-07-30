@@ -489,6 +489,8 @@ MonoBehaviour:
   slot: {fileID: 0}
   anim: {fileID: 2176878322669637668}
   cameras: {fileID: 2315647474313539879}
+  deadBodyObject: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
+  tutorialUI: {fileID: 2020042861271335704}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0

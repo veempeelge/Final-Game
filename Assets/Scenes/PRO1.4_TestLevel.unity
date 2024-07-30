@@ -9795,6 +9795,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 528453027}
     m_Modifications:
+    - target: {fileID: 2203126585065645011, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: VisionConeMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: dc4e42c6a83d75049986fdb60774634a, type: 2}
+    - target: {fileID: 3742269468427247096, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: ShapeModule.angle
+      value: 63.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3742269468427247096, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: ShapeModule.arc.value
+      value: 360
+      objectReference: {fileID: 0}
+    - target: {fileID: 3986249990140741691, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.62
+      objectReference: {fileID: 0}
     - target: {fileID: 4033561378793552965, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: m_LocalPosition.x
       value: -2.61
@@ -9839,6 +9855,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9583426
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.005007394
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.28209674
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.044450972
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -0.887
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -32.765
+      objectReference: {fileID: 0}
+    - target: {fileID: 4792356045870227559, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -5.051
+      objectReference: {fileID: 0}
     - target: {fileID: 6913502428722615162, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: slot
       value: 
@@ -9855,10 +9899,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
-    - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
-      propertyPath: deadBodyObject
-      value: 
-      objectReference: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
     - target: {fileID: 7460112241736159949, guid: 8bb1623be6e10a341a251a3620139122, type: 3}
       propertyPath: wpDurabilityBar
       value: 
@@ -11171,10 +11211,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
-    - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
-      propertyPath: deadBodyObject
-      value: 
-      objectReference: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
     - target: {fileID: 2434555902838392969, guid: 063a3a9c5eea56e429f587ba6eed0847, type: 3}
       propertyPath: wpDurabilityBar
       value: 
@@ -19762,10 +19798,6 @@ PrefabInstance:
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 936124813}
-    - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
-      propertyPath: deadBodyObject
-      value: 
-      objectReference: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
     - target: {fileID: 4731674878253690564, guid: b7b39965c622a03499abc0c754b32068, type: 3}
       propertyPath: wpDurabilityBar
       value: 

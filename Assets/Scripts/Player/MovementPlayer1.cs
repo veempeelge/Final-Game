@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Animations;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
 
@@ -77,6 +78,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] GameObject deadBodyObject;
 
+    [SerializeField] GameObject tutorialUI;
+
     void Start()
     {
         cameraZoom = Camera.main.GetComponent<CameraZoom>();
@@ -123,7 +126,16 @@ public class MovementPlayer1 : MonoBehaviour
        
         float moveX = Input.GetAxis(horizontalAxis);
         float moveZ = Input.GetAxis(verticalAxis);
+        float threshold = 0.1f;
 
+        if (tutorialUI.activeSelf)
+        {
+
+            if (Mathf.Abs(moveX) > threshold || Mathf.Abs(moveZ) > threshold)
+            {
+                tutorialUI.SetActive(false);
+            }
+        }
 
         movement = new Vector3(moveX, 0, moveZ);
     }
@@ -141,6 +153,10 @@ public class MovementPlayer1 : MonoBehaviour
         anim.SetFloat("IsRunning", rb.velocity.magnitude);
 
         RotatePlayer();
+
+       
+
+        
     }
 
     public void StartWaterCoroutine()

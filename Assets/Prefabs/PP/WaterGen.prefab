@@ -189,6 +189,14 @@ PrefabInstance:
       propertyPath: CollisionModule.collidesWith.m_Bits
       value: 64
       objectReference: {fileID: 0}
+    - target: {fileID: 198047563471084468, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.a
+      value: 0.0627451
+      objectReference: {fileID: 0}
+    - target: {fileID: 198047563471084468, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.atime0
+      value: 51657
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5165246592449037459, guid: 9e1aada56c291864e882b6d9cc76d789, type: 3}
     m_RemovedGameObjects: []

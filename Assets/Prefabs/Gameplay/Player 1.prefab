@@ -1154,6 +1154,8 @@ MonoBehaviour:
   slot: {fileID: 0}
   anim: {fileID: 7827930400015518233}
   cameras: {fileID: 6504638674165638172}
+  deadBodyObject: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
+  tutorialUI: {fileID: 5348343041429465311}
 --- !u!114 &8765643986522246321
 MonoBehaviour:
   m_ObjectHideFlags: 0
