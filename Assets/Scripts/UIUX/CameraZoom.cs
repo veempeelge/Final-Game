@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class CameraZoom : MonoBehaviour
 {
-    public GameObject player;  // Reference to the player
-    public float zoomSpeed = 5f;  // Speed of the camera zoom
-    public float slowMoFactor = 0.1f;  // Slow motion factor
-    public float zoomAmount = 10f;  // How much to zoom in
-    public float duration = 3f;  // Duration of the effect
+    public GameObject[] players;  
+    public float zoomSpeed = 5f;  
+    public float slowMoFactor = 0.1f;  
+    public float zoomAmount = 10f;  
+    public float duration = .5f;  
 
     private bool isDead = false;
     private float originalFOV;
     private Vector3 originalPosition;
     private float timer = 0f;
+    private Vector3 deadPlayer;
 
     void Start()
     {
@@ -27,22 +28,24 @@ public class CameraZoom : MonoBehaviour
             if (timer < duration)
             {
                 Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, originalFOV - zoomAmount, Time.deltaTime * zoomSpeed);
-                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, player.transform.position, Time.deltaTime * zoomSpeed);
+                Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, deadPlayer, Time.deltaTime * zoomSpeed);
             }
             else
             {
-                Time.timeScale = 1f;  // Reset time scale to normal
-                isDead = false;  // Reset the dead state
-                Camera.main.fieldOfView = originalFOV;  // Reset the field of view
-                Camera.main.transform.position = originalPosition;  // Reset the camera position
+                Time.timeScale = 1f;  
+                isDead = false;  
+                Camera.main.fieldOfView = originalFOV; 
+                Camera.main.transform.position = originalPosition;
+                timer = 0f;
             }
         }
     }
 
-    public void PlayerDied()
+    public void PlayerDied(Vector3 position)
     {
+        deadPlayer = position + new Vector3(0, 0, -10);
         isDead = true;
         timer = 0f;
-        Time.timeScale = slowMoFactor;  // Activate slow motion
+        Time.timeScale = slowMoFactor; 
     }
 }

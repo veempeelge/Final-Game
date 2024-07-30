@@ -11,6 +11,8 @@ public class MovementPlayer1 : MonoBehaviour
 {
     public static MovementPlayer1 instance;
 
+    //[SerializeField] GameObject UIPlayerIsDead;
+
     private CameraZoom cameraZoom;
 
     public Attack attack;
@@ -88,8 +90,11 @@ public class MovementPlayer1 : MonoBehaviour
         playerRange = gameManager.defPlayerRange;
         playerAtkWidth = gameManager.defPlayerAtkWidth;
         playerKnockback = gameManager.defPlayerKnockback;
-       // StartCoroutine(AutoAttack());
-      
+
+        //UIPlayerIsDead.SetActive(false);
+
+        // StartCoroutine(AutoAttack());
+
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
 
@@ -208,26 +213,29 @@ public class MovementPlayer1 : MonoBehaviour
 
     void Die()
     {
-        Destroy(gameObject);
+        gameObject.SetActive(false) ;
         if (player1)
         {
             gameManager.Player1Dead();
             //UI player 1
-            cameraZoom.PlayerDied();
+            cameraZoom.PlayerDied(transform.position);
+            //UIPlayerIsDead.SetActive(true);
         }
 
         if (player2)
         {
             gameManager.Player2Dead();
             //UI player 2
-            cameraZoom.PlayerDied();
+            cameraZoom.PlayerDied(transform.position);
+            //UIPlayerIsDead.SetActive(true);
         }
 
         if (player3)
         {
             gameManager.Player3Dead();
             //UI player 3
-            cameraZoom.PlayerDied();
+            cameraZoom.PlayerDied(transform.position);
+            //UIPlayerIsDead.SetActive(true);
         }
     }
 
