@@ -214,6 +214,7 @@ public class MovementPlayer1 : MonoBehaviour
     void Die()
     {
         gameObject.SetActive(false) ;
+        Invoke(nameof(DestroyObject), .3f);
         if (player1)
         {
             gameManager.Player1Dead();
@@ -237,6 +238,11 @@ public class MovementPlayer1 : MonoBehaviour
             cameraZoom.PlayerDied(transform.position);
             //UIPlayerIsDead.SetActive(true);
         }
+    }
+
+    void DestroyObject()
+    {
+        Destroy(gameObject);
     }
 
     public void ChangeStats(float atk, float atkspd, float range, float atkradius, float durability, float knockback)

@@ -25,7 +25,7 @@ public class CameraZoom : MonoBehaviour
         if (isDead)
         {
             timer += Time.deltaTime;
-            if (timer < duration)
+            if (timer <= duration)
             {
                 Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, originalFOV - zoomAmount, Time.deltaTime * zoomSpeed);
                 Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, deadPlayer, Time.deltaTime * zoomSpeed);
@@ -34,7 +34,7 @@ public class CameraZoom : MonoBehaviour
             {
                 Time.timeScale = 1f;  
                 isDead = false;  
-                Camera.main.fieldOfView = originalFOV; 
+                Camera.main.fieldOfView = originalFOV;
                 Camera.main.transform.position = originalPosition;
                 timer = 0f;
             }
