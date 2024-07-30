@@ -26,6 +26,7 @@ public class AttackWater : MonoBehaviour
     float _hitPlayerCooldown = 5f;
     private float timer;
     private MovementPlayer1 playerStatsOtherEnemy;
+    [SerializeField] ParticleSystem waterParticle;
 
     void Start()
     {
@@ -109,7 +110,7 @@ public class AttackWater : MonoBehaviour
                                 //SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
                                 playerStats.DecreaseWaterCharge();
                                 //Water effect to enemy
-
+                                waterParticle.Play();
                                 hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater(playerStats.transform);
                                 hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
 
@@ -138,6 +139,7 @@ public class AttackWater : MonoBehaviour
                                     canDecrease = false;
                                     Invoke(nameof(canDecreaseCooldown), _hitPlayerCooldown);
                                     CoolDownIndicator();
+                                    waterParticle.Play();
 
                                 }
 
