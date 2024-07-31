@@ -7,11 +7,12 @@ using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
+    public int roundCount = 1;
 
-    private int[] playerScores;
-    private List<int[]> roundScores;
-    private int gameCounter;
-    private const int totalGames = 3;
+    public int[] scoresRound1Manager;
+    public int[] scoresRound2Manager;
+    public int[] scoresRound3Manager;
+    public int[] scoresRound4Manager;
 
     private void Awake()
     {
@@ -19,7 +20,6 @@ public class ScoreManager : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(gameObject);
-            InitializeScores();
         }
         else
         {
@@ -27,91 +27,141 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void InitializeScores()
+    public void Player1Won()
     {
-        playerScores = new int[3];
-        roundScores = new List<int[]>();
-        for (int i = 0; i < playerScores.Length; i++)
+        if (roundCount == 1)
         {
-            playerScores[i] = 0;
+            scoresRound1Manager[0] += 3;
         }
-        gameCounter = 0;
-    }
 
-    public void UpdateScores(int winnerIndex, int runnerUpIndex)
-    {
-      
-        playerScores[runnerUpIndex] += 1;
-
-       
-        roundScores.Add((int[])playerScores.Clone());
-
-        gameCounter++;
-        if (gameCounter < totalGames)
+        if (roundCount == 2)
         {
-            LoadNextLevel();
+            scoresRound2Manager[0] += 3;
         }
-        else
+
+        if (roundCount == 3)
         {
-            LoadResultScene();
+            scoresRound3Manager[0] += 3;
+        }
+
+        if (roundCount == 4)
+        {
+            scoresRound4Manager[0] += 3;
         }
     }
 
-    private void LoadNextLevel()
+    public void Player1RunnerUp()
     {
-     
-        bool isTie = (playerScores[0] == playerScores[1] || playerScores[1] == playerScores[2] || playerScores[0] == playerScores[2]);
-        string nextLevel = isTie ? GetRandomLevel() : GetNextLevel();
-
-     
-        SceneManager.LoadScene(nextLevel);
-    }
-
-    private string GetNextLevel()
-    {
-     
-        int nextLevelIndex = gameCounter + 1;
-        return "Level" + nextLevelIndex;
-    }
-
-    private string GetRandomLevel()
-    {
-       
-        int randomLevelIndex = Random.Range(1, totalGames + 1);
-        return "Level" + randomLevelIndex;
-    }
-
-    private void LoadResultScene()
-    {
-       
-        SceneManager.LoadScene("ResultScene");
-    }
-
-    public int GetScore(int playerIndex)
-    {
-        if (playerIndex >= 0 && playerIndex < playerScores.Length)
+        if (roundCount == 1)
         {
-            return playerScores[playerIndex];
+            scoresRound1Manager[0] += 1;
         }
-        return 0;
-    }
 
-    public int[] GetRoundScores(int roundIndex)
-    {
-        if (roundIndex >= 0 && roundIndex < roundScores.Count)
+        if (roundCount == 2)
         {
-            return roundScores[roundIndex];
+            scoresRound2Manager[0] += 1;
         }
-        return null;
+
+        if (roundCount == 3)
+        {
+            scoresRound3Manager[0] += 1;
+        }
+
+        if (roundCount == 4)
+        {
+            scoresRound4Manager[0] += 1;
+        }
     }
 
-    public int GetRoundCount()
+    public void Player2Won()
     {
-        return roundScores.Count;
+        if (roundCount == 1)
+        {
+            scoresRound1Manager[1] += 3;
+        }
+
+        if (roundCount == 2)
+        {
+            scoresRound2Manager[1] += 3;
+        }
+
+        if (roundCount == 3)
+        {
+            scoresRound3Manager[1] += 3;
+        }
+
+        if (roundCount == 4)
+        {
+            scoresRound4Manager[1] += 3;
+        }
     }
 
-    public void ResetScores()
+    public void Player2RunnerUp()
     {
-        InitializeScores();
+        if (roundCount == 1)
+        {
+            scoresRound1Manager[1] += 1;
+        }
+
+        if (roundCount == 2)
+        {
+            scoresRound2Manager[1] += 1;
+        }
+
+        if (roundCount == 3)
+        {
+            scoresRound3Manager[1] += 1;
+        }
+
+        if (roundCount == 4)
+        {
+            scoresRound4Manager[1] += 1;
+        }
+    }
+
+    public void Player3Won()
+    {
+        if (roundCount == 1)
+        {
+            scoresRound1Manager[2] += 3;
+        }
+
+        if (roundCount == 2)
+        {
+            scoresRound2Manager[2] += 3;
+        }
+
+        if (roundCount == 3)
+        {
+            scoresRound3Manager[2] += 3;
+        }
+
+        if (roundCount == 4)
+        {
+            scoresRound4Manager[2] += 3;
+        }
+    }
+
+    public void Player3RunnerUp()
+    {
+        if (roundCount == 1)
+        {
+            scoresRound1Manager[2] += 1;
+        }
+
+        if (roundCount == 2)
+        {
+            scoresRound2Manager[2] += 1;
+        }
+
+        if (roundCount == 3)
+        {
+            scoresRound3Manager[2] += 1;
+        }
+
+        if (roundCount == 4)
+        {
+            scoresRound4Manager[2] += 1;
+        }
     }
 }

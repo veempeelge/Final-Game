@@ -125,6 +125,8 @@ public class GameManager : MonoBehaviour
 
         {
             GameOver();
+            ScoreManager.Instance.Player1RunnerUp();
+
         }
     }
 
@@ -135,9 +137,9 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player1Dead");
 
         if (playersLeft == 1)
-
         {
             GameOver();
+            ScoreManager.Instance.Player2RunnerUp();
         }
 
     }
@@ -150,6 +152,7 @@ public class GameManager : MonoBehaviour
 
         if (playersLeft == 1)
         {
+            ScoreManager.Instance.Player3RunnerUp();
             GameOver();
         }
     }
@@ -172,6 +175,7 @@ public class GameManager : MonoBehaviour
         if (player1alive)
         {
             //Player 1 Won
+            ScoreManager.Instance.Player1Won();
             player1Won.SetActive(true);
             mov = player1obj.gameObject.GetComponent<MovementPlayer1>();
             mov.Victory();
@@ -183,6 +187,7 @@ public class GameManager : MonoBehaviour
         if (player2alive)
         {
             //Player 2 Won
+            ScoreManager.Instance.Player2Won();
             player2Won.SetActive(true);
             mov = player2obj.gameObject.GetComponent<MovementPlayer1>();
             mov.Victory();
@@ -195,6 +200,7 @@ public class GameManager : MonoBehaviour
         if (player3alive)
         {
             //Player 3 Won
+            ScoreManager.Instance.Player3Won();
             player3Won.SetActive(true);
             mov = player3obj.gameObject.GetComponent<MovementPlayer1>();
             mov.Victory();
