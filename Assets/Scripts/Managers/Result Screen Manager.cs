@@ -61,9 +61,9 @@
 
                 if (round == 2)
                 {
-                    round2Column.SetActive(true);
-                    round3Column.SetActive(false);
-                    tieBreakerColumn.SetActive(false);
+                    //round2Column.SetActive(true);
+                    //round3Column.SetActive(false);
+                    //tieBreakerColumn.SetActive(false);
 
                     scoresRound1Manager = scoreManager.scoresRound1Manager;
                     scoresRound2Manager = scoreManager.scoresRound2Manager;
@@ -75,9 +75,9 @@
 
                 if (round == 3)
                 {
-                    round2Column.SetActive(true);
-                    round3Column.SetActive(true);
-                    tieBreakerColumn.SetActive(false);
+                    //round2Column.SetActive(true);
+                    //round3Column.SetActive(true);
+                    //tieBreakerColumn.SetActive(false);
 
                     scoresRound1Manager = scoreManager.scoresRound1Manager;
                     scoresRound2Manager = scoreManager.scoresRound2Manager;
@@ -91,9 +91,9 @@
 
                 if (round == 4)
                 {
-                    round2Column.SetActive(true);
-                    round3Column.SetActive(true);
-                    tieBreakerColumn.SetActive(true);
+                    //round2Column.SetActive(true);
+                    //round3Column.SetActive(true);
+                    //tieBreakerColumn.SetActive(true);
 
                     scoresRound1Manager = scoreManager.scoresRound1Manager;
                     scoresRound2Manager = scoreManager.scoresRound2Manager;
@@ -111,7 +111,7 @@
 
         void MainMenuButtonClick()
         {
-            SceneManager.LoadSceneAsync("MainMenu");
+            SceneManager.LoadSceneAsync(0);
         }
 
         private void ButtonClick()

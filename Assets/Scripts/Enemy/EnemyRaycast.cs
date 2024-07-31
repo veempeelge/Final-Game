@@ -52,9 +52,17 @@ public class EnemyRaycast : MonoBehaviour
                 if (canAttack && hit.collider.gameObject.tag == "Player")
                 {
                     Vertices[i + 1] = VertForward * hit.distance;
-                    hit.collider.gameObject.GetComponent<MovementPlayer1>().TakeDamage(2);
-//                  Debug.Log("HIT");
-                   
+                    if (hit.collider.gameObject.GetComponent<MovementPlayer1>() != null)
+                    {
+                        hit.collider.gameObject.GetComponent<MovementPlayer1>().TakeDamage(2);
+
+                    }
+                    else
+                    {
+                        return;
+                    }
+                    //Debug.Log("HIT");
+
                     canAttack = false;
                     gameObject.GetComponentInParent<Enemy>().enabled = false;
                     Invoke("AttackPlayer", 2f);

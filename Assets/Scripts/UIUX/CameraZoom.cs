@@ -43,6 +43,7 @@ public class CameraZoom : MonoBehaviour
                     isDead = false;
                     Camera.main.fieldOfView = originalFOV;
                     Camera.main.transform.position = originalPosition;
+                
                     timer = 0f;
                     for (int i = 0; i < PlayerUIs.Length; i++)
                     {

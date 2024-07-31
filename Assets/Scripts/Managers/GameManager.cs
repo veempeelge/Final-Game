@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.AI;
 using Unity.AI.Navigation;
 using UnityEditor.Rendering;
+using UnityEngine.UIElements;
 
 public class GameManager : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     int playersLeft;
     bool player1alive, player2alive, player3alive;
 
-    [SerializeField]  Button twoPlayers, threePlayers;
+    [SerializeField] UnityEngine.UI.Button twoPlayers, threePlayers;
 
     [SerializeField] GameObject UIPlayerSelect, UIPlayerHP, UIGameOver;
 
@@ -28,6 +29,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip gameplayMusic;
 
     [SerializeField] Transform hpBar2, weaponDurability2, item2;
+
+    [SerializeField] GameObject player1deadText, player2deadText, player3deadText;
 
 
     public float
@@ -45,32 +48,36 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         gameStart = true;
-        SoundManager.Instance.PlayMusic(gameplayMusic); 
+        SoundManager.Instance.PlayMusic(gameplayMusic);
         UIPlayerHP.SetActive(false);
         UIPlayerSelect.SetActive(true);
         UIGameOver.SetActive(false);
         Time.timeScale = 0;
         twoPlayers.onClick.AddListener(_2Players);
         threePlayers.onClick.AddListener(_3Players);
+        player1deadText.SetActive(false);
+        player2deadText.SetActive(false);
+        player3deadText.SetActive(false);
+
     }
 
     // Update is called once per frame
     void Update()
     {
-       if (gameStart)
-       {
-          if (Input.GetKeyDown(KeyCode.Alpha2))
-          {
+        if (gameStart)
+        {
+            if (Input.GetKeyDown(KeyCode.Alpha2))
+            {
                 _2Players();
-          }
+            }
 
-          if (Input.GetKeyDown(KeyCode.Alpha3))
-          {
+            if (Input.GetKeyDown(KeyCode.Alpha3))
+            {
                 _3Players();
-          }
+            }
         }
 
-       if (gameOver)
+        if (gameOver)
         {
             if (Input.GetKeyDown(KeyCode.R))
             {
@@ -122,12 +129,14 @@ public class GameManager : MonoBehaviour
         player1alive = false;
         Debug.Log("Player1Dead");
         if (playersLeft == 1)
-
         {
-            GameOver();
+            StartCoroutine(GameOver());
+
             ScoreManager.Instance.Player1RunnerUp();
 
         }
+
+        player1deadText.SetActive(true);
     }
 
     public void Player2Dead()
@@ -138,10 +147,12 @@ public class GameManager : MonoBehaviour
 
         if (playersLeft == 1)
         {
-            GameOver();
+            StartCoroutine(GameOver());
+
             ScoreManager.Instance.Player2RunnerUp();
         }
 
+        player2deadText.SetActive(true);
     }
 
     public void Player3Dead()
@@ -149,11 +160,12 @@ public class GameManager : MonoBehaviour
         playersLeft--;
         player3alive = false;
         Debug.Log("Player1Dead");
+        player3deadText.SetActive(true);
 
         if (playersLeft == 1)
         {
             ScoreManager.Instance.Player3RunnerUp();
-            GameOver();
+            StartCoroutine(GameOver());
         }
     }
 
@@ -163,10 +175,10 @@ public class GameManager : MonoBehaviour
         UIPlayerSelect.SetActive(false);
         Time.timeScale = 1;
     }
-    void GameOver()
+
+    IEnumerator GameOver()
     {
-        MovementPlayer1 mov;
-        CameraZoom cam;
+        yield return new WaitForSeconds(1);
         gameOver = true;
         Debug.Log("GameOver");
         UIGameOver.SetActive(true);
@@ -177,10 +189,7 @@ public class GameManager : MonoBehaviour
             //Player 1 Won
             ScoreManager.Instance.Player1Won();
             player1Won.SetActive(true);
-            mov = player1obj.gameObject.GetComponent<MovementPlayer1>();
-            mov.Victory();
-            cam = mov.gameObject.GetComponent<CameraZoom>();
-            StartCoroutine(CamToWinner(cam, mov));
+            
 
         }
 
@@ -189,10 +198,7 @@ public class GameManager : MonoBehaviour
             //Player 2 Won
             ScoreManager.Instance.Player2Won();
             player2Won.SetActive(true);
-            mov = player2obj.gameObject.GetComponent<MovementPlayer1>();
-            mov.Victory();
-            cam = mov.gameObject.GetComponent<CameraZoom>();
-            StartCoroutine(CamToWinner(cam, mov));
+           
 
 
         }
@@ -202,10 +208,7 @@ public class GameManager : MonoBehaviour
             //Player 3 Won
             ScoreManager.Instance.Player3Won();
             player3Won.SetActive(true);
-            mov = player3obj.gameObject.GetComponent<MovementPlayer1>();
-            mov.Victory();
-            cam = mov.gameObject.GetComponent<CameraZoom>();
-            StartCoroutine(CamToWinner(cam, mov));
+            
         }
     }
 

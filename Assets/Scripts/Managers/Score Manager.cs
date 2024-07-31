@@ -16,6 +16,11 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
+        if (SceneManager.GetActiveScene().name == "Main Menu")
+        {
+           Reset();
+        }
+
         if (Instance == null)
         {
             Instance = this;
@@ -27,6 +32,16 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
+    public void Reset()
+    {
+        for (int i = 0; i < scoresRound1Manager.Length; i++)
+        {
+            scoresRound1Manager[i] = 0;
+            scoresRound1Manager[i] = 0;
+            scoresRound3Manager[i] = 0;
+            scoresRound4Manager[i] = 0;
+        }
+    }
     public void Player1Won()
     {
         if (roundCount == 1)
@@ -163,5 +178,5 @@ public class ScoreManager : MonoBehaviour
         {
             scoresRound4Manager[2] += 1;
         }
-    }
+    }   
 }
