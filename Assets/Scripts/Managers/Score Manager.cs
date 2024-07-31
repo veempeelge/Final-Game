@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager Instance { get; private set; }
@@ -16,9 +15,11 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        if (SceneManager.GetActiveScene().name == "Main Menu")
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
-           Reset();
+            ResetScores();
+            Destroy(gameObject);
+            roundCount = 1;
         }
 
         if (Instance == null)
@@ -32,34 +33,32 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    public void Reset()
+    private void ResetScores()
     {
         for (int i = 0; i < scoresRound1Manager.Length; i++)
         {
             scoresRound1Manager[i] = 0;
-            scoresRound1Manager[i] = 0;
+            scoresRound2Manager[i] = 0;
             scoresRound3Manager[i] = 0;
             scoresRound4Manager[i] = 0;
         }
     }
+
     public void Player1Won()
     {
         if (roundCount == 1)
         {
             scoresRound1Manager[0] += 3;
         }
-
-        if (roundCount == 2)
+        else if (roundCount == 2)
         {
             scoresRound2Manager[0] += 3;
         }
-
-        if (roundCount == 3)
+        else if (roundCount == 3)
         {
             scoresRound3Manager[0] += 3;
         }
-
-        if (roundCount == 4)
+        else if (roundCount == 4)
         {
             scoresRound4Manager[0] += 3;
         }
@@ -71,18 +70,15 @@ public class ScoreManager : MonoBehaviour
         {
             scoresRound1Manager[0] += 1;
         }
-
-        if (roundCount == 2)
+        else if (roundCount == 2)
         {
             scoresRound2Manager[0] += 1;
         }
-
-        if (roundCount == 3)
+        else if (roundCount == 3)
         {
             scoresRound3Manager[0] += 1;
         }
-
-        if (roundCount == 4)
+        else if (roundCount == 4)
         {
             scoresRound4Manager[0] += 1;
         }
@@ -94,18 +90,15 @@ public class ScoreManager : MonoBehaviour
         {
             scoresRound1Manager[1] += 3;
         }
-
-        if (roundCount == 2)
+        else if (roundCount == 2)
         {
             scoresRound2Manager[1] += 3;
         }
-
-        if (roundCount == 3)
+        else if (roundCount == 3)
         {
             scoresRound3Manager[1] += 3;
         }
-
-        if (roundCount == 4)
+        else if (roundCount == 4)
         {
             scoresRound4Manager[1] += 3;
         }
@@ -117,18 +110,15 @@ public class ScoreManager : MonoBehaviour
         {
             scoresRound1Manager[1] += 1;
         }
-
-        if (roundCount == 2)
+        else if (roundCount == 2)
         {
             scoresRound2Manager[1] += 1;
         }
-
-        if (roundCount == 3)
+        else if (roundCount == 3)
         {
             scoresRound3Manager[1] += 1;
         }
-
-        if (roundCount == 4)
+        else if (roundCount == 4)
         {
             scoresRound4Manager[1] += 1;
         }
@@ -140,18 +130,15 @@ public class ScoreManager : MonoBehaviour
         {
             scoresRound1Manager[2] += 3;
         }
-
-        if (roundCount == 2)
+        else if (roundCount == 2)
         {
             scoresRound2Manager[2] += 3;
         }
-
-        if (roundCount == 3)
+        else if (roundCount == 3)
         {
             scoresRound3Manager[2] += 3;
         }
-
-        if (roundCount == 4)
+        else if (roundCount == 4)
         {
             scoresRound4Manager[2] += 3;
         }
@@ -163,20 +150,17 @@ public class ScoreManager : MonoBehaviour
         {
             scoresRound1Manager[2] += 1;
         }
-
-        if (roundCount == 2)
+        else if (roundCount == 2)
         {
             scoresRound2Manager[2] += 1;
         }
-
-        if (roundCount == 3)
+        else if (roundCount == 3)
         {
             scoresRound3Manager[2] += 1;
         }
-
-        if (roundCount == 4)
+        else if (roundCount == 4)
         {
             scoresRound4Manager[2] += 1;
         }
-    }   
+    }
 }
