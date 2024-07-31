@@ -282,7 +282,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: -3.629, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.047, y: 0.362}
+  m_AnchoredPosition: {x: -0.047, y: 0.563}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &5202955374767999043
@@ -393,7 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0de7df1b28aff41398010a4f9f890655, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VisionConeMaterial: {fileID: 2100000, guid: 8841b4221242671408d2a5ee7ea6888f, type: 2}
+  VisionConeMaterial: {fileID: 2100000, guid: dc4e42c6a83d75049986fdb60774634a, type: 2}
   VisionRange: 1
   VisionAngle: 90
   VisionObstructingLayer:
