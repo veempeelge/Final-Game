@@ -243,6 +243,81 @@ Transform:
   - {fileID: 6061382779364625822}
   m_Father: {fileID: 4033561378793552965}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1307820924729536775
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2201871070333683810}
+  - component: {fileID: 3239695719027962119}
+  - component: {fileID: 7752824968038872563}
+  m_Layer: 6
+  m_Name: Water Bar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2201871070333683810
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307820924729536775}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.014999999, y: -0.0018750001, z: 0.0056249998}
+  m_ConstrainProportionsScale: 1
+  m_Children: []
+  m_Father: {fileID: 7444629212036637684}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &3239695719027962119
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307820924729536775}
+  m_CullTransparentMesh: 1
+--- !u!114 &7752824968038872563
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1307820924729536775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.4481132, g: 0.67752516, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 88187402cdd15394f9c7f8226c56766c, type: 3}
+  m_Type: 3
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 0
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &1625255510926402870
 GameObject:
   m_ObjectHideFlags: 0
@@ -275,9 +350,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1.0002, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 3121165908755778509}
   - {fileID: 8211928456195976033}
-  - {fileID: 6130789992822133671}
+  - {fileID: 7444629212036637684}
   - {fileID: 2785129531446660831}
   - {fileID: 7771608353897914263}
   - {fileID: 4536476922290855430}
@@ -653,7 +727,7 @@ GameObject:
   - component: {fileID: 7533313658802393654}
   - component: {fileID: 2963966134042678644}
   m_Layer: 6
-  m_Name: Full (1)
+  m_Name: Water Empty
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -666,16 +740,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3064643755396677110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.015, y: -0.001875, z: 0.0056249998}
+  m_LocalScale: {x: 0.014999999, y: -0.0018750001, z: 0.0056249998}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4715861145983670915}
+  m_Father: {fileID: 7444629212036637684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.297}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7533313658802393654
@@ -706,7 +780,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: 64576ffeed861484f8d650f96af59995, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1613,6 +1687,44 @@ RectTransform:
   m_AnchoredPosition: {x: 1.7512, y: 2.414}
   m_SizeDelta: {x: 1.1744399, y: 1.1940465}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &6458104186209262344
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7444629212036637684}
+  m_Layer: 6
+  m_Name: WaterBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &7444629212036637684
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6458104186209262344}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.27, y: 1.27, z: 1.27}
+  m_ConstrainProportionsScale: 1
+  m_Children:
+  - {fileID: 3121165908755778509}
+  - {fileID: 6130789992822133671}
+  - {fileID: 2201871070333683810}
+  m_Father: {fileID: 4715861145983670915}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 2.39}
+  m_SizeDelta: {x: 1.5, y: -0.1875}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6504638674165638172
 GameObject:
   m_ObjectHideFlags: 0
@@ -2011,7 +2123,7 @@ GameObject:
   - component: {fileID: 2591605559058340209}
   - component: {fileID: 1979289805142360757}
   m_Layer: 6
-  m_Name: Water
+  m_Name: Water Current
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2024,16 +2136,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8430374293186337291}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.015, y: -0.001875, z: 0.0056249998}
+  m_LocalScale: {x: 0.014999999, y: -0.0018750001, z: 0.0056249998}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4715861145983670915}
+  m_Father: {fileID: 7444629212036637684}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 2.297}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2591605559058340209
@@ -2064,7 +2176,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 19f66966c325cc24fa7c57102e17c44b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d92b0ef991adb6a4d88aba661c6198c6, type: 3}
   m_Type: 3
   m_PreserveAspect: 0
   m_FillCenter: 1
