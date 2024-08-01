@@ -9265,6 +9265,10 @@ PrefabInstance:
       propertyPath: waterCurrentBar
       value: 
       objectReference: {fileID: 1039935909}
+    - target: {fileID: 2573840350870663351, guid: d89f569484b340248b6d58b40a304142, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2687179874924001095, guid: d89f569484b340248b6d58b40a304142, type: 3}
       propertyPath: player1
       value: 
@@ -9284,6 +9288,10 @@ PrefabInstance:
     - target: {fileID: 2718033209602752112, guid: d89f569484b340248b6d58b40a304142, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 0.000061035156
+      objectReference: {fileID: 0}
+    - target: {fileID: 2780547168210231801, guid: d89f569484b340248b6d58b40a304142, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3783436290988942029, guid: d89f569484b340248b6d58b40a304142, type: 3}
       propertyPath: m_AnchorMax.x
@@ -9353,6 +9361,10 @@ PrefabInstance:
       propertyPath: waterCurrentBar
       value: 
       objectReference: {fileID: 1459447565}
+    - target: {fileID: 6585163744384414081, guid: d89f569484b340248b6d58b40a304142, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7133360857464826644, guid: d89f569484b340248b6d58b40a304142, type: 3}
       propertyPath: player1
       value: 
@@ -9494,6 +9506,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d89f569484b340248b6d58b40a304142, type: 3}
+--- !u!1 &914147082 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2780547168210231801, guid: d89f569484b340248b6d58b40a304142, type: 3}
+  m_PrefabInstance: {fileID: 914147081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &914147083 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6585163744384414081, guid: d89f569484b340248b6d58b40a304142, type: 3}
+  m_PrefabInstance: {fileID: 914147081}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &914147084 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2573840350870663351, guid: d89f569484b340248b6d58b40a304142, type: 3}
+  m_PrefabInstance: {fileID: 914147081}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &914797691
 GameObject:
   m_ObjectHideFlags: 0
@@ -9682,6 +9709,18 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: player1deadText
+      value: 
+      objectReference: {fileID: 914147084}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: player2deadText
+      value: 
+      objectReference: {fileID: 914147083}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
+      propertyPath: player3deadText
+      value: 
+      objectReference: {fileID: 914147082}
+    - target: {fileID: 7176217125988856969, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
       propertyPath: defPlayerAtkWidth
       value: 10
       objectReference: {fileID: 0}
@@ -9709,7 +9748,8 @@ PrefabInstance:
       propertyPath: player3UIs.Array.data[2]
       value: 
       objectReference: {fileID: 1495306825}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 86696457560336303, guid: cbbc9d9435bdff84fb8c80323e4e3664, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:

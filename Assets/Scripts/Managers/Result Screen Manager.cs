@@ -77,7 +77,16 @@ public class ResultScreenManager : MonoBehaviour
         if (round < 3)
         {
             scoreManager.roundCount++;
-            SceneManager.LoadSceneAsync(3);
+            //SceneManager.LoadSceneAsync(3);
+
+            if (round == 1)
+            {
+                SceneManager.LoadSceneAsync("PRO_TestLvl.2");
+            }
+            else if (round == 2)
+            {
+                SceneManager.LoadSceneAsync("PRO_TestLvl.3");
+            }
         }
         else if (round == 3)
         {
@@ -87,7 +96,8 @@ public class ResultScreenManager : MonoBehaviour
             }
             else
             {
-                Debug.Log("Should be going to leaderboard Scene");
+                SceneManager.LoadSceneAsync(0);
+
             }
         }
     }
