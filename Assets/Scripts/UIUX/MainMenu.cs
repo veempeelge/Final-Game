@@ -15,7 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void Level1()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene("PRO1.5_TestLvl.1 Populate");
     }
 
     public void Menu()
@@ -30,7 +30,7 @@ public class MainMenu : MonoBehaviour
 
     public void Lvl1()
     {
-        SceneManager.LoadScene("PRO1.5_TestLevelPopulate");
+        SceneManager.LoadScene("PRO1.5_TestLvl.1 Populate");
     }
 
     public void Lvl2()

@@ -348,7 +348,6 @@ GameObject:
   - component: {fileID: 8924431310741677704}
   - component: {fileID: 5967956825654241390}
   - component: {fileID: 4485936031857900198}
-  - component: {fileID: 3785953631699384967}
   m_Layer: 6
   m_Name: Player 3
   m_TagString: Player
@@ -504,7 +503,7 @@ MonoBehaviour:
   slot: {fileID: 0}
   anim: {fileID: 5214594816431667744}
   cameras: {fileID: 1530913863334319480}
-  deadBodyObject: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
+  deadBodyObject: {fileID: 997400810003062948, guid: 9db34254a31d83c4d91563a2bb674f54, type: 3}
   tutorialUI: {fileID: 4939040505008491592}
 --- !u!65 &5019004439554845855
 BoxCollider:
@@ -592,78 +591,6 @@ MonoBehaviour:
   - {fileID: 8860862994622749432}
   pointsHard:
   - {fileID: 3967379743690294942}
---- !u!114 &3785953631699384967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 997400810003062948}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d289ec3e461e8a040b1752e98a3023c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1530913863334319480
 GameObject:
   m_ObjectHideFlags: 0
@@ -1621,7 +1548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5515adfcaa007064ab98c91bdecbe0da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  VisionConeMaterial: {fileID: 2100000, guid: f50b126a065313e4288b841a88d672cc, type: 2}
+  VisionConeMaterial: {fileID: 2100000, guid: dc4e42c6a83d75049986fdb60774634a, type: 2}
   AttackRange: 7
   AttackAngle: 70
   VisionObstructingLayer:

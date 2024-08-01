@@ -483,7 +483,6 @@ GameObject:
   - component: {fileID: 1851131007691174268}
   - component: {fileID: 7907916631004245537}
   - component: {fileID: 4974225077081144546}
-  - component: {fileID: 7690573519229574966}
   m_Layer: 6
   m_Name: Player 2
   m_TagString: Player
@@ -639,7 +638,7 @@ MonoBehaviour:
   slot: {fileID: 0}
   anim: {fileID: 2176878322669637668}
   cameras: {fileID: 2315647474313539879}
-  deadBodyObject: {fileID: 4739414835688545390, guid: a4f028c32d93a7f49a7835b261b5eb53, type: 3}
+  deadBodyObject: {fileID: 1197664981355331433, guid: faf6b0f076d35424889658e7f7e30db2, type: 3}
   tutorialUI: {fileID: 2020042861271335704}
 --- !u!65 &5440332226947786560
 BoxCollider:
@@ -727,78 +726,6 @@ MonoBehaviour:
   - {fileID: 5863647829352913129}
   pointsHard:
   - {fileID: 1813156598611903373}
---- !u!114 &7690573519229574966
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197664981355331433}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d289ec3e461e8a040b1752e98a3023c6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  points:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!1 &1375821432319322026
 GameObject:
   m_ObjectHideFlags: 0
@@ -2512,6 +2439,18 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[1]
       value: 
       objectReference: {fileID: 2100000, guid: 63ed740140347cb47869c421aa567654, type: 2}
+    - target: {fileID: 8879528566716807029, guid: 56e55a3e4f8971940abc0644ec8086c7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 56e55a3e4f8971940abc0644ec8086c7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8879528566716807029, guid: 56e55a3e4f8971940abc0644ec8086c7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9161333309585136081, guid: 56e55a3e4f8971940abc0644ec8086c7, type: 3}
       propertyPath: m_Materials.Array.size
       value: 2
