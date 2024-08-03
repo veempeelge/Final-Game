@@ -65,6 +65,9 @@ public class MovementPlayer1 : MonoBehaviour
     [Header("Audio")]
     [SerializeField] AudioClip attackAir;
     [SerializeField] AudioClip gotItem;
+    [SerializeField] AudioClip ManDeath;
+    [SerializeField] AudioClip WomanDeath;
+
     private int waterCharge;
     private bool waterDecreased;
     private Inv_Item inv;
@@ -153,10 +156,6 @@ public class MovementPlayer1 : MonoBehaviour
         anim.SetFloat("IsRunning", rb.velocity.magnitude);
 
         RotatePlayer();
-
-       
-
-        
     }
 
     public void StartWaterCoroutine()
