@@ -16,6 +16,8 @@ public class Spawner : MonoBehaviour
 
     public Transform enemiesParent;
 
+    [SerializeField] AudioClip bellSpawnSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +61,7 @@ public class Spawner : MonoBehaviour
             GameObject enemiesToSpawn = spawnableEnemies[Random.Range(0, spawnableEnemies.Length)];
             GameObject spawnedEnemies = Instantiate(enemiesToSpawn, spawnPoint.position, Quaternion.identity);
             spawnedEnemies.transform.parent = enemiesParent;
+            SoundManager.Instance.RandomSoundEffect(bellSpawnSound);
         }
         else
         {

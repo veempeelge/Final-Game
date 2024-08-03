@@ -85,6 +85,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] AudioClip hitWater;
 
+    [SerializeField] AudioSource walking;
+
     void Start()
     {
         cameraZoom = Camera.main.GetComponent<CameraZoom>();
@@ -157,7 +159,22 @@ public class MovementPlayer1 : MonoBehaviour
         
         anim.SetFloat("IsRunning", rb.velocity.magnitude);
 
+        if (rb.velocity.magnitude > .1f)
+        {
+            PlayWalk();
+            //SoundManager.Instance.WalkingSource.Play();
+        }
+
         RotatePlayer();
+    }
+
+    void PlayWalk()
+    {
+        if (!walking.isPlaying)
+        {
+            walking.Play();
+        }
+
     }
 
     public void StartWaterCoroutine()
@@ -304,7 +321,7 @@ public class MovementPlayer1 : MonoBehaviour
                 yield return new WaitForSeconds(1f / playerAtkSpd);
                 DurabilityCheck();
               //  AttackEnemy();
-                yield return new WaitForSeconds(.1f);
+                yield return new WaitForSeconds(.5f);
                 hitIndicator.SetActive(false);
                 attack.isAttacking = false;
             }

@@ -8,6 +8,7 @@ public class SoundManager : MonoBehaviour
 
     public AudioSource EffectsSource;
     public AudioSource MusicSource;
+   // public AudioSource WalkingSource;
 
     public float LowPitchRange = .95f;
     public float HighPitchRange = 1.05f;

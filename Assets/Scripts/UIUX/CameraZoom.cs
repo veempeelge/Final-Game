@@ -17,41 +17,57 @@ public class CameraZoom : MonoBehaviour
 
     void Start()
     {
-        originalFOV = Camera.main.fieldOfView;
-        originalPosition = Camera.main.transform.position;
+        if (Camera.main != null)
+        {
+            originalFOV = Camera.main.fieldOfView;
+            originalPosition = Camera.main.transform.position;
+        }
     }
 
     void Update()
     {
         if (isDead)
         {
-            if(gameObject != null)
+            if (gameObject != null)
             {
                 timer += Time.deltaTime;
                 if (timer <= duration)
                 {
-                    Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, originalFOV - zoomAmount, Time.deltaTime * zoomSpeed);
-                    Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, deadPlayer, Time.deltaTime * zoomSpeed);
+                    if (Camera.main != null)
+                    {
+                        Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, originalFOV - zoomAmount, Time.deltaTime * zoomSpeed);
+                        Camera.main.transform.position = Vector3.Lerp(Camera.main.transform.position, deadPlayer, Time.deltaTime * zoomSpeed);
+                    }
+
                     for (int i = 0; i < PlayerUIs.Length; i++)
                     {
-                        PlayerUIs[i].SetActive(false);
+                        if (PlayerUIs[i] != null)
+                        {
+                            PlayerUIs[i].SetActive(false);
+                        }
                     }
                 }
                 else
                 {
                     Time.timeScale = 1f;
                     isDead = false;
-                    Camera.main.fieldOfView = originalFOV;
-                    Camera.main.transform.position = originalPosition;
-                
+
+                    if (Camera.main != null)
+                    {
+                        Camera.main.fieldOfView = originalFOV;
+                        Camera.main.transform.position = originalPosition;
+                    }
+
                     timer = 0f;
                     for (int i = 0; i < PlayerUIs.Length; i++)
                     {
-                        PlayerUIs[i].SetActive(true);
+                        if (PlayerUIs[i] != null)
+                        {
+                            PlayerUIs[i].SetActive(true);
+                        }
                     }
                 }
             }
-           
         }
     }
 
@@ -60,7 +76,6 @@ public class CameraZoom : MonoBehaviour
         deadPlayer = position + new Vector3(0, 0, -10);
         isDead = true;
         timer = 0f;
-        Time.timeScale = slowMoFactor; 
+        Time.timeScale = slowMoFactor;
     }
-
 }
