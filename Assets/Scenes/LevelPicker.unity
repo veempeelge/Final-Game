@@ -643,7 +643,7 @@ PrefabInstance:
     - target: {fileID: 5660663323300364048, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
       propertyPath: m_audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: deb93a8e6d70fc546bf5dd86a826c737, type: 3}
+      objectReference: {fileID: 0}
     - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
       propertyPath: m_Volume
       value: 0.467
@@ -1200,7 +1200,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36560c4aa0ed38045858a23110ba2f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuMusic: {fileID: 8300000, guid: 1633622ec183cc346bdbec634cec8f95, type: 3}
+  mainMenuMusic: {fileID: 0}
+  buttonClick: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}
 --- !u!4 &1540774796
 Transform:
   m_ObjectHideFlags: 0

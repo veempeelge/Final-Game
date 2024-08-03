@@ -7,6 +7,7 @@ public class WatGen_Behave : MonoBehaviour
     private Inv_Item inv;
     [SerializeField] Item_Slot slot;
     public GameObject itemButton;
+    [SerializeField] AudioClip waterGet;
 
     private void Start()
     {
@@ -24,6 +25,8 @@ public class WatGen_Behave : MonoBehaviour
 
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundManager.Instance.Play(waterGet);
+
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
             slot = inv.slot;
@@ -66,6 +69,8 @@ public class WatGen_Behave : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            SoundManager.Instance.Play(waterGet);
+
             MovementPlayer1 mvP1 = other.gameObject.GetComponent<MovementPlayer1>();
             inv = mvP1.GetComponent<Inv_Item>();
             slot = inv.slot;
@@ -74,6 +79,7 @@ public class WatGen_Behave : MonoBehaviour
             {
                 if (inv.isFull[i] == false)
                 {
+
                     inv.hasWater = true;
                     inv.hasTrap = false;
                     inv.isFull[i] = true;

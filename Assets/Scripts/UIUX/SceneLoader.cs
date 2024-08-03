@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
+    [SerializeField] AudioClip playMusic;
 
     private void Start()
     {
-
+        SoundManager.Instance.PlayMusic(playMusic);
     }
 
     public void Menu()

@@ -13429,6 +13429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d65b501a706e94ba2393a2a1f06df4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playMusic: {fileID: 8300000, guid: 878b41352098df245b924fbef5d1e82c, type: 3}
 --- !u!4 &1412252107 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8392833052f1f604d8e4783fcbb53f34, type: 3}

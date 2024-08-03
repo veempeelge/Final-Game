@@ -26,11 +26,12 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] player3UIs;
 
-    [SerializeField] AudioClip gameplayMusic;
+    [SerializeField] AudioClip gameplayMusic, buttonClick;
 
     [SerializeField] Transform hpBar2, weaponDurability2, item2;
 
     [SerializeField] GameObject player1deadText, player2deadText, player3deadText;
+
 
 
     public float
@@ -93,6 +94,8 @@ public class GameManager : MonoBehaviour
 
     void _2Players()
     {
+        SoundManager.Instance.Play(buttonClick);
+
         player1alive = true;
         player2alive = true;
         player3alive = false;
@@ -105,14 +108,16 @@ public class GameManager : MonoBehaviour
             player3UIs[i].SetActive(false);
         }
 
-        weaponDurability2.position = new Vector3(1684.65f, weaponDurability2.position.y, weaponDurability2.position.z);
-        hpBar2.position = new Vector3(1648.833f, hpBar2.position.y, hpBar2.position.z);
-        item2.position = new Vector3(1591.637f, item2.position.y, item2.position.z);
+        //weaponDurability2.position = new Vector3(1684.65f, weaponDurability2.position.y, weaponDurability2.position.z);
+        //hpBar2.position = new Vector3(1648.833f, hpBar2.position.y, hpBar2.position.z);
+        //item2.position = new Vector3(1591.637f, item2.position.y, item2.position.z);
         gameStart = false;
     }
 
     void _3Players()
     {
+        SoundManager.Instance.Play(buttonClick);
+
         player1alive = true;
         player2alive = true;
         player3alive = true;

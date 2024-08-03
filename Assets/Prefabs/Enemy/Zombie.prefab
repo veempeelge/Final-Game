@@ -1577,6 +1577,7 @@ MonoBehaviour:
   mediumEnemy: 0
   easyEnemy: 1
   animator: {fileID: 9053876824330718933}
+  hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
 --- !u!65 &8552764281054709340
 BoxCollider:
   m_ObjectHideFlags: 0

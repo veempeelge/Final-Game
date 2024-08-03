@@ -299,6 +299,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slot: {fileID: 0}
   itemButton: {fileID: 2748315866558779717, guid: 12f3b6321d6c3884483e7b9dabf212f1, type: 3}
+  waterGet: {fileID: 8300000, guid: a286bf925794a8b4f865c76c7a432fce, type: 3}
 --- !u!1001 &2826768090019759998
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -49,6 +49,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] Animator animator;
 
+    [SerializeField] AudioClip hitWater;
+
     void Start()
     {
        // navmesh = GameManager.Instance.nav;
@@ -342,6 +344,7 @@ public class Enemy : MonoBehaviour
         //Debug.Log("Target another player");
         if (CanHitWater)
         {
+            SoundManager.Instance.Play(hitWater);
             CanHitWater = false;
             Invoke(nameof(CanHitWaterCooldown), 2f);
             ChangeTarget();

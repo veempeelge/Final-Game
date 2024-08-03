@@ -83,6 +83,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] GameObject tutorialUI;
 
+    [SerializeField] AudioClip hitWater;
+
     void Start()
     {
         cameraZoom = Camera.main.GetComponent<CameraZoom>();
@@ -191,6 +193,8 @@ public class MovementPlayer1 : MonoBehaviour
             canhitbyotherplayer = false;
             this.enabled = false;
             StartCoroutine(EnableMovement());
+
+            SoundManager.Instance.Play(hitWater);
         }
         yield break;
         
