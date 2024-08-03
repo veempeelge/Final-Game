@@ -17,7 +17,7 @@ RenderSettings:
   m_Fog: 1
   m_FogColor: {r: 0.008837689, g: 0, b: 0.83396226, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.007
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -25910,6 +25910,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: db68df63a54d31f458ee7e6d3a6609cf, type: 3}
       propertyPath: m_Name
       value: Barn_Textured
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370951913967234905, guid: db68df63a54d31f458ee7e6d3a6609cf, type: 3}
+      propertyPath: m_StaticShadowCaster
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4370951913967234905, guid: db68df63a54d31f458ee7e6d3a6609cf, type: 3}
       propertyPath: m_Materials.Array.size
