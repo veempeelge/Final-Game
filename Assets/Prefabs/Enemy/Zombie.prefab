@@ -229,7 +229,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.5144211, b: 0.5058824, a: 1}
+  m_Color: {r: 1, g: 0.94814, b: 0.759434, a: 0.6745098}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1578,6 +1578,7 @@ MonoBehaviour:
   easyEnemy: 1
   animator: {fileID: 9053876824330718933}
   hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
+  waterIndicatorCone: {fileID: 7872601936976487080}
 --- !u!65 &8552764281054709340
 BoxCollider:
   m_ObjectHideFlags: 0

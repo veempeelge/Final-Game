@@ -40,6 +40,7 @@ public class ResultScreenManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
         confirmButton.onClick.AddListener(ButtonClick);
         mainMenuButton.onClick.AddListener(MainMenuButtonClick);
 
