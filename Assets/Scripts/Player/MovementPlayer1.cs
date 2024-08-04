@@ -87,6 +87,11 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] AudioSource walking;
 
+    private void Awake()
+    {
+            waterHitIndicatorPrefab.SetActive(false);
+
+    }
     void Start()
     {
         cameraZoom = Camera.main.GetComponent<CameraZoom>();
