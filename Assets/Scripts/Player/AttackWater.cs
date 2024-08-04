@@ -31,8 +31,6 @@ public class AttackWater : MonoBehaviour
     void Start()
     {
         timer = 0;
-       // HitPlayerCooldown.gameObject.SetActive(true);
-
         playerStats = GetComponentInParent<MovementPlayer1>();
         items = GetComponentInParent<Inv_Item>();
         var meshRenderer = gameObject.AddComponent<MeshRenderer>();
@@ -44,22 +42,22 @@ public class AttackWater : MonoBehaviour
 
     void Update()
     {
-        AttackRange = 7f;
-        AttackAngle = 1f;
-        DrawVisionCone();
+        // Ensure the vision cone is drawn only when there is water charge
+        if (playerStats.waterCharge > 0)
+        {
+            AttackRange = 7f;
+            AttackAngle = 1f;
+            DrawVisionCone();
+        }
 
         if (timer < _hitPlayerCooldown)
         {
             timer += Time.deltaTime;
             HitPlayerCooldown.fillAmount = timer / _hitPlayerCooldown;
         }
-        else
-        {
-            return;
-        }
     }
 
-    void DrawVisionCone() // This method creates the vision cone mesh
+    void DrawVisionCone()
     {
         int[] triangles = new int[(VisionConeResolution - 1) * 3];
         Vector3[] Vertices = new Vector3[VisionConeResolution + 1];
@@ -78,7 +76,6 @@ public class AttackWater : MonoBehaviour
             Vector3 offset = Vector3.zero;
 
             RaycastHit visionHit;
-            MovementPlayer1 player;
             bool obstructed = Physics.Raycast(transform.position + offset, RaycastDirection, out visionHit, AttackRange, VisionObstructingLayer);
 
             if (obstructed)
@@ -91,7 +88,6 @@ public class AttackWater : MonoBehaviour
 
                 RaycastHit[] hits = Physics.RaycastAll(transform.position + offset, RaycastDirection, AttackRange);
 
-                bool enemyDetected = false;
                 foreach (RaycastHit hit in hits)
                 {
                     if (hit.collider.gameObject.CompareTag("Enemy"))
@@ -99,26 +95,17 @@ public class AttackWater : MonoBehaviour
                         if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
                         {
                             enemy = hit.collider.gameObject.GetComponent<Enemy>();
-                            if (enemy != null && enemy.targetPlayer == transform.parent.gameObject)
+                            if (enemy != null && enemy.targetPlayer == transform.parent.gameObject && playerStats.waterCharge > 0)
                             {
-
                                 playerStats.enabled = false;
                                 playerStats.AttackAnim();
-                                //play throw sfx
                                 Invoke(nameof(WalkCooldown), .5f);
-
-                                //SoundManager.Instance.Play(attackHit[Random.Range(0,attackHit.Length)]);
                                 playerStats.DecreaseWaterCharge();
-                                //Water effect to enemy
                                 waterParticle.Play();
-                                hit.collider.gameObject.GetComponent<Enemy>().OnPlayerHitWater(playerStats.transform);
-                                hit.collider.gameObject.GetComponent<Enemy>().OnPlayerDetected(playerStats.transform, playerStats);
-
-                                enemyDetected = true;
-                              //  Debug.Log("Water hit enemy");
+                                enemy.OnPlayerHitWater(playerStats.transform);
+                                enemy.OnPlayerDetected(playerStats.transform, playerStats);
                                 break;
                             }
-                            
                         }
                     }
 
@@ -127,25 +114,18 @@ public class AttackWater : MonoBehaviour
                         if (!Physics.Raycast(transform.position + offset, RaycastDirection, out RaycastHit obstacleHit, Vector3.Distance(transform.position, hit.transform.position), VisionObstructingLayer))
                         {
                             playerStatsOtherEnemy = hit.collider.gameObject.GetComponent<MovementPlayer1>();
-                            player = GetComponentInParent<MovementPlayer1>();
-                            if (playerStats != null)
+                            var player = GetComponentInParent<MovementPlayer1>();
+                            if (playerStatsOtherEnemy != null && canDecrease && playerStats.waterCharge > 0)
                             {
-
-                               StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
-                                if (canDecrease)
-                                {
-                                    playerStats.AttackAnim();
-                                    player.DecreaseWaterCharge();
-                                    canDecrease = false;
-                                    Invoke(nameof(canDecreaseCooldown), _hitPlayerCooldown);
-                                    CoolDownIndicator();
-                                    waterParticle.Play();
-
-                                }
-
+                                StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
+                                playerStats.AttackAnim();
+                                player.DecreaseWaterCharge();
+                                canDecrease = false;
+                                Invoke(nameof(canDecreaseCooldown), _hitPlayerCooldown);
+                                CoolDownIndicator();
+                                waterParticle.Play();
                                 break;
                             }
-
                         }
                     }
                 }

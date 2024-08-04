@@ -638,6 +638,7 @@ MonoBehaviour:
   gotItem: {fileID: 8300000, guid: 56184b2a72c4a1649820b6a7ba1fdbb7, type: 3}
   ManDeath: {fileID: 8300000, guid: b042f37acb5c6c6489c83f5ad07a2242, type: 3}
   WomanDeath: {fileID: 8300000, guid: 79c9708c3b463df44a21faa2d985f6dd, type: 3}
+  waterCharge: 0
   slot: {fileID: 0}
   anim: {fileID: 2176878322669637668}
   cameras: {fileID: 2315647474313539879}
@@ -645,6 +646,7 @@ MonoBehaviour:
   tutorialUI: {fileID: 2020042861271335704}
   hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
   walking: {fileID: 4625116319028376643}
+  waterIndicator: {fileID: 7597011520526019793}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0

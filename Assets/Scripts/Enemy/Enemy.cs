@@ -5,6 +5,7 @@ using Unity.AI.Navigation;
 using UnityEngine;
 using UnityEngine.AI;
 using FirstGearGames.SmoothCameraShaker;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent), typeof(LineRenderer))]
 public class Enemy : MonoBehaviour
@@ -50,6 +51,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] Animator animator;
 
     [SerializeField] AudioClip hitWater;
+
+    public Image waterIndicatorCone;
 
     void Start()
     {

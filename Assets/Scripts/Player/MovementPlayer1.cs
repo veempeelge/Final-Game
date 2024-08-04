@@ -68,7 +68,7 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] AudioClip ManDeath;
     [SerializeField] AudioClip WomanDeath;
 
-    private int waterCharge;
+    public int waterCharge;
     private bool waterDecreased;
     private Inv_Item inv;
     public Item_Slot slot;
@@ -87,10 +87,12 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] AudioSource walking;
 
+    [SerializeField] GameObject waterIndicator;
+
     private void Awake()
     {
-            waterHitIndicatorPrefab.SetActive(false);
-
+        waterIndicator.SetActive(false);
+        waterCharge = 0;
     }
     void Start()
     {
@@ -98,9 +100,7 @@ public class MovementPlayer1 : MonoBehaviour
 
         item = GetComponent<Inv_Item>();
         attackWater = GetComponentInChildren<AttackWater>();
-        waterCharge = slot.count;
-        // weaponDurability = weaponCurrentDurability;
-        //gameManager = GameManager.Instance;
+        //waterCharge = slot.count;
         moveSpeed = gameManager.defSpeed;
         maxAcceleration = gameManager.defAcc;
         playerAtk = gameManager.defPlayerAtk;
@@ -108,10 +108,6 @@ public class MovementPlayer1 : MonoBehaviour
         playerRange = gameManager.defPlayerRange;
         playerAtkWidth = gameManager.defPlayerAtkWidth;
         playerKnockback = gameManager.defPlayerKnockback;
-
-        //UIPlayerIsDead.SetActive(false);
-
-        // StartCoroutine(AutoAttack());
 
         wpDurabilityBar.SetActive(false);
         defaultSpeed = moveSpeed;
@@ -123,26 +119,18 @@ public class MovementPlayer1 : MonoBehaviour
         {
             waterHitIndicatorPrefab.SetActive(false);
         }
-        else
-        {
-                StartCoroutine(WaterAttack());
-        }
-
-
     }
 
 
 
     void Update()
     {
-       
         float moveX = Input.GetAxis(horizontalAxis);
         float moveZ = Input.GetAxis(verticalAxis);
         float threshold = 0.1f;
 
         if (tutorialUI.activeSelf)
         {
-
             if (Mathf.Abs(moveX) > threshold || Mathf.Abs(moveZ) > threshold)
             {
                 tutorialUI.SetActive(false);
@@ -355,26 +343,24 @@ public class MovementPlayer1 : MonoBehaviour
     }
     private IEnumerator WaterAttack()
     {
-        while(slot.count > 0)
+        while (slot.count > 0)
         {
             isWaterAttacking = true;
-            //Debug.Log("WaterSpray");
             yield return new WaitForSeconds(1);
-            // DurabilityCheck();
             SprayWater();
             yield return new WaitForSeconds(.1f);
-           // waterHitIndicatorPrefab.SetActive(false);
             attackWater.isAttacking = false;
         }
+
         for (int i = 0; i < item.slots.Length; i++)
         {
             item.DiscardItem(i);
         }
+
         waterHitIndicatorPrefab.SetActive(false);
         isWaterAttacking = false;
-        yield break;
-
     }
+
 
     void ResetStats()
     {
@@ -408,6 +394,8 @@ public class MovementPlayer1 : MonoBehaviour
     void SprayWater()
     {
         attackWater.isAttacking = true;
+        waterIndicator.SetActive(true);
+
         waterHitIndicatorPrefab.SetActive(true);
         //SoundManager Spraying Water
     }
@@ -435,7 +423,7 @@ public class MovementPlayer1 : MonoBehaviour
                 slot.count--;
                 slot.RefreshCount();
                 waterDecreased = true;
-              // waterCharge--;
+                waterCharge--;
                 Invoke(nameof(WaterDecreasedOnce), .2f);
                 Debug.Log("Decreased Water " + waterCharge);
 
