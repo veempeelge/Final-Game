@@ -34,6 +34,10 @@ public class ResultScreenManager : MonoBehaviour
 
     [SerializeField] TMP_Text[] rankings;
 
+    [SerializeField] GameObject firstPlayer1, firstPlayer2, firstPlayer3;
+    [SerializeField] GameObject secondPlayer1, secondPlayer2, secondPlayer3;
+    [SerializeField] GameObject thirdPlayer1, thirdPlayer2, thirdPlayer3;
+
     private void Start()
     {
         confirmButton.onClick.AddListener(ButtonClick);
@@ -77,8 +81,6 @@ public class ResultScreenManager : MonoBehaviour
         if (round < 3)
         {
             scoreManager.roundCount++;
-            //SceneManager.LoadSceneAsync(3);
-
             if (round == 1)
             {
                 SceneManager.LoadSceneAsync("PRO_TestLvl.2");
@@ -97,7 +99,6 @@ public class ResultScreenManager : MonoBehaviour
             else
             {
                 SceneManager.LoadSceneAsync(0);
-
             }
         }
     }
@@ -185,5 +186,39 @@ public class ResultScreenManager : MonoBehaviour
             Debug.Log($"Position {i + 1}: Player {playerIndices[i] + 1} with score {scoresTotal[i]}");
             rankings[i].SetText($"Position {i + 1}: Player {playerIndices[i] + 1} with score {scoresTotal[i]}");
         }
+
+        SetActiveRankingObjects(playerIndices);
+    }
+
+    private void SetActiveRankingObjects(int[] playerIndices)
+    {
+        // Disable all ranking objects first
+        DisableAllRankingObjects();
+
+        // Activate the appropriate ranking objects
+        if (playerIndices[0] == 0) firstPlayer1.SetActive(true);
+        else if (playerIndices[0] == 1) firstPlayer2.SetActive(true);
+        else if (playerIndices[0] == 2) firstPlayer3.SetActive(true);
+
+        if (playerIndices[1] == 0) secondPlayer1.SetActive(true);
+        else if (playerIndices[1] == 1) secondPlayer2.SetActive(true);
+        else if (playerIndices[1] == 2) secondPlayer3.SetActive(true);
+
+        if (playerIndices[2] == 0) thirdPlayer1.SetActive(true);
+        else if (playerIndices[2] == 1) thirdPlayer2.SetActive(true);
+        else if (playerIndices[2] == 2) thirdPlayer3.SetActive(true);
+    }
+
+    private void DisableAllRankingObjects()
+    {
+        firstPlayer1.SetActive(false);
+        firstPlayer2.SetActive(false);
+        firstPlayer3.SetActive(false);
+        secondPlayer1.SetActive(false);
+        secondPlayer2.SetActive(false);
+        secondPlayer3.SetActive(false);
+        thirdPlayer1.SetActive(false);
+        thirdPlayer2.SetActive(false);
+        thirdPlayer3.SetActive(false);
     }
 }

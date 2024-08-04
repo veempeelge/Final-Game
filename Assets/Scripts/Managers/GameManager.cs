@@ -32,6 +32,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject player1deadText, player2deadText, player3deadText;
 
+    [SerializeField] GameObject tutorialPage;
 
 
     public float
@@ -48,6 +49,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if (tutorialPage != null)
+        {
+            tutorialPage.SetActive(false);
+        }
         gameStart = true;
         SoundManager.Instance.PlayMusic(gameplayMusic);
         UIPlayerHP.SetActive(false);
@@ -70,11 +75,13 @@ public class GameManager : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 _2Players();
+                
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 _3Players();
+               
             }
         }
 
@@ -94,6 +101,10 @@ public class GameManager : MonoBehaviour
 
     void _2Players()
     {
+        if (tutorialPage != null)
+        {
+            tutorialPage.SetActive(true);
+        }
         SoundManager.Instance.Play(buttonClick);
 
         player1alive = true;
@@ -115,7 +126,13 @@ public class GameManager : MonoBehaviour
     }
 
     void _3Players()
+
     {
+
+        if (tutorialPage != null)
+        {
+            tutorialPage.SetActive(true);
+        }
         SoundManager.Instance.Play(buttonClick);
 
         player1alive = true;
