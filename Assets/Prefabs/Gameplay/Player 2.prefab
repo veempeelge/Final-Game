@@ -612,8 +612,8 @@ MonoBehaviour:
   moveSpeed: 370
   maxAcceleration: 0
   rotationSpeed: 700
-  horizontalAxis: Horizontal2
-  verticalAxis: Vertical2
+  horizontalAxis: Horizontal3
+  verticalAxis: Vertical3
   attackButton: o
   rb: {fileID: 1128937144701662158}
   MaxHP: 15
@@ -977,7 +977,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ac34a9bb5bfa82046920a489606db7f8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fa48468b235730c4ba6e55a68bebde3d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
