@@ -19774,12 +19774,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1967812807789049179, guid: 79800a54a7fddf349b3ee8201c88aeb8, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3419020289402999986, guid: 79800a54a7fddf349b3ee8201c88aeb8, type: 3}
       propertyPath: m_NavMeshData
       value: 
-      objectReference: {fileID: 23800000, guid: bb36bccf97843014b96d21c9faca34b9, type: 2}
+      objectReference: {fileID: 23800000, guid: 81b41aff7e3179540b4f0d5e403a3ac7, type: 2}
     - target: {fileID: 4542414903799457047, guid: 79800a54a7fddf349b3ee8201c88aeb8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.5274
