@@ -179,10 +179,12 @@ public class Enemy : MonoBehaviour
                 chasingWho.text = $"{targetPlayer.name}, {index}";
                 if (targetPlayer.name == "Player 1")
                 {
+                    waterIndicatorCone.color = new Color(0, 1, 1, .5f);
                     chasingWho.color = Color.blue;
                 }
                 else if (targetPlayer.name == "Player 2")
                 {
+                    waterIndicatorCone.color = new Color(1, 0, 0.7330103f, .5f);
                     chasingWho.color = Color.red;
                 }
                 else if (targetPlayer.name == "Player 3")

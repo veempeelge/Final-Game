@@ -70,6 +70,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("LevelPicker");
     }
 
+    public void TutorialMode()
+    {
+        SoundManager.Instance.Play(buttonClick);
+
+        SceneManager.LoadScene("tutorial");
+    }
+
     public void Quit()
     {
         SoundManager.Instance.Play(buttonClick);

@@ -24,7 +24,7 @@ public class GameOverUI : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene(5);
+        SceneManager.LoadScene("Result");
 
     }
 
