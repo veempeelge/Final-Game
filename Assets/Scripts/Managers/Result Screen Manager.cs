@@ -38,6 +38,7 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] GameObject secondPlayer1, secondPlayer2, secondPlayer3;
     [SerializeField] GameObject thirdPlayer1, thirdPlayer2, thirdPlayer3;
 
+    [SerializeField] String[] randomScenes;
     private void Start()
     {
         Time.timeScale = 1f;
@@ -84,18 +85,18 @@ public class ResultScreenManager : MonoBehaviour
             scoreManager.roundCount++;
             if (round == 1)
             {
-                SceneManager.LoadSceneAsync("PRO_TestLvl.2");
+                SceneManager.LoadSceneAsync("PRO2.2_TestLvl.2");
             }
             else if (round == 2)
             {
-                SceneManager.LoadSceneAsync("PRO_TestLvl.3");
+                SceneManager.LoadSceneAsync("PRO3.2_TestLvl.3");
             }
         }
         else if (round == 3)
         {
             if (scoresTotal[0] == scoresTotal[1] || scoresTotal[0] == scoresTotal[2] || scoresTotal[1] == scoresTotal[2])
             {
-                SceneManager.LoadSceneAsync(3);
+                SceneManager.LoadSceneAsync(randomScenes[UnityEngine.Random.Range(0,randomScenes.Length)]);
             }
             else
             {
@@ -106,6 +107,7 @@ public class ResultScreenManager : MonoBehaviour
 
     private void MainMenuButtonClick()
     {
+        round = 0;
         scoreManager.roundCount = 1;
         ResetScores();
         SceneManager.LoadSceneAsync(0);
@@ -113,16 +115,16 @@ public class ResultScreenManager : MonoBehaviour
 
     private void ResetScores()
     {
-        if (scoresRound1Manager != null)
-            Array.Clear(scoresRound1Manager, 0, scoresRound1Manager.Length);
-        if (scoresRound2Manager != null)
-            Array.Clear(scoresRound2Manager, 0, scoresRound2Manager.Length);
-        if (scoresRound3Manager != null)
-            Array.Clear(scoresRound3Manager, 0, scoresRound3Manager.Length);
-        if (scoresRound4Manager != null)
-            Array.Clear(scoresRound4Manager, 0, scoresRound4Manager.Length);
-        if (scoresTotal != null)
-            Array.Clear(scoresTotal, 0, scoresTotal.Length);
+        for (int i = 0; i < scoresRound1.Length; i++)
+        {
+            scoresRound1[i].text = "0";
+            scoresRound2[i].text = "0";
+            scoresRound3[i].text = "0";
+            scoresRound4[i].text = "0";
+
+
+
+        }
     }
 
     private void InitializeScoreRound1()

@@ -1905,7 +1905,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36560c4aa0ed38045858a23110ba2f74, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuMusic: {fileID: 8300000, guid: deb93a8e6d70fc546bf5dd86a826c737, type: 3}
+  mainMenuMusic: {fileID: 0}
   buttonClick: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}
 --- !u!4 &2035879393
 Transform:

@@ -56,7 +56,9 @@ public class Enemy : MonoBehaviour
 
     void Start()
     {
-       // navmesh = GameManager.Instance.nav;
+        animator.SetTrigger("Spawn");
+
+        // navmesh = GameManager.Instance.nav;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
         rb = GetComponent<Rigidbody>();
@@ -65,9 +67,20 @@ public class Enemy : MonoBehaviour
 
         GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
         players.AddRange(foundPlayers);
-
+        agent.speed = 0;
+        agent.angularSpeed = 0;
+        agent.acceleration = 0;
+        Invoke(nameof(enabledd), 1f);
         ChangeTarget();
        //    StartCoroutine(ChangePointRegularly());
+
+    }
+
+    private void enabledd()
+    {
+        agent.speed = 4;
+        agent.angularSpeed = 120;
+        agent.acceleration = 8;
 
     }
 
@@ -132,6 +145,7 @@ public class Enemy : MonoBehaviour
                 }
                 else if (targetPlayer.name == "Player 3")
                 {
+                    waterIndicatorCone.color = new Color(1, 1, 1, .5f);
 
                     chasingWho.color = Color.green;
                 }
@@ -188,7 +202,10 @@ public class Enemy : MonoBehaviour
                     chasingWho.color = Color.red;
                 }
                 else if (targetPlayer.name == "Player 3")
+
                 {
+                    waterIndicatorCone.color = new Color(1, 1, 1, .5f);
+
                     chasingWho.color = Color.green;
                 }
             }
