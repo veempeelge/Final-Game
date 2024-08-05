@@ -109,6 +109,7 @@ public class AttackWater : MonoBehaviour
                             enemy = hit.collider.gameObject.GetComponent<Enemy>();
                             if (enemy != null && enemy.targetPlayer == transform.parent.gameObject && playerStats.waterCharge > 0)
                             {
+
                                 playerStats.enabled = false;
                                 playerStats.AttackAnim();
                                 Invoke(nameof(WalkCooldown), .5f);
@@ -116,6 +117,8 @@ public class AttackWater : MonoBehaviour
                                 waterParticle.Play();
                                 enemy.OnPlayerHitWater(playerStats.transform);
                                 enemy.OnPlayerDetected(playerStats.transform, playerStats);
+                                timer = 0;
+
                                 break;
                             }
                         }
@@ -127,13 +130,19 @@ public class AttackWater : MonoBehaviour
                         {
                             playerStatsOtherEnemy = hit.collider.gameObject.GetComponent<MovementPlayer1>();
                             var player = GetComponentInParent<MovementPlayer1>();
-                            if (playerStatsOtherEnemy != null && canDecrease && playerStats.waterCharge > 0)
+                            if (playerStatsOtherEnemy != null && playerStats.waterCharge > 0)
                             {
                                 StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
                                 playerStats.AttackAnim();
-                                player.DecreaseWaterCharge();
-                                canDecrease = false;
-                                Invoke(nameof(canDecreaseCooldown), _hitPlayerCooldown);
+
+                                if (canDecrease)
+                                {
+                                    canDecrease = false;
+                                    player.DecreaseWaterCharge();
+                                }
+                               
+                               
+                                Invoke(nameof(canDecreaseCooldown), 1f);
                                 CoolDownIndicator();
                                 waterParticle.Play();
                                 break;
