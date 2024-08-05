@@ -1665,6 +1665,7 @@ MonoBehaviour:
   attackHit: []
   HitPlayerCooldown: {fileID: 2235850905900351527}
   waterParticle: {fileID: 7708285175704500266}
+  waterInd: {fileID: 3707053614698515804}
 --- !u!1 &6687254339508527985
 GameObject:
   m_ObjectHideFlags: 0
@@ -1905,7 +1906,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3588153629929647007
 RectTransform:
   m_ObjectHideFlags: 0

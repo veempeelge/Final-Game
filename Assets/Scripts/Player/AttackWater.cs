@@ -28,6 +28,8 @@ public class AttackWater : MonoBehaviour
     private MovementPlayer1 playerStatsOtherEnemy;
     [SerializeField] ParticleSystem waterParticle;
 
+    [SerializeField] Image waterInd;
+
     void Start()
     {
         timer = 0;
@@ -45,7 +47,7 @@ public class AttackWater : MonoBehaviour
         // Ensure the vision cone is drawn only when there is water charge
         if (playerStats.waterCharge > 0)
         {
-            AttackRange = 7f;
+            AttackRange = 7f * timer / _hitPlayerCooldown;
             AttackAngle = 1f;
             DrawVisionCone();
         }
@@ -53,8 +55,18 @@ public class AttackWater : MonoBehaviour
         if (timer < _hitPlayerCooldown)
         {
             timer += Time.deltaTime;
-            HitPlayerCooldown.fillAmount = timer / _hitPlayerCooldown;
+            this.transform.localScale = new Vector3(timer / _hitPlayerCooldown, timer / _hitPlayerCooldown, timer / _hitPlayerCooldown);
+
+            waterInd.color = new Color(.5f,.7f,1,.5f);
+            //HitPlayerCooldown.fillAmount = timer / _hitPlayerCooldown;
         }
+        else
+        {
+            waterInd.color = new Color(.5f, .7f, 1, 1f);
+
+        }
+
+
     }
 
     void DrawVisionCone()
