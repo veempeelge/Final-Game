@@ -241,6 +241,6 @@ public class TutorialSceneManager : MonoBehaviour
     {
         Time.timeScale = 1;
         SoundManager.Instance.Play(buttonClick);
-        SceneManager.LoadScene("PRO1.5_TestLvl.1 Populate");
+        SceneManager.LoadScene("PRO1.6_TestLvl.1");
     }
 }
