@@ -13450,6 +13450,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player Selection
       objectReference: {fileID: 0}
+    - target: {fileID: 2027648320567347223, guid: 501664b69784a2941a7e090bbde0aa2e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2759695025276330617, guid: 501664b69784a2941a7e090bbde0aa2e, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -23267,7 +23271,7 @@ MeshCollider:
   serializedVersion: 5
   m_Convex: 0
   m_CookingOptions: 30
-  m_Mesh: {fileID: 1774515302}
+  m_Mesh: {fileID: 970315322}
 --- !u!33 &1593980163
 MeshFilter:
   m_ObjectHideFlags: 10

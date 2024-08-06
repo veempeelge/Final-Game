@@ -121,9 +121,6 @@ public class ResultScreenManager : MonoBehaviour
             scoresRound2[i].text = "0";
             scoresRound3[i].text = "0";
             scoresRound4[i].text = "0";
-
-
-
         }
     }
 

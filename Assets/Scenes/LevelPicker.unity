@@ -488,8 +488,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -5.8154, y: 445.8655}
-  m_SizeDelta: {x: 1931.6, y: 188.2688}
+  m_AnchoredPosition: {x: -10.468, y: 445.8655}
+  m_SizeDelta: {x: 530.58, y: 188.2688}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &291389617
 MonoBehaviour:
@@ -1252,7 +1252,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -726, y: -452}
+  m_AnchoredPosition: {x: -703.61, y: 428.23}
   m_SizeDelta: {x: 359, y: 153}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1642839582
@@ -1277,8 +1277,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9433962, g: 0.14684942, b: 0.32633027, a: 1}
-    m_PressedColor: {r: 0.8941177, g: 0.10980393, b: 0.14509805, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.6698113, g: 0.23297274, b: 0.072668225, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 0.039215688}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1301,7 +1301,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1540774795}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Lvl3
+        m_MethodName: Menu
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1636,7 +1636,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1540774795}
         m_TargetAssemblyTypeName: MainMenu, Assembly-CSharp
-        m_MethodName: Lvl1
+        m_MethodName: TutorialMode
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

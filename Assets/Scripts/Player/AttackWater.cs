@@ -57,12 +57,12 @@ public class AttackWater : MonoBehaviour
             timer += Time.deltaTime;
             this.transform.localScale = new Vector3(timer / _hitPlayerCooldown, timer / _hitPlayerCooldown, timer / _hitPlayerCooldown);
 
-            waterInd.color = new Color(.5f,.7f,1,.5f);
+            waterInd.color = new Color(1, 0, 0, .5f);
             //HitPlayerCooldown.fillAmount = timer / _hitPlayerCooldown;
         }
         else
         {
-            waterInd.color = new Color(.5f, .7f, 1, 1f);
+            waterInd.color = new Color(.5f, .7f, 1, 5f);
 
         }
 

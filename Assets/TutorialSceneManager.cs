@@ -39,7 +39,6 @@ public class TutorialSceneManager : MonoBehaviour
     void Start()
     {
         tutorialScreen.SetActive(false);
-        tutorialImage.SetActive(true);
 
         next.onClick.AddListener(Next);
         tutorialScreen2.SetActive(false);
@@ -53,6 +52,11 @@ public class TutorialSceneManager : MonoBehaviour
         player1Code = player1.GetComponent<MovementPlayer1>();
         player2Code = player2.GetComponent<MovementPlayer1>();
         player3Code = player3.GetComponent<MovementPlayer1>();
+    }
+
+    public void StartTutorialImage()
+    {
+        tutorialScreen.SetActive(true);
     }
 
     public void Next()
@@ -109,8 +113,6 @@ public class TutorialSceneManager : MonoBehaviour
         if (phase2)
         {
             Invoke(nameof(CheckWater),3f);
-
-           
         }
 
         if (phase3)
@@ -233,5 +235,12 @@ public class TutorialSceneManager : MonoBehaviour
         Time.timeScale = 1;
         SoundManager.Instance.Play(buttonClick);
         SceneManager.LoadScene("Main Menu");
+    }
+
+    public void NextLevel()
+    {
+        Time.timeScale = 1;
+        SoundManager.Instance.Play(buttonClick);
+        SceneManager.LoadScene("PRO1.5_TestLvl.1 Populate");
     }
 }

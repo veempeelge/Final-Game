@@ -32,7 +32,7 @@ public class MainMenu : MonoBehaviour
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Main Menu");
     }
 
     public void Credits()
@@ -46,21 +46,21 @@ public class MainMenu : MonoBehaviour
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("PRO1.5_TestLvl.1 Populate");
+        SceneManager.LoadScene("PRO1.6_TestLvl.1");
     }
 
     public void Lvl2()
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("PRO_TestLvl.2");
+        SceneManager.LoadScene("PRO2.2_TestLvl.2");
     }
 
     public void Lvl3()
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("PRO_TestLvl.3");
+        SceneManager.LoadScene("PRO3.2_TestLvl.3");
     }
 
     public void LvlPicker()
