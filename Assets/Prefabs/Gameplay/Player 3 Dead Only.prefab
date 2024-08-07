@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 7554180236869837844}
   - component: {fileID: 6991444242466588367}
   - component: {fileID: 5019004439554845855}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player 3 Dead Only
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 4082313958152744786}
   - component: {fileID: 5628170687279911369}
   - component: {fileID: 3776037301200989834}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 3275544540939742967}
   - component: {fileID: 3748209248715820723}
   - component: {fileID: 7559748614785801715}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +323,7 @@ GameObject:
   - component: {fileID: 6550910741479062711}
   - component: {fileID: 5066031894623334685}
   - component: {fileID: 6753490246945225565}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

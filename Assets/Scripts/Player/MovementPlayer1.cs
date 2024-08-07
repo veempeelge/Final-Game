@@ -91,6 +91,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] ParticleSystem stunParticle;
 
+   
+
     private void Awake()
     {
         waterIndicator.SetActive(false);
@@ -152,12 +154,19 @@ public class MovementPlayer1 : MonoBehaviour
         }
 
         
-        anim.SetFloat("IsRunning", rb.velocity.magnitude);
+       
 
-        if (rb.velocity.magnitude > .1f)
+
+        if (Input.GetButton(horizontalAxis) || Input.GetButton(verticalAxis))
         {
             PlayWalk();
-            //SoundManager.Instance.WalkingSource.Play();
+            anim.SetFloat("IsRunning", rb.velocity.magnitude);
+            anim.SetBool("IsWalking", true);
+        }
+        else
+        {
+            anim.SetBool("IsWalking", false);
+
         }
 
         RotatePlayer();

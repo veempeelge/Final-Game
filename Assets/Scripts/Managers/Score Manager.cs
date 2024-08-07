@@ -33,7 +33,7 @@ public class ScoreManager : MonoBehaviour
         }
     }
 
-    private void ResetScores()
+    public void ResetScores()
     {
         for (int i = 0; i < scoresRound1Manager.Length; i++)
         {

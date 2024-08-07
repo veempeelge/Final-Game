@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2338101525681547991}
   - component: {fileID: 4486710014389371591}
   - component: {fileID: 4417032937943378913}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Player 1 Died
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -146,7 +146,7 @@ GameObject:
   - component: {fileID: 1290326534764005126}
   - component: {fileID: 815907765760809434}
   - component: {fileID: 1393425974314934865}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   - component: {fileID: 7091758928062964849}
   - component: {fileID: 3076331989141548808}
   - component: {fileID: 3082092138343134525}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -325,9 +325,9 @@ GameObject:
   - component: {fileID: 5385113887360271050}
   - component: {fileID: 2167934911299871957}
   - component: {fileID: 8963834101573834059}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Player 1 Dead Only
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -459,7 +459,7 @@ GameObject:
   - component: {fileID: 4036468562560552254}
   - component: {fileID: 3484802501199093897}
   - component: {fileID: 5121854489085318052}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}

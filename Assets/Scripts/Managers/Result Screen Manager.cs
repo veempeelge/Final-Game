@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Random = UnityEngine.Random;
 
 public class ResultScreenManager : MonoBehaviour
 {
@@ -85,18 +86,18 @@ public class ResultScreenManager : MonoBehaviour
             scoreManager.roundCount++;
             if (round == 1)
             {
-                SceneManager.LoadSceneAsync("PRO2.2_TestLvl.2");
+                SceneManager.LoadSceneAsync(6);
             }
             else if (round == 2)
             {
-                SceneManager.LoadSceneAsync("PRO3.2_TestLvl.3");
+                SceneManager.LoadSceneAsync(7);
             }
         }
         else if (round == 3)
         {
             if (scoresTotal[0] == scoresTotal[1] || scoresTotal[0] == scoresTotal[2] || scoresTotal[1] == scoresTotal[2])
             {
-                SceneManager.LoadSceneAsync(randomScenes[UnityEngine.Random.Range(0,randomScenes.Length)]);
+                SceneManager.LoadSceneAsync(UnityEngine.Random.Range(5,7));
             }
             else
             {
@@ -122,6 +123,8 @@ public class ResultScreenManager : MonoBehaviour
             scoresRound3[i].text = "0";
             scoresRound4[i].text = "0";
         }
+
+        scoreManager.ResetScores();
     }
 
     private void InitializeScoreRound1()

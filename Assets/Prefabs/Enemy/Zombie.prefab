@@ -1661,7 +1661,7 @@ MonoBehaviour:
   enemyAttack: 2
   knockbackDuration: 0.2
   updateSpeed: 0.1
-  stoppingDistance: 2
+  stoppingDistance: 1
   targetPlayer: {fileID: 0}
   CanHitWater: 1
   chasingWho: {fileID: 6342939571492566862}

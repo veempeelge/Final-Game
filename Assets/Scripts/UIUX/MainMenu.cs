@@ -46,21 +46,21 @@ public class MainMenu : MonoBehaviour
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("PRO1.6_TestLvl.1");
+        SceneManager.LoadScene(5);
     }
 
     public void Lvl2()
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("PRO2.2_TestLvl.2");
+        SceneManager.LoadScene(6);
     }
 
     public void Lvl3()
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("PRO3.2_TestLvl.3");
+        SceneManager.LoadScene(7);
     }
 
     public void LvlPicker()
