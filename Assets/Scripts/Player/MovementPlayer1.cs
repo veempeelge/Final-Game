@@ -89,6 +89,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] GameObject waterIndicator;
 
+    [SerializeField] ParticleSystem stunParticle;
+
     private void Awake()
     {
         waterIndicator.SetActive(false);
@@ -196,6 +198,7 @@ public class MovementPlayer1 : MonoBehaviour
 
         if (canhitbyotherplayer)
         {
+            stunParticle.Play();
             anim.SetTrigger("Choke");
 
             rb.AddForce( -direction * 10, ForceMode.Impulse);        anim.SetTrigger("Choke");
@@ -238,6 +241,8 @@ public class MovementPlayer1 : MonoBehaviour
         //Debug.Log("Got Hit, HP Remaining = " + currentHP);
         StartCoroutine(KnockEnemy());
         anim.SetTrigger("Choke");
+        stunParticle.Play();
+
         if (currentHP <= 0)
         {
             Die();
