@@ -21,12 +21,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Result.unity
     guid: 607a395f4f2a7b3439870133f2770d30
   - enabled: 1
-    path: Assets/Scenes/PRO1.6_TestLvl.1.unity
+    path: Assets/Scenes/Unused Levels/PRO1.6_TestLvl.1.unity
     guid: 1cd9dc1f0ba975b4d86c0acdc9bac7d2
   - enabled: 1
-    path: Assets/Scenes/PRO2.2_TestLvl.2.unity
+    path: Assets/Scenes/Unused Levels/PRO2.2_TestLvl.2.unity
     guid: e49520738184420438283a8a28435c15
   - enabled: 1
-    path: Assets/Scenes/PRO3.2_TestLvl.3.unity
+    path: Assets/Scenes/Unused Levels/PRO3.2_TestLvl.3.unity
     guid: 3faba6d58a45cdf4d99dbdceb218f0eb
   m_configObjects: {}
