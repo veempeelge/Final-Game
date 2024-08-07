@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] AudioClip hitWater;
 
     public Image waterIndicatorCone;
+    [SerializeField] ParticleSystem stunParticle;
 
     void Start()
     {
@@ -369,6 +370,7 @@ public class Enemy : MonoBehaviour
         //Debug.Log("Target another player");
         if (CanHitWater)
         {
+            stunParticle.Play();
             SoundManager.Instance.Play(hitWater);
             CanHitWater = false;
             Invoke(nameof(CanHitWaterCooldown), 2f);

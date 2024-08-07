@@ -648,7 +648,7 @@ MonoBehaviour:
   hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
   walking: {fileID: 4625116319028376643}
   waterIndicator: {fileID: 7597011520526019793}
-  stunParticle: {fileID: 0}
+  stunParticle: {fileID: 3973208758609679082}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2329,6 +2329,11 @@ PrefabInstance:
 --- !u!4 &601280494375432981 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+  m_PrefabInstance: {fileID: 2149564876217529895}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &3973208758609679082 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
   m_PrefabInstance: {fileID: 2149564876217529895}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &8073590281622033166

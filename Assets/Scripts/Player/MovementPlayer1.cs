@@ -215,10 +215,10 @@ public class MovementPlayer1 : MonoBehaviour
 
     IEnumerator EnableMovement()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1f);
         this.enabled = true;
         anim.SetTrigger("StopChoke");
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(1f);
         canhitbyotherplayer = true;
 
     }

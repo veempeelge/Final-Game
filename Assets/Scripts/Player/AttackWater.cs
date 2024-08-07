@@ -132,20 +132,26 @@ public class AttackWater : MonoBehaviour
                             var player = GetComponentInParent<MovementPlayer1>();
                             if (playerStatsOtherEnemy != null && playerStats.waterCharge > 0)
                             {
-                                StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
-                                playerStats.AttackAnim();
+
+                                
 
                                 if (canDecrease)
                                 {
+                                    StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
+                                    playerStats.AttackAnim();
+
                                     canDecrease = false;
                                     player.DecreaseWaterCharge();
+                                    Invoke(nameof(canDecreaseCooldown), 2f);
+
+                                    CoolDownIndicator();
+                                    waterParticle.Play();
+                                    break;
                                 }
                                
                                
-                                Invoke(nameof(canDecreaseCooldown), 1f);
-                                CoolDownIndicator();
-                                waterParticle.Play();
-                                break;
+                              
+                              
                             }
                         }
                     }

@@ -3284,6 +3284,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: SizeModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.size3D
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startSize.maxCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4299766216015833494, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
       propertyPath: m_Name
       value: Stun particle

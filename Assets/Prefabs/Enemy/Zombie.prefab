@@ -400,6 +400,97 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   VisionConeResolution: 120
+--- !u!1001 &2440680662396618473
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 5188009748223455097}
+    m_Modifications:
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1994589449537144650, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 645011658c4381f48b3da38385c5e70b, type: 2}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: EmissionModule.rateOverTime.scalar
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startLifetime.scalar
+      value: 1.42
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4299766216015833494, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+      propertyPath: m_Name
+      value: Stun particle
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+--- !u!198 &804015320219804196 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3096054925507732685, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+  m_PrefabInstance: {fileID: 2440680662396618473}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3770619618055717851 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1552867421218686258, guid: 3b189a92849411e4a821780e50a3df5b, type: 3}
+  m_PrefabInstance: {fileID: 2440680662396618473}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4644682489223317650
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1366,6 +1457,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 42bad5c69dfd4be4c90bae250323f1eb, type: 3}
       insertIndex: 1
       addedObject: {fileID: 4673240113675398373}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 42bad5c69dfd4be4c90bae250323f1eb, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3770619618055717851}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 42bad5c69dfd4be4c90bae250323f1eb, type: 3}
       insertIndex: -1
@@ -1579,6 +1673,7 @@ MonoBehaviour:
   animator: {fileID: 9053876824330718933}
   hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
   waterIndicatorCone: {fileID: 7872601936976487080}
+  stunParticle: {fileID: 804015320219804196}
 --- !u!65 &8552764281054709340
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -221,7 +221,7 @@ public class TutorialSceneManager : MonoBehaviour
                 zombieList.Add(zombiesObject);
             }
 
-            yield return new WaitForSeconds(10f);
+            yield return new WaitForSeconds(30f);
 
             Time.timeScale = 0;
             TutorialOverMarrrr.SetActive(true);
