@@ -35,7 +35,7 @@ public class TutorialSceneManager : MonoBehaviour
     [SerializeField] GameObject tutorialImage;
     [SerializeField] GameObject TutorialOverMarrrr;
 
-    [SerializeField] GameObject _3players1, _3players2, _2players1, _2players2;   
+    [SerializeField] GameObject _3players1, _3players2, _2players1, _2players2, _3players, _2players;   
 
     // Start is called before the first frame update
     void Start()
@@ -70,7 +70,7 @@ public class TutorialSceneManager : MonoBehaviour
     // Update is called once per frame
     void Update()   
     {
-        if (player1movedrb && player2Code!= null)
+        if (player1movedrb && player1Code!= null)
         {
 
             if (player1movedrb.velocity.magnitude > 4f)
@@ -119,7 +119,7 @@ public class TutorialSceneManager : MonoBehaviour
 
         if (phase3)
         {
-            Invoke(nameof(WaterCheck),3f);
+            Invoke(nameof(WaterCheck),1f);
         }
 
         if (player1threw && player1threw && player1threw)
@@ -223,10 +223,14 @@ public class TutorialSceneManager : MonoBehaviour
                 zombieList.Add(zombiesObject);
             }
 
-            yield return new WaitForSeconds(5f);
+            if (player1threw && player1threw && player1threw)
+            {
+                Time.timeScale = 0;
+                TutorialOverMarrrr.SetActive(true);
+            }
+            //yield return new WaitForSeconds(10f);
 
-            Time.timeScale = 0;
-            TutorialOverMarrrr.SetActive(true);
+           
 
             yield break;
         }
@@ -248,6 +252,7 @@ public class TutorialSceneManager : MonoBehaviour
 
     public void ThreePlayers1()
     {
+        _2players.SetActive(false);
         tutorialScreen.SetActive(true);
         _3players1.SetActive(true);
         _3players2.SetActive(false);
@@ -261,6 +266,7 @@ public class TutorialSceneManager : MonoBehaviour
 
     public void TwoPlayers1()
     {
+        _3players.SetActive(false);
         tutorialScreen.SetActive(true);
         _2players1.SetActive(true);
         _2players2.SetActive(false);

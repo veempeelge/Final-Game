@@ -101,6 +101,7 @@ public class ResultScreenManager : MonoBehaviour
             }
             else
             {
+                ResetScores();
                 SceneManager.LoadSceneAsync(0);
             }
         }

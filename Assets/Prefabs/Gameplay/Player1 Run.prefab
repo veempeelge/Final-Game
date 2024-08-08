@@ -326,7 +326,7 @@ GameObject:
   - component: {fileID: 2167934911299871957}
   - component: {fileID: 8963834101573834059}
   m_Layer: 6
-  m_Name: Player1 Victory
+  m_Name: Player1 Run
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1131,7 +1131,7 @@ Animator:
   m_GameObject: {fileID: 5851193144551263439}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d3077158ccfb80544a71f90555b513bc, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2867ab061af9eb0438d07ee68cf71af7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
