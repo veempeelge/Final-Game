@@ -35,7 +35,8 @@ public class TutorialSceneManager : MonoBehaviour
     [SerializeField] GameObject tutorialImage;
     [SerializeField] GameObject TutorialOverMarrrr;
 
-    [SerializeField] GameObject _3players1, _3players2, _2players1, _2players2, _3players, _2players;   
+    [SerializeField] GameObject _3players1, _3players2, _2players1, _2players2, _3players, _2players;
+    private bool haventgolevel = true;
 
     // Start is called before the first frame update
     void Start()
@@ -122,14 +123,21 @@ public class TutorialSceneManager : MonoBehaviour
             Invoke(nameof(WaterCheck),1f);
         }
 
-        if (player1threw && player1threw && player1threw)
+        if (player1threw && player1threw && player1threw && haventgolevel)
         {
             tutorialScreen.SetActive(false);
             tutorialScreen2.SetActive(false);
             tutorialScreen3.SetActive(false);
             tutorialScreen4.SetActive(true);
+            Invoke(nameof(GoLevelOne), 5f);
+            haventgolevel = false;
         }
 
+    }
+
+    void GoLevelOne()
+    {
+        SceneManager.LoadSceneAsync(5);
     }
 
     private void WaterCheck()
@@ -222,16 +230,6 @@ public class TutorialSceneManager : MonoBehaviour
 
                 zombieList.Add(zombiesObject);
             }
-
-            if (player1threw && player1threw && player1threw)
-            {
-                Time.timeScale = 0;
-                TutorialOverMarrrr.SetActive(true);
-            }
-            //yield return new WaitForSeconds(10f);
-
-           
-
             yield break;
         }
     }
