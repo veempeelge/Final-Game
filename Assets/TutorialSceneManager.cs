@@ -35,12 +35,14 @@ public class TutorialSceneManager : MonoBehaviour
     [SerializeField] GameObject tutorialImage;
     [SerializeField] GameObject TutorialOverMarrrr;
 
+    [SerializeField] GameObject _3players1, _3players2, _2players1, _2players2;   
+
     // Start is called before the first frame update
     void Start()
     {
         tutorialScreen.SetActive(false);
 
-        next.onClick.AddListener(Next);
+       // next.onClick.AddListener(Next);
         tutorialScreen2.SetActive(false);
         tutorialScreen3.SetActive(false);
         tutorialScreen4.SetActive(false);
@@ -117,7 +119,6 @@ public class TutorialSceneManager : MonoBehaviour
 
         if (phase3)
         {
-
             Invoke(nameof(WaterCheck),3f);
         }
 
@@ -143,9 +144,9 @@ public class TutorialSceneManager : MonoBehaviour
             player2threw = true;
         }
 
-        if (player2Code.waterCharge < 3)
+        if (player3Code.waterCharge < 3)
         {
-            player2threw = true;
+            player3threw = true;
         }
 
     }
@@ -171,6 +172,7 @@ public class TutorialSceneManager : MonoBehaviour
             {
                 // Instantiate the waterGen prefab
                 GameObject water = Instantiate(waterGen, waterSpawnPoint[i].position, waterSpawnPoint[i].rotation);
+
 
                 // Add the instantiated waterGen to the waters list
                 waters.Add(water);
@@ -212,7 +214,7 @@ public class TutorialSceneManager : MonoBehaviour
             tutorialScreen4.SetActive(false);
 
             
-            yield return new WaitForSeconds(5f);
+            yield return new WaitForSeconds(.5f);
 
             for (int i = 0; i < zombieSpawnPoint.Length; i++)
             {
@@ -243,4 +245,32 @@ public class TutorialSceneManager : MonoBehaviour
         SoundManager.Instance.Play(buttonClick);
         SceneManager.LoadScene(5);
     }
+
+    public void ThreePlayers1()
+    {
+        tutorialScreen.SetActive(true);
+        _3players1.SetActive(true);
+        _3players2.SetActive(false);
+    }
+
+    public void ThreePlayers2()
+    {
+        _3players1.SetActive(false);
+        _3players2.SetActive(true);
+    }
+
+    public void TwoPlayers1()
+    {
+        tutorialScreen.SetActive(true);
+        _2players1.SetActive(true);
+        _2players2.SetActive(false);
+    }
+
+    public void TwoPlayers2()
+    {
+        _2players1.SetActive(false);
+        _2players2.SetActive(true);
+    }
 }
+
+
