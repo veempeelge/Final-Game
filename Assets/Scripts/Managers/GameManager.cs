@@ -34,6 +34,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject tutorialPage;
 
+    public bool _2players = false;
+    public bool _3players = false;
+
 
     public float
         defPlayerAtk,
@@ -101,6 +104,7 @@ public class GameManager : MonoBehaviour
 
     void _2Players()
     {
+        _2players = true;
         if (tutorialPage != null)
         {
             tutorialPage.SetActive(true);
@@ -128,7 +132,7 @@ public class GameManager : MonoBehaviour
     void _3Players()
 
     {
-
+        _3players = true;
         if (tutorialPage != null)
         {
             tutorialPage.SetActive(true);

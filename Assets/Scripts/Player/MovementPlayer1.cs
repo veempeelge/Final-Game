@@ -7,6 +7,7 @@ using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class MovementPlayer1 : MonoBehaviour
 {
@@ -81,7 +82,8 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] GameObject deadBodyObject;
 
-    [SerializeField] GameObject tutorialUI;
+    [SerializeField] SpriteRenderer tutorialUI;
+    [SerializeField] Sprite arrows, ijkl;
 
     [SerializeField] AudioClip hitWater;
 
@@ -90,6 +92,8 @@ public class MovementPlayer1 : MonoBehaviour
     [SerializeField] GameObject waterIndicator;
 
     [SerializeField] ParticleSystem stunParticle;
+
+
 
    
 
@@ -123,6 +127,8 @@ public class MovementPlayer1 : MonoBehaviour
         {
             waterHitIndicatorPrefab.SetActive(false);
         }
+
+       
     }
 
 
@@ -133,13 +139,41 @@ public class MovementPlayer1 : MonoBehaviour
         float moveZ = Input.GetAxis(verticalAxis);
         float threshold = 0.1f;
 
-        if (tutorialUI.activeSelf)
+        if (tutorialUI.enabled)
+        {
+            if (player2 && gameManager._3players)
+            {
+                horizontalAxis = "Horizontal2";
+                verticalAxis = "Vertical2";
+                tutorialUI.sprite = arrows;
+            }
+
+            if (player2 && gameManager._2players)
+            {
+                horizontalAxis = "Horizontal3";
+                verticalAxis = "Vertical3";
+                tutorialUI.sprite = ijkl;
+
+            }
+
+            if (player3 && gameManager._3players)
+            {
+                horizontalAxis = "Horizontal3";
+                verticalAxis = "Vertical3";
+                tutorialUI.sprite = arrows;
+
+            }
+        }
+
+        if (tutorialUI.enabled)
         {
             if (Mathf.Abs(moveX) > threshold || Mathf.Abs(moveZ) > threshold)
             {
-                tutorialUI.SetActive(false);
+                tutorialUI.enabled = false; ;
             }
         }
+
+        
 
         movement = new Vector3(moveX, 0, moveZ);
     }

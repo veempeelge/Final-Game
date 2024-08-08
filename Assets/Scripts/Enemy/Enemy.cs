@@ -146,7 +146,7 @@ public class Enemy : MonoBehaviour
                 }
                 else if (targetPlayer.name == "Player 3")
                 {
-                    waterIndicatorCone.color = new Color(1, 1, 1, .5f);
+                    waterIndicatorCone.color = new Color(1, 1, 0, .5f);
 
                     chasingWho.color = Color.green;
                 }
@@ -205,7 +205,7 @@ public class Enemy : MonoBehaviour
                 else if (targetPlayer.name == "Player 3")
 
                 {
-                    waterIndicatorCone.color = new Color(1, 1, 1, .5f);
+                    waterIndicatorCone.color = new Color(1, 1, 0, .5f);
 
                     chasingWho.color = Color.green;
                 }
