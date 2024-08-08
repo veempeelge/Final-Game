@@ -11,78 +11,75 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     public ShakeData EnemyShake;
-    Waypoints waypoints;
+    private Waypoints waypoints;
 
     public float rotationSpeed = 1f;
     public float speed;
     public float health;
     public float enemyAttack = 2;
     public float knockbackDuration = 0.2f;
-    public float updateSpeed = 0.1f;
     public float stoppingDistance = 1.0f;
 
     private NavMeshAgent agent;
     private List<GameObject> players = new List<GameObject>();
-    private Transform closestPlayer;
+    private Transform targetLocation;
+    private Vector3 lastTargetPosition;
+
     private bool wasAttacked;
     private bool isKnockedBack;
+
     private Rigidbody rb;
     private LineRenderer lineRenderer;
 
     private Transform[] points;
     public GameObject targetPlayer;
-    private Transform targetLocation;
-    private Vector3 lastTargetPosition;
 
     public bool CanHitWater = true;
 
-    [SerializeField] TMP_Text chasingWho;
-
-    public GameObject previousTarget;
-    float distanceToWaypoint;
+    [SerializeField] private TMP_Text chasingWho;
+    [SerializeField] private Animator animator;
+    [SerializeField] private AudioClip hitWater;
+    [SerializeField] private Image waterIndicatorCone;
+    [SerializeField] private ParticleSystem stunParticle;
 
     public bool TargettedSamePlayer = true;
     public bool hardEnemy;
     public bool mediumEnemy;
     public bool easyEnemy;
 
-    NavMeshSurface navmesh;
-
-    [SerializeField] Animator animator;
-
-    [SerializeField] AudioClip hitWater;
-
-    public Image waterIndicatorCone;
-    [SerializeField] ParticleSystem stunParticle;
+    private float distanceToWaypoint;
 
     void Start()
     {
         animator.SetTrigger("Spawn");
 
-        // navmesh = GameManager.Instance.nav;
         agent = GetComponent<NavMeshAgent>();
         agent.stoppingDistance = stoppingDistance;
+
         rb = GetComponent<Rigidbody>();
         lineRenderer = GetComponent<LineRenderer>();
         ConfigureLineRenderer();
 
-        GameObject[] foundPlayers = GameObject.FindGameObjectsWithTag("Player");
-        players.AddRange(foundPlayers);
+        players.AddRange(GameObject.FindGameObjectsWithTag("Player"));
+
+        DisableAgentTemporarily();
+
+        ChangeTarget();
+    }
+
+    private void DisableAgentTemporarily()
+    {
         agent.speed = 0;
         agent.angularSpeed = 0;
         agent.acceleration = 0;
-        Invoke(nameof(enabledd), 1f);
-        ChangeTarget();
-       //    StartCoroutine(ChangePointRegularly());
-
+        Invoke(nameof(EnableAgent), 1f);
     }
 
-    private void enabledd()
+    private void EnableAgent()
     {
         agent.speed = 4;
         agent.angularSpeed = 120;
         agent.acceleration = 8;
-
     }
 
     void ConfigureLineRenderer()
@@ -95,7 +92,74 @@ public class Enemy : MonoBehaviour
         lineRenderer.endColor = Color.red;
     }
 
-    void TargetPlayer()
+    void Update()
+    {
+        if (!isKnockedBack)
+        {
+            UpdateTargetAndMovement();
+        }
+    }
+
+    private void UpdateTargetAndMovement()
+    {
+        if (targetPlayer == null) ChangeTarget();
+
+        if (targetLocation != null)
+        {
+            distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
+
+            if (distanceToWaypoint > stoppingDistance)
+            {
+                MoveTowardsTarget();
+            }
+            else
+            {
+                SetTargetToPlayer();
+            }
+        }
+    }
+
+    private void MoveTowardsTarget()
+    {
+        if (agent.isOnNavMesh && agent.destination != targetLocation.position)
+        {
+            agent.SetDestination(targetLocation.position);
+            UpdateLineRenderer();
+        }
+
+        if (agent.velocity.sqrMagnitude > 0.01f)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(agent.velocity.normalized);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
+        }
+    }
+
+    private void SetTargetToPlayer()
+    {
+        targetLocation = targetPlayer.transform;
+        if (agent.destination != targetLocation.position)
+        {
+            agent.SetDestination(targetLocation.position);
+        }
+        UpdateLineRenderer();
+
+        if (distanceToWaypoint > 1f && TargettedSamePlayer)
+        {
+            Invoke(nameof(CheckIfStillFar), 3f);
+            TargettedSamePlayer = false;
+        }
+    }
+
+    private void CheckIfStillFar()
+    {
+        if (targetPlayer != null && targetLocation == targetPlayer.transform && distanceToWaypoint > 2f)
+        {
+            TargetSamePlayer();
+            TargettedSamePlayer = true;
+        }
+    }
+
+    private void TargetPlayer()
     {
         if (players.Count == 0) return;
 
@@ -107,214 +171,64 @@ public class Enemy : MonoBehaviour
             newTarget = players[Random.Range(0, players.Count)];
         }
 
+        SetTargetPlayer(newTarget);
+    }
+
+    private void TargetSamePlayer()
+    {
+        if (players.Count == 0 || targetPlayer == null) return;
+        SetTargetPlayer(targetPlayer);
+    }
+
+    private void SetTargetPlayer(GameObject newTarget)
+    {
         targetPlayer = newTarget;
 
         if (targetPlayer != null)
         {
-            if (easyEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.points;
-            }
-            if (mediumEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsMedium;
-            }
-            if (hardEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsHard;
-            }
+            waypoints = targetPlayer.GetComponent<Waypoints>();
+            points = easyEnemy ? waypoints?.points : mediumEnemy ? waypoints?.pointsMedium : hardEnemy ? waypoints?.pointsHard : null;
 
             if (points != null && points.Length > 0)
             {
                 int index = Random.Range(0, points.Length);
                 targetLocation = points[index];
                 lastTargetPosition = targetLocation.position;
-                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
-                chasingWho.text = $"{targetPlayer.name}, {index}";
-                if (targetPlayer.name == "Player 1")
-                {
-                    waterIndicatorCone.color = new Color (0,1,1,.5f);
-                    chasingWho.color = Color.blue;
-                }
-                else if (targetPlayer.name == "Player 2")
-                {
-                    waterIndicatorCone.color = new Color(1, 0, 0.7330103f, .5f);
-                    chasingWho.color = Color.red;
-                }
-                else if (targetPlayer.name == "Player 3")
-                {
-                    waterIndicatorCone.color = new Color(1, 1, 0, .5f);
-
-                    chasingWho.color = Color.green;
-                }
+                UpdateUI(index);
             }
             else
             {
                 Debug.Log("No waypoints found for the target player.");
             }
         }
-        else
-        {
-            Debug.Log("Target player not found.");
-        }
     }
 
-
-    void TargetSamePlayer()
+    private void UpdateUI(int index)
     {
-        if (players.Count == 0) return;
+        chasingWho.text = $"{targetPlayer.name}, {index}";
 
-        if (targetPlayer != null)
+        switch (targetPlayer.name)
         {
-            if (easyEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.points;
-            }
-            if (mediumEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsMedium;
-            }
-            if (hardEnemy)
-            {
-                waypoints = targetPlayer.GetComponent<Waypoints>();
-                points = waypoints?.pointsHard;
-            }
-
-            if (points != null && points.Length > 0)
-            {
-                int index = Random.Range(0, points.Length);
-                targetLocation = points[index];
-                lastTargetPosition = targetLocation.position;
-                Debug.Log($"Target player: {targetPlayer.name}, Waypoint index: {index}");
-                chasingWho.text = $"{targetPlayer.name}, {index}";
-                if (targetPlayer.name == "Player 1")
-                {
-                    waterIndicatorCone.color = new Color(0, 1, 1, .5f);
-                    chasingWho.color = Color.blue;
-                }
-                else if (targetPlayer.name == "Player 2")
-                {
-                    waterIndicatorCone.color = new Color(1, 0, 0.7330103f, .5f);
-                    chasingWho.color = Color.red;
-                }
-                else if (targetPlayer.name == "Player 3")
-
-                {
-                    waterIndicatorCone.color = new Color(1, 1, 0, .5f);
-
-                    chasingWho.color = Color.green;
-                }
-            }
-            else
-            {
-                Debug.Log("No waypoints found for the target player.");
-            }
-        }
-        else
-        {
-            Debug.Log("Target player not found.");
-        }
-    }
-    void Update()
-    {
-        if (targetPlayer == null)
-        {
-            ChangeTarget();
-        }
-
-        if (!isKnockedBack && targetLocation != null)
-        {
-            NavMeshHit hit;
-            if (!NavMesh.SamplePosition(targetLocation.position, out hit, 1f, NavMesh.AllAreas))
-            {
-                targetLocation = targetPlayer.transform;
-            }
-
-            distanceToWaypoint = Vector3.Distance(transform.position, targetLocation.position);
-
-            if (distanceToWaypoint > stoppingDistance)
-            {
-                agent.isStopped = false;
-                if (agent.isOnNavMesh && (agent.destination != targetLocation.position))
-                {
-                    agent.SetDestination(targetLocation.position);
-                }
-
-            
-                Vector3 velocity = agent.velocity;
-                if (velocity.sqrMagnitude > 0.01f) 
-                {
-                    Quaternion lookRotation = Quaternion.LookRotation(velocity.normalized);
-                    transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, rotationSpeed * Time.deltaTime);
-                }
-
-                UpdateLineRenderer();
-
-            }
-            else
-            {
-                targetLocation = targetPlayer.transform;
-                if (agent.destination != targetLocation.position)
-                {
-                    agent.SetDestination(targetLocation.position);
-                }
-
-                UpdateLineRenderer();
-            }
-
-            if (targetLocation == targetPlayer.transform)
-            {
-                if (distanceToWaypoint > 1f)
-                {
-                    if (TargettedSamePlayer)
-                    {
-                        Invoke(nameof(CheckIfStillFar), 3f);
-                        TargettedSamePlayer = false;
-                        Debug.Log(gameObject + "Too far, targetting waypoint");
-                    }
-                    
-                }
-            }
-
-            
+            case "Player 1":
+                waterIndicatorCone.color = new Color(0, 1, 1, .5f);
+                chasingWho.color = Color.blue;
+                break;
+            case "Player 2":
+                waterIndicatorCone.color = new Color(1, 0, 0.7330103f, .5f);
+                chasingWho.color = Color.red;
+                break;
+            case "Player 3":
+                waterIndicatorCone.color = new Color(1, 1, 0, .5f);
+                chasingWho.color = Color.green;
+                break;
+            default:
+                waterIndicatorCone.color = new Color(1, 1, 1, .5f);
+                chasingWho.color = Color.white;
+                break;
         }
     }
 
-    void CheckIfStillFar()
-    {
-        if (targetPlayer == null)
-        {
-            ChangeTarget();
-        }
-
-        if (targetPlayer!= null && targetLocation == targetPlayer.transform)
-        {
-            if (distanceToWaypoint > 2f && !TargettedSamePlayer)
-            {
-                TargetSamePlayer();
-                TargettedSamePlayer = true;
-            }
-        }
-
-        
-
-    }
-    
-    IEnumerator ChangePointRegularly()
-    {
-        while (targetLocation != targetPlayer.transform)
-        {
-            TargetSamePlayer();
-            yield return new WaitForSeconds(4);
-        }
-    }
-
-    void UpdateLineRenderer()
+    private void UpdateLineRenderer()
     {
         if (agent.path.corners.Length > 1)
         {
@@ -339,7 +253,7 @@ public class Enemy : MonoBehaviour
 
     public IEnumerator TakeDamage(float damageAmount, Vector3 knockbackDirection, float knockbackForce)
     {
-        yield return new WaitForSeconds(.23f);
+        yield return new WaitForSeconds(0.23f);
         health -= damageAmount;
         isKnockedBack = true;
         animator.SetTrigger("Knockback");
@@ -348,59 +262,6 @@ public class Enemy : MonoBehaviour
         {
             StartCoroutine(Knockback(knockbackDirection, knockbackForce));
         }
-        yield break;
-    }
-
-    public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
-    {
-        Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
-        if (!wasAttacked)
-        {
-            wasAttacked = true;
-            StartCoroutine(TakeDamage(playerStats.playerAtk, -directionToPlayer, playerStats.playerKnockback));
-            Invoke(nameof(CanTakeDamage), 0.2f);
-        }
-    }
-
-
-
-    public void OnPlayerHitWater(Transform Player)
-    {
-        Vector3 Direction = Player.position - transform.position;
-        //Debug.Log("Target another player");
-        if (CanHitWater)
-        {
-            stunParticle.Play();
-            SoundManager.Instance.Play(hitWater);
-            CanHitWater = false;
-            Invoke(nameof(CanHitWaterCooldown), 2f);
-            ChangeTarget();
-            animator.SetTrigger("Knockback");
-            enabled = false;
-        }
-
-    }
-
-    void CanHitWaterCooldown()
-    {
-        CanHitWater = true;
-        enabled = true;
-    }
-
-    void CanTakeDamage()
-    {
-        wasAttacked = false;
-    }
-
-    private void Die()
-    {
-        Destroy(gameObject);
-    }
-
-    public void Grab()
-    {
-        animator.SetTrigger("Grab");
-        CameraShakerHandler.Shake(EnemyShake);
     }
 
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)
@@ -419,12 +280,56 @@ public class Enemy : MonoBehaviour
         rb.velocity = Vector3.zero; // Stop any remaining velocity
         agent.enabled = true; // Re-enable NavMeshAgent
 
-        if (health <= 0)
-        {
-            Die();
-        }
+        if (health <= 0) Die();
         animator.SetTrigger("Pain");
         isKnockedBack = false;
+    }
+
+    public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
+    {
+        if (!wasAttacked)
+        {
+            wasAttacked = true;
+            Vector3 directionToPlayer = (playerTransform.position - transform.position).normalized;
+            StartCoroutine(TakeDamage(playerStats.playerAtk, -directionToPlayer, playerStats.playerKnockback));
+            Invoke(nameof(CanTakeDamage), 0.2f);
+        }
+    }
+
+    public void OnPlayerHitWater(Transform player)
+    {
+        if (CanHitWater)
+        {
+            stunParticle.Play();
+            SoundManager.Instance.Play(hitWater);
+            CanHitWater = false;
+            Invoke(nameof(CanHitWaterCooldown), 2f);
+            ChangeTarget();
+            animator.SetTrigger("Knockback");
+            enabled = false;
+        }
+    }
+
+    private void CanHitWaterCooldown()
+    {
+        CanHitWater = true;
+        enabled = true;
+    }
+
+    private void CanTakeDamage()
+    {
+        wasAttacked = false;
+    }
+
+    private void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    public void Grab()
+    {
+        animator.SetTrigger("Grab");
+        CameraShakerHandler.Shake(EnemyShake);
     }
 
     public void ChangeTarget()
