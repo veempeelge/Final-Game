@@ -33,7 +33,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Unused Levels/PRO1.7.POLISHING_LVL1.unity
     guid: f6d493c27d7a3d44f975d5393b7c3fb0
   - enabled: 1
-    path: Assets/Scenes/PRO2.2.POLISHING_LVL2.unity
+    path: Assets/Scenes/Unused Levels/PRO2.2.POLISHING_LVL2.unity
     guid: f13920b494f540d449d7a8f38a675b92
   - enabled: 1
     path: Assets/Scenes/PRO3.2.POLISHING_LVL3.unity
