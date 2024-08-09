@@ -13,6 +13,9 @@ public class ScoreManager : MonoBehaviour
     public int[] scoresRound3Manager;
     public int[] scoresRound4Manager;
 
+    int currentLevel;
+    public int lastLevel;
+
     private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
@@ -30,12 +33,46 @@ public class ScoreManager : MonoBehaviour
         else
         {
             Destroy(gameObject);
+            return;
         }
+
+        
+        UpdateCurrentLevel(SceneManager.GetActiveScene(), LoadSceneMode.Single);
+
+      
+        SceneManager.sceneLoaded += UpdateCurrentLevel;
+    }
+
+    private void Update()
+    {
+        if (currentLevel == 5)
+        {
+            lastLevel = 1;
+        }
+
+        if (currentLevel == 6)
+        {
+            lastLevel = 2;
+        }
+
+        if (currentLevel == 7)
+        {
+            lastLevel = 3;
+        }
+    }
+    private void OnDestroy()
+    {
+       
+        SceneManager.sceneLoaded -= UpdateCurrentLevel;
+    }
+
+    private void UpdateCurrentLevel(Scene scene, LoadSceneMode mode)
+    {
+        currentLevel = scene.buildIndex;
     }
 
     public void ResetScores()
     {
-
         roundCount = 0;
         for (int i = 0; i < scoresRound1Manager.Length; i++)
         {

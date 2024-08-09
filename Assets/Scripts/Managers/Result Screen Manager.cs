@@ -44,7 +44,7 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] int currentLevel;
     private void Start()
     {
-        currentLevel = SceneManager.GetActiveScene().buildIndex;
+        currentLevel = ScoreManager.Instance.lastLevel;
 
         Time.timeScale = 1f;
         confirmButton.onClick.AddListener(ButtonClick);
@@ -90,16 +90,16 @@ public class ResultScreenManager : MonoBehaviour
             scoreManager.roundCount++;
             if (round == 1)
             {
-                if (currentLevel == 5)
+                if (currentLevel == 1)
                 {
                     SceneManager.LoadSceneAsync(6);
                 }
-                if (currentLevel == 6)
+                if (currentLevel == 2)
                 {
-                    SceneManager.LoadSceneAsync(7);
+                    SceneManager.LoadSceneAsync(0);
                 }
 
-                if (currentLevel == 7)
+                if (currentLevel == 3)
                 {
                     ResetScores();
                     SceneManager.LoadSceneAsync(0);
@@ -108,12 +108,12 @@ public class ResultScreenManager : MonoBehaviour
             }
             else if (round == 2)
             {
-                if (currentLevel == 6)
+                if (currentLevel == 2)
                 {
                     SceneManager.LoadSceneAsync(7);
                 }
 
-                if (currentLevel == 7)
+                if (currentLevel == 3)
                 {
                     ResetScores();
                     SceneManager.LoadSceneAsync(0);
