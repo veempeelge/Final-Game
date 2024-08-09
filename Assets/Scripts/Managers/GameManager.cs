@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     int playersLeft;
     bool player1alive, player2alive, player3alive;
+    bool player1lastalive, player2lastalive, player3lastalive;
+
 
     [SerializeField] UnityEngine.UI.Button twoPlayers, threePlayers;
 
@@ -156,10 +158,27 @@ public class GameManager : MonoBehaviour
         Debug.Log("Player1Dead");
         if (playersLeft == 1)
         {
+
+            if (player2alive)
+            {
+                //Player 2 Won
+                ScoreManager.Instance.Player2Won();
+                player2Won.SetActive(true);
+            }
+
+            if (player3alive)
+            {
+                //Player 3 Won
+                ScoreManager.Instance.Player3Won();
+                player3Won.SetActive(true);
+            }
+
             StartCoroutine(GameOver());
-
             ScoreManager.Instance.Player1RunnerUp();
-
+            if (player2alive)
+            {
+                
+            }
         }
 
         player1deadText.SetActive(true);
@@ -173,8 +192,22 @@ public class GameManager : MonoBehaviour
 
         if (playersLeft == 1)
         {
-            StartCoroutine(GameOver());
 
+            if (player1alive)
+            {
+                //Player 1 Won
+                ScoreManager.Instance.Player1Won();
+                player1Won.SetActive(true);
+            }
+
+            if (player3alive)
+            {
+                //Player 3 Won
+                ScoreManager.Instance.Player3Won();
+                player3Won.SetActive(true);
+            }
+
+            StartCoroutine(GameOver());
             ScoreManager.Instance.Player2RunnerUp();
         }
 
@@ -190,6 +223,21 @@ public class GameManager : MonoBehaviour
 
         if (playersLeft == 1)
         {
+
+            if (player1alive)
+            {
+                //Player 1 Won
+                ScoreManager.Instance.Player1Won();
+                player1Won.SetActive(true);
+            }
+
+            if (player2alive)
+            {
+                //Player 2 Won
+                ScoreManager.Instance.Player2Won();
+                player2Won.SetActive(true);
+            }
+
             ScoreManager.Instance.Player3RunnerUp();
             StartCoroutine(GameOver());
         }
@@ -210,32 +258,6 @@ public class GameManager : MonoBehaviour
         UIGameOver.SetActive(true);
         Time.timeScale = 0;
 
-        if (player1alive)
-        {
-            //Player 1 Won
-            ScoreManager.Instance.Player1Won();
-            player1Won.SetActive(true);
-            
-
-        }
-
-        if (player2alive)
-        {
-            //Player 2 Won
-            ScoreManager.Instance.Player2Won();
-            player2Won.SetActive(true);
-           
-
-
-        }
-
-        if (player3alive)
-        {
-            //Player 3 Won
-            ScoreManager.Instance.Player3Won();
-            player3Won.SetActive(true);
-            
-        }
     }
 
     IEnumerator CamToWinner(CameraZoom cam, MovementPlayer1 mov)

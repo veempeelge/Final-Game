@@ -43,7 +43,7 @@ public class ScoreManager : MonoBehaviour
         SceneManager.sceneLoaded += UpdateCurrentLevel;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (currentLevel == 5)
         {
@@ -73,7 +73,7 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScores()
     {
-        roundCount = 0;
+        roundCount = 1;
         for (int i = 0; i < scoresRound1Manager.Length; i++)
         {
             scoresRound1Manager[i] = 0;

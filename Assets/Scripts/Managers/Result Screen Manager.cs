@@ -96,6 +96,7 @@ public class ResultScreenManager : MonoBehaviour
                 }
                 if (currentLevel == 2)
                 {
+                    ResetScores();
                     SceneManager.LoadSceneAsync(0);
                 }
 
@@ -150,7 +151,7 @@ public class ResultScreenManager : MonoBehaviour
 
     private void ResetScores()
     {
-        round = 0;
+        round = 1;
         for (int i = 0; i < scoresRound1.Length; i++)
         {
             scoresRound1[i].text = "0";
