@@ -40,8 +40,12 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] GameObject thirdPlayer1, thirdPlayer2, thirdPlayer3;
 
     [SerializeField] String[] randomScenes;
+
+    [SerializeField] int currentLevel;
     private void Start()
     {
+        currentLevel = SceneManager.GetActiveScene().buildIndex;
+
         Time.timeScale = 1f;
         confirmButton.onClick.AddListener(ButtonClick);
         mainMenuButton.onClick.AddListener(MainMenuButtonClick);
@@ -86,11 +90,34 @@ public class ResultScreenManager : MonoBehaviour
             scoreManager.roundCount++;
             if (round == 1)
             {
-                SceneManager.LoadSceneAsync(6);
+                if (currentLevel == 5)
+                {
+                    SceneManager.LoadSceneAsync(6);
+                }
+                if (currentLevel == 6)
+                {
+                    SceneManager.LoadSceneAsync(7);
+                }
+
+                if (currentLevel == 7)
+                {
+                    ResetScores();
+                    SceneManager.LoadSceneAsync(0);
+                }
+
             }
             else if (round == 2)
             {
-                SceneManager.LoadSceneAsync(7);
+                if (currentLevel == 6)
+                {
+                    SceneManager.LoadSceneAsync(7);
+                }
+
+                if (currentLevel == 7)
+                {
+                    ResetScores();
+                    SceneManager.LoadSceneAsync(0);
+                }
             }
         }
         else if (round == 3)
@@ -104,6 +131,12 @@ public class ResultScreenManager : MonoBehaviour
                 ResetScores();
                 SceneManager.LoadSceneAsync(0);
             }
+        }
+
+        else if (round == 4)
+        {
+            ResetScores();
+            SceneManager.LoadSceneAsync(0);
         }
     }
 
