@@ -117,6 +117,7 @@ public class ResultScreenManager : MonoBehaviour
 
     private void ResetScores()
     {
+        round = 0;
         for (int i = 0; i < scoresRound1.Length; i++)
         {
             scoresRound1[i].text = "0";

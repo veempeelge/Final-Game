@@ -35,6 +35,8 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetScores()
     {
+
+        roundCount = 0;
         for (int i = 0; i < scoresRound1Manager.Length; i++)
         {
             scoresRound1Manager[i] = 0;
