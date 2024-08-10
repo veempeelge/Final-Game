@@ -74,7 +74,7 @@ public class MainMenu : MonoBehaviour
     {
         SoundManager.Instance.Play(buttonClick);
 
-        SceneManager.LoadScene("tutorial");
+        SceneManager.LoadScene(3);
     }
 
     public void Quit()
