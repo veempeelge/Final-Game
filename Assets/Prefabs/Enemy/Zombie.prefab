@@ -1793,10 +1793,12 @@ MonoBehaviour:
   CanHitWater: 1
   chasingWho: {fileID: 6342939571492566862}
   animator: {fileID: 9053876824330718933}
-  hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
+  hitWater: {fileID: 8300000, guid: 584d63afa9c58654ab9bbe1d950177c7, type: 3}
+  hit: {fileID: 8300000, guid: c4c14fca18b342248aa4f08fdab892b3, type: 3}
+  spawn: {fileID: 8300000, guid: be977c7b765df6b42973a15b3fb4df71, type: 3}
   waterIndicatorCone: {fileID: 7872601936976487080}
   stunParticle: {fileID: 804015320219804196}
-  TargettedSamePlayer: 0
+  TargettedSamePlayer: 1
   hardEnemy: 0
   mediumEnemy: 0
   easyEnemy: 1

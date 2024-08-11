@@ -38,7 +38,9 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private TMP_Text chasingWho;
     [SerializeField] private Animator animator;
-    [SerializeField] private AudioClip hitWater;
+    [SerializeField] private AudioClip hitWater, hit;
+    [SerializeField] private AudioClip spawn;
+
     [SerializeField] private Image waterIndicatorCone;
     [SerializeField] private ParticleSystem stunParticle;
 
@@ -281,8 +283,10 @@ public class Enemy : MonoBehaviour
         agent.enabled = true; // Re-enable NavMeshAgent
 
         if (health <= 0) Die();
+        SoundManager.Instance.Play(hitWater);
         animator.SetTrigger("Pain");
         isKnockedBack = false;
+
     }
 
     public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
@@ -302,6 +306,8 @@ public class Enemy : MonoBehaviour
         {
             stunParticle.Play();
             SoundManager.Instance.Play(hitWater);
+            //SoundManager.Instance.Play(hit);
+
             CanHitWater = false;
             Invoke(nameof(CanHitWaterCooldown), 2f);
             ChangeTarget();

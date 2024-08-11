@@ -15796,7 +15796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
       propertyPath: m_Volume
-      value: 0.357
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6075077845078106971, guid: 006abe81644ebfd4fa4ba43e2ab0ac77, type: 3}
       propertyPath: m_PlayOnAwake
@@ -25394,6 +25394,10 @@ PrefabInstance:
       propertyPath: enemiesParent
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
+      propertyPath: bellSpawnSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 87ed52ec436c8c643a70cb45410b7c82, type: 3}
     - target: {fileID: 1703974953521650915, guid: 34d4150f8d298e84da55fee9845dbec9, type: 3}
       propertyPath: timeBetweenSpawns
       value: 15

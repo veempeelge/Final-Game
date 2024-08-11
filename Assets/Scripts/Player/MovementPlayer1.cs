@@ -282,6 +282,7 @@ public class MovementPlayer1 : MonoBehaviour
         currentHP -= damage;
         hpBar.UpdateBar(currentHP);
         //Debug.Log("Got Hit, HP Remaining = " + currentHP);
+        SoundManager.Instance.Play(hitWater);
         StartCoroutine(KnockEnemy());
         anim.SetTrigger("Choke");
         stunParticle.Play();

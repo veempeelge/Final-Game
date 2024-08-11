@@ -6194,6 +6194,7 @@ MonoBehaviour:
   - 6
   - 5
   currentLevel: 0
+  ResultSound: {fileID: 8300000, guid: 97fad52c24dde9b4786cd92b4f2124a0, type: 3}
 --- !u!4 &1549586923
 Transform:
   m_ObjectHideFlags: 0

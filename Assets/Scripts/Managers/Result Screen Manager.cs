@@ -42,8 +42,11 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] String[] randomScenes;
 
     [SerializeField] int currentLevel;
+
+    [SerializeField] AudioClip ResultSound;
     private void Start()
     {
+        SoundManager.Instance.Play(ResultSound);
         currentLevel = ScoreManager.Instance.lastLevel;
 
         Time.timeScale = 1f;

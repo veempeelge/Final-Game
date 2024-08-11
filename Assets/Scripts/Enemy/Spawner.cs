@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
 
     public Transform enemiesParent;
 
-    [SerializeField] AudioClip bellSpawnSound;
+    [SerializeField] AudioClip bellSpawnSound, spawnSound2;
 
     // Start is called before the first frame update
     void Start()

@@ -16,7 +16,7 @@ public class SoundManager : MonoBehaviour
     public static SoundManager Instance = null;
 
     public int simultaneousPlayCount = 0;
-    public int maxSimultaneousSounds = 7;
+    public int maxSimultaneousSounds = 999;
 
     private void Awake()
     {

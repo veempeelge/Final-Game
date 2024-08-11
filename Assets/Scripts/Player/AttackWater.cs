@@ -29,6 +29,7 @@ public class AttackWater : MonoBehaviour
     [SerializeField] ParticleSystem waterParticle;
 
     [SerializeField] Image waterInd;
+    [SerializeField] AudioClip waterOut;
 
     void Start()
     {
@@ -109,7 +110,7 @@ public class AttackWater : MonoBehaviour
                             enemy = hit.collider.gameObject.GetComponent<Enemy>();
                             if (enemy != null && enemy.targetPlayer == transform.parent.gameObject && playerStats.waterCharge > 0)
                             {
-
+                                SoundManager.Instance.Play(waterOut);
                                 playerStats.enabled = false;
                                 playerStats.AttackAnim();
                                 Invoke(nameof(WalkCooldown), .5f);
@@ -137,6 +138,8 @@ public class AttackWater : MonoBehaviour
 
                                 if (canDecrease)
                                 {
+                                    SoundManager.Instance.Play(waterOut);
+
                                     StartCoroutine(playerStatsOtherEnemy.HitByOtherPlayer(this.gameObject));
                                     playerStats.AttackAnim();
 

@@ -28,7 +28,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] player3UIs;
 
-    [SerializeField] AudioClip gameplayMusic, buttonClick;
+    [SerializeField] AudioClip gameplayMusic, buttonClick, playerselectionClick;
+    [SerializeField] AudioClip p1Dead, p2Dead, p3Dead;
+
 
     [SerializeField] Transform hpBar2, weaponDurability2, item2;
 
@@ -112,7 +114,7 @@ public class GameManager : MonoBehaviour
         {
             tutorialPage.SetActive(true);
         }
-        SoundManager.Instance.Play(buttonClick);
+        SoundManager.Instance.Play(playerselectionClick);
 
         player1alive = true;
         player2alive = true;
@@ -140,7 +142,7 @@ public class GameManager : MonoBehaviour
         {
             tutorialPage.SetActive(true);
         }
-        SoundManager.Instance.Play(buttonClick);
+        SoundManager.Instance.Play(playerselectionClick);
 
         player1alive = true;
         player2alive = true;
@@ -157,6 +159,7 @@ public class GameManager : MonoBehaviour
         playersLeft--;
         player1alive = false;
         Debug.Log("Player1Dead");
+        SoundManager.Instance.Play(p1Dead);
         if (playersLeft == 1)
         {
 
@@ -190,6 +193,7 @@ public class GameManager : MonoBehaviour
         playersLeft--;
         player2alive = false;
         Debug.Log("Player1Dead");
+        SoundManager.Instance.Play(p2Dead);
 
         if (playersLeft == 1)
         {
@@ -221,6 +225,7 @@ public class GameManager : MonoBehaviour
         player3alive = false;
         Debug.Log("Player1Dead");
         player3deadText.SetActive(true);
+        SoundManager.Instance.Play(p3Dead);
 
         if (playersLeft == 1)
         {

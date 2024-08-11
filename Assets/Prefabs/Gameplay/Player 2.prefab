@@ -647,7 +647,7 @@ MonoBehaviour:
   tutorialUI: {fileID: 1403278322959310791}
   arrows: {fileID: 21300000, guid: ac34a9bb5bfa82046920a489606db7f8, type: 3}
   ijkl: {fileID: 21300000, guid: fa48468b235730c4ba6e55a68bebde3d, type: 3}
-  hitWater: {fileID: 8300000, guid: a3663e426b5b12d4ca6988eac5f5aa7e, type: 3}
+  hitWater: {fileID: 8300000, guid: 98c61cbf6b60bcf409e163f0225b8e6a, type: 3}
   walking: {fileID: 4625116319028376643}
   waterIndicator: {fileID: 7597011520526019793}
   stunParticle: {fileID: 3973208758609679082}
@@ -747,9 +747,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 3f732123d034a52459f7d84c2c485930, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 368f74a390b607e45a86a05d86111fba, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.3
+  m_Volume: 0.5
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1756,6 +1756,7 @@ MonoBehaviour:
   HitPlayerCooldown: {fileID: 6492503168374665722}
   waterParticle: {fileID: 4870457053021979584}
   waterInd: {fileID: 8339268796015389545}
+  waterOut: {fileID: 8300000, guid: c4c14fca18b342248aa4f08fdab892b3, type: 3}
 --- !u!1 &6248947305504495978
 GameObject:
   m_ObjectHideFlags: 0
