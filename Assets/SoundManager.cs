@@ -38,6 +38,13 @@ public class SoundManager : MonoBehaviour
         StartCoroutine(PlaySound(clip));
     }
 
+    public void Play(AudioClip clip, float volume)
+    {
+        EffectsSource.clip = clip;
+        StartCoroutine(PlaySoundVolume(clip,volume));
+    }
+
+
     IEnumerator PlaySound(AudioClip clip, bool autoScaleVolume = true, float maxVolumeScale = 1f)
     {
         if (simultaneousPlayCount >= maxSimultaneousSounds)
@@ -54,6 +61,25 @@ public class SoundManager : MonoBehaviour
         {
             vol = vol / (float)(simultaneousPlayCount);
         }
+
+        MusicSource.PlayOneShot(clip, vol);
+
+        // Wait til the sound almost finishes playing then reduce play count
+        float delay = clip.length * 0.7f;
+
+        yield return new WaitForSeconds(delay);
+
+        simultaneousPlayCount--;
+    }
+
+    IEnumerator PlaySoundVolume(AudioClip clip, float vol)
+    {
+        if (simultaneousPlayCount >= maxSimultaneousSounds)
+        {
+            yield break;
+        }
+
+        simultaneousPlayCount++;
 
         MusicSource.PlayOneShot(clip, vol);
 
