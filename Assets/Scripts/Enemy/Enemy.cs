@@ -279,7 +279,7 @@ public class Enemy : MonoBehaviour
             yield return null;
         }
 
-        rb.velocity = Vector3.zero; // Stop any remaining velocity
+//        rb.velocity = Vector3.zero; // Stop any remaining velocity
         agent.enabled = true; // Re-enable NavMeshAgent
 
         if (health <= 0) Die();

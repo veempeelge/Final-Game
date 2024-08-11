@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.005664493, g: 0.02328644, b: 0.102862455, a: 1}
+  m_IndirectSpecularColor: {r: 0.0056645973, g: 0.023286456, b: 0.102862395, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8868,7 +8868,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 49c46418aa9ab7543b4a0e509fdd4235, type: 2}
     - target: {fileID: 919132149155446097, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Name
       value: BrokenFence (2)
@@ -21743,6 +21743,30 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1114126662}
     m_Modifications:
+    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 4874126678125670354, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+      propertyPath: m_Materials.Array.data[1]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: aecabddebdf55b5458a2136819ab7d22, type: 3}
+    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+      propertyPath: m_Materials.Array.data[2]
+      value: 
+      objectReference: {fileID: -3846018093981099296, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+      propertyPath: m_Materials.Array.data[3]
+      value: 
+      objectReference: {fileID: -876546973899608171, guid: aecabddebdf55b5458a2136819ab7d22, type: 3}
+    - target: {fileID: 919132149155446097, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
+      propertyPath: m_Name
+      value: Log (3)
+      objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bda7ea97970fe8b4d881aa20a52f8ea2, type: 3}
       propertyPath: m_LocalScale.x
       value: 1.2439297
@@ -21818,30 +21842,6 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: bda7ea97970fe8b4d881aa20a52f8ea2, type: 3}
       propertyPath: m_Layer
       value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-      propertyPath: m_Materials.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 4874126678125670354, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-      propertyPath: m_Materials.Array.data[1]
-      value: 
-      objectReference: {fileID: -876546973899608171, guid: aecabddebdf55b5458a2136819ab7d22, type: 3}
-    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-      propertyPath: m_Materials.Array.data[2]
-      value: 
-      objectReference: {fileID: -3846018093981099296, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-    - target: {fileID: -7511558181221131132, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-      propertyPath: m_Materials.Array.data[3]
-      value: 
-      objectReference: {fileID: -876546973899608171, guid: aecabddebdf55b5458a2136819ab7d22, type: 3}
-    - target: {fileID: 919132149155446097, guid: 965d6966c6f369a4a88a183837b3cfd7, type: 3}
-      propertyPath: m_Name
-      value: Log (3)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -31037,7 +31037,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 7c440aa73a906384d937f98f27cc5f7a, type: 2}
     - target: {fileID: 919132149155446097, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Name
       value: BrokenFence (1)
