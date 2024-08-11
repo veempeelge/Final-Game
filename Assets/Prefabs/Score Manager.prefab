@@ -49,3 +49,6 @@ MonoBehaviour:
   scoresRound2Manager: 000000000000000000000000
   scoresRound3Manager: 000000000000000000000000
   scoresRound4Manager: 000000000000000000000000
+  lastLevel: 0
+  scoresTieBreakerManager: 000000000000000000000000
+  isTieBreaker: 0

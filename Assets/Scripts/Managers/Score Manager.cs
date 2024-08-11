@@ -16,12 +16,15 @@ public class ScoreManager : MonoBehaviour
     int currentLevel;
     public int lastLevel;
 
+    public int[] scoresTieBreakerManager;
+    public bool isTieBreaker = false;
+
     private void Awake()
     {
         if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             ResetScores();
-            Destroy(gameObject);
+            //Destroy(gameObject);
             roundCount = 1;
         }
 

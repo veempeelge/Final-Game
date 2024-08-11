@@ -85,47 +85,17 @@ public class ResultScreenManager : MonoBehaviour
 
     private void ButtonClick()
     {
-        if (round < 3)
+        if (round < 3 && !scoreManager.isTieBreaker)
         {
             scoreManager.roundCount++;
-            if (round == 1)
-            {
-                if (currentLevel == 1)
-                {
-                    SceneManager.LoadSceneAsync(6);
-                }
-                if (currentLevel == 2)
-                {
-                    ResetScores();
-                    SceneManager.LoadSceneAsync(0);
-                }
-
-                if (currentLevel == 3)
-                {
-                    ResetScores();
-                    SceneManager.LoadSceneAsync(0);
-                }
-
-            }
-            else if (round == 2)
-            {
-                if (currentLevel == 2)
-                {
-                    SceneManager.LoadSceneAsync(7);
-                }
-
-                if (currentLevel == 3)
-                {
-                    ResetScores();
-                    SceneManager.LoadSceneAsync(0);
-                }
-            }
+            LoadNextSceneBasedOnRoundAndLevel();
         }
-        else if (round == 3)
+        else if (round == 3 && !scoreManager.isTieBreaker)
         {
             if (scoresTotal[0] == scoresTotal[1] || scoresTotal[0] == scoresTotal[2] || scoresTotal[1] == scoresTotal[2])
             {
-                SceneManager.LoadSceneAsync(UnityEngine.Random.Range(5,7));
+                scoreManager.isTieBreaker = true;
+                SceneManager.LoadSceneAsync(UnityEngine.Random.Range(5, 7));
             }
             else
             {
@@ -133,13 +103,42 @@ public class ResultScreenManager : MonoBehaviour
                 SceneManager.LoadSceneAsync(0);
             }
         }
-
-        else if (round == 4)
+        else if (round == 4 || scoreManager.isTieBreaker)
         {
             ResetScores();
+            scoreManager.isTieBreaker = false;
             SceneManager.LoadSceneAsync(0);
         }
     }
+
+    private void LoadNextSceneBasedOnRoundAndLevel()
+    {
+        if (round == 1)
+        {
+            if (currentLevel == 1)
+            {
+                SceneManager.LoadSceneAsync(6);
+            }
+            else if (currentLevel == 2 || currentLevel == 3)
+            {
+                ResetScores();
+                SceneManager.LoadSceneAsync(0);
+            }
+        }
+        else if (round == 2)
+        {
+            if (currentLevel == 2)
+            {
+                SceneManager.LoadSceneAsync(7);
+            }
+            else if (currentLevel == 3)
+            {
+                ResetScores();
+                SceneManager.LoadSceneAsync(0);
+            }
+        }
+    }
+
 
     private void MainMenuButtonClick()
     {
@@ -203,6 +202,11 @@ public class ResultScreenManager : MonoBehaviour
         for (int i = 0; i < scoresTotal.Length; i++)
         {
             scoresTotal[i] = scoreManager.scoresRound1Manager[i] + scoreManager.scoresRound2Manager[i] + scoreManager.scoresRound3Manager[i] + scoreManager.scoresRound4Manager[i];
+
+            if (!scoreManager.isTieBreaker)
+            {
+                scoresTotal[i] += scoreManager.scoresTieBreakerManager[i];
+            }
         }
 
         for (int i = 0; i < scoresTotalText.Length; i++)
@@ -213,9 +217,10 @@ public class ResultScreenManager : MonoBehaviour
         Ranking();
     }
 
+
     private void Ranking()
     {
-        int[] playerIndices = { 0, 1, 2 }; // assuming 3 players
+        int[] playerIndices = { 0, 1, 2 };
         Array.Sort(scoresTotal, playerIndices);
         Array.Reverse(scoresTotal);
         Array.Reverse(playerIndices);

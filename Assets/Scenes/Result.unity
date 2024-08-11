@@ -6190,9 +6190,9 @@ MonoBehaviour:
   thirdPlayer2: {fileID: 1152647093}
   thirdPlayer3: {fileID: 80487771}
   randomScenes:
-  - PRO2.2_TestLvl.2
-  - PRO3.2_TestLvl.3
-  - PRO1.6_TestLvl.1
+  - 7
+  - 6
+  - 5
   currentLevel: 0
 --- !u!4 &1549586923
 Transform:

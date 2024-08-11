@@ -14,6 +14,7 @@ public class SceneLoader : MonoBehaviour
 
     public void Menu()
     {
+        ScoreManager.Instance.ResetScores();
         SceneManager.LoadScene("Main Menu");
     }
 }

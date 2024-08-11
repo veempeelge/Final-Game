@@ -30,6 +30,8 @@ public class GameOverUI : MonoBehaviour
 
     public void MainMenu()
     {
+        ScoreManager.Instance.ResetScores();
+
         SoundManager.Instance.Play(buttonClick);
 
         SceneManager.LoadScene("Main Menu");
