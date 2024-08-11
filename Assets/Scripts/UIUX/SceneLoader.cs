@@ -14,7 +14,10 @@ public class SceneLoader : MonoBehaviour
 
     public void Menu()
     {
-        ScoreManager.Instance.ResetScores();
+        if (ScoreManager.Instance != null)
+        {
+            ScoreManager.Instance.ResetScores();
+        }
         SceneManager.LoadScene("Main Menu");
     }
 }

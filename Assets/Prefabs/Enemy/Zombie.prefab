@@ -400,6 +400,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   VisionConeResolution: 120
+  zombieAttack: {fileID: 8300000, guid: 7396ca789c0c05e49937d3ecfed1155f, type: 3}
 --- !u!1001 &2440680662396618473
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1795,7 +1796,7 @@ MonoBehaviour:
   animator: {fileID: 9053876824330718933}
   hitWater: {fileID: 8300000, guid: 584d63afa9c58654ab9bbe1d950177c7, type: 3}
   hit: {fileID: 8300000, guid: c4c14fca18b342248aa4f08fdab892b3, type: 3}
-  spawn: {fileID: 8300000, guid: be977c7b765df6b42973a15b3fb4df71, type: 3}
+  spawn: {fileID: 8300000, guid: 7134077ab77d91749ba3b577d6229cb6, type: 3}
   waterIndicatorCone: {fileID: 7872601936976487080}
   stunParticle: {fileID: 804015320219804196}
   TargettedSamePlayer: 1

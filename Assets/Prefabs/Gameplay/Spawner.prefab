@@ -122,8 +122,8 @@ MonoBehaviour:
   - {fileID: 4209269225353237032}
   - {fileID: 6007842975535074719}
   enemiesParent: {fileID: 0}
-  bellSpawnSound: {fileID: 8300000, guid: be977c7b765df6b42973a15b3fb4df71, type: 3}
-  spawnSound2: {fileID: 8300000, guid: 87ed52ec436c8c643a70cb45410b7c82, type: 3}
+  bellSpawnSound: {fileID: 8300000, guid: 7134077ab77d91749ba3b577d6229cb6, type: 3}
+  spawnSound2: {fileID: 8300000, guid: 7134077ab77d91749ba3b577d6229cb6, type: 3}
 --- !u!1 &6404600148061590719
 GameObject:
   m_ObjectHideFlags: 0

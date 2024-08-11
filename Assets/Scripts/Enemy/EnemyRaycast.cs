@@ -14,6 +14,7 @@ public class EnemyRaycast : MonoBehaviour
     MeshFilter MeshFilter_;
 
     bool canAttack = true;
+    [SerializeField] AudioClip zombieAttack;
     //Create all of these variables, most of them are self explanatory, but for the ones that aren't i've added a comment to clue you in on what they do
     //for the ones that you dont understand dont worry, just follow along
     void Start()
@@ -55,7 +56,7 @@ public class EnemyRaycast : MonoBehaviour
                     if (hit.collider.gameObject.GetComponent<MovementPlayer1>() != null)
                     {
                         hit.collider.gameObject.GetComponent<MovementPlayer1>().TakeDamage(2);
-
+                        SoundManager.Instance.Play(zombieAttack);
                     }
                     else
                     {
