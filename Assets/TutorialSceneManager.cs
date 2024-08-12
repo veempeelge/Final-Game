@@ -19,6 +19,7 @@ public class TutorialSceneManager : MonoBehaviour
     bool waterCollected = false;
     bool phase1, phase2, phase3, phase4 = false;
     bool zombieSpawned, waterSpawned = false;
+    bool phase3Paused = true;
 
     Rigidbody player1movedrb, player2movedrb, player3movedrb;
 
@@ -26,7 +27,7 @@ public class TutorialSceneManager : MonoBehaviour
     [SerializeField] GameObject waterGen;
     [SerializeField] GameObject zombie;
     [SerializeField] Transform[] zombieSpawnPoint, waterSpawnPoint;
-    [SerializeField] GameObject tutorialScreen, tutorialScreen2, tutorialScreen3, tutorialScreen4;
+    [SerializeField] GameObject tutorialScreen, tutorialScreen2, tutorialScreen3, tutorialScreen4, tutorialScreen3Image;
 
     List<GameObject> waters = new List<GameObject>();
     List<GameObject> zombieList = new List<GameObject>();
@@ -123,16 +124,6 @@ public class TutorialSceneManager : MonoBehaviour
             Invoke(nameof(WaterCheck),1f);
         }
 
-        if (player1threw && player1threw && player1threw && haventgolevel)
-        {
-            tutorialScreen.SetActive(false);
-            tutorialScreen2.SetActive(false);
-            tutorialScreen3.SetActive(false);
-            tutorialScreen4.SetActive(true);
-            Invoke(nameof(GoLevelOne), 5f);
-            haventgolevel = false;
-        }
-
     }
 
     void GoLevelOne()
@@ -140,6 +131,21 @@ public class TutorialSceneManager : MonoBehaviour
         SceneManager.LoadSceneAsync(5);
     }
 
+    private void Phase4()
+    {
+        tutorialScreen.SetActive(false);
+        tutorialScreen2.SetActive(false);
+        tutorialScreen3.SetActive(false);
+        tutorialScreen4.SetActive(true);
+        Invoke(nameof(TutorialEnder), 15f);
+        haventgolevel = false;
+    }
+
+    public void NextPhase3()
+    {
+        Time.timeScale = 1;
+        tutorialScreen3Image.SetActive(false) ;
+    }
     private void WaterCheck()
     {
         if (player1Code.waterCharge < 3)
@@ -206,6 +212,13 @@ public class TutorialSceneManager : MonoBehaviour
             Debug.Log(waters.Count);
             StartCoroutine(SpawnZombies());
             phase3 = true;
+            Invoke(nameof(Phase4), 10f);
+            if (phase3Paused)
+            {
+                Time.timeScale = 0;
+                phase3Paused = false;
+            }
+           
         }
     }
 
@@ -232,6 +245,13 @@ public class TutorialSceneManager : MonoBehaviour
             }
             yield break;
         }
+    }
+
+    void TutorialEnder()
+    {
+        Time.timeScale = 0;
+
+        TutorialOverMarrrr.SetActive(true);
     }
 
     public void MainMenuFromTutorial()
