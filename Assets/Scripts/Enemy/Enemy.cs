@@ -79,9 +79,9 @@ public class Enemy : MonoBehaviour
 
     private void EnableAgent()
     {
-        agent.speed = 4;
+        agent.speed = 8;
         agent.angularSpeed = 120;
-        agent.acceleration = 8;
+        agent.acceleration = 16;
     }
 
     void ConfigureLineRenderer()
@@ -269,25 +269,42 @@ public class Enemy : MonoBehaviour
     private IEnumerator Knockback(Vector3 direction, float knockbackForce)
     {
         float elapsedTime = 0f;
-        agent.enabled = false; // Disable NavMeshAgent during knockback
+        Vector3 originalPosition = transform.position;
 
-        rb.AddForce(direction * knockbackForce * 0.6f, ForceMode.Impulse);
+        // Calculate the target position, but keep the Y position unchanged
+        Vector3 targetPosition = new Vector3(
+            originalPosition.x + direction.x * knockbackForce,
+            originalPosition.y, // Preserve Y position
+            originalPosition.z + direction.z * knockbackForce
+        );
+
+        agent.enabled = false; // Disable NavMeshAgent during knockback
 
         while (elapsedTime < knockbackDuration)
         {
+            // Smoothly move the enemy towards the knockback target position
+            transform.position = Vector3.Lerp(originalPosition, targetPosition, elapsedTime / knockbackDuration);
             elapsedTime += Time.deltaTime;
             yield return null;
         }
 
-//        rb.velocity = Vector3.zero; // Stop any remaining velocity
+        // Ensure the enemy ends up exactly at the target position
+        transform.position = targetPosition;
+
         agent.enabled = true; // Re-enable NavMeshAgent
 
-        if (health <= 0) Die();
-        SoundManager.Instance.Play(hitWater);
-        animator.SetTrigger("Pain");
-        isKnockedBack = false;
-
+        if (health <= 0)
+        {
+            Die();
+        }
+        else
+        {
+            SoundManager.Instance.Play(hitWater);
+            animator.SetTrigger("Pain");
+            isKnockedBack = false;
+        }
     }
+
 
     public void OnPlayerDetected(Transform playerTransform, MovementPlayer1 playerStats)
     {
