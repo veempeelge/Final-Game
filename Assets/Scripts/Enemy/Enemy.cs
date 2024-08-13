@@ -322,7 +322,7 @@ public class Enemy : MonoBehaviour
         if (CanHitWater)
         {
             stunParticle.Play();
-            SoundManager.Instance.Play(hitWater);
+            SoundManager.Instance.Play(hitWater, 1.2f);
             //SoundManager.Instance.Play(hit);
 
             CanHitWater = false;

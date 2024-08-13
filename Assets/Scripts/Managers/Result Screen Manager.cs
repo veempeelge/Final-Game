@@ -111,6 +111,8 @@ public class ResultScreenManager : MonoBehaviour
         {
             if (scoresTotal[0] == scoresTotal[1] || scoresTotal[0] == scoresTotal[2] || scoresTotal[1] == scoresTotal[2])
             {
+                scoreManager.roundCount++;
+
                 scoreManager.isTieBreaker = true;
                 SceneManager.LoadSceneAsync(UnityEngine.Random.Range(5, 7));
             }
@@ -241,7 +243,7 @@ public class ResultScreenManager : MonoBehaviour
 
             if (!scoreManager.isTieBreaker)
             {
-                scoresTotal[i] += scoreManager.scoresTieBreakerManager[i];
+                scoresTotal[i] += scoreManager.scoresRound4Manager[i];
             }
         }
 
