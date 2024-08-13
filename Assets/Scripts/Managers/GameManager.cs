@@ -164,7 +164,7 @@ public class GameManager : MonoBehaviour
         playersLeft--;
         player1alive = false;
         Debug.Log("Player1Dead");
-        SoundManager.Instance.Play(p1Dead);
+        SoundManager.Instance.Play(p1Dead, 1.8f);
         if (playersLeft == 1)
         {
 
@@ -206,7 +206,7 @@ public class GameManager : MonoBehaviour
         playersLeft--;
         player2alive = false;
         Debug.Log("Player1Dead");
-        SoundManager.Instance.Play(p2Dead);
+        SoundManager.Instance.Play(p2Dead, 1.8f);
 
         if (playersLeft == 1)
         {
@@ -245,7 +245,7 @@ public class GameManager : MonoBehaviour
         player3alive = false;
         Debug.Log("Player1Dead");
         player3deadText.SetActive(true);
-        SoundManager.Instance.Play(p3Dead);
+        SoundManager.Instance.Play(p3Dead, 1.8f);
 
         if (playersLeft == 1)
         {

@@ -56,7 +56,7 @@ public class EnemyRaycast : MonoBehaviour
                     if (hit.collider.gameObject.GetComponent<MovementPlayer1>() != null)
                     {
                         hit.collider.gameObject.GetComponent<MovementPlayer1>().TakeDamage(2);
-                        SoundManager.Instance.Play(zombieAttack);
+                        SoundManager.Instance.Play(zombieAttack,1.2f);
                     }
                     else
                     {
