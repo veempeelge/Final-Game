@@ -15,7 +15,7 @@ public class GameManager : MonoBehaviour
     public NavMeshSurface nav;
 
     int playersLeft;
-    bool player1alive, player2alive, player3alive;
+    public bool player1alive, player2alive, player3alive;
     bool player1lastalive, player2lastalive, player3lastalive;
 
 
@@ -53,9 +53,11 @@ public class GameManager : MonoBehaviour
     private bool gameStart;
     private bool gameOver;
 
+    public bool canBeHit = true;
     // Start is called before the first frame update
     void Start()
     {
+        canBeHit = true;
         if (tutorialPage != null)
         {
             tutorialPage.SetActive(false);
@@ -156,6 +158,9 @@ public class GameManager : MonoBehaviour
 
     public void Player1Dead()
     {
+        canBeHit = false;
+        Invoke(nameof(CanBeHit), 1f);
+
         playersLeft--;
         player1alive = false;
         Debug.Log("Player1Dead");
@@ -186,10 +191,18 @@ public class GameManager : MonoBehaviour
         }
 
         player1deadText.SetActive(true);
+            
+        if (TutorialSceneManager.instance != null)
+        {
+            TutorialSceneManager.instance.TutorialEnder();
+        }
     }
 
     public void Player2Dead()
     {
+        canBeHit = false;
+        Invoke(nameof(CanBeHit), 1f);
+
         playersLeft--;
         player2alive = false;
         Debug.Log("Player1Dead");
@@ -217,10 +230,17 @@ public class GameManager : MonoBehaviour
         }
 
         player2deadText.SetActive(true);
+
+        if (TutorialSceneManager.instance != null)
+        {
+            TutorialSceneManager.instance.TutorialEnder();
+        }
     }
 
     public void Player3Dead()
     {
+        canBeHit = false;
+        Invoke(nameof(CanBeHit), 1f);
         playersLeft--;
         player3alive = false;
         Debug.Log("Player1Dead");
@@ -247,6 +267,16 @@ public class GameManager : MonoBehaviour
             ScoreManager.Instance.Player3RunnerUp();
             StartCoroutine(GameOver());
         }
+
+        if (TutorialSceneManager.instance != null)
+        {
+            TutorialSceneManager.instance.TutorialEnder();
+        }
+    }
+
+    void CanBeHit()
+    {
+        canBeHit = true;
     }
 
     void StartGame()

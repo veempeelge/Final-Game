@@ -36,7 +36,7 @@ public class WatGen_Behave : MonoBehaviour
                 if (inv.isFull[i] == false)
                 {
                     mvP1.waterCharge = 3;
-
+                    mvP1.gotWaterParticle.Play();
                     inv.hasWater = true;
                     inv.hasTrap = false;
                     inv.isFull[i] = true;
@@ -52,6 +52,7 @@ public class WatGen_Behave : MonoBehaviour
                 if (inv.isFull[i] == true)
                 {
                     mvP1.waterCharge = 3;
+                    mvP1.gotWaterParticle.Play();
 
                     inv.DiscardItem(i);
                     inv.hasWater = true;
@@ -84,6 +85,8 @@ public class WatGen_Behave : MonoBehaviour
                 if (inv.isFull[i] == false)
                 {
                     mvP1.waterCharge = 3;
+                    mvP1.gotWaterParticle.Play();
+
                     inv.hasWater = true;
                     inv.hasTrap = false;
                     inv.isFull[i] = true;
@@ -99,6 +102,7 @@ public class WatGen_Behave : MonoBehaviour
                 if (inv.isFull[i] == true)
                 {
                     mvP1.waterCharge = 3;
+                    mvP1.gotWaterParticle.Play();
 
                     inv.DiscardItem(i);
                     inv.hasWater = true;

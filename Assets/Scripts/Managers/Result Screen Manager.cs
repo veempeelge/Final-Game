@@ -8,6 +8,7 @@ using UnityEngine.Events;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
+using System.Threading;
 
 public class ResultScreenManager : MonoBehaviour
 {
@@ -21,7 +22,7 @@ public class ResultScreenManager : MonoBehaviour
 
     [SerializeField] GameObject round1Column, round2Column, round3Column, tieBreakerColumn;
 
-    int round;
+    public int round;
 
     int[] scoresRound1Manager;
     int[] scoresRound2Manager;
@@ -34,6 +35,7 @@ public class ResultScreenManager : MonoBehaviour
     ScoreManager scoreManager;
 
     [SerializeField] TMP_Text[] rankings;
+    [SerializeField] TMP_Text[] playersRanking;
 
     [SerializeField] GameObject firstPlayer1, firstPlayer2, firstPlayer3;
     [SerializeField] GameObject secondPlayer1, secondPlayer2, secondPlayer3;
@@ -44,9 +46,17 @@ public class ResultScreenManager : MonoBehaviour
     [SerializeField] int currentLevel;
 
     [SerializeField] AudioClip ResultSound;
+
+    [SerializeField] GameObject result1, result2;
+
+
     private void Start()
     {
-        SoundManager.Instance.Play(ResultSound);
+        if(SoundManager.Instance != null)
+        {
+            SoundManager.Instance.Play(ResultSound);
+
+        }
         currentLevel = ScoreManager.Instance.lastLevel;
 
         Time.timeScale = 1f;
@@ -86,6 +96,10 @@ public class ResultScreenManager : MonoBehaviour
         }
     }
 
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadSceneAsync(0);
+    }
     private void ButtonClick()
     {
         if (round < 3 && !scoreManager.isTieBreaker)
@@ -102,15 +116,22 @@ public class ResultScreenManager : MonoBehaviour
             }
             else
             {
-                ResetScores();
-                SceneManager.LoadSceneAsync(0);
+                Debug.Log("loading podium");
+
+                result1.SetActive(false);
+                result2.SetActive(true);
+               // ResetScores();
+               // SceneManager.LoadSceneAsync(0);
             }
         }
         else if (round == 4 || scoreManager.isTieBreaker)
         {
-            ResetScores();
+            Debug.Log("loading podium");
+            result1.SetActive(false);
+            result2.SetActive(true);
+            //ResetScores();
             scoreManager.isTieBreaker = false;
-            SceneManager.LoadSceneAsync(0);
+           // SceneManager.LoadSceneAsync(0);
         }
     }
 
@@ -124,8 +145,12 @@ public class ResultScreenManager : MonoBehaviour
             }
             else if (currentLevel == 2 || currentLevel == 3)
             {
-                ResetScores();
-                SceneManager.LoadSceneAsync(0);
+
+                result1.SetActive(false);
+                result2.SetActive(true);
+
+                //ResetScores();
+                //SceneManager.LoadSceneAsync(0);
             }
         }
         else if (round == 2)
@@ -136,14 +161,22 @@ public class ResultScreenManager : MonoBehaviour
             }
             else if (currentLevel == 3)
             {
-                ResetScores();
-                SceneManager.LoadSceneAsync(0);
+                result1.SetActive(false);
+                result2.SetActive(true);
+
+                //ResetScores();
+                //SceneManager.LoadSceneAsync(0);
             }
         }
     }
 
+    public void SeeScoresButton()
+    {
+        result1.SetActive(true);
+        result2.SetActive(false);
+    }
 
-    private void MainMenuButtonClick()
+    public void MainMenuButtonClick()
     {
         round = 0;
         scoreManager.roundCount = 1;
@@ -231,7 +264,8 @@ public class ResultScreenManager : MonoBehaviour
         for (int i = 0; i < scoresTotal.Length; i++)
         {
             Debug.Log($"Position {i + 1}: Player {playerIndices[i] + 1} with score {scoresTotal[i]}");
-            rankings[i].SetText($"Position {i + 1}: Player {playerIndices[i] + 1} with score {scoresTotal[i]}");
+            rankings[i].SetText(scoresTotal[i].ToString());
+            playersRanking[i].SetText($"Player {playerIndices[i] + 1}");
         }
 
         SetActiveRankingObjects(playerIndices);

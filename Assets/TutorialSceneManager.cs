@@ -7,9 +7,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using JetBrains.Annotations;
 using Unity.VisualScripting;
+using TMPro;
 
 public class TutorialSceneManager : MonoBehaviour
 {
+    public static TutorialSceneManager instance;
     [SerializeField] GameObject player1,player2,player3;
     bool player1moved,player2moved,player3moved = false;
     bool player1threw, player2threw, player3threw = false;
@@ -20,6 +22,7 @@ public class TutorialSceneManager : MonoBehaviour
     bool phase1, phase2, phase3, phase4 = false;
     bool zombieSpawned, waterSpawned = false;
     bool phase3Paused = true;
+    bool timerhasntreduced = true;
 
     Rigidbody player1movedrb, player2movedrb, player3movedrb;
 
@@ -27,7 +30,7 @@ public class TutorialSceneManager : MonoBehaviour
     [SerializeField] GameObject waterGen;
     [SerializeField] GameObject zombie;
     [SerializeField] Transform[] zombieSpawnPoint, waterSpawnPoint;
-    [SerializeField] GameObject tutorialScreen, tutorialScreen2, tutorialScreen3, tutorialScreen4, tutorialScreen3Image;
+    [SerializeField] GameObject tutorialScreen, tutorialScreen2, tutorialScreen3, tutorialScreen4, tutorialScreen3Image, tutorialScreen2Image;
 
     List<GameObject> waters = new List<GameObject>();
     List<GameObject> zombieList = new List<GameObject>();
@@ -37,7 +40,16 @@ public class TutorialSceneManager : MonoBehaviour
     [SerializeField] GameObject TutorialOverMarrrr;
 
     [SerializeField] GameObject _3players1, _3players2, _2players1, _2players2, _3players, _2players;
+    [SerializeField] GameObject _phase3_2, _phase3_1, textPhase3;
+
     private bool haventgolevel = true;
+    private bool phase2paused = false;
+    [SerializeField] AudioClip buttonSound;
+
+    int timer = 15;
+    [SerializeField] TMP_Text timerText;
+
+
 
     // Start is called before the first frame update
     void Start()
@@ -56,6 +68,13 @@ public class TutorialSceneManager : MonoBehaviour
         player1Code = player1.GetComponent<MovementPlayer1>();
         player2Code = player2.GetComponent<MovementPlayer1>();
         player3Code = player3.GetComponent<MovementPlayer1>();
+
+
+    }
+    private void Awake()
+    {
+   //     GameManager.Instance.canBeHit = false;
+
     }
 
     public void StartTutorialImage()
@@ -69,9 +88,35 @@ public class TutorialSceneManager : MonoBehaviour
         tutorialImage.SetActive(false);
     }
 
+    public void NextPhase2()
+    {
+        tutorialScreen2Image.SetActive(false);
+        Time.timeScale = 1;
+    }
+
+    public void NextPhase31()
+    {
+        _phase3_1.SetActive(false);
+        _phase3_2.SetActive(true);
+        textPhase3.SetActive(false);
+        
+    }
+
+    public void NextPhase32()
+    {
+        _phase3_1.SetActive(false);
+        _phase3_2.SetActive(false);
+        textPhase3.SetActive(true);
+
+        Time.timeScale = 1;
+        tutorialScreen3Image.SetActive(false);
+
+    }
     // Update is called once per frame
     void Update()   
     {
+
+
         if (player1movedrb && player1Code!= null)
         {
 
@@ -124,7 +169,26 @@ public class TutorialSceneManager : MonoBehaviour
             Invoke(nameof(WaterCheck),1f);
         }
 
+        //if (phase4)
+        //{
+        //    timerText.SetText($"Be the last man standing, tutorial ends in {timer} ");
+        //}
+
     }
+
+    IEnumerator Timer()
+    {
+        while(timer >= 0)
+        {
+            yield return new WaitForSeconds(1);
+            timer -= 1;
+            timerText.SetText($"Be the last man standing! tutorial ends in {timer} ");
+
+        }
+
+        yield break;
+    }
+       
 
     void GoLevelOne()
     {
@@ -133,11 +197,19 @@ public class TutorialSceneManager : MonoBehaviour
 
     private void Phase4()
     {
+        phase4 = true;  
         tutorialScreen.SetActive(false);
         tutorialScreen2.SetActive(false);
         tutorialScreen3.SetActive(false);
         tutorialScreen4.SetActive(true);
         Invoke(nameof(TutorialEnder), 15f);
+        if (timerhasntreduced)
+        {
+            timerhasntreduced = false;
+            StartCoroutine(Timer());
+        }
+        //timer = 15;
+
         haventgolevel = false;
     }
 
@@ -176,21 +248,44 @@ public class TutorialSceneManager : MonoBehaviour
             tutorialScreen3.SetActive(false);
             tutorialScreen4.SetActive(false);
 
+           
             phase2 = true;
+            if (!phase2paused)
+            {
+                phase2paused = true;
+                Time.timeScale = 0;
+
+            }
             yield return new WaitForSeconds(1f);
 
             // Clear the list to avoid adding more waterGen objects if SpawnWater is called again
             waters.Clear();
 
-            for (int i = 0; i < waterSpawnPoint.Length; i++)
+            if (!player3.activeSelf)
             {
-                // Instantiate the waterGen prefab
-                GameObject water = Instantiate(waterGen, waterSpawnPoint[i].position, waterSpawnPoint[i].rotation);
+                for (int i = 0; i < waterSpawnPoint.Length - 1; i++)
+                {
+                    // Instantiate the waterGen prefab
+                    GameObject water = Instantiate(waterGen, waterSpawnPoint[i].position, waterSpawnPoint[i].rotation);
 
 
-                // Add the instantiated waterGen to the waters list
-                waters.Add(water);
+                    // Add the instantiated waterGen to the waters list
+                    waters.Add(water);
+                }
             }
+            else
+            {
+                for (int i = 0; i < waterSpawnPoint.Length; i++)
+                {
+                    // Instantiate the waterGen prefab
+                    GameObject water = Instantiate(waterGen, waterSpawnPoint[i].position, waterSpawnPoint[i].rotation);
+
+
+                    // Add the instantiated waterGen to the waters list
+                    waters.Add(water);
+                }
+            }
+           
 
             yield break;
         }
@@ -224,7 +319,7 @@ public class TutorialSceneManager : MonoBehaviour
 
     IEnumerator SpawnZombies()
     {
-        Debug.Log("ZombieSpawn");
+        //Debug.Log("ZombieSpawn");
 
         if (zombieSpawned == false)
         {
@@ -239,7 +334,7 @@ public class TutorialSceneManager : MonoBehaviour
 
             for (int i = 0; i < zombieSpawnPoint.Length; i++)
             {
-                GameObject zombiesObject = Instantiate(zombie, zombieSpawnPoint[i].position, waterSpawnPoint[i].rotation);
+                GameObject zombiesObject = Instantiate(zombie, zombieSpawnPoint[i].position, zombieSpawnPoint[i].rotation);
 
                 zombieList.Add(zombiesObject);
             }
@@ -247,10 +342,13 @@ public class TutorialSceneManager : MonoBehaviour
         }
     }
 
-    void TutorialEnder()
+    public void ButtonSound()
+    {
+        SoundManager.Instance.Play(buttonSound);
+    }
+    public void TutorialEnder()
     {
         Time.timeScale = 0;
-
         TutorialOverMarrrr.SetActive(true);
     }
 

@@ -93,9 +93,9 @@ public class MovementPlayer1 : MonoBehaviour
 
     [SerializeField] ParticleSystem stunParticle;
 
+    public ParticleSystem gotWaterParticle;
 
 
-   
 
     private void Awake()
     {
@@ -279,20 +279,25 @@ public class MovementPlayer1 : MonoBehaviour
 
    public void TakeDamage(float damage)
    {
-        currentHP -= damage;
-        hpBar.UpdateBar(currentHP);
-        //Debug.Log("Got Hit, HP Remaining = " + currentHP);
+        if (gameManager.canBeHit)
+        {
+            currentHP -= damage;
+            hpBar.UpdateBar(currentHP);
+            //Debug.Log("Got Hit, HP Remaining = " + currentHP);
+            
+
+            if (currentHP <= 0)
+            {
+                Die();
+            }
+        }
+
         SoundManager.Instance.Play(hitWater);
         StartCoroutine(KnockEnemy());
         anim.SetTrigger("Choke");
         stunParticle.Play();
 
-        if (currentHP <= 0)
-        {
-            Die();
-        }
-
-   }
+    }
 
     void Die()
     {

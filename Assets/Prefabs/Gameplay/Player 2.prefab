@@ -70,7 +70,7 @@ MonoBehaviour:
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
-  m_FillAmount: 0.472
+  m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
@@ -515,6 +515,7 @@ Transform:
   - {fileID: 3673176759899323999}
   - {fileID: 8451639053586883346}
   - {fileID: 601280494375432981}
+  - {fileID: 7861167389534106986}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &89363774519098392
@@ -646,11 +647,12 @@ MonoBehaviour:
   deadBodyObject: {fileID: 1197664981355331433, guid: faf6b0f076d35424889658e7f7e30db2, type: 3}
   tutorialUI: {fileID: 1403278322959310791}
   arrows: {fileID: 21300000, guid: ac34a9bb5bfa82046920a489606db7f8, type: 3}
-  ijkl: {fileID: 21300000, guid: fa48468b235730c4ba6e55a68bebde3d, type: 3}
+  ijkl: {fileID: 21300000, guid: 29635dd03fc14374d9d813b1aefe281c, type: 3}
   hitWater: {fileID: 8300000, guid: 98c61cbf6b60bcf409e163f0225b8e6a, type: 3}
   walking: {fileID: 4625116319028376643}
   waterIndicator: {fileID: 7597011520526019793}
   stunParticle: {fileID: 3973208758609679082}
+  gotWaterParticle: {fileID: 3456409562543779461}
 --- !u!65 &5440332226947786560
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -981,7 +983,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: fa48468b235730c4ba6e55a68bebde3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 29635dd03fc14374d9d813b1aefe281c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2466,6 +2468,73 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b43d61c544247c3499b54cd3d1dbb873, type: 3}
   m_PrefabInstance: {fileID: 8073590281622033166}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &8227730835065998120
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1813156598611903373}
+    m_Modifications:
+    - target: {fileID: 1552248923581535888, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_Name
+      value: GetWaterParticle
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.0027939081
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.3630066
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+--- !u!198 &3456409562543779461 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 6762550342795945389, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+  m_PrefabInstance: {fileID: 8227730835065998120}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7861167389534106986 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2249195676476096066, guid: 7a1d40ed5821b8e4bafab79e44c81106, type: 3}
+  m_PrefabInstance: {fileID: 8227730835065998120}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &9030621146653270609
 PrefabInstance:

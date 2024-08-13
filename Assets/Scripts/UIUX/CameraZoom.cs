@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CameraZoom : MonoBehaviour
 {
@@ -15,8 +16,19 @@ public class CameraZoom : MonoBehaviour
     private Vector3 deadPlayer;
     [SerializeField] GameObject[] PlayerUIs;
 
+
+    [SerializeField] Image _whatIsThisLevel;
+    [SerializeField] Sprite Tiebreaker;
+
     void Start()
     {
+        if (ScoreManager.Instance != null)
+        {
+            if (ScoreManager.Instance.roundCount == 4)
+            {
+                _whatIsThisLevel.sprite = Tiebreaker;
+            }
+        }
         if (Camera.main != null)
         {
             originalFOV = Camera.main.fieldOfView;
@@ -51,7 +63,7 @@ public class CameraZoom : MonoBehaviour
                 {
                     Time.timeScale = 1f;
                     isDead = false;
-
+                   // GameManager.Instance.canBeHit = true;
                     if (Camera.main != null)
                     {
                         Camera.main.fieldOfView = originalFOV;
