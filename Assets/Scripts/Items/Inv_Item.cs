@@ -57,10 +57,10 @@ public class Inv_Item : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown(fireButton))
-        {
-            UseItem();
-        }
+        //if (Input.GetButtonDown(fireButton))
+        //{
+        //    UseItem();
+        //}
     }
 
     public void DiscardItem(int slotIndex)

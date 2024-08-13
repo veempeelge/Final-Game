@@ -1615,7 +1615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244394592824583841, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3550590304731054332, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: buttonClick
@@ -1623,7 +1623,7 @@ PrefabInstance:
       objectReference: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}
     - target: {fileID: 8581863286401432363, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_text
-      value: Next Stage
+      value: Next
       objectReference: {fileID: 0}
     - target: {fileID: 8581863286401432363, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_fontSize
