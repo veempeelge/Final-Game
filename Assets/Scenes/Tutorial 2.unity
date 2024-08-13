@@ -8897,7 +8897,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 63ed740140347cb47869c421aa567654, type: 2}
     - target: {fileID: 919132149155446097, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Name
       value: BrokenFence (2)
@@ -30475,6 +30475,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3398951979735192404, guid: 70f6ac008a0dd244d868ee2e60f14ab1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5231272883840159093, guid: 70f6ac008a0dd244d868ee2e60f14ab1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -30482,6 +30486,14 @@ PrefabInstance:
     - target: {fileID: 5231272883840159093, guid: 70f6ac008a0dd244d868ee2e60f14ab1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: NextPhase32
+      objectReference: {fileID: 0}
+    - target: {fileID: 5315001028355703657, guid: 70f6ac008a0dd244d868ee2e60f14ab1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1809288682}
+    - target: {fileID: 5315001028355703657, guid: 70f6ac008a0dd244d868ee2e60f14ab1, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: MainMenuFromTutorial
       objectReference: {fileID: 0}
     - target: {fileID: 5863283400399347245, guid: 70f6ac008a0dd244d868ee2e60f14ab1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -31439,7 +31451,7 @@ PrefabInstance:
     - target: {fileID: -7511558181221131132, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Materials.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2100000, guid: 7c440aa73a906384d937f98f27cc5f7a, type: 2}
     - target: {fileID: 919132149155446097, guid: 2e08fc4ff56866042bcb6fe0175472ab, type: 3}
       propertyPath: m_Name
       value: BrokenFence (1)
