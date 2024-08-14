@@ -9,8 +9,11 @@ public class PauseMenu : MonoBehaviour
 
     public static bool isPaused;
 
+    public AudioClip buttonClickSound;
+
     void Start()
     {
+        //buttonClickSound = GameManager.Instance.buttonClick;
         pauseMenu.SetActive(false);
     }
 
@@ -24,6 +27,7 @@ public class PauseMenu : MonoBehaviour
 
     public void TogglePause()
     {
+        SoundManager.Instance.Play(buttonClickSound);
         if (isPaused)
         {
             ResumeGame();

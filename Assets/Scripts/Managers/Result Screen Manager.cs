@@ -52,16 +52,18 @@ public class ResultScreenManager : MonoBehaviour
 
     private void Start()
     {
-        if (ScoreManager.Instance.isTieBreaker)
+        if (ScoreManager.Instance.roundCount == 3 && ScoreManager.Instance.isTieBreaker)
         {
             tieTextObj.SetActive(true);
         }
-        else
+        
+        if (ScoreManager.Instance.roundCount != 3)
         {
             tieTextObj.SetActive(false);
+
         }
 
-        if(SoundManager.Instance != null)
+        if (SoundManager.Instance != null)
         {
             SoundManager.Instance.Play(ResultSound);
 

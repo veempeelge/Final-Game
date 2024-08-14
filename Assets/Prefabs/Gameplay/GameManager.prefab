@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2054448733256864263}
   - component: {fileID: 7176217125988856969}
   - component: {fileID: 141500900528352197}
+  - component: {fileID: 6939890229007532053}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -46,6 +47,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nav: {fileID: 0}
+  player1alive: 0
+  player2alive: 0
+  player3alive: 0
   twoPlayers: {fileID: 0}
   threePlayers: {fileID: 0}
   UIPlayerSelect: {fileID: 0}
@@ -62,8 +66,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   gameplayMusic: {fileID: 8300000, guid: e20fd0f6abe941d4fa6e3d8a18f42b0d, type: 3}
-  buttonClick: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}
   playerselectionClick: {fileID: 8300000, guid: 5098db15b99b5674b8ce840d6cf893e5, type: 3}
+  buttonClick: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}
   p1Dead: {fileID: 8300000, guid: c2231561448ce4a46ac8d509b1e08189, type: 3}
   p2Dead: {fileID: 8300000, guid: cdab2742b8695f446809d77ebe98a351, type: 3}
   p3Dead: {fileID: 8300000, guid: 387559270840cbb4db5d7606a0138d3a, type: 3}
@@ -83,6 +87,7 @@ MonoBehaviour:
   defPlayerKnockback: 2
   defSpeed: 4.5
   defAcc: 11
+  canBeHit: 1
 --- !u!114 &141500900528352197
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,3 +101,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}
+--- !u!114 &6939890229007532053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293427334539908554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1ed7218daf49fa42a1fc4a956590278, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pauseMenu: {fileID: 0}
+  buttonClickSound: {fileID: 8300000, guid: 9cef15bfbbd34114a83a931505b4e9b5, type: 3}

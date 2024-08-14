@@ -51,6 +51,7 @@ public class TutorialSceneManager : MonoBehaviour
 
     public AudioClip ZombieRise;
 
+    public GameObject skipButton;
 
 
     // Start is called before the first frame update
@@ -221,6 +222,7 @@ public class TutorialSceneManager : MonoBehaviour
         }
         //timer = 15;
 
+        skipButton.SetActive(true);
         haventgolevel = false;
     }
 

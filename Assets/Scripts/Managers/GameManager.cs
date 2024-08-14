@@ -28,7 +28,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject[] player3UIs;
 
-    [SerializeField] AudioClip gameplayMusic, buttonClick, playerselectionClick;
+    [SerializeField] AudioClip gameplayMusic, playerselectionClick;
+    public AudioClip buttonClick;
     [SerializeField] AudioClip p1Dead, p2Dead, p3Dead;
 
 
