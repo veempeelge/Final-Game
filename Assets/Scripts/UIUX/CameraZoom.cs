@@ -18,7 +18,7 @@ public class CameraZoom : MonoBehaviour
 
 
     [SerializeField] Image _whatIsThisLevel;
-    [SerializeField] Sprite Tiebreaker;
+    [SerializeField] GameObject Tiebreaker;
 
     void Start()
     {
@@ -26,9 +26,16 @@ public class CameraZoom : MonoBehaviour
         {
             if (ScoreManager.Instance.roundCount == 4)
             {
-                _whatIsThisLevel.sprite = Tiebreaker;
+                Tiebreaker.SetActive(true);
             }
         }
+        else
+        {
+            Tiebreaker.SetActive(false);
+
+        }
+
+
         if (Camera.main != null)
         {
             originalFOV = Camera.main.fieldOfView;

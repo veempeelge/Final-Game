@@ -250,7 +250,7 @@ public class MovementPlayer1 : MonoBehaviour
             this.enabled = false;
             StartCoroutine(EnableMovement());
 
-            SoundManager.Instance.Play(hitWater);
+            SoundManager.Instance.Play(hitWater, 1.5f);
         }
         yield break;
         
@@ -292,7 +292,7 @@ public class MovementPlayer1 : MonoBehaviour
             }
         }
 
-        SoundManager.Instance.Play(hitWater);
+        SoundManager.Instance.Play(hitWater,1.5f);
         StartCoroutine(KnockEnemy());
         anim.SetTrigger("Choke");
         stunParticle.Play();

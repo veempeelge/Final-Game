@@ -4924,7 +4924,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 119}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &908646806
@@ -4947,17 +4947,17 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Confirm
+  m_text: It's a Tie!
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 680cc1e337db66f419ff6e29c3bf30d3, type: 2}
+  m_sharedMaterial: {fileID: -8304777597694122932, guid: 680cc1e337db66f419ff6e29c3bf30d3, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4281479730
-  m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -4974,8 +4974,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 55.37
+  m_fontSizeBase: 55.37
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -8273,7 +8273,7 @@ MonoBehaviour:
   round2Column: {fileID: 1717482697}
   round3Column: {fileID: 1718547433}
   tieBreakerColumn: {fileID: 587716147}
-  round: 0
+  round: 3
   confirmButton: {fileID: 938157113}
   mainMenuButton: {fileID: 1212448460}
   rankings:
@@ -8301,6 +8301,7 @@ MonoBehaviour:
   ResultSound: {fileID: 8300000, guid: 97fad52c24dde9b4786cd92b4f2124a0, type: 3}
   result1: {fileID: 1143348347}
   result2: {fileID: 554367738}
+  tieTextObj: {fileID: 908646804}
 --- !u!4 &1549586923
 Transform:
   m_ObjectHideFlags: 0
@@ -10902,6 +10903,42 @@ PrefabInstance:
     - target: {fileID: 1432171453551111255, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
       propertyPath: m_Name
       value: Score Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound1Manager.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound1Manager.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound1Manager.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound2Manager.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound2Manager.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound2Manager.Array.data[2]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound3Manager.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound3Manager.Array.data[1]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
+      propertyPath: scoresRound3Manager.Array.data[2]
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

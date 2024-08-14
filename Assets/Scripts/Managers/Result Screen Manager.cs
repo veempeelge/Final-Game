@@ -47,11 +47,20 @@ public class ResultScreenManager : MonoBehaviour
 
     [SerializeField] AudioClip ResultSound;
 
-    [SerializeField] GameObject result1, result2;
+    [SerializeField] GameObject result1, result2, tieTextObj;
 
 
     private void Start()
     {
+        if (ScoreManager.Instance.isTieBreaker)
+        {
+            tieTextObj.SetActive(true);
+        }
+        else
+        {
+            tieTextObj.SetActive(false);
+        }
+
         if(SoundManager.Instance != null)
         {
             SoundManager.Instance.Play(ResultSound);

@@ -1615,7 +1615,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3244394592824583841, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3550590304731054332, guid: 4378f65d343449c4cb687e18029ab7cd, type: 3}
       propertyPath: buttonClick
@@ -5532,10 +5532,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 484680703231237053, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 484680703231237053, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -5575,10 +5571,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1312056205915198536, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: eabab849a37428a45a034befba0067f0, type: 3}
     - target: {fileID: 2704524812773910603, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
       propertyPath: m_Name
       value: Main Camera (1)
@@ -5607,14 +5599,6 @@ PrefabInstance:
       propertyPath: PlayerUIs.Array.data[2]
       value: 
       objectReference: {fileID: 1769468914}
-    - target: {fileID: 9172884616356053607, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: field of view
-      value: 29
-      objectReference: {fileID: 0}
-    - target: {fileID: 9172884616356053607, guid: 03ba22e69d84e0f4388c90406d54d48e, type: 3}
-      propertyPath: near clip plane
-      value: 0.3
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8409,10 +8393,6 @@ PrefabInstance:
     - target: {fileID: 1432171453551111255, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
       propertyPath: m_Name
       value: Score Manager
-      objectReference: {fileID: 0}
-    - target: {fileID: 7187963298243228274, guid: 184a33b1c353ba549a759d18909903b7, type: 3}
-      propertyPath: scoresTieBreakerManager.Array.size
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -26024,7 +26004,7 @@ Transform:
   m_GameObject: {fileID: 1394397900}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.85, y: 5.8, z: 12.19}
+  m_LocalPosition: {x: -2.85, y: 6.11, z: 12.19}
   m_LocalScale: {x: 2, y: 5, z: 25}
   m_ConstrainProportionsScale: 0
   m_Children: []

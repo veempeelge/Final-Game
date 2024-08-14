@@ -49,6 +49,8 @@ public class TutorialSceneManager : MonoBehaviour
     int timer = 15;
     [SerializeField] TMP_Text timerText;
 
+    public AudioClip ZombieRise;
+
 
 
     // Start is called before the first frame update
@@ -79,23 +81,30 @@ public class TutorialSceneManager : MonoBehaviour
 
     public void StartTutorialImage()
     {
+        SoundManager.Instance.Play(buttonClick);
+
         tutorialScreen.SetActive(true);
     }
 
     public void Next()
     {
+        SoundManager.Instance.Play(buttonClick);
         tutorialScreen.SetActive(true);
         tutorialImage.SetActive(false);
     }
 
     public void NextPhase2()
     {
+        SoundManager.Instance.Play(buttonClick);
+
         tutorialScreen2Image.SetActive(false);
         Time.timeScale = 1;
     }
 
     public void NextPhase31()
     {
+        SoundManager.Instance.Play(buttonClick);
+
         _phase3_1.SetActive(false);
         _phase3_2.SetActive(true);
         textPhase3.SetActive(false);
@@ -104,6 +113,8 @@ public class TutorialSceneManager : MonoBehaviour
 
     public void NextPhase32()
     {
+        SoundManager.Instance.Play(buttonClick);
+
         _phase3_1.SetActive(false);
         _phase3_2.SetActive(false);
         textPhase3.SetActive(true);
@@ -182,7 +193,7 @@ public class TutorialSceneManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             timer -= 1;
-            timerText.SetText($"Be the last man standing! tutorial ends in {timer} ");
+            timerText.SetText($"Be the last man standing! Tutorial ends in {timer} ");
 
         }
 
@@ -328,9 +339,9 @@ public class TutorialSceneManager : MonoBehaviour
             tutorialScreen2.SetActive(false);
             tutorialScreen3.SetActive(true);
             tutorialScreen4.SetActive(false);
-
             
             yield return new WaitForSeconds(.5f);
+            SoundManager.Instance.Play(ZombieRise);
 
             for (int i = 0; i < zombieSpawnPoint.Length; i++)
             {

@@ -61,7 +61,7 @@ public class Spawner : MonoBehaviour
             GameObject enemiesToSpawn = spawnableEnemies[Random.Range(0, spawnableEnemies.Length)];
             GameObject spawnedEnemies = Instantiate(enemiesToSpawn, spawnPoint.position, Quaternion.identity);
             spawnedEnemies.transform.parent = enemiesParent;
-            SoundManager.Instance.RandomSoundEffect(bellSpawnSound);
+            SoundManager.Instance.Play(bellSpawnSound, .3f);
         }
         else
         {
